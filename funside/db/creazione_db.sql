@@ -17,8 +17,8 @@ USE `funside` ;
 CREATE TABLE IF NOT EXISTS `funside`.`user` (
   `username` VARCHAR(50) NOT NULL,
   `password` VARCHAR(512) NOT NULL,
-  `nome` VARCHAR(45) NOT NULL,
-  `cognome` VARCHAR(45) NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `surname` VARCHAR(45) NOT NULL,
   `type` VARCHAR(45) NOT NULL
   CHECK (`type` IN ('client', 'admin')),
   PRIMARY KEY (`username`)
@@ -70,6 +70,38 @@ CREATE TABLE IF NOT EXISTS `funside`.`order` (
   ON DELETE NO ACTION
   ON UPDATE NO ACTION
 );
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `funside`.`producttype`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `funside`.`producttype` (
+  `type` VARCHAR(50) NOT NULL,
+  `description` VARCHAR(512) NOT NULL,
+  PRIMARY KEY (`type`)
+)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `funside`.`product`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `funside`.`product` (
+  `idproduct` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50) NOT NULL,
+  `price` DECIMAL(9,2) NOT NULL,
+  `description` VARCHAR(512) NOT NULL,
+  `brand` VARCHAR(50) NOT NULL,
+  `avgrating` DECIMAL(1,1) DEFAULT NULL,
+  `minnumplayers` SMALLINT,
+  `maxnumplayers` SMALLINT,
+  `numpages` INT,
+  `type` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`idproduct`),
+  FOREIGN KEY (`type`)
+    REFERENCES `funside`.`producttype` (`type`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+)
 ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
