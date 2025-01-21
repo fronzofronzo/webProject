@@ -26,20 +26,6 @@ CREATE TABLE IF NOT EXISTS `funside`.`user` (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `funside`.`user`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `funside`.`address` (
-  `username` VARCHAR(50) NOT NULL,
-  `add` VARCHAR(512) NOT NULL,
-  PRIMARY KEY (`username`),
-  FOREIGN KEY (`username`)
-  REFERENCES `funside`.`user` (`username`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE
-)
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
 -- Table `funside`.`address`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `funside`.`address` (
@@ -47,29 +33,10 @@ CREATE TABLE IF NOT EXISTS `funside`.`address` (
   `add` VARCHAR(512) NOT NULL,
   PRIMARY KEY (`user`),
   FOREIGN KEY (`user`)
-  REFERENCES `funside`.`user` (`username`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE
+    REFERENCES `funside`.`user` (`username`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 )
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `funside`.`order`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `funside`.`order` (
-  `idorder` INT NOT NULL AUTO_INCREMENT,
-  `dateorder` DATE NOT NULL,
-  `datedelivery` DATE,
-  `status` VARCHAR(50) NOT NULL DEFAULT 'ordinato'
-  CHECK (`status` IN ('ordinato', 'spedito', 'in consegna', 'consegnato', 'sospeso', 'cancellato')),
-  `totalprice` DECIMAL(9,2) NOT NULL,
-  `user` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`idorder`),
-  FOREIGN KEY (`user`)
-  REFERENCES `funside`.`user` (`username`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION
-);
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -100,7 +67,64 @@ CREATE TABLE IF NOT EXISTS `funside`.`product` (
   FOREIGN KEY (`type`)
     REFERENCES `funside`.`producttype` (`type`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON UPDATE CASCADE
+)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `funside`.`order`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `funside`.`order` (
+  `idorder` INT NOT NULL AUTO_INCREMENT,
+  `dateorder` DATE NOT NULL,
+  `datedelivery` DATE,
+  `status` VARCHAR(50) NOT NULL DEFAULT 'ordinato'
+  CHECK (`status` IN ('ordinato', 'spedito', 'in consegna', 'consegnato', 'sospeso', 'cancellato')),
+  `totalprice` DECIMAL(9,2) NOT NULL,
+  `user` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`idorder`),
+  FOREIGN KEY (`user`)
+  REFERENCES `funside`.`user` (`username`)
+  ON DELETE NO ACTION
+  ON UPDATE CASCADE
+)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `funside`.`orderdetail`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `funside`.`orderdetail` (
+  `product` INT NOT NULL,
+  `order` INT NOT NULL,
+  `quantity` INT NOT NULL,
+  PRIMARY KEY (`product`, `order`),
+  FOREIGN KEY (`product`)
+  REFERENCES `funside`.`product` (`idproduct`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+  FOREIGN KEY (`order`)
+  REFERENCES `funside`.`order` (`idorder`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `funside`.`cartdetail`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `funside`.`cartdetail` (
+  `product` INT NOT NULL,
+  `user` VARCHAR(50) NOT NULL,
+  `quantity` INT NOT NULL,
+  PRIMARY KEY (`product`, `user`),
+  FOREIGN KEY (`product`)
+    REFERENCES `funside`.`product` (`idproduct`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  FOREIGN KEY (`user`)
+    REFERENCES `funside`.`user` (`username`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 )
 ENGINE = InnoDB;
 
