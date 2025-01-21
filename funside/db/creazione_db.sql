@@ -10,3 +10,17 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 
 CREATE SCHEMA IF NOT EXISTS `funside` DEFAULT CHARACTER SET utf8 ;
 USE `funside` ;
+
+-- -----------------------------------------------------
+-- Table `funside`.`user`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `funside`.`user` (
+  `username` VARCHAR(50) NOT NULL,
+  `password` VARCHAR(512) NOT NULL,
+  `nome` VARCHAR(45) NOT NULL,
+  `cognome` VARCHAR(45) NOT NULL,
+  `type` VARCHAR(45) NOT NULL
+  CHECK (`type` IN ('client', 'admin')),
+  PRIMARY KEY (`username`)
+)
+ENGINE = InnoDB;
