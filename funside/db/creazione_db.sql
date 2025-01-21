@@ -7,7 +7,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema funside
 -- -----------------------------------------------------
-
+DROP SCHEMA IF EXISTS `funside`;
 CREATE SCHEMA IF NOT EXISTS `funside` DEFAULT CHARACTER SET utf8 ;
 USE `funside` ;
 
@@ -38,3 +38,40 @@ CREATE TABLE IF NOT EXISTS `funside`.`address` (
   ON UPDATE CASCADE
 )
 ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `funside`.`address`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `funside`.`address` (
+  `user` VARCHAR(50) NOT NULL,
+  `add` VARCHAR(512) NOT NULL,
+  PRIMARY KEY (`user`),
+  FOREIGN KEY (`user`)
+  REFERENCES `funside`.`user` (`username`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `funside`.`order`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `funside`.`order` (
+  `idorder` INT NOT NULL AUTO_INCREMENT,
+  `dateorder` DATE NOT NULL,
+  `datedelivery` DATE,
+  `status` VARCHAR(50) NOT NULL DEFAULT 'ordinato'
+  CHECK (`status` IN ('ordinato', 'spedito', 'in consegna', 'consegnato', 'sospeso', 'cancellato')),
+  `totalprice` DECIMAL(9,2) NOT NULL,
+  `user` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`idorder`),
+  FOREIGN KEY (`user`)
+  REFERENCES `funside`.`user` (`username`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION
+);
+ENGINE = InnoDB;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
