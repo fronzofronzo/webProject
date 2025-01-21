@@ -4,15 +4,15 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
     <header class="text-center text-black py-3">
         <h1>FUN SIDE</h1>
         <div>
-            <button class="btn"><i class="fa fa-home"></i></button>
-            <button class="btn btn-light">Notifiche</button>
+            <button class="btn"><i class="material-icons">person</i></button>
+            <button class="btn btn-light"><i class="bi bi-person"></i>Notifiche</button>
             <button class="btn btn-light">Profilo</button>
             <button class="btn btn-light">Carrello</button>
         </div>
