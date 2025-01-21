@@ -24,3 +24,17 @@ CREATE TABLE IF NOT EXISTS `funside`.`user` (
   PRIMARY KEY (`username`)
 )
 ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `funside`.`user`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `funside`.`address` (
+  `username` VARCHAR(50) NOT NULL,
+  `add` VARCHAR(512) NOT NULL,
+  PRIMARY KEY (`username`),
+  FOREIGN KEY (`username`)
+  REFERENCES `funside`.`user` (`username`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+)
+ENGINE = InnoDB;
