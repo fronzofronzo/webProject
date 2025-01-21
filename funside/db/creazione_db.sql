@@ -149,6 +149,25 @@ CREATE TABLE IF NOT EXISTS `funside`.`notification` (
 )
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `funside`.`review`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `funside`.`review` (
+  `product` INT NOT NULL,
+  `user` VARCHAR(50) NOT NULL,
+  `rating` VARCHAR(50) NOT NULL,
+  `text` VARCHAR(512) NOT NULL,
+  FOREIGN KEY (`product`)
+    REFERENCES `funside`.`product` (`idproduct`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  FOREIGN KEY (`user`)
+    REFERENCES `funside`.`user` (`username`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE
+)
+ENGINE = InnoDB;
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
