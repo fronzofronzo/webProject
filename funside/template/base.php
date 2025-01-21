@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
-    <header>
+    <header class="text-center text-black">
         <h1>FUN SIDE</h1>
     </header>
 
