@@ -74,5 +74,68 @@ class DatabaseHelper{
         $stmt->bind_param('ss',$type);
         return $stmt->execute();
     }
+
+    //PRODUCT
+        
+    //ORDER
+
+    //ORDER DETAILS
+
+    //NOTIFICATION
+
+    public function addNotification($text, $user) {
+        $query = "INSERT INTO notification (text, user) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$text, $user);
+        return $stmt->execute();
+    }
+
+    public function addNotificationAboutAnOrder($text, $user, $order) {
+        $query = "INSERT INTO notification (text, user) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$text, $user);
+        return $stmt->execute();
+    }
+
+    public function readNotification($idnotification) {
+        $query = "UPDATE notification SET isRead = TRUE WHERE idnotification = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssssii',$idnotification);
+        return $stmt->execute();
+    }
+
+    public function getAllNotificationOfUser($username) {
+        $query = "SELECT idnotification, text, isRead, order FROM notification WHERE idnotification = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$username);
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);        
+    }
+
+    public function getAllNotificationOfUserNotRead($username) {
+        $query = "SELECT idnotification, text, isRead, order FROM notification WHERE idnotification = ? AND isRead = FALSE";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$username);
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);        
+    }
+
+    public function getAllNotificationOfUserRead($username) {
+        $query = "SELECT idnotification, text, isRead, order FROM notification WHERE idnotification = ? AND isRead = TRUE";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$username);
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);        
+    }
+
+    public function deleteNotification($idnotification) {
+        $query = "DELETE FROM notification WHERE idnotification = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$idnotification);
+        return $stmt->execute();
+    }
+
+    //REVIEW
+
 }
 ?>
