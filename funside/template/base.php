@@ -43,7 +43,10 @@
         </div>
     </nav>
 
-
+    <footer>
+        <a href="">Contatti</a>
+        <a href="">Servizi</a>
+    </footer>
     
 </body>
 
