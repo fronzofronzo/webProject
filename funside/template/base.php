@@ -35,15 +35,15 @@
             </button><nav>
         <div>
             <!--<button class="btn"><i class="material-icons">person</i></button>-->
-            <button class="btn btn-light"><i class="bi bi-person"></i>Notifiche</button>
-            <button class="btn btn-light">Profilo</button>
-            <button class="btn btn-light">Carrello</button>
+            <button class="btn btn-light"><i class="material-icons">notifications_none</i></button>
+            <button class="btn btn-light"><i class="material-icons">person_outline</i></button>
+            <button class="btn btn-light"><i class="material-icons">shopping_cart</i></button>
         </div>
     </nav>
         </div>
     </nav>
 
-    <footer>
+    <footer class="text-center text-black py-3">
         <a href="">Contatti</a>
         <a href="">Servizi</a>
     </footer>
