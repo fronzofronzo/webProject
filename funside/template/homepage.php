@@ -1,6 +1,6 @@
 <div class="mb-2">
+	<h2 class="text-white">Categoria prodotto</h2>
 	<div class="row">
-		<h2 class="text-white">Categoria prodotto</h2>
 		<div class="col-3 text-center">
 			<img src="./upload/funko-logo-.png" class ="img-thumbnail" alt="Logo funko">
 		</div>

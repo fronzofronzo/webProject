@@ -78,7 +78,8 @@
         <a href="">Contatti</a>
         <a href="">Servizi</a>
     </footer>
-    
+
+    <script src="<?php echo "./js/index.js"; ?>"></script>
 </body>
 
 
