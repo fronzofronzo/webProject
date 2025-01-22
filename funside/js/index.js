@@ -1,23 +1,24 @@
 function generateCategories(categories) {
 	let result = `
-	<div class="container-fluid">
+	<section class="container-fluid">
 		<div class="row">
-			<h2 class="text-white">Più apprezzati</h2>
+			<h2 class="text-white">Categorie</h2>
 		</div>
 		<div class="row">
 	`;
 	for (let i = 0; i < categories.length; i++) {
 		let category = `
-			<div class="col-3 text-center">
-				<img src="${categories[i]["image"]}" class ="img-thumbnail" alt="${categories[i]["type"]}"/>
-				<div calss="text-center">${categories[i]["type"]}</div>
+			<div class="col-6 col-md-3 col-lg-2 text-center position-relative">
+				<div class="d-flex justify-content-center align-items-center"><img src="${categories[i]["image"]}" class="img-fluid mb-4" alt="${categories[i]["type"]}" /></div>
+				<div class="text-center position-absolute bottom-0 w-100">${categories[i]["type"]}</div>
 			</div>
+
 		`;
 		result += category;
 	}
 	result += `
 		</div>
-	</div>
+	</section>
 		`;
 	return result;
 }

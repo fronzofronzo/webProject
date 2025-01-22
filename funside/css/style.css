@@ -1,4 +1,4 @@
-body, header, h1, h2, h5, ul, div{
+body, header, h1, h2, h5, ul, div, section{
     margin: 0;
     padding: 0;
 }
@@ -27,7 +27,14 @@ main div {
 	background-color: #82aeb1;
 }
 
-main div div img {
-	width: 150px;
-	height: 150px;
+img {
+	height: 100px;
+}
+
+main > section {
+	margin: 20px 0;
+}
+
+main > section > div {
+	padding: 5px 2%;
 }
