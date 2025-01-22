@@ -1,5 +1,5 @@
 <?php
-	require_once("bootstrap.php");
+	require_once("../bootstrap.php");
 	$categories = $dbh->getRandomProductTypes(3);
 
 	for($i=0; $i<count($categories); $i++) {
