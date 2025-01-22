@@ -75,7 +75,7 @@
     <main>
         <?php if (isset($templateParams["name"])) {
             require($templateParams["name"]);
-        } ?>
+        }?>
     </main>
     <footer class="text-center text-black py-3">
         <a href="">Contatti</a>

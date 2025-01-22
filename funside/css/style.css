@@ -1,3 +1,8 @@
+body, header, h1, h2, h5, ul, div{
+    margin: 0;
+    padding: 0;
+}
+
 header {
 	background-color: #f0e2e7;
 }
