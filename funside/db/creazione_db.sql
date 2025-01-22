@@ -63,6 +63,7 @@ CREATE TABLE IF NOT EXISTS `funside`.`product` (
   `maxnumplayers` SMALLINT,
   `numpages` INT,
   `type` VARCHAR(50) NOT NULL,
+  `image` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`idproduct`),
   FOREIGN KEY (`type`)
     REFERENCES `funside`.`producttype` (`type`)
