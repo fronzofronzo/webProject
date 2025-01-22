@@ -51,5 +51,28 @@ class DatabaseHelper{
         $stmt->bind_param('ss',$username, $address);
         return $stmt->execute();
     }
+
+    //PRODUCT TYPE
+    public function addProductType($type, $description, $image) {
+        $query = "INSERT INTO producttype (type, description, image) VALUES (?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sss',$type, $description, $image);
+        return $stmt->execute();
+    }
+
+    public function getProductType($type) {
+        $query = "SELECT description, image FROM producttype WHERE type = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$type);
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function deleteProductType($type) {
+        $query = "DELETE FROM producttype WHERE type = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$type);
+        return $stmt->execute();
+    }
 }
 ?>
