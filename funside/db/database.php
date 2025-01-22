@@ -12,7 +12,7 @@ class DatabaseHelper{
 
     //USER
     public function checkLogin($username, $password){
-        $query = "SELECT username, name, surname, type FROM user WHERE username = ? AND password = ?";
+        $query = "SELECT username, name, surname, type FROM funside.user WHERE username = ? AND password = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username, $password);
         $stmt->execute();
@@ -22,7 +22,7 @@ class DatabaseHelper{
     }
 
     public function registerUser($username, $password, $name, $surname, $type){
-        $query = "INSERT INTO user (username, password, name, surname, type VALUES (?, ?, ?, ?, ?)";
+        $query = "INSERT INTO funside.user (username, password, name, surname, type VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sssss',$username, $password, $name, $surname, $type);
         return $stmt->execute();
@@ -30,14 +30,14 @@ class DatabaseHelper{
 
     //ADDRESS
     public function addAddressToUser($username, $address) {
-        $query = "INSERT INTO address (user, add) VALUES (?, ?)";
+        $query = "INSERT INTO funside.address (user, add) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username, $address);
         return $stmt->execute();
     }
 
     public function getAddressesFromUser($username) {
-        $query = "SELECT add, FROM address WHERE user = ?";
+        $query = "SELECT add FROM funside.address WHERE user = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s',$username);
         $stmt->execute();
@@ -46,7 +46,7 @@ class DatabaseHelper{
     }
 
     public function deleteAddressToUser($username, $address) {
-        $query = "DELETE FROM address WHERE user = ? AND address = ?";
+        $query = "DELETE FROM funside.address WHERE user = ? AND address = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username, $address);
         return $stmt->execute();
@@ -54,14 +54,14 @@ class DatabaseHelper{
 
     //PRODUCT TYPE
     public function addProductType($type, $description, $image) {
-        $query = "INSERT INTO producttype (type, description, image) VALUES (?, ?, ?)";
+        $query = "INSERT INTO funside.producttype (type, description, image) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sss',$type, $description, $image);
         return $stmt->execute();
     }
 
     public function getProductTypeByType($type) {
-        $query = "SELECT description, image FROM producttype WHERE type = ?";
+        $query = "SELECT description, image FROM funside.producttype WHERE type = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$type);
         $result = $stmt->get_result();
@@ -69,7 +69,7 @@ class DatabaseHelper{
     }
 
     public function getRandomProductTypes($n=3) {
-        $query = "SELECT type, description, image FROM producttype ORDER BY RAND() LIMIT ?";
+        $query = "SELECT type, description, image FROM funside.producttype ORDER BY RAND() LIMIT ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$n);
         $stmt->execute();
@@ -78,7 +78,7 @@ class DatabaseHelper{
     }
 
     public function deleteProductType($type) {
-        $query = "DELETE FROM producttype WHERE type = ?";
+        $query = "DELETE FROM funside.producttype WHERE type = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$type);
         return $stmt->execute();
@@ -93,28 +93,28 @@ class DatabaseHelper{
     //NOTIFICATION
 
     public function addNotification($text, $user) {
-        $query = "INSERT INTO notification (text, user) VALUES (?, ?)";
+        $query = "INSERT INTO funside.notification (text, user) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$text, $user);
         return $stmt->execute();
     }
 
     public function addNotificationAboutAnOrder($text, $user, $order) {
-        $query = "INSERT INTO notification (text, user) VALUES (?, ?)";
+        $query = "INSERT INTO funside.notification (text, user) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$text, $user);
         return $stmt->execute();
     }
 
     public function readNotification($idnotification) {
-        $query = "UPDATE notification SET isRead = TRUE WHERE idnotification = ?";
+        $query = "UPDATE funside.notification SET isRead = TRUE WHERE idnotification = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ssssii',$idnotification);
         return $stmt->execute();
     }
 
     public function getAllNotificationOfUser($username) {
-        $query = "SELECT idnotification, text, isRead, order FROM notification WHERE idnotification = ?";
+        $query = "SELECT idnotification, text, isRead, order FROM funside.notification WHERE idnotification = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username);
         $result = $stmt->get_result();
@@ -122,7 +122,7 @@ class DatabaseHelper{
     }
 
     public function getAllNotificationOfUserNotRead($username) {
-        $query = "SELECT idnotification, text, isRead, order FROM notification WHERE idnotification = ? AND isRead = FALSE";
+        $query = "SELECT idnotification, text, isRead, order FROM funside.notification WHERE idnotification = ? AND isRead = FALSE";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username);
         $result = $stmt->get_result();
@@ -130,7 +130,7 @@ class DatabaseHelper{
     }
 
     public function getAllNotificationOfUserRead($username) {
-        $query = "SELECT idnotification, text, isRead, order FROM notification WHERE idnotification = ? AND isRead = TRUE";
+        $query = "SELECT idnotification, text, isRead, order FROM funside.notification WHERE idnotification = ? AND isRead = TRUE";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username);
         $result = $stmt->get_result();
@@ -138,7 +138,7 @@ class DatabaseHelper{
     }
 
     public function deleteNotification($idnotification) {
-        $query = "DELETE FROM notification WHERE idnotification = ?";
+        $query = "DELETE FROM funside.notification WHERE idnotification = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$idnotification);
         return $stmt->execute();
