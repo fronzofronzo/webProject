@@ -69,14 +69,9 @@ class DatabaseHelper{
     }
 
     public function getRandomProductTypes($n=3) {
-        $query = "SELECT type, description, image FROM producttype";
-        if($n > 0){
-            $query .= " LIMIT ?";
-        }
+        $query = "SELECT type, description, image FROM producttype ORDER BY RAND() LIMIT ?";
         $stmt = $this->db->prepare($query);
-        if($n > 0){
-            $stmt->bind_param('i',$n);
-        }
+        $stmt->bind_param('i',$n);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
