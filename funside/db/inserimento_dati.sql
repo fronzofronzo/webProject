@@ -25,14 +25,14 @@ INSERT INTO `funside`.`address` (`user`, `add`) VALUES
 
 INSERT INTO `funside`.`producttype` (`type`, `description`, `image`) VALUES
 ('boardgame', 'A family-friendly board game', 'boardgame.jpg'),
-('cardgame', 'A challenging card game', 'cardgame.jpg'),
+('cardgame', 'A challenging card game', 'cardgame.jpeg'),
 ('puzzle', 'A complex jigsaw puzzle', 'puzzle.jpg'),
-('outdoor', 'Outdoor sports equipment', 'outdoor.jpg'),
-('videogame', 'An exciting video game', 'videogame.jpg'),
-('toy', 'Fun and educational toys', 'toy.jpg'),
-('strategy', 'Strategy-based board games', 'strategy.jpg'),
+('outdoor', 'Outdoor sports equipment', 'outdoor.jpeg'),
+('videogame', 'An exciting video game', 'videogame.jpeg'),
+('toy', 'Fun and educational toys', 'toy.jpeg'),
+('strategy', 'Strategy-based board games', 'strategy.jpeg'),
 ('action', 'Action-packed video games', 'action.jpg'),
-('educational', 'Educational games and puzzles', 'educational.jpg'),
+('educational', 'Educational games and puzzles', 'educational.jpeg'),
 ('party', 'Games designed for parties', 'party.jpg');
 
 
