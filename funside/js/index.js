@@ -16,4 +16,21 @@ function generateCategories(categories) {
 	return result;
 }
 
-async function get
+async function getCategoryData() {
+	const url = "api/api-category.php";
+	try {
+		const response = await fetch(url);
+		if(!response.ok) {
+			throw new Error("Response status: " + response.status);
+		}
+		const json = await response.json();
+		console.log(json);
+		const categories = generateCategories(json);
+		const div = document.querySelector("main div");
+		div.innerHTML = categories;
+	} catch(error) {
+		console.log(error.message);
+	}
+}
+
+getCategoryData();
