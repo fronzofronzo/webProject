@@ -21,7 +21,8 @@ CREATE TABLE IF NOT EXISTS `funside`.`user` (
   `surname` VARCHAR(45) NOT NULL,
   `type` VARCHAR(45) NOT NULL
   CHECK (`type` IN ('client', 'admin')),
-  PRIMARY KEY (`username`)
+  PRIMARY KEY (`username`),
+  UNIQUE (`name`, `surname`)
 )
 ENGINE = InnoDB;
 
@@ -31,7 +32,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `funside`.`address` (
   `user` VARCHAR(50) NOT NULL,
   `add` VARCHAR(512) NOT NULL,
-  PRIMARY KEY (`user`),
+  PRIMARY KEY (`user`, `add`),
   FOREIGN KEY (`user`)
     REFERENCES `funside`.`user` (`username`)
     ON DELETE CASCADE
