@@ -1,42 +1,50 @@
 INSERT INTO `funside`.`user` (`username`, `password`, `name`, `surname`, `type`) VALUES
-('john_doe', 'password123', 'John', 'Doe', 'client'),
-('jane_smith', 'securepass', 'Jane', 'Smith', 'client'),
-('alice_brown', 'mypassword', 'Alice', 'Brown', 'client'),
-('bob_jones', 'pass1234', 'Bob', 'Jones', 'client'),
-('charlie_lee', 'lee_secure', 'Charlie', 'Lee', 'client'),
-('danielle_white', 'white_pass', 'Danielle', 'White', 'client'),
-('eva_green', 'green123', 'Eva', 'Green', 'client'),
-('frank_harris', 'harris2021', 'Frank', 'Harris', 'client'),
-('george_young', 'young4me', 'George', 'Young', 'client'),
-('helen_turner', 'turnerpass', 'Helen', 'Turner', 'admin');
+('jdoe', 'password123', 'John', 'Doe', 'client'),
+('asmith', 'securepass', 'Alice', 'Smith', 'admin'),
+('bwhite', 'pass2021', 'Bob', 'White', 'client'),
+('mjohnson', 'mypassword', 'Mary', 'Johnson', 'client'),
+('rthompson', 'adminpass', 'Robert', 'Thompson', 'admin'),
+('emiller', 'safe2022', 'Emily', 'Miller', 'client'),
+('dwilliams', 'passchange', 'David', 'Williams', 'client'),
+('lgarcia', 'newpass', 'Laura', 'Garcia', 'client'),
+('klee', 'password', 'Kevin', 'Lee', 'client'),
+('nmartin', 'mypass', 'Nancy', 'Martin', 'client');
 
 INSERT INTO `funside`.`address` (`user`, `add`) VALUES
-('john_doe', '123 Main Street, Springfield'),
-('jane_smith', '456 Oak Avenue, Greenfield'),
-('alice_brown', '789 Pine Road, Redtown'),
-('bob_jones', '101 Maple Drive, Bluetown'),
-('charlie_lee', '202 Cedar Street, Yellowville'),
-('danielle_white', '303 Birch Lane, White City'),
-('eva_green', '404 Elm Avenue, Green Hills'),
-('frank_harris', '505 Spruce Way, Clearwater'),
-('george_young', '606 Cherry Blvd, New City'),
-('helen_turner', '707 Willow Court, Central Town');
+('jdoe', '123 Main Street, Springfield'),
+('asmith', '456 Elm Street, Shelbyville'),
+('bwhite', '789 Oak Avenue, Capital City'),
+('mjohnson', '101 Maple Drive, Ogdenville'),
+('rthompson', '202 Pine Street, North Haverbrook'),
+('emiller', '303 Cedar Court, Brockway'),
+('dwilliams', '404 Walnut Lane, Springfield'),
+('lgarcia', '505 Birch Road, Shelbyville'),
+('klee', '606 Aspen Circle, Capital City'),
+('nmartin', '707 Spruce Avenue, Ogdenville');
 
-INSERT INTO `funside`.`producttype` (`type`, `description`) VALUES
-('Board Game', 'A game played on a flat surface using pieces and dice.'),
-('Card Game', 'A game played using a deck of cards.'),
-('Puzzle', 'A game or problem that tests ingenuity.'),
-('Role-playing Game', 'A game where players assume roles in a fictional setting.'),
-('Educational Game', 'A game designed to teach skills or knowledge.');
 
-INSERT INTO `funside`.`product` (`name`, `price`, `description`, `brand`, `avgrating`, `minnumplayers`, `maxnumplayers`, `numpages`, `type`) VALUES
-('Monopoly', 29.99, 'Classic real-estate trading game.', 'Hasbro', 4.5, 2, 8, NULL, 'Board Game'),
-('Catan', 45.99, 'Strategy game involving resource management.', 'Kosmos', 4.7, 3, 4, NULL, 'Board Game'),
-('Uno', 12.99, 'A popular family card game.', 'Mattel', 4.6, 2, 10, NULL, 'Card Game'),
-('Chess', 19.99, 'Classic game of strategy.', 'Classic Games', 4.9, 2, 2, NULL, 'Board Game'),
-('Pandemic', 39.99, 'Cooperative board game to stop global disease outbreaks.', 'Z-Man Games', 4.8, 2, 4, NULL, 'Board Game'),
-('Scrabble', 24.99, 'Word-forming board game.', 'Hasbro', 4.3, 2, 4, NULL, 'Board Game'),
-('Exploding Kittens', 19.99, 'Humorous card game for all ages.', 'Exploding Kittens LLC', 4.5, 2, 5, NULL, 'Card Game'),
-('Ticket to Ride', 34.99, 'Railway adventure board game.', 'Days of Wonder', 4.6, 2, 5, NULL, 'Board Game'),
-('Carcassonne', 29.99, 'Tile-placement game.', 'Z-Man Games', 4.7, 2, 5, NULL, 'Board Game'),
-('Pictionary', 22.99, 'Draw and guess game for teams.', 'Mattel', 4.4, 3, 8, NULL, 'Board Game');
+INSERT INTO `funside`.`producttype` (`type`, `description`, `image`) VALUES
+('boardgame', 'A family-friendly board game', 'boardgame.jpg'),
+('cardgame', 'A challenging card game', 'cardgame.jpg'),
+('puzzle', 'A complex jigsaw puzzle', 'puzzle.jpg'),
+('outdoor', 'Outdoor sports equipment', 'outdoor.jpg'),
+('videogame', 'An exciting video game', 'videogame.jpg'),
+('toy', 'Fun and educational toys', 'toy.jpg'),
+('strategy', 'Strategy-based board games', 'strategy.jpg'),
+('action', 'Action-packed video games', 'action.jpg'),
+('educational', 'Educational games and puzzles', 'educational.jpg'),
+('party', 'Games designed for parties', 'party.jpg');
+
+
+INSERT INTO `funside`.`product` (`name`, `price`, `description`, `brand`, `type`, `image`) VALUES
+('Chess', 29.99, 'Classic chess set', 'GameMaster', 'boardgame', 'chess.jpg'),
+('Uno', 9.99, 'Fun card game', 'Mattel', 'cardgame', 'uno.jpg'),
+('Rubik Cube', 15.49, '3x3 Rubik cube', 'Rubik', 'puzzle', 'rubik.jpg'),
+('Frisbee', 12.00, 'Outdoor frisbee', 'Wham-O', 'outdoor', 'frisbee.jpg'),
+('Monopoly', 34.99, 'Board game of property trading', 'Hasbro', 'boardgame', 'monopoly.jpg'),
+('FIFA 25', 59.99, 'Soccer video game', 'EA Sports', 'videogame', 'fifa.jpg'),
+('LEGO City', 49.99, 'LEGO city building set', 'LEGO', 'toy', 'lego.jpg'),
+('Catan', 39.99, 'Strategy board game', 'Catan Studios', 'strategy', 'catan.jpg'),
+('Mario Kart', 54.99, 'Racing video game', 'Nintendo', 'videogame', 'mario.jpg'),
+('Jenga', 14.99, 'Tower building game', 'Hasbro', 'party', 'jenga.jpg');
+
