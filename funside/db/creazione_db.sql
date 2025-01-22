@@ -44,8 +44,9 @@ ENGINE = InnoDB;
 -- Table `funside`.`producttype`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `funside`.`producttype` (
-  `type` VARCHAR(50) NOT NULL,
+  `producttype` VARCHAR(50) NOT NULL,
   `description` VARCHAR(512) NOT NULL,
+  `image` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`type`)
 )
 ENGINE = InnoDB;
