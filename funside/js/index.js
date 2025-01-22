@@ -1,18 +1,19 @@
 function generateCategories(categories) {
-	let result = "";
-	for(let i=0; i<categories.length; i++) {
+	let result = `
+	<div class="row">
+	`;
+	for (let i = 0; i < categories.length; i++) {
 		let category = `
-		<div class="row">
-		<div class="col-3 text-center">
-			<img src="${categories[i]["image"]}" class ="img-thumbnail" alt="${categories[i]["type"]}">
-		</div>
-		</div>
-		<div class="row">
-			<div class="col-3 text-center">${categories[i]["type"]}</div>
-		</div>
+			<div class="col-3 text-center">
+					<img src="${categories[i]["image"]}" class ="img-thumbnail" alt="${categories[i]["type"]}"/>
+				<div calss="text-center">${categories[i]["type"]}</div>
+			</div>
 		`;
 		result += category;
 	}
+	result += `
+		</div>
+		`;
 	return result;
 }
 
@@ -20,7 +21,7 @@ async function getCategoryData() {
 	const url = "api/api-category.php";
 	try {
 		const response = await fetch(url);
-		if(!response.ok) {
+		if (!response.ok) {
 			throw new Error("Response status: " + response.status);
 		}
 		const json = await response.json();
@@ -28,7 +29,7 @@ async function getCategoryData() {
 		const categories = generateCategories(json);
 		const div = document.querySelector("main div");
 		div.innerHTML = categories;
-	} catch(error) {
+	} catch (error) {
 		console.log(error.message);
 	}
 }
