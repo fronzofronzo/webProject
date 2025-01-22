@@ -44,10 +44,10 @@ ENGINE = InnoDB;
 -- Table `funside`.`producttype`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `funside`.`producttype` (
-  `name` VARCHAR(50) NOT NULL,
+  `type` VARCHAR(50) NOT NULL,
   `description` VARCHAR(512) NOT NULL,
   `image` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`name`)
+  PRIMARY KEY (`type`)
 )
 ENGINE = InnoDB;
 
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `funside`.`product` (
   `image` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`idproduct`),
   FOREIGN KEY (`type`)
-    REFERENCES `funside`.`producttype` (`name`)
+    REFERENCES `funside`.`producttype` (`type`)
     ON DELETE NO ACTION
     ON UPDATE CASCADE
 )
@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `funside`.`notification` (
   `idnotification` INT NOT NULL AUTO_INCREMENT,
   `text` VARCHAR(512) NOT NULL,
   `isRead` BOOLEAN NOT NULL DEFAULT FALSE,
-  `order` INT,
+  `order` INT DEFAULT NULL,
   `user` VARCHAR(50) NOT NULL,
    PRIMARY KEY (`idnotification`),
   FOREIGN KEY (`order`)
