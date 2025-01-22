@@ -14,7 +14,11 @@ body footer{
 	background-color: #b0ff92;
 }
 
+main div {
+	background-color: #82aeb1;
+}
+
 main div div img {
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
 }
