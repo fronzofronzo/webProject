@@ -27,7 +27,9 @@
     </div>
     <nav class="navbar bg-body-tertiary ">
         <div class="container-fluid">
-        <a class="navbar-brand" href="#">Offcanvas navbar</a>
+        <button class="btn btn-light"><i class="material-icons">notifications_none</i></button>
+        <button class="btn btn-light"><i class="material-icons">person_outline</i></button>
+        <button class="btn btn-light"><i class="material-icons">shopping_cart</i></button>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -66,9 +68,7 @@
         </div>
     </div>
     </nav>
-<button class="btn btn-light"><i class="material-icons">notifications_none</i></button>
-<button class="btn btn-light"><i class="material-icons">person_outline</i></button>
-<button class="btn btn-light"><i class="material-icons">shopping_cart</i></button>
+
     <main>
         <?php if(isset($templateParams["name"])) {
             require($templateParams["name"]);    
