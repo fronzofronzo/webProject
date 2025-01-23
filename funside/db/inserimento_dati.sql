@@ -8,6 +8,8 @@ INSERT INTO `funside`.`user` (`username`, `password`, `name`, `surname`, `type`)
 ('dwilliams', 'passchange', 'David', 'Williams', 'client'),
 ('lgarcia', 'newpass', 'Laura', 'Garcia', 'client'),
 ('klee', 'password', 'Kevin', 'Lee', 'client'),
+('nicho', 'pass', 'Nicholas', 'Ricci', 'client'),
+('nichoA', 'passA', 'NicholasA', 'RicciA', 'admin'),
 ('nmartin', 'mypass', 'Nancy', 'Martin', 'client');
 
 INSERT INTO `funside`.`address` (`user`, `add`) VALUES
