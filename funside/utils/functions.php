@@ -7,6 +7,10 @@ function registerLogin($user){
     $_SESSION["surname"] = $user["surname"];
 }
 
+function logout(){
+    unset($_SESSION["username"]);
+}
+
 function isUserLoggedIn(){
     return !empty($_SESSION['username']);
 }
