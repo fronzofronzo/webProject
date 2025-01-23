@@ -26,11 +26,12 @@
         </div>
     </div>
     <nav class="navbar bg-body-tertiary ">
-        <div class="container-fluid">
-            <button class="btn btn-light"><strong class="material-icons">notifications_none</strong></button>
-            <button class="btn btn-light"><strong class="material-icons">person_outline</strong></button>
-            <button class="btn btn-light"><strong class="material-icons">shopping_cart</strong></button>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+        <div class="container-fluid row">
+            <button class="btn btn-light col-1"><strong class="material-icons">notifications_none</strong></button>
+            <button class="btn btn-light col-1"><strong class="material-icons">person_outline</strong></button>
+            <button class="btn btn-light col-1"><strong class="material-icons">shopping_cart</strong></button>
+            <div class="col-8"></div>
+            <button class="navbar-toggler col-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
