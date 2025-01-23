@@ -124,7 +124,8 @@ class DatabaseHelper{
     public function getAllNotificationOfUser($username) {
         $query = "SELECT idnotification, text, isRead, `order`, date, time FROM funside.notification WHERE idnotification = ? ORDER BY date DESC, time DESC";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$username);
+        $stmt->bind_param('s',$username);
+        $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);        
     }

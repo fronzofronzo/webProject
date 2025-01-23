@@ -48,6 +48,7 @@ function generateCategories(categories) {
 //LOGIN
 
 async function getLoginData() {
+	saveCurrentTab("login");
     const url = 'api/api-login.php';
     try {
         const response = await fetch(url);
@@ -93,6 +94,7 @@ function generateClientHome(loginerror = null) {
 //Login form
 function viewLoginForm() {
     // Utente NON loggato
+	saveCurrentTab("login");
 	document.title = "FunSide - Login";
     let loginform = generateLoginForm();
     main.innerHTML = loginform;
@@ -163,7 +165,7 @@ function generateLoginForm(loginerror = null) {
     return loginform;
 }
 
-//ADMIN
+//Admin
 function viewAdminHome() {
 
 }
@@ -218,6 +220,42 @@ async function logout() {
 	}
 }
 
+//NOTIFICATION
+
+async function getNotificationData(){
+    const url = 'api/api-notification.php';
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        console.log(json);
+        if(json["isUserLogged"]){
+            viewNotificationCentre(json["username"] ,json["notifications"]);
+        }
+        else{
+            viewLoginForm();
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+function viewNotificationCentre(username, notifiations) {
+	document.title = "FunSide - Notification";
+    let loginform = generateNotificationCentre(username, notifiations);
+    main.innerHTML = loginform;
+}
+
+function generateNotificationCentre(username, notifiations) {
+	let notificationCentre = `
+	<section>
+		<p>Notifiche</p>
+	</section>`;
+    return notificationCentre;
+}
+
 //SELEECTOR
 
 function saveCurrentTab(tabname){
@@ -225,6 +263,13 @@ function saveCurrentTab(tabname){
 }
 
 const main = document.querySelector("main");
+
+const notificationButton = document.querySelector("nav div button:first-child");
+notificationButton.addEventListener("click", function(e){
+    e.preventDefault();
+	saveCurrentTab("notificationCentre");
+    getNotificationData();
+});
 
 const profileButton = document.querySelector("nav div button:nth-child(2)");
 profileButton.addEventListener("click", function(e){
@@ -236,7 +281,7 @@ profileButton.addEventListener("click", function(e){
 const title = document.querySelector("body > header > h1");
 title.addEventListener("click", function(e){
     e.preventDefault();
-	saveCurrentTab("categories");
+	saveCurrentTab("home");
     getCategoryData();
 });
 
@@ -245,8 +290,10 @@ document.addEventListener("DOMContentLoaded", function() {
 	const savedTab = localStorage.getItem("currentTab");
 	if(savedTab === "login") {
 		getLoginData();
-	} else if (savedTab === "categories") {
+	} else if (savedTab === "home") {
 		getCategoryData();
+	} else if (savedTab === "notificationCentre") {
+		getNotificationData();
 	} else {
 		getCategoryData();
 	}
