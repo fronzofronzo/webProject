@@ -146,3 +146,9 @@ profileButton.addEventListener("click", function(e){
     e.preventDefault();
     getLoginData();
 });
+
+const title = document.querySelector("body > header > h1");
+title.addEventListener("click", function(e){
+    e.preventDefault();
+    getCategoryData();
+});
