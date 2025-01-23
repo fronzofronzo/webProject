@@ -11,6 +11,7 @@ async function getCategoryData() {
 		const json = await response.json();
 		console.log(json);
 		const categories = generateCategories(json);
+		document.title = "FunSide - Home";
 		const div = document.querySelector("main");
 		div.innerHTML = categories;
 	} catch (error) {
@@ -69,6 +70,7 @@ async function getLoginData() {
 //Client
 function viewClientHome() {
     // Utente loggato
+	document.title = "FunSide - Profilo";
     let loginform = generateClientHome();
     main.innerHTML = loginform;
 	const logoutButton = document.querySelector("main div button");
@@ -91,6 +93,7 @@ function generateClientHome(loginerror = null) {
 //Login form
 function viewLoginForm() {
     // Utente NON loggato
+	document.title = "FunSide - Login";
     let loginform = generateLoginForm();
     main.innerHTML = loginform;
     // Gestisco tentativo di login

@@ -15,9 +15,6 @@ if (isset($_POST['username']) && isset($_POST["password"])) {
 
 if (isUserLoggedIn()) {
     $result["loginresult"] = true;
-    $templateParams["title"] = "FunSide - Login";
-} else {
-    $templateParams["title"] = "FunSide - Profile";
 }
 
 if(isset($_POST["action"]) && $_POST["action"] == 1) {

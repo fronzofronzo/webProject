@@ -24,7 +24,6 @@ INSERT INTO `funside`.`address` (`user`, `add`) VALUES
 ('klee', '606 Aspen Circle, Capital City'),
 ('nmartin', '707 Spruce Avenue, Ogdenville');
 
-
 INSERT INTO `funside`.`producttype` (`type`, `description`, `image`) VALUES
 ('boardgame', 'A family-friendly board game', 'boardgame.jpg'),
 ('cardgame', 'A challenging card game', 'cardgame.jpeg'),
