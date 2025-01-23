@@ -40,4 +40,104 @@ async function getCategoryData() {
 	}
 }
 
+async function getLoginData() {
+    const url = 'api/api-login.php';
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        console.log(json);
+        if(json["loginresult"]){
+            viewClientHome();
+        }
+        else{
+            viewLoginForm();
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+function viewLoginForm() {
+    // Utente NON loggato
+    let loginform = generateLoginForm();
+    main.innerHTML = loginform;
+    // Gestisco tentativo di login
+    document.querySelector("main form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const username = document.querySelector("#username").value;
+        const password = document.querySelector("#password").value;
+        tryLogin(username, password);
+    });
+}
+
+function viewClientHome() {
+    // Utente loggato
+    let loginform = generateClientHome();
+    main.innerHTML = loginform;
+}
+
+async function tryLogin(username, password) {
+    const url = 'api-login.php';
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+    try {
+        const response = await fetch(url, {
+            method: "POST",                   
+            body: formData
+        });
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        if(json["loginresult"]){
+            visualizzaArticoli(json["articoliautore"]);
+        }
+        else{
+            document.querySelector("form > p").innerText = json["errorelogin"];
+        }
+
+
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+function generateLoginForm(loginerror = null) {
+    let loginform = `
+    <form action="#" method="POST" id="bbb" name="aaa">
+        <h2>Login</h2>
+        <p></p>
+        <ul>
+            <li>
+                <label for="username">Username:</label><input type="text" id="username" name="username" />
+            </li>
+            <li>
+                <label for="password">Password:</label><input type="password" id="password" name="password" />
+            </li>
+            <li>
+                <input type="submit" name="submit" value="Invia" />
+            </li>
+        </ul>
+    </form>`;
+    return loginform;
+}
+
+function generateClientHome(loginerror = null) {
+    let loginform = `
+    <div>
+		<p>Home utente</p>
+	</div>`;
+    return loginform;
+}
 getCategoryData();
+
+const main = document.querySelector("main");
+const profileButton = document.querySelector("nav div button:nth-child(2)");
+profileButton.addEventListener("click", function(e){
+    e.preventDefault();
+    getLoginData();
+});
