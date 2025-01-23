@@ -103,7 +103,7 @@ async function tryLogin(username, password) {
             viewClientHome();
         }
         else{
-            document.querySelector("form > p").innerText = json["errorlogin"];
+            document.querySelector("form p").innerText = json["errorLogin"];
         }
 
 
@@ -130,24 +130,22 @@ async function logout() {
 	}
 }
 
+
 function generateLoginForm(loginerror = null) {
     let loginform = `
 	<section>
 		<div class="container border border-black">
-			<form action="#" method="POST" id="bbb" name="aaa">
-				<h2>Login</h2>
+			<form action="#" method="POST" id="login" name="login">
+				<div class="form-group">
 				<p></p>
-				<ul>
-					<li>
-						<label for="username">Username:</label><input type="text" id="username" name="username" />
-					</li>
-					<li>
-						<label for="password">Password:</label><input type="password" id="password" name="password" />
-					</li>
-					<li>
-						<input type="submit" name="submit" value="Invia" />
-					</li>
-				</ul>
+					<label for="username">Username</label>
+					<input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter email">
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" id="password" placeholder="Password">
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>
 		</div>
 	</section>`;
