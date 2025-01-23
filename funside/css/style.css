@@ -1,4 +1,4 @@
-body, header, h1, h2, h5, ul, div, section{
+body, header, h1, h2, h5, ul, div, section, p{
     margin: 0;
     padding: 0;
 }
@@ -15,6 +15,10 @@ header h1 {
 	font-weight: 500;
 	font-size: 64px;
 	cursor: pointer;
+	display: inline-block;
+}
+
+nav p{
 	display: inline-block;
 }
 
