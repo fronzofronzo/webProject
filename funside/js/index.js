@@ -100,6 +100,15 @@ function viewLoginForm() {
         const password = document.querySelector("#password").value;
         tryLogin(username, password);
     });
+	const toggleButton = document.querySelector("main form div div button");
+	toggleButton.addEventListener("click", function(e) {
+		e.preventDefault();
+		const password = document.querySelector("#password");
+		const type = password.getAttribute("type") === "password" ? "text" : "password";
+		password.setAttribute("type", type);
+		const text = toggleButton.getHTML() === "Show" ? "Hide" : "Show";
+		toggleButton.innerHTML = text;
+	});
 }
 
 function generateLoginForm(loginerror = null) {
@@ -107,16 +116,16 @@ function generateLoginForm(loginerror = null) {
 	<section>
 		<div class="container border border-black">
 			<form action="#" method="POST" id="login" name="login">
-				<div class="form-group">
+				<div class="form-group mb-2">
 				<p></p>
 					<label for="username">Username</label>
 					<input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter email">
 				</div>
-				<div class="form-group">
+				<div class="form-group mb-2">
 					<label for="password" >Password</label>
 					<div class="row">
-					<div class="col-auto"><input type="password" class="form-control" id="password" placeholder="Password"></div>
-					<div class="col-auto"><button type="button" class="btn btn-secondary ">Hide</button></div>
+					<div class="col-9"><input type="password" class="form-control" id="password" placeholder="Password"></div>
+					<div class="col-3"><button type="button" class="btn btn-secondary ">Show</button></div>
 					</div>
 				</div>
 				<button type="submit" class="btn btn-primary">Submit</button>
