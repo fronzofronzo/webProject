@@ -150,3 +150,9 @@ logoutButton.addEventListener("click", function(e){
 	
 })
 });
+
+const title = document.querySelector("body > header > h1");
+title.addEventListener("click", function(e){
+    e.preventDefault();
+    getCategoryData();
+});
