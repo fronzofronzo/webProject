@@ -17,7 +17,7 @@ async function getCategoryData() {
 		console.log(error.message);
 	}
 }
-getCategoryData();
+//getCategoryData();
 
 function generateCategories(categories) {
 	let result = `
@@ -192,18 +192,34 @@ async function logout() {
 
 //SELEECTOR
 
+function saveCurrentTab(tabname){
+	localStorage.setItem("currentTab", tabname);
+}
+
 const main = document.querySelector("main");
 
 const profileButton = document.querySelector("nav div button:nth-child(2)");
 profileButton.addEventListener("click", function(e){
     e.preventDefault();
+	saveCurrentTab("login");
     getLoginData();
 });
 
 const title = document.querySelector("body > header > h1");
 title.addEventListener("click", function(e){
     e.preventDefault();
+	saveCurrentTab("categories");
     getCategoryData();
 });
 
 //DEFAULT
+document.addEventListener("DOMContentLoaded", function() {
+	const savedTab = localStorage.getItem("currentTab");
+	if(savedTab === "login") {
+		getLoginData();
+	} else if (savedTab === "categories") {
+		getCategoryData();
+	} else {
+		getCategoryData();
+	}
+});
