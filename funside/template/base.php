@@ -27,9 +27,9 @@
     </div>
     <nav class="navbar bg-body-tertiary ">
         <div class="container-fluid">
-            <button class="btn btn-light"><i class="material-icons">notifications_none</i></button>
-            <button class="btn btn-light"><i class="material-icons">person_outline</i></button>
-            <button class="btn btn-light"><i class="material-icons">shopping_cart</i></button>
+            <button class="btn btn-light"><strong class="material-icons">notifications_none</strong></button>
+            <button class="btn btn-light"><strong class="material-icons">person_outline</strong></button>
+            <button class="btn btn-light"><strong class="material-icons">shopping_cart</strong></button>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
