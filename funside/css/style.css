@@ -28,7 +28,12 @@ main div {
 }
 
 main > section {
-	margin: 20px 0;
+	margin-top: 30px;
+	max-width: 95% !important;
+}
+
+main > section:last-child {
+	margin-bottom: 30px;
 }
 
 main > section > div {
@@ -39,3 +44,4 @@ main > section > div > div > div:first-child {
 	height: 150px; 
 	width: 150px;
 }
+

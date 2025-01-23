@@ -108,21 +108,25 @@ async function tryLogin(username, password) {
 
 function generateLoginForm(loginerror = null) {
     let loginform = `
-    <form action="#" method="POST" id="bbb" name="aaa">
-        <h2>Login</h2>
-        <p></p>
-        <ul>
-            <li>
-                <label for="username">Username:</label><input type="text" id="username" name="username" />
-            </li>
-            <li>
-                <label for="password">Password:</label><input type="password" id="password" name="password" />
-            </li>
-            <li>
-                <input type="submit" name="submit" value="Invia" />
-            </li>
-        </ul>
-    </form>`;
+	<section>
+		<div class="container border border-black">
+			<form action="#" method="POST" id="bbb" name="aaa">
+				<h2>Login</h2>
+				<p></p>
+				<ul>
+					<li>
+						<label for="username">Username:</label><input type="text" id="username" name="username" />
+					</li>
+					<li>
+						<label for="password">Password:</label><input type="password" id="password" name="password" />
+					</li>
+					<li>
+						<input type="submit" name="submit" value="Invia" />
+					</li>
+				</ul>
+			</form>
+		</div>
+	</section>`;
     return loginform;
 }
 
