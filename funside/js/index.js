@@ -80,7 +80,7 @@ function viewClientHome() {
 }
 
 async function tryLogin(username, password) {
-    const url = 'api-login.php';
+    const url = 'api/api-login.php';
     const formData = new FormData();
     formData.append('username', username);
     formData.append('password', password);
@@ -94,10 +94,10 @@ async function tryLogin(username, password) {
         }
         const json = await response.json();
         if(json["loginresult"]){
-            visualizzaArticoli(json["articoliautore"]);
+            viewClientHome();
         }
         else{
-            document.querySelector("form > p").innerText = json["errorelogin"];
+            document.querySelector("form > p").innerText = json["errorlogin"];
         }
 
 
@@ -134,6 +134,7 @@ function generateClientHome(loginerror = null) {
     let loginform = `
     <div>
 		<p>Home utente</p>
+		<button type="button" class="btn btn-danger">Logout</button>
 	</div>`;
     return loginform;
 }
