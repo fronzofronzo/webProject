@@ -77,6 +77,12 @@ function viewClientHome() {
     // Utente loggato
     let loginform = generateClientHome();
     main.innerHTML = loginform;
+	const logoutButton = document.querySelector("main div button");
+	logoutButton.addEventListener("click", function(e){
+		console.log("Logout press")
+		e.preventDefault();
+		logout();
+	});
 }
 
 async function tryLogin(username, password) {
@@ -104,6 +110,24 @@ async function tryLogin(username, password) {
     } catch (error) {
         console.log(error.message);
     }
+}
+
+async function logout() {
+	const url = "api/api-login.php";
+	const formData = new FormData();
+	formData.append('action', 1);
+	try {
+		const response = await fetch(url, {
+			method:"POST",
+			body: formData
+		});
+		if(!response.ok) {
+			throw new Error(`Response status: ${response.status}`);
+		}
+		viewLoginForm();
+	} catch (error) {
+		console.log(error.message);
+	}
 }
 
 function generateLoginForm(loginerror = null) {
@@ -145,11 +169,10 @@ const profileButton = document.querySelector("nav div button:nth-child(2)");
 profileButton.addEventListener("click", function(e){
     e.preventDefault();
     getLoginData();
-const logoutButton = document.querySelector("div button");
-logoutButton.addEventListener("click", function(e){
-	
-})
 });
+
+
+
 
 const title = document.querySelector("body > header > h1");
 title.addEventListener("click", function(e){

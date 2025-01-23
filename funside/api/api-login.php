@@ -17,6 +17,10 @@ if (isUserLoggedIn()) {
     $result["loginresult"] = true;;
 }
 
+if(isset($_POST["action"]) && $_POST["action"] == 1) {
+    logout();
+}
+
 header("'Content-Type: application/json");
 echo json_encode($result);
 
