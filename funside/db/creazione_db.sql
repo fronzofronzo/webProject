@@ -160,7 +160,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `funside`.`review` (
   `product` INT NOT NULL,
   `user` VARCHAR(50) NOT NULL,
-  `rating` VARCHAR(50) NOT NULL,
+  `rating` INT NOT NULL,
   `text` VARCHAR(512) NOT NULL,
   FOREIGN KEY (`product`)
     REFERENCES `funside`.`product` (`idproduct`)

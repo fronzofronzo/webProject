@@ -48,3 +48,86 @@ INSERT INTO `funside`.`product` (`name`, `price`, `description`, `brand`, `type`
 ('Mario Kart', 54.99, 'Racing video game', 'Nintendo', 'videogame', 'mario.jpg'),
 ('Jenga', 14.99, 'Tower building game', 'Hasbro', 'party', 'jenga.jpg');
 
+INSERT INTO `funside`.`address` (`user`, `add`) VALUES
+('jdoe', '123 Main St, Anytown, CA 12345'),
+('asmith', '456 Oak Ave, Someville, TX 78901'),
+('bwhite', '789 Pine Rd, Anytown, CA 12345'),
+('mjohnson', '101 Maple Dr, Someville, TX 78901'),
+('rthompson', '202 Elm St, Anytown, CA 12345'),
+('emiller', '303 Oak Ave, Someville, TX 78901'),
+('dwilliams', '404 Pine Rd, Anytown, CA 12345'),
+('lgarcia', '505 Maple Dr, Someville, TX 78901'),
+('klee', '606 Elm St, Anytown, CA 12345'),
+('nmartin', '707 Oak Ave, Someville, TX 78901');
+
+INSERT INTO `funside`.`order` (`dateorder`, `datedelivery`, `status`, `totalprice`, `user`) VALUES
+('2024-01-15', '2024-01-18', 'consegnato', 59.99, 'jdoe'),
+('2024-01-10', '2024-01-12', 'consegnato', 19.98, 'asmith'),
+('2024-01-20', '2024-01-23', 'spedito', 34.99, 'bwhite'),
+('2024-01-17', '2024-01-20', 'consegnato', 9.99, 'mjohnson'),
+('2024-01-12', '2024-01-15', 'consegnato', 12.00, 'rthompson'),
+('2024-01-19', '2024-01-22', 'ordinato', 54.99, 'emiller'),
+('2024-01-08', '2024-01-11', 'consegnato', 29.99, 'dwilliams'),
+('2024-01-21', '2024-01-24', 'spedito', 15.49, 'lgarcia'),
+('2024-01-14', '2024-01-17', 'consegnato', 39.99, 'klee'),
+('2024-01-09', '2024-01-12', 'consegnato', 49.99, 'nmartin'),
+('2024-01-16', '2024-01-19', 'in consegna', 14.99, 'jdoe'),
+('2024-01-11', '2024-01-14', 'consegnato', 59.99, 'asmith'),
+('2024-01-22', '2024-01-25', 'ordinato', 34.99, 'bwhite'),
+('2024-01-18', '2024-01-21', 'spedito', 9.99, 'mjohnson'),
+('2024-01-13', '2024-01-16', 'consegnato', 12.00, 'rthompson');
+
+INSERT INTO `funside`.`orderdetail` (`product`, `order`, `quantity`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 1),
+(4, 3, 1),
+(5, 4, 1),
+(6, 5, 1),
+(7, 6, 1),
+(8, 7, 1),
+(9, 8, 1),
+(10, 9, 1),
+(1, 10, 1),
+(2, 11, 1),
+(3, 12, 1),
+(4, 13, 1),
+(5, 14, 1),
+(6, 15, 1),
+(7, 1, 1),
+(8, 2, 1),
+(9, 3, 1),
+(10, 4, 1),
+(1, 5, 1),
+(2, 6, 1),
+(3, 7, 1),
+(4, 8, 1),
+(5, 9, 1),
+(6, 10, 1),
+(7, 11, 1),
+(8, 12, 1),
+(9, 13, 1),
+(10, 14, 1),
+(1, 15, 1);
+
+INSERT INTO `funside`.`notification` (`text`, `isRead`, `order`, `user`, `date`, `time`) VALUES
+('Your order has been shipped.', 0, 3, 'bwhite', '2024-01-21', '10:30:00'),
+('Your order has been delivered.', 1, 1, 'jdoe', '2024-01-18', '15:00:00'),
+('Your order has been placed successfully.', 1, 6, 'emiller', '2024-01-19', '09:45:00'),
+('Your order has been shipped.', 1, 8, 'lgarcia', '2024-01-22', '14:15:00'),
+('Your order has been delivered.', 0, 2, 'asmith', '2024-01-12', '16:30:00'),
+('Your order has been placed successfully.', 1, 13, 'bwhite', '2024-01-22', '12:00:00'),
+('Your order has been shipped.', 0, 15, 'rthompson', '2024-01-14', '09:00:00'),
+('Your order has been delivered.', 1, 4, 'mjohnson', '2024-01-20', '10:45:00'),
+('Your order has been shipped.', 0, 14, 'mjohnson', '2024-01-19', '12:15:00'),
+('Your order has been delivered.', 1, 7, 'dwilliams', '2024-01-11', '17:00:00'),
+('Your order has been shipped.', 0, 10, 'nmartin', '2024-01-10', '10:00:00'),
+('Your order has been delivered.', 1, 9, 'klee', '2024-01-17', '14:30:00');
+
+INSERT INTO `funside`.`review` (`product`, `user`, `rating`, `text`) VALUES
+(1, 'jdoe', 5, 'Excellent quality chess set!'),
+(2, 'asmith', 4, 'Fun card game, but could use more cards.'),
+(3, 'bwhite', 5, 'Challenging and addictive puzzle.'),
+(4, 'mjohnson', 3, 'Not as durable as I expected.'),
+(5, 'rthompson', 4, 'Classic game, always a good time.'),
+(6, 'emiller', 5, 'Great graphics and gameplay.');
