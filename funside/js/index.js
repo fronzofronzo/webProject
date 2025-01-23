@@ -145,11 +145,11 @@ function generateLoginForm(loginerror = null) {
 				</div>
 				<div class="form-group mb-2">
 				<p></p>
-					<label for="username">Username</label>
+					<label for="username-register">Username</label>
 					<input type="text" class="form-control" id="username-register" placeholder="Inserisci username">
 				</div>
 				<div class="form-group mb-2">
-					<label for="password" >Password</label>
+					<label for="password-register" >Password</label>
 					<div class="row">
 					<div class="col-8"><input type="password" class="form-control" id="password-register" placeholder="Password"></div>
 				</div>
