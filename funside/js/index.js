@@ -145,4 +145,8 @@ const profileButton = document.querySelector("nav div button:nth-child(2)");
 profileButton.addEventListener("click", function(e){
     e.preventDefault();
     getLoginData();
+const logoutButton = document.querySelector("div button");
+logoutButton.addEventListener("click", function(e){
+	
+})
 });
