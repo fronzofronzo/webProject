@@ -27,14 +27,15 @@ main div {
 	background-color: #82aeb1;
 }
 
-img {
-	height: 100px;
-}
-
 main > section {
 	margin: 20px 0;
 }
 
 main > section > div {
 	padding: 5px 2%;
+}
+
+main > section > div > div > div:first-child {
+	height: 150px; 
+	width: 150px;
 }

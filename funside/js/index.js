@@ -8,9 +8,9 @@ function generateCategories(categories) {
 	`;
 	for (let i = 0; i < categories.length; i++) {
 		let category = `
-			<div class="col-6 col-md-3 col-lg-2 d-flex flex-column">
-				<div class="d-flex justify-content-center w-100 h-100"><img src="${categories[i]["image"]}" class="img-thumbnail img-fluid object-fit-contain" alt="${categories[i]["type"]}" /></div>
-				<div class="d-flex justify-content-center">${categories[i]["type"]}</div>
+			<div class="col-6 col-md-3 col-lg-2 d-flex flex-column justify-content-center">
+				<div class="d-flex justify-content-center "><img src="${categories[i]["image"]}" class="img-thumbnail img-fluid object-fit-cover" alt="${categories[i]["type"]}" /></div>
+				<div class="">${categories[i]["type"]}</div>
 			</div>
 
 		`;
