@@ -17,7 +17,6 @@ class DatabaseHelper{
         $stmt->bind_param('ss',$username, $password);
         $stmt->execute();
         $result = $stmt->get_result();
-
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -26,6 +25,15 @@ class DatabaseHelper{
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sssss',$username, $password, $name, $surname, $type);
         return $stmt->execute();
+    }
+
+    public function getUserInfoByUsername($username){
+        $query = "SELECT username, name, surname, type FROM funside.user WHERE username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     //ADDRESS
