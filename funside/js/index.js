@@ -17,6 +17,7 @@ async function getCategoryData() {
 		console.log(error.message);
 	}
 }
+getCategoryData();
 
 function generateCategories(categories) {
 	let result = `
@@ -112,8 +113,11 @@ function generateLoginForm(loginerror = null) {
 					<input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter email">
 				</div>
 				<div class="form-group">
-					<label for="password">Password</label>
-					<input type="password" class="form-control" id="password" placeholder="Password">
+					<label for="password" >Password</label>
+					<div class="row">
+					<div class="col-auto"><input type="password" class="form-control" id="password" placeholder="Password"></div>
+					<div class="col-auto"><button type="button" class="btn btn-secondary ">Hide</button></div>
+					</div>
 				</div>
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>
@@ -128,7 +132,7 @@ function viewAdminHome() {
 }
 
 function generateAdminHome() {
-	
+
 }
 
 //Login&Logout
@@ -194,5 +198,3 @@ title.addEventListener("click", function(e){
 });
 
 //DEFAULT
-
-getCategoryData();
