@@ -108,9 +108,9 @@ class DatabaseHelper{
     }
 
     public function addNotificationAboutAnOrder($text, $user, $order) {
-        $query = "INSERT INTO funside.notification (text, user) VALUES (?, ?)";
+        $query = "INSERT INTO funside.notification (text, user, order) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$text, $user);
+        $stmt->bind_param('ssi',$text, $user, $order);
         return $stmt->execute();
     }
 
@@ -122,7 +122,7 @@ class DatabaseHelper{
     }
 
     public function getAllNotificationOfUser($username) {
-        $query = "SELECT idnotification, text, isRead, order FROM funside.notification WHERE idnotification = ?";
+        $query = "SELECT idnotification, text, isRead, `order`, date, time FROM funside.notification WHERE idnotification = ? ORDER BY date DESC, time DESC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username);
         $result = $stmt->get_result();
@@ -130,7 +130,7 @@ class DatabaseHelper{
     }
 
     public function getAllNotificationOfUserNotRead($username) {
-        $query = "SELECT idnotification, text, isRead, order FROM funside.notification WHERE idnotification = ? AND isRead = FALSE";
+        $query = "SELECT idnotification, text, isRead, `order` date, time FROM funside.notification WHERE idnotification = ? AND isRead = FALSE ORDER BY date DESC, time DESC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username);
         $result = $stmt->get_result();
@@ -138,7 +138,7 @@ class DatabaseHelper{
     }
 
     public function getAllNotificationOfUserRead($username) {
-        $query = "SELECT idnotification, text, isRead, order FROM funside.notification WHERE idnotification = ? AND isRead = TRUE";
+        $query = "SELECT idnotification, text, isRead, `order` date, time FROM funside.notification WHERE idnotification = ? AND isRead = TRUE ORDER BY date DESC, time DESC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username);
         $result = $stmt->get_result();

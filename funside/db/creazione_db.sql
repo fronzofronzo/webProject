@@ -140,8 +140,8 @@ CREATE TABLE IF NOT EXISTS `funside`.`notification` (
   `isRead` BOOLEAN NOT NULL DEFAULT FALSE,
   `order` INT DEFAULT NULL,
   `user` VARCHAR(50) NOT NULL,
-  `date` DATE NOT NULL,
-  `time` TIME NOT NULL,
+  `date` DATE NOT NULL DEFAULT CURRENT_DATE,
+  `time` TIME NOT NULL DEFAULT CURRENT_TIME,
    PRIMARY KEY (`idnotification`),
   FOREIGN KEY (`order`)
     REFERENCES `funside`.`order` (`idorder`)
