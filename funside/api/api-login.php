@@ -14,7 +14,10 @@ if (isset($_POST['username']) && isset($_POST["password"])) {
 }
 
 if (isUserLoggedIn()) {
-    $result["loginresult"] = true;;
+    $result["loginresult"] = true;
+    $templateParams["title"] = "FunSide - Login";
+} else {
+    $templateParams["title"] = "FunSide - Profile";
 }
 
 header("'Content-Type: application/json");
