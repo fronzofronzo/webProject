@@ -16,6 +16,10 @@ if (isUserLoggedIn()) {
     $templateParams["title"] = "FunSide - Login";
     if(isset($_GET["formmsg"])){
         $templateParams["formmsg"] = $_GET["formmsg"];
+    } 
+    if (isset($_SESSION["message"])) {
+        $templateParams["formmsg"] = $_SESSION["message"];
+        readMessage();
     }
 }
 require 'template/base.php';

@@ -7,6 +7,14 @@ function registerLogin($user){
     $_SESSION["surname"] = $user["surname"];
 }
 
+function setMessage($message){
+    $_SESSION["message"] = $message;
+}
+
+function readMessage(){
+    unset($_SESSION["message"]);
+}
+
 function logout(){
     unset($_SESSION["username"]);
 }

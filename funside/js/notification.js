@@ -15,16 +15,12 @@ async function getNotificationData(){
 
 function viewNotificationCentre(username, notifications) {
     let loginform = generateNotificationCentre(username, notifications);
-    const main = document.querySelector("main");
-    main.innerHTML = loginform;
+    const div = document.querySelector("main section div");
+    div.innerHTML = loginform;
 }
 
 function generateNotificationCentre(username, notifications) {
-	let notificationCentre = `
-	<section>
-        <div class="container">
-		    <h2>Notifiche</h2>
-            `
+	let notificationCentre = "";
     if (notifications.length == 0) {
         notificationCentre += `
             <div>
@@ -34,9 +30,6 @@ function generateNotificationCentre(username, notifications) {
     } else {
         
     }
-    notificationCentre += `      
-        </div>
-	</section>`;
     return notificationCentre;
 }
 
