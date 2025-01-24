@@ -10,8 +10,8 @@ async function getCategoryData() {
 		console.log(json);
 		const categories = generateCategories(json);
 		document.title = "FunSide - Home";
-		const div = document.querySelector("main");
-		div.innerHTML = categories;
+		const main = document.querySelector("main");
+		main.innerHTML = categories;
 	} catch (error) {
 		console.log(error.message);
 	}

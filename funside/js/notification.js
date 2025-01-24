@@ -7,27 +7,37 @@ async function getNotificationData(){
         }
         const json = await response.json();
         console.log(json);
-        if(json["isUserLogged"]){
-            viewNotificationCentre(json["username"] ,json["notifications"]);
-        }
-        else{
-            viewLoginForm();
-        }
+        viewNotificationCentre(json["username"] ,json["notifications"]);
     } catch (error) {
         console.log(error.message);
     }
 }
 
-function viewNotificationCentre(username, notifiations) {
-	document.title = "FunSide - Notification";
-    let loginform = generateNotificationCentre(username, notifiations);
+function viewNotificationCentre(username, notifications) {
+    let loginform = generateNotificationCentre(username, notifications);
+    const main = document.querySelector("main");
     main.innerHTML = loginform;
 }
 
-function generateNotificationCentre(username, notifiations) {
+function generateNotificationCentre(username, notifications) {
 	let notificationCentre = `
 	<section>
-		<p>Notifiche</p>
+        <div class="container">
+		    <h2>Notifiche</h2>
+            `
+    if (notifications.length == 0) {
+        notificationCentre += `
+            <div>
+                <p>Nessuna notifica</p>
+            </div>
+        `
+    } else {
+        
+    }
+    notificationCentre += `      
+        </div>
 	</section>`;
     return notificationCentre;
 }
+
+getNotificationData();
