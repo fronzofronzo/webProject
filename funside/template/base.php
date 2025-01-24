@@ -17,7 +17,7 @@
 
 <body>
     <header class="text-center text-black py-3">
-        <h1>FUN SIDE</h1>
+        <h1><a href="index.php">FUN SIDE</a></h1>
     </header>
 
     <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
@@ -28,7 +28,7 @@
     <nav class="navbar bg-body-tertiary ">
         <div class="container-fluid row">
             <button class="btn btn-light col-1"><strong class="material-icons">notifications_none</strong></button>
-            <button class="btn btn-light col-1"><strong class="material-icons">person_outline</strong></button>
+            <button class="btn btn-light col-1"><a href="login.php" class="material-icons">person_outline</a></button>
             <button class="btn btn-light col-1"><strong class="material-icons">shopping_cart</strong></button>
             <div class="col-8"></div>
             <button class="navbar-toggler col-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -78,8 +78,15 @@
         <a href="">Contatti</a>
         <a href="">Servizi</a>
     </footer>
-
-    <script src="<?php echo "./js/index.js"; ?>"></script>
+    <?php
+    if(isset($templateParams["js"])):
+        foreach($templateParams["js"] as $script):
+    ?>
+        <script src="<?php echo $script; ?>"></script>
+    <?php
+        endforeach;
+    endif;
+    ?>
 </body>
 
 
