@@ -1,8 +1,13 @@
 //Categories
 async function getCategoryData() {
 	const url = "api/api-category.php";
+	const formData = new FormData();
+	formData.append('action', 1);
 	try {
-		const response = await fetch(url);
+		const response = await fetch(url, {
+			method:"POST",
+			body:formData
+		});
 		if (!response.ok) {
 			throw new Error("Response status: " + response.status);
 		}
