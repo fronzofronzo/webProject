@@ -23,6 +23,7 @@ function viewClientHome() {
     // Utente loggato
 	document.title = "FunSide - Profilo";
     let loginform = generateClientHome();
+	let main = document.querySelector("main");
     main.innerHTML = loginform;
 	const logoutButton = document.querySelector("main div button");
 	logoutButton.addEventListener("click", function(e){
