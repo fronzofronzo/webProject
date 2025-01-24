@@ -9,7 +9,11 @@
 		}
 		$result = $categories;
 	}
-
+	//Get all categories
+	if($_POST["action"]==2) {
+		$categories = $dbh->getAllProductTypes();
+		$result = $categores;
+	}
 	
 	header("Content-type: application/json");
 	echo json_encode($result);

@@ -85,6 +85,14 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getAllProductTypes() {
+        $query = "SELECT type, description, image FROM funside.producttype ";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function deleteProductType($type) {
         $query = "DELETE FROM funside.producttype WHERE type = ?";
         $stmt = $this->db->prepare($query);
