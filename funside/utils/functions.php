@@ -15,6 +15,10 @@ function isUserLoggedIn(){
     return !empty($_SESSION['username']);
 }
 
+function isUserClient() {
+    return $_SESSION["type"] == "client";
+}
+
 function uploadImage($path, $image){
     $imageName = basename($image["name"]);
     $fullPath = $path.$imageName;
