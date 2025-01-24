@@ -74,8 +74,8 @@
     </nav>
     <main>
         <?php
-        if(isset($templateParams["nome"])){
-          require($templateParams["nome"]);
+        if(isset($templateParams["name"])){
+          require($templateParams["name"]);
         }
     ?>
     </main>

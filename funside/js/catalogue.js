@@ -26,5 +26,3 @@ async function getRandomProducts() {
 		console.log(error.message)
 	}
 }
-
-getRandomProducts();
