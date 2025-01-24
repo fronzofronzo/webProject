@@ -9,9 +9,8 @@ async function getCategoryData() {
 		const json = await response.json();
 		console.log(json);
 		const categories = generateCategories(json);
-		document.title = "FunSide - Home";
-		const main = document.querySelector("main");
-		main.innerHTML = categories;
+		const div = document.querySelector("main > section:first-child div");
+		div.innerHTML = categories;
 	} catch (error) {
 		console.log(error.message);
 	}
@@ -19,10 +18,6 @@ async function getCategoryData() {
 
 function generateCategories(categories) {
 	let result = `
-	<section class="container-fluid">
-		<div class="row">
-			<h2 class="text-white">Categorie</h2>
-		</div>
 		<div class="row">
 	`;
 	for (let i = 0; i < categories.length; i++) {
@@ -37,7 +32,6 @@ function generateCategories(categories) {
 	}
 	result += `
 		</div>
-	</section>
 	`;
 	return result;
 }

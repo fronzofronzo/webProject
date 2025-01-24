@@ -41,11 +41,8 @@ body footer{
 	background-color: #b0ff92;
 }
 
-main div {
-	background-color: #82aeb1;
-}
-
 main > section {
+	background-color: #82aeb1;
 	margin-top: 30px;
 	max-width: 95% !important;
 }
@@ -62,7 +59,7 @@ main > section > div > h2 {
 	color: white;
 }
 
-main > section > div > div > div:first-child {
+main > section > div > div > div > div:first-child {
 	height: 150px; 
 	width: 150px;
 }
