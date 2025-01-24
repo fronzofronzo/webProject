@@ -1,4 +1,4 @@
-<section>
+<section class="container-fluid">
 	<h2>Prodotti</h2>
 	<div class = "d-flex flex-row-reverse">
 		<div class="dropdown p-2">
