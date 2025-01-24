@@ -12,7 +12,7 @@
 	//Get all categories
 	if($_POST["action"]==2) {
 		$categories = $dbh->getAllProductTypes();
-		$result = $categores;
+		$result = $categories;
 	}
 	
 	header("Content-type: application/json");

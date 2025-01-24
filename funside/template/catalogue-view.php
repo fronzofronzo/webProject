@@ -1,13 +1,23 @@
 <section>
 	<h2>Prodotti</h2>
-	<div>
-		<div class="dropdown">
+	<div class = "d-flex flex-row-reverse">
+		<div class="dropdown p-2">
 			<a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 				Categorie
 			</a>
 
-			<div class="dropdown-menu ">
-			</div>
+			<ul class="dropdown-menu ">
+			</ul>
+		</div>
+		<div class="dropdown p-2">
+			<a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				Prezzo
+			</a>
+			<ul class="dropdown-menu ">
+			</ul>
 		</div>
 	</div>
-</section>i
+	<div class="d-flex align-content-around flex-wrap">
+
+	</div>
+</section>
