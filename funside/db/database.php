@@ -102,10 +102,9 @@ class DatabaseHelper{
 
     //PRODUCT
 
-    public function getRandomProducts($n=9) {
-        $query = "SELECT name, price, description, brand FROM funside.product ORDER BY RAND() LIMIT ?";
+    public function getRandomProducts() {
+        $query = "SELECT name, price, description, brand FROM funside.product ORDER BY RAND()";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i',$n);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);

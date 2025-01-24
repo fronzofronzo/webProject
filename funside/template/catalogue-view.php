@@ -17,7 +17,10 @@
 			</ul>
 		</div>
 	</div>
-	<div class="d-flex align-content-around flex-wrap">
+	<div>
+		<div class="d-flex align-content-around flex-wrap">
 
+		</div>
+		<div class="text-center"><button type="button" class="btn btn-secondary btn-sm ">mostra più</button>`;</div>
 	</div>
 </section>
