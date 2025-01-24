@@ -1,44 +1,9 @@
-//Client
-function viewClientHome() {
-    // Utente loggato
-	document.title = "FunSide - Profilo";
-    let loginform = generateClientHome();
-	let main = document.querySelector("main");
-    main.innerHTML = loginform;
-	const logoutButton = document.querySelector("main div button");
-	logoutButton.addEventListener("click", function(e){
-		console.log("Logout press")
-		e.preventDefault();
-		logout();
-	});
-}
-
-function generateClientHome(loginerror = null) {
-    let loginform = `
-    <div>
-		<p>Home utente</p>
-		<button type="button" class="btn btn-danger">Logout</button>
-	</div>`;
-    return loginform;
-}
-
-//Login form
-function viewLoginForm() {
-    // Utente NON loggato
-	document.title = "FunSide - Login";
-    let loginform = generateLoginForm();
-	const main = document.querySelector("main");
-    main.innerHTML = loginform;
-    // Gestisco tentativo di login
-    
-}
-
-//Login&Logout
 async function tryLogin(username, password) {
     const url = 'api/api-login.php';
     const formData = new FormData();
     formData.append('username', username);
     formData.append('password', password);
+    formData.append('action', 'login');
     try {
         const response = await fetch(url, {
             method: "POST",
@@ -50,28 +15,12 @@ async function tryLogin(username, password) {
         const json = await response.json();
         if (!json["loginresult"]) {
             document.querySelector("form p").innerText = json["errorlogin"];
+        } else {
+            window.location.reload();
         }
     } catch (error) {
         console.log(error.message);
     }
-}
-
-async function logout() {
-	const url = "api/api-login.php";
-	const formData = new FormData();
-	formData.append('action', 1);
-	try {
-		const response = await fetch(url, {
-			method:"POST",
-			body: formData
-		});
-		if(!response.ok) {
-			throw new Error(`Response status: ${response.status}`);
-		}
-		viewLoginForm();
-	} catch (error) {
-		console.log(error.message);
-	}
 }
 
 document.querySelector("main form").addEventListener("submit", function (event) {
@@ -81,7 +30,7 @@ document.querySelector("main form").addEventListener("submit", function (event) 
     tryLogin(username, password);
 });
 
-document.querySelector("main form div div button").addEventListener("click", function(e) {
+document.querySelector("main form div div button").addEventListener("click", function (e) {
     e.preventDefault();
     const password = document.querySelector("#password");
     const type = password.getAttribute("type") === "password" ? "text" : "password";
