@@ -41,4 +41,50 @@ function generateCategories(categories) {
 	return result;
 }
 
+//Best sellers
+
+async function getBestSellerData() {
+	const url = "api/api-products.php";
+	const formData = new FormData();
+	formData.append('action', 2);
+	try {
+		const response = await fetch(url, {
+			method:"POST",
+			body:formData
+		});
+		if (!response.ok) {
+			throw new Error("Response status: " + response.status);
+		}
+		const json = await response.json();
+		console.log(json);
+		const bestsellers = generateBestSellers(json);
+		const div = document.querySelector("main > section:nth-child(2) div");
+		div.innerHTML = bestsellers;
+	} catch (error) {
+		console.log(error.message);
+	}
+}
+
+function generateBestSellers(bestsellers) {
+	let result = `
+		<div class="row">
+	`;
+	for (let i = 0; i < bestsellers.length; i++) {
+		let bestseller = `
+			<div class="col-6 col-md-3 col-lg-2 d-flex flex-column justify-content-center">
+				<div class="d-flex justify-content-center "><img src="${bestsellers[i]["image"]}" class="img-thumbnail img-fluid object-fit-cover" alt="${bestsellers[i]["name"]}" /></div>
+				<div class="">${bestsellers[i]["name"]}</div>
+				<div class="">€ ${bestsellers[i]["price"]}</div>
+			</div>
+
+		`;
+		result += bestseller;
+	}
+	result += `
+		</div>
+	`;
+	return result;
+}
+
 getCategoryData();
+getBestSellerData();

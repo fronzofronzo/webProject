@@ -44,7 +44,7 @@ body footer{
 main > section {
 	background-color: #82aeb1;
 	margin-top: 30px;
-	max-width: 95% !important;
+	width: 96% !important;
 }
 
 main > section:last-child {

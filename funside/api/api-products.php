@@ -1,7 +1,12 @@
 <?php
 require_once('../bootstrap.php');
-$products = $dbh->getRandomProducts();
+$result = "";
+if($_POST["action"] == 1) {
+    $result = $dbh->getRandomProducts();
+} else if($_POST["action"] == 2) {
+    $result = $dbh->getBestSeller(6);
+}
 
 header('Content-Type: application/json');
-echo json_encode($products);
+echo json_encode($result);
 ?>
