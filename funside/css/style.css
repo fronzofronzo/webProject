@@ -49,6 +49,7 @@ main > section {
 	background-color: #82aeb1;
 	margin-top: 30px;
 	width: 96% !important;
+	padding: 2% !important;
 }
 
 main > section:last-child {
@@ -56,7 +57,7 @@ main > section:last-child {
 }
 
 main > section > div {
-	padding: 5px 2%;
+	padding: 10px 0;
 }
 
 main > section > div > h2 {
@@ -67,4 +68,3 @@ main > section > div > div > div > div:first-child {
 	height: 150px; 
 	width: 150px;
 }
-

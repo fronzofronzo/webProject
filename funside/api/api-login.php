@@ -7,18 +7,12 @@ if (isset($_POST['username']) && isset($_POST["password"])) {
     $login = $dbh->checkLogin($_POST["username"], $_POST["password"]);
     if (count($login) == 0) {
         //Login failed
-        $result["errorLogin"] = "Username e/o password non corretti";
+        $result['errorlogin'] = "Username e/o password non corretti";
     } else {
         registerLogin($login[0]);
+        $result['loginresult'] = isUserLoggedIn();
+        header("Location: ../login.php");
     }
-}
-
-if (isUserLoggedIn()) {
-    $result["loginresult"] = true;
-}
-
-if(isset($_POST["action"]) && $_POST["action"] == 1) {
-    logout();
 }
 
 header("'Content-Type: application/json");
