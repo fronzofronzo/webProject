@@ -2,7 +2,7 @@
 	require_once("../bootstrap.php");
 	$result="";
 	if($_POST["action"]==1) {
-		$categories = $dbh->getRandomProductTypes(6);
+		$categories = $dbh->getRandomProductTypes($_POST["n"]);
 
 		for($i=0; $i<count($categories); $i++) {
 			$categories[$i]["image"] = UPLOAD_DIR.$categories[$i]["image"];

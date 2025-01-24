@@ -1,8 +1,9 @@
 //Categories
-async function getCategoryData() {
+async function getCategoriesData() {
 	const url = "api/api-category.php";
 	const formData = new FormData();
 	formData.append('action', 1);
+	formData.append('n', 6);
 	try {
 		const response = await fetch(url, {
 			method:"POST",
@@ -42,11 +43,11 @@ function generateCategories(categories) {
 }
 
 //Best sellers
-
-async function getBestSellerData() {
+async function getBestSellersData() {
 	const url = "api/api-products.php";
 	const formData = new FormData();
 	formData.append('action', 2);
+	formData.append('n', 6);
 	try {
 		const response = await fetch(url, {
 			method:"POST",
@@ -57,7 +58,7 @@ async function getBestSellerData() {
 		}
 		const json = await response.json();
 		console.log(json);
-		const bestsellers = generateBestSellers(json);
+		const bestsellers = generateProducts(json);
 		const div = document.querySelector("main > section:nth-child(2) div");
 		div.innerHTML = bestsellers;
 	} catch (error) {
@@ -65,16 +66,41 @@ async function getBestSellerData() {
 	}
 }
 
-function generateBestSellers(bestsellers) {
+//Best ratings
+async function getBestRatingsData() {
+	const url = "api/api-products.php";
+	const formData = new FormData();
+	formData.append('action', 3);
+	formData.append('n', 6);
+	try {
+		const response = await fetch(url, {
+			method:"POST",
+			body:formData
+		});
+		if (!response.ok) {
+			throw new Error("Response status: " + response.status);
+		}
+		const json = await response.json();
+		console.log(json);
+		const bestsellers = generateProducts(json);
+		const div = document.querySelector("main > section:nth-child(3) div");
+		div.innerHTML = bestsellers;
+	} catch (error) {
+		console.log(error.message);
+	}
+}
+
+function generateProducts(products) {
 	let result = `
 		<div class="row">
 	`;
-	for (let i = 0; i < bestsellers.length; i++) {
+	for (let i = 0; i < products.length; i++) {
 		let bestseller = `
 			<div class="col-6 col-md-3 col-lg-2 d-flex flex-column justify-content-center">
-				<div class="d-flex justify-content-center "><img src="${bestsellers[i]["image"]}" class="img-thumbnail img-fluid object-fit-cover" alt="${bestsellers[i]["name"]}" /></div>
-				<div class="">${bestsellers[i]["name"]}</div>
-				<div class="">€ ${bestsellers[i]["price"]}</div>
+				<div class="d-flex justify-content-center "><img src="${products[i]["image"]}" class="img-thumbnail img-fluid object-fit-cover" alt="${products[i]["name"]}" /></div>
+				<div class="">${products[i]["name"]}</div>
+				<div class="">€ ${products[i]["price"]}</div>
+				<div class="">Rating: ${products[i]["avgrating"]}</div>
 			</div>
 
 		`;
@@ -86,5 +112,6 @@ function generateBestSellers(bestsellers) {
 	return result;
 }
 
-getCategoryData();
-getBestSellerData();
+getCategoriesData();
+getBestSellersData();
+getBestRatingsData();
