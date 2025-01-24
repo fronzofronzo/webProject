@@ -27,7 +27,7 @@
     </div>
     <nav class="navbar bg-body-tertiary ">
         <div class="container-fluid row">
-            <button class="btn btn-light col-1"><strong class="material-icons">notifications_none</strong></button>
+            <button class="btn btn-light col-1"><a href="notification.php" class="material-icons">notifications_none</a></button>
             <button class="btn btn-light col-1"><a href="login.php" class="material-icons">person_outline</a></button>
             <button class="btn btn-light col-1"><strong class="material-icons">shopping_cart</strong></button>
             <div class="col-8"></div>
@@ -73,6 +73,11 @@
         </div>
     </nav>
     <main>
+        <?php
+        if(isset($templateParams["nome"])){
+          require($templateParams["nome"]);
+        }
+    ?>
     </main>
     <footer class="text-center text-black py-3">
         <a href="">Contatti</a>

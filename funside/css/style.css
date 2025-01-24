@@ -58,6 +58,10 @@ main > section > div {
 	padding: 5px 2%;
 }
 
+main > section > div > h2 {
+	color: white;
+}
+
 main > section > div > div > div:first-child {
 	height: 150px; 
 	width: 150px;
