@@ -49,6 +49,7 @@ async function readNotification(idnotification) {
         }
         const json = await response.json();
         console.log(json);
+        document.getElementById('msg_' + idnotification).textContent = "";
     } catch (error) {
         console.log(error.message);
     }
@@ -71,16 +72,16 @@ function generateNotificationCentre(username, notifications) {
                     `;
             if (!notifications[i]["isRead"]) {
                 notificationCentre += `
-                    <p>Da leggere</p>
+                    <p id="msg_${notifications[i]["idnotification"]}">Da leggere</p>
                 `
             }
             notificationCentre += `
-                    <div class="collapse" id="p_${notifications[i]["idnotification"]}">
+                    <div class="collapse" id="text_${notifications[i]["idnotification"]}">
                         <p class="mb-2">${notifications[i]["text"]}</p>
                     </div>
                     <div class="row">
                         <button class="btn material-icons col-1" id="delete-${notifications[i]["idnotification"]}">delete</button>
-                        <button class="col-2 btn" data-bs-toggle="collapse" data-bs-target="#p_${notifications[i]["idnotification"]}" id="${notifications[i]["idnotification"]}" type="button" aria-expanded="false" aria-controls="p_${notifications[i]["idnotification"]}">Mostra di più</button>
+                        <button class="col-2 btn" data-bs-toggle="collapse" data-bs-target="#text_${notifications[i]["idnotification"]}" id="${notifications[i]["idnotification"]}" type="button" aria-expanded="false" aria-controls="text_${notifications[i]["idnotification"]}">Mostra di più</button>
                     </div>
                 </div>
             `;
