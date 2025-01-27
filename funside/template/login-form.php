@@ -16,7 +16,9 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
-            <p></p>
+            <p><?php if (isset($templateParams["message"])) {
+                echo $templateParams["message"];
+            } ?></p>
         </form>
     </div>
 </section>
