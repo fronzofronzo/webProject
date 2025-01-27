@@ -25,7 +25,6 @@ function viewNotificationCentre(username, notifications) {
     buttons.forEach(button => {
         button.addEventListener('click', function () {
             readNotification(button.getAttribute('id'));
-            //viewNotificationCentre(username, notifications);
             console.log(button.getAttribute('id'));
             const currentText = button.textContent.trim();
             button.textContent = currentText === 'Mostra di più' ? 'Mostra di meno' : 'Mostra di più';
@@ -79,9 +78,9 @@ function generateNotificationCentre(username, notifications) {
                     <div class="collapse" id="text_${notifications[i]["idnotification"]}">
                         <p class="mb-2">${notifications[i]["text"]}</p>
                     </div>
-                    <div class="row">
-                        <button class="btn material-icons col-1" id="delete-${notifications[i]["idnotification"]}">delete</button>
-                        <button class="col-2 btn" data-bs-toggle="collapse" data-bs-target="#text_${notifications[i]["idnotification"]}" id="${notifications[i]["idnotification"]}" type="button" aria-expanded="false" aria-controls="text_${notifications[i]["idnotification"]}">Mostra di più</button>
+                    <div class="d-flex flex-row justify-content-start">
+                        <button class="btn material-icons " id="delete-${notifications[i]["idnotification"]}">delete</button>
+                        <button class=" btn" data-bs-toggle="collapse" data-bs-target="#text_${notifications[i]["idnotification"]}" id="${notifications[i]["idnotification"]}" type="button" aria-expanded="false" aria-controls="text_${notifications[i]["idnotification"]}">Mostra di più</button>
                     </div>
                 </div>
             `;
