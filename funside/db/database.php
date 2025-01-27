@@ -156,7 +156,7 @@ class DatabaseHelper{
     }
 
     public function getAllNotificationOfUser($username) {
-        $query = "SELECT idnotification, title, text, isRead, `order`, date, time FROM funside.notification WHERE idnotification = ? ORDER BY date DESC, time DESC";
+        $query = "SELECT idnotification, title, text, isRead, `order`, date, time FROM funside.notification WHERE user = ? ORDER BY date DESC, time DESC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s',$username);
         $stmt->execute();
@@ -165,7 +165,7 @@ class DatabaseHelper{
     }
 
     public function getAllNotificationOfUserNotRead($username) {
-        $query = "SELECT idnotification, text, isRead, `order` date, time FROM funside.notification WHERE idnotification = ? AND isRead = FALSE ORDER BY date DESC, time DESC";
+        $query = "SELECT idnotification, text, isRead, `order` date, time FROM funside.notification WHERE user = ? AND isRead = FALSE ORDER BY date DESC, time DESC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username);
         $result = $stmt->get_result();
@@ -173,7 +173,7 @@ class DatabaseHelper{
     }
 
     public function getAllNotificationOfUserRead($username) {
-        $query = "SELECT idnotification, text, isRead, `order` date, time FROM funside.notification WHERE idnotification = ? AND isRead = TRUE ORDER BY date DESC, time DESC";
+        $query = "SELECT idnotification, text, isRead, `order` date, time FROM funside.notification WHERE user = ? AND isRead = TRUE ORDER BY date DESC, time DESC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username);
         $result = $stmt->get_result();

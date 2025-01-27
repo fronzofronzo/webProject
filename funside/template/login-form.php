@@ -1,5 +1,5 @@
 <section class="container-fluid">
-    <h2 class="text-white">Login</h2>
+    <h2 class="">Login</h2>
     <div class="">
         <form action="#" method="POST" id="login" name="login">
             <div class="form-group mb-2">

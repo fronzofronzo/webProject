@@ -24,11 +24,24 @@ function generateNotificationCentre(username, notifications) {
     if (notifications.length == 0) {
         notificationCentre += `
             <div>
-                <p>Nessuna notifica</p>
+                Nessuna notifica
             </div>
         `
     } else {
-        
+        for (let i = 0; i < notifications.length; i++) {
+            notificationCentre += `
+                <div class="d-flex flex-column border border-success-subtle rounded-4 p-3">
+                    <h3>${notifications[i]["title"]}</h3>
+                    <div class="collapse" id="p_${notifications[i]["idnotification"]}">
+                        <p class="mb-2">${notifications[i]["text"]}</p>
+                    </div>
+                    <div class="row">
+                        <button class="btn material-icons col-1" id="delete-${notifications[i]["idnotification"]}">delete</button>
+                        <button class="col-2 btn" data-bs-toggle="collapse" data-bs-target="#p_${notifications[i]["idnotification"]}" type="button" aria-expanded="false" aria-controls="p_${notifications[i]["idnotification"]}">Mostra di più</button>
+                    </div>
+                </div>
+            `;
+        }
     }
     return notificationCentre;
 }
