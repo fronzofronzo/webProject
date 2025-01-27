@@ -1,4 +1,4 @@
-async function getNotificationData(){
+async function getNotificationData() {
     const url = 'api/api-notification.php';
     try {
         const response = await fetch(url);
@@ -7,7 +7,7 @@ async function getNotificationData(){
         }
         const json = await response.json();
         console.log(json);
-        viewNotificationCentre(json["username"] ,json["notifications"]);
+        viewNotificationCentre(json["username"], json["notifications"]);
     } catch (error) {
         console.log(error.message);
     }
@@ -16,11 +16,19 @@ async function getNotificationData(){
 function viewNotificationCentre(username, notifications) {
     let loginform = generateNotificationCentre(username, notifications);
     const div = document.querySelector("main section div");
-    div.innerHTML = loginform;
+    div.innerHTML = loginform; const buttons = document.querySelectorAll('div > button');
+    buttons.forEach(button => {
+        button.addEventListener('click', function () {
+            //readNotification(button.id);
+            const currentText = button.textContent.trim();
+            button.textContent = currentText === 'Mostra di più' ? 'Mostra di meno' : 'Mostra di più';
+    
+        });
+    });
 }
 
 function generateNotificationCentre(username, notifications) {
-	let notificationCentre = "";
+    let notificationCentre = "";
     if (notifications.length == 0) {
         notificationCentre += `
             <div>
