@@ -136,6 +136,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `funside`.`notification` (
   `idnotification` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(50) NOT NULL,
   `text` VARCHAR(512) NOT NULL,
   `isRead` BOOLEAN NOT NULL DEFAULT FALSE,
   `order` INT DEFAULT NULL,

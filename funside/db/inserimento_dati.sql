@@ -111,19 +111,20 @@ INSERT INTO `funside`.`orderdetail` (`product`, `order`, `quantity`) VALUES
 (10, 14, 1),
 (1, 15, 1);
 
-INSERT INTO `funside`.`notification` (`text`, `isRead`, `order`, `user`, `date`, `time`) VALUES
-('Your order has been shipped.', 0, 3, 'bwhite', '2024-01-21', '10:30:00'),
-('Your order has been delivered.', 1, 1, 'jdoe', '2024-01-18', '15:00:00'),
-('Your order has been placed successfully.', 1, 6, 'emiller', '2024-01-19', '09:45:00'),
-('Your order has been shipped.', 1, 8, 'lgarcia', '2024-01-22', '14:15:00'),
-('Your order has been delivered.', 0, 2, 'asmith', '2024-01-12', '16:30:00'),
-('Your order has been placed successfully.', 1, 13, 'bwhite', '2024-01-22', '12:00:00'),
-('Your order has been shipped.', 0, 15, 'rthompson', '2024-01-14', '09:00:00'),
-('Your order has been delivered.', 1, 4, 'mjohnson', '2024-01-20', '10:45:00'),
-('Your order has been shipped.', 0, 14, 'mjohnson', '2024-01-19', '12:15:00'),
-('Your order has been delivered.', 1, 7, 'dwilliams', '2024-01-11', '17:00:00'),
-('Your order has been shipped.', 0, 10, 'nmartin', '2024-01-10', '10:00:00'),
-('Your order has been delivered.', 1, 9, 'klee', '2024-01-17', '14:30:00');
+INSERT INTO `funside`.`notification` (`title`, `text`, `isRead`, `order`, `user`, `date`, `time`) VALUES
+('Shipped', 'Your order has been shipped.', 0, 3, 'bwhite', '2024-01-21', '10:30:00'),
+('Delivered', 'Your order has been delivered.', 1, 1, 'jdoe', '2024-01-18', '15:00:00'),
+('Order Placed', 'Your order has been placed successfully.', 1, 6, 'emiller', '2024-01-19', '09:45:00'),
+('Shipped', 'Your order has been shipped.', 1, 8, 'lgarcia', '2024-01-22', '14:15:00'),
+('Delivered', 'Your order has been delivered.', 0, 2, 'asmith', '2024-01-12', '16:30:00'),
+('Order Placed', 'Your order has been placed successfully.', 1, 13, 'bwhite', '2024-01-22', '12:00:00'),
+('Shipped', 'Your order has been shipped.', 0, 15, 'rthompson', '2024-01-14', '09:00:00'),
+('Delivered', 'Your order has been delivered.', 1, 4, 'mjohnson', '2024-01-20', '10:45:00'),
+('Shipped', 'Your order has been shipped.', 0, 14, 'mjohnson', '2024-01-19', '12:15:00'),
+('Delivered', 'Your order has been delivered.', 1, 7, 'dwilliams', '2024-01-11', '17:00:00'),
+('Shipped', 'Your order has been shipped.', 0, 10, 'nmartin', '2024-01-10', '10:00:00'),
+('Delivered', 'Your order has been delivered.', 1, 9, 'klee', '2024-01-17', '14:30:00');
+
 
 INSERT INTO `funside`.`review` (`product`, `user`, `rating`, `text`) VALUES
 (1, 'jdoe', 5, 'Excellent quality chess set!'),
