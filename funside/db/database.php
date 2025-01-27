@@ -151,7 +151,7 @@ class DatabaseHelper{
     public function readNotification($idnotification) {
         $query = "UPDATE funside.notification SET isRead = TRUE WHERE idnotification = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssssii',$idnotification);
+        $stmt->bind_param('i',$idnotification);
         return $stmt->execute();
     }
 
