@@ -147,6 +147,8 @@ function generateNotificationCentre(username, notifications) {
                     <h3>${notifications[i]["title"]}</h3>
                     <div class="collapse" id="text_${notifications[i]["idnotification"]}">
                         <p class="mb-2">${notifications[i]["text"]}</p>
+                        <p class="text-muted fs-8">${notifications[i]["date"]}: ${notifications[i]["time"]}</p>
+
                     </div>
                     <div class="d-flex flex-row justify-content-start">
                         <button class="btn material-icons " id="${notifications[i]["idnotification"]}">delete</button>

@@ -23,7 +23,7 @@
     </div>
 </section>
 <section class="container-fluid">
-    <h2 class="text-white mb-2">Registrati</h2>
+    <h2 class=" mb-2">Registrati</h2>
     <div class="">
         <form action="#" method="POST" id="register" name="register">
             <div class="form-group mb-2">
