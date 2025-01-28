@@ -1,197 +1,254 @@
 <?php
 
-class DatabaseHelper{
+class DatabaseHelper {
     private $db;
 
-    public function __construct($servername, $username, $password, $dbname, $port){
+    public function __construct($servername, $username, $password, $dbname, $port) {
         $this->db = new mysqli($servername, $username, $password, $dbname, $port);
-            if($this->db->connect_error){
-                die("". $this->db->connect_error);
+        if($this->db->connect_error) {
+            die("". $this->db->connect_error);
         }
     }
 
     //USER
-    public function checkLogin($username, $password){
+    public function checkLogin($username, $password) {
         $query = "SELECT username, name, surname, type FROM funside.user WHERE username = ? AND password = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$username, $password);
+        $stmt->bind_param('ss', $username, $password);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
-    public function registerUser($username, $password, $name, $surname, $type){
-        $query = "INSERT INTO funside.user (username, password, name, surname, type VALUES (?, ?, ?, ?, ?)";
+    public function registerUser($username, $password, $name, $surname, $type) {
+        $query = "INSERT INTO funside.user (username, password, name, surname, type) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssss',$username, $password, $name, $surname, $type);
-        return $stmt->execute();
+        $stmt->bind_param('sssss', $username, $password, $name, $surname, $type);
+        $data = $stmt->execute();
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
-    public function getUserInfoByUsername($username){
+    public function getUserInfoByUsername($username) {
         $query = "SELECT username, name, surname, type FROM funside.user WHERE username = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$username);
+        $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     //ADDRESS
     public function addAddressToUser($username, $address) {
         $query = "INSERT INTO funside.address (user, add) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$username, $address);
-        return $stmt->execute();
+        $stmt->bind_param('ss', $username, $address);
+        $data = $stmt->execute();
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     public function getAddressesFromUser($username) {
         $query = "SELECT add FROM funside.address WHERE user = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s',$username);
+        $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     public function deleteAddressToUser($username, $address) {
         $query = "DELETE FROM funside.address WHERE user = ? AND address = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$username, $address);
-        return $stmt->execute();
+        $stmt->bind_param('ss', $username, $address);
+        $data = $stmt->execute();
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     //PRODUCT TYPE
     public function addProductType($type, $description, $image) {
         $query = "INSERT INTO funside.producttype (type, description, image) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sss',$type, $description, $image);
-        return $stmt->execute();
+        $stmt->bind_param('sss', $type, $description, $image);
+        $data = $stmt->execute();
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     public function getProductTypeByType($type) {
         $query = "SELECT description, image FROM funside.producttype WHERE type = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$type);
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function getRandomProductTypes($n=3) {
-        $query = "SELECT type, description, image FROM funside.producttype ORDER BY RAND() LIMIT ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i',$n);
+        $stmt->bind_param('s', $type);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
+    }
+
+    public function getRandomProductTypes($n = 3) {
+        $query = "SELECT type, description, image FROM funside.producttype ORDER BY RAND() LIMIT ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $n);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     public function getAllProductTypes() {
-        $query = "SELECT type, description, image FROM funside.producttype ";
+        $query = "SELECT type, description, image FROM funside.producttype";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     public function deleteProductType($type) {
         $query = "DELETE FROM funside.producttype WHERE type = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$type);
-        return $stmt->execute();
+        $stmt->bind_param('s', $type);
+        $data = $stmt->execute();
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     //PRODUCT
-
     public function getRandomProducts() {
         $query = "SELECT name, price, description, brand FROM funside.product ORDER BY RAND()";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     public function getBestSellers($n) {
         $query = "SELECT name, price, image, avgrating, sum(d.quantity) as tot FROM funside.product p, funside.orderdetail d WHERE p.idproduct = d.product GROUP BY p.idproduct LIMIT ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i',$n);
+        $stmt->bind_param('i', $n);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     public function getBestRatings($n) {
         $query = "SELECT name, price, image, avgrating FROM funside.product ORDER BY avgrating LIMIT ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i',$n);
+        $stmt->bind_param('i', $n);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
-        
-    //ORDER
-
-    //ORDER DETAILS
 
     //NOTIFICATION
-
     public function addNotification($text, $user) {
         $query = "INSERT INTO funside.notification (text, user) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$text, $user);
-        return $stmt->execute();
+        $stmt->bind_param('ss', $text, $user);
+        $data = $stmt->execute();
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     public function addNotificationAboutAnOrder($text, $user, $order) {
         $query = "INSERT INTO funside.notification (text, user, order) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssi',$text, $user, $order);
-        return $stmt->execute();
+        $stmt->bind_param('ssi', $text, $user, $order);
+        $data = $stmt->execute();
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     public function readNotification($idnotification) {
         $query = "UPDATE funside.notification SET isRead = TRUE WHERE idnotification = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i',$idnotification);
-        return $stmt->execute();
+        $stmt->bind_param('i', $idnotification);
+        $data = $stmt->execute();
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     public function getAllNotificationOfUser($username) {
         $query = "SELECT idnotification, title, text, isRead, `order`, date, time FROM funside.notification WHERE user = ? ORDER BY date DESC, time DESC";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s',$username);
+        $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);        
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     public function getAllNotificationOfUserNotRead($username) {
-        $query = "SELECT idnotification, text, isRead, `order` date, time FROM funside.notification WHERE user = ? AND isRead = FALSE ORDER BY date DESC, time DESC";
+        $query = "SELECT idnotification, text, isRead, `order`, date, time FROM funside.notification WHERE user = ? AND isRead = FALSE ORDER BY date DESC, time DESC";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s',$username);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);        
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     public function getAllNotificationOfUserRead($username) {
-        $query = "SELECT idnotification, text, isRead, `order` date, time FROM funside.notification WHERE user = ? AND isRead = TRUE ORDER BY date DESC, time DESC";
+        $query = "SELECT idnotification, text, isRead, `order`, date, time FROM funside.notification WHERE user = ? AND isRead = TRUE ORDER BY date DESC, time DESC";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$username);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);        
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     public function getUnreadNotificationsCount($username) {
-        return count($this->getAllNotificationOfUserNotRead($username));
+        $query = "SELECT count(idnotification) FROM funside.notification WHERE user = ? AND isRead = FALSE";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $username);
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     public function deleteNotification($idnotification) {
         $query = "DELETE FROM funside.notification WHERE idnotification = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i',$idnotification);
-        return $stmt->execute();
+        $stmt->bind_param('i', $idnotification);
+        $data = $stmt->execute();
+        $stmt->close();  // Chiudi lo statement
+        return $data;
     }
 
     //REVIEW
-
 }
 ?>

@@ -15,10 +15,13 @@ if (isset($_POST['action']) && $_POST['action'] === "getall") {
 } else if (isset($_POST['action']) && $_POST['action'] === "delete") {
     if (isset($_POST["id"]) && !empty($_POST["id"])) {
         $result["isDeleted"] = $dbh->deleteNotification($_POST["id"]);
-        $result["notificationCenterEmpty"] = count($dbh->getAllNotificationOfUser($_SESSION["username"])) == 0;
+        //$result["count"] = $dbh->getUnreadNotificationsCount($_SESSION["username"])[0];
     } else {
         $result["error"] = "Missing or invalid ID";
     } 
+} else if (isset($_POST['action']) && $_POST['action'] === "unreadNotificationsCount") {
+    $result["countUnread"] = count($dbh->getAllNotificationOfUserNotRead($_SESSION["username"]));
+    $result["count"] = count($dbh->getAllNotificationOfUser($_SESSION["username"]));
 }
 
 header("Content-Type: application/json");

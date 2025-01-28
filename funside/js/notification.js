@@ -16,28 +16,28 @@ async function getNotificationData() {
     } catch (error) {
         console.log(error.message);
     }
+    updateNotificationsCount();
 }
 
 function viewNotificationCentre(username, notifications) {
     let loginform = generateNotificationCentre(username, notifications);
     const div = document.querySelector("main section div");
-    div.innerHTML = loginform; 7
+    div.innerHTML = loginform;
     const buttonsShowMore = document.querySelectorAll('main section div > button:nth-child(2)');
     buttonsShowMore.forEach(button => {
         button.addEventListener('click', function () {
             readNotification(button.getAttribute('id'));
-            console.log(button.getAttribute('id'));
+            updateNotificationsCount();
             const currentText = button.textContent.trim();
             button.textContent = currentText === 'Mostra di più' ? 'Mostra di meno' : 'Mostra di più';
-    
+
         });
     });
     const buttonsDelete = document.querySelectorAll('main section div > button:first-child');
     buttonsDelete.forEach(button => {
         button.addEventListener('click', function () {
             deleteNotification(button.getAttribute('id'));
-            console.log(button.getAttribute('id'));
-            
+            updateNotificationsCount();
         });
     });
 }
@@ -57,8 +57,41 @@ async function deleteNotification(idnotification) {
         }
         const json = await response.json();
         console.log(json);
-        //document.getElementById('div_' + idnotification).remove();
-        getNotificationData();
+        document.getElementById("div_" + idnotification).remove();
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+async function updateNotificationsCount() {
+    const url = 'api/api-notification.php';
+    const formData = new FormData();
+    formData.append('action', 'unreadNotificationsCount');
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            body: formData
+        });
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        console.log(json);
+        const badge = document.querySelector("section > h2 > span");
+        if (json["count"] == 0) {
+            const div = document.querySelector("main section div");
+            div.innerHTML = `
+            <div>
+                Nessuna notifica
+            </div>
+            `;
+            badge.remove();
+        } 
+        if (json["countUnread"] == 0) {
+            badge.remove();
+        } else {
+            badge.innerHTML = json["countUnread"];
+        }
     } catch (error) {
         console.log(error.message);
     }
@@ -79,12 +112,8 @@ async function readNotification(idnotification) {
         }
         const json = await response.json();
         console.log(json);
-        document.getElementById('msg_' + idnotification).remove();
-        if ($result["notificationCenterEmpty"]) {
-            document.querySelector("section > div").innerHTML= `
-            <div>
-                Nessuna notifica
-            </div>`;
+        if (document.getElementById('msg_' + idnotification)) {
+            document.getElementById('msg_' + idnotification).remove();
         }
     } catch (error) {
         console.log(error.message);

@@ -113,11 +113,11 @@ INSERT INTO `funside`.`orderdetail` (`product`, `order`, `quantity`) VALUES
 
 INSERT INTO `funside`.`notification` (`title`, `text`, `isRead`, `order`, `user`, `date`, `time`) VALUES
 ('Order #3 Shipped', 'Your order #3 has been shipped and is on its way to the delivery address you provided.', 0, 3, 'bwhite', '2024-01-21', '10:30:00'),
+('Order #13 Placed', 'Your order #13 has been placed successfully. You will receive updates about its progress shortly.', 1, 13, 'bwhite', '2024-01-22', '12:00:00'),
 ('Order #1 Delivered', 'Your order #1 has been successfully delivered to your address. Thank you for choosing our service!', 1, 1, 'jdoe', '2024-01-18', '15:00:00'),
 ('Order #6 Placed', 'Your order #6 has been placed successfully. You will receive updates about its progress shortly.', 1, 6, 'emiller', '2024-01-19', '09:45:00'),
 ('Order #8 Shipped', 'Your order #8 has been shipped and is on its way to the delivery address you provided.', 1, 8, 'lgarcia', '2024-01-22', '14:15:00'),
 ('Order #2 Delivered', 'Your order #2 has been successfully delivered to your address. Thank you for choosing our service!', 0, 2, 'asmith', '2024-01-12', '16:30:00'),
-('Order #13 Placed', 'Your order #13 has been placed successfully. You will receive updates about its progress shortly.', 1, 13, 'bwhite', '2024-01-22', '12:00:00'),
 ('Order #15 Shipped', 'Your order #15 has been shipped and is on its way to the delivery address you provided.', 0, 15, 'rthompson', '2024-01-14', '09:00:00'),
 ('Order #4 Delivered', 'Your order #4 has been successfully delivered to your address. Thank you for choosing our service!', 1, 4, 'mjohnson', '2024-01-20', '10:45:00'),
 ('Order #14 Shipped', 'Your order #14 has been shipped and is on its way to the delivery address you provided.', 0, 14, 'mjohnson', '2024-01-19', '12:15:00'),
