@@ -85,8 +85,7 @@ async function updateNotificationsCount() {
                 Nessuna notifica
             </div>
             `;
-            badge.remove();
-        } 
+        }
         if (json["countUnread"] == 0) {
             badge.remove();
         } else {
@@ -112,9 +111,10 @@ async function readNotification(idnotification) {
         }
         const json = await response.json();
         console.log(json);
-        if (document.getElementById('msg_' + idnotification)) {
-            document.getElementById('msg_' + idnotification).remove();
+        if (document.getElementById('div_' + idnotification).classList.contains("border-danger")) {
+            document.getElementById('div_' + idnotification).classList.replace("border-danger", "border-success-subtle");
         }
+        
     } catch (error) {
         console.log(error.message);
     }
@@ -132,15 +132,19 @@ function generateNotificationCentre(username, notifications) {
     } else {
         for (let i = 0; i < notifications.length; i++) {
             notificationCentre += `
-                <div class="d-flex flex-column border border-success-subtle rounded-4 p-3 mb-3" id="div_${notifications[i]["idnotification"]}">
-                    <h3>${notifications[i]["title"]}</h3>
-                    `;
-            if (!notifications[i]["isRead"]) {
+                <div class="d-flex flex-column border `;
+            if (notifications[i]["isRead"]) {
                 notificationCentre += `
-                    <p id="msg_${notifications[i]["idnotification"]}">Da leggere</p>
+                    border-success-subtle
+                `
+            } else {
+                notificationCentre += `
+                    border-danger
                 `
             }
             notificationCentre += `
+                    rounded-4 p-3 mb-3" id="div_${notifications[i]["idnotification"]}">
+                    <h3>${notifications[i]["title"]}</h3>
                     <div class="collapse" id="text_${notifications[i]["idnotification"]}">
                         <p class="mb-2">${notifications[i]["text"]}</p>
                     </div>
