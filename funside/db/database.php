@@ -27,9 +27,13 @@ class DatabaseHelper {
         $query = "INSERT INTO funside.user (username, password, name, surname, type) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sssss', $username, $password, $name, $surname, $type);
-        $data = $stmt->execute();
-        $stmt->close();  // Chiudi lo statement
-        return $data;
+        try {
+            $data = $stmt->execute();
+            $stmt->close();  // Chiudi lo statement
+            return $data;
+        } catch (mysqli_sql_exception $e) {
+            return false;
+        }
     }
 
     public function getUserInfoByUsername($username) {

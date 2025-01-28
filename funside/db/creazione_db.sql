@@ -22,7 +22,6 @@ CREATE TABLE IF NOT EXISTS `funside`.`user` (
   `type` VARCHAR(45) NOT NULL
   CHECK (`type` IN ('client', 'admin')),
   PRIMARY KEY (`username`),
-  UNIQUE (`name`, `surname`)
 )
 ENGINE = InnoDB;
 
