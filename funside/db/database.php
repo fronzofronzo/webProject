@@ -183,7 +183,7 @@ class DatabaseHelper{
     public function deleteNotification($idnotification) {
         $query = "DELETE FROM funside.notification WHERE idnotification = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$idnotification);
+        $stmt->bind_param('i',$idnotification);
         return $stmt->execute();
     }
 
