@@ -140,7 +140,8 @@ async function viewFormModifyAddress() {
 }
 
 function generateFormModifyAddress(address, n) {
-    form = ``;
+    form = `
+    <p>da implementare generateFormModifyAddress</p>`;
     return form;
 }
 
@@ -164,4 +165,25 @@ modifyAddressButton.addEventListener("click", function (e) {
     viewFormModifyAddress();
 });
 
-viewAddress()
+async function getOrdersData(){
+    const url = 'api/api-order.php';
+    const formData = new FormData();
+    formData.append('action', 'getorderbyuser');
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            body: formData
+        });
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        console.log(json);
+        viewOrders(json);
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+viewAddress();
+getOrdersData();

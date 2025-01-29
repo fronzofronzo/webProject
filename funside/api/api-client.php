@@ -36,8 +36,6 @@ if (isset($_POST['action'])) {
     }
 }
 
-$result["address"] = $dbh->getAddressesFromUser($_SESSION["username"]);
-
 header("Content-Type: application/json");
 echo json_encode($result);
 ?>
