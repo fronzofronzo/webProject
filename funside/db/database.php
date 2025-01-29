@@ -1,17 +1,20 @@
 <?php
 
-class DatabaseHelper {
+class DatabaseHelper
+{
     private $db;
 
-    public function __construct($servername, $username, $password, $dbname, $port) {
+    public function __construct($servername, $username, $password, $dbname, $port)
+    {
         $this->db = new mysqli($servername, $username, $password, $dbname, $port);
-        if($this->db->connect_error) {
-            die("". $this->db->connect_error);
+        if ($this->db->connect_error) {
+            die("" . $this->db->connect_error);
         }
     }
 
     //USER
-    public function checkLogin($username, $password) {
+    public function checkLogin($username, $password)
+    {
         $query = "SELECT username, name, surname, type FROM funside.user WHERE username = ? AND password = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $username, $password);
@@ -22,8 +25,8 @@ class DatabaseHelper {
         $stmt->close();  // Chiudi lo statement
         return $data;
     }
-
-    public function registerUser($username, $password, $name, $surname, $type) {
+    public function registerUser($username, $password, $name, $surname, $type)
+    {
         $query = "INSERT INTO funside.user (username, password, name, surname, type) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sssss', $username, $password, $name, $surname, $type);
@@ -36,19 +39,21 @@ class DatabaseHelper {
         }
     }
 
-    public function getUserInfoByUsername($username) {
+    public function getUserInfoByUsername($username)
+    {
         $query = "SELECT username, name, surname, type FROM funside.user WHERE username = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
         $data = $result->fetch_all(MYSQLI_ASSOC);
-        $result->free(); 
-        $stmt->close(); 
+        $result->free();
+        $stmt->close();
         return $data;
     }
 
-    public function updatePasswordByUser($username, $newpassword) {
+    public function updatePasswordByUser($username, $newpassword)
+    {
         $query = "UPDATE funside.user SET `password` = ? WHERE username = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $newpassword, $username);
@@ -58,7 +63,8 @@ class DatabaseHelper {
     }
 
     //ADDRESS
-    public function addAddressToUser($username, $address) {
+    public function addAddressToUser($username, $address)
+    {
         $query = "INSERT INTO funside.address (user, add) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $username, $address);
@@ -67,7 +73,8 @@ class DatabaseHelper {
         return $data;
     }
 
-    public function getAddressesFromUser($username) {
+    public function getAddressesFromUser($username)
+    {
         $query = "SELECT `add` FROM funside.address WHERE user = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
@@ -79,7 +86,8 @@ class DatabaseHelper {
         return $data;
     }
 
-    public function deleteAddressToUser($username, $address) {
+    public function deleteAddressToUser($username, $address)
+    {
         $query = "DELETE FROM funside.address WHERE user = ? AND address = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $username, $address);
@@ -89,7 +97,8 @@ class DatabaseHelper {
     }
 
     //PRODUCT TYPE
-    public function addProductType($type, $description, $image) {
+    public function addProductType($type, $description, $image)
+    {
         $query = "INSERT INTO funside.producttype (type, description, image) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sss', $type, $description, $image);
@@ -98,7 +107,8 @@ class DatabaseHelper {
         return $data;
     }
 
-    public function getProductTypeByType($type) {
+    public function getProductTypeByType($type)
+    {
         $query = "SELECT description, image FROM funside.producttype WHERE type = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $type);
@@ -110,7 +120,8 @@ class DatabaseHelper {
         return $data;
     }
 
-    public function getRandomProductTypes($n = 3) {
+    public function getRandomProductTypes($n = 3)
+    {
         $query = "SELECT type, description, image FROM funside.producttype ORDER BY RAND() LIMIT ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $n);
@@ -122,7 +133,8 @@ class DatabaseHelper {
         return $data;
     }
 
-    public function getAllProductTypes() {
+    public function getAllProductTypes()
+    {
         $query = "SELECT type, description, image FROM funside.producttype";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
@@ -133,7 +145,8 @@ class DatabaseHelper {
         return $data;
     }
 
-    public function deleteProductType($type) {
+    public function deleteProductType($type)
+    {
         $query = "DELETE FROM funside.producttype WHERE type = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $type);
@@ -143,7 +156,8 @@ class DatabaseHelper {
     }
 
     //PRODUCT
-    public function getRandomProducts() {
+    public function getRandomProducts()
+    {
         $query = "SELECT name, price, description, brand FROM funside.product ORDER BY RAND()";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
@@ -154,7 +168,8 @@ class DatabaseHelper {
         return $data;
     }
 
-    public function getBestSellers($n) {
+    public function getBestSellers($n)
+    {
         $query = "SELECT name, price, image, avgrating, sum(d.quantity) as tot FROM funside.product p, funside.orderdetail d WHERE p.idproduct = d.product GROUP BY p.idproduct LIMIT ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $n);
@@ -166,7 +181,8 @@ class DatabaseHelper {
         return $data;
     }
 
-    public function getBestRatings($n) {
+    public function getBestRatings($n)
+    {
         $query = "SELECT name, price, image, avgrating FROM funside.product ORDER BY avgrating LIMIT ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $n);
@@ -179,7 +195,8 @@ class DatabaseHelper {
     }
 
     //NOTIFICATION
-    public function addNotification($text, $user) {
+    public function addNotification($text, $user)
+    {
         $query = "INSERT INTO funside.notification (text, user) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $text, $user);
@@ -188,7 +205,8 @@ class DatabaseHelper {
         return $data;
     }
 
-    public function addNotificationAboutAnOrder($text, $user, $order) {
+    public function addNotificationAboutAnOrder($text, $user, $order)
+    {
         $query = "INSERT INTO funside.notification (text, user, order) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ssi', $text, $user, $order);
@@ -197,7 +215,8 @@ class DatabaseHelper {
         return $data;
     }
 
-    public function readNotification($idnotification) {
+    public function readNotification($idnotification)
+    {
         $query = "UPDATE funside.notification SET isRead = TRUE WHERE idnotification = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $idnotification);
@@ -206,7 +225,8 @@ class DatabaseHelper {
         return $data;
     }
 
-    public function getAllNotificationOfUser($username) {
+    public function getAllNotificationOfUser($username)
+    {
         $query = "SELECT idnotification, title, text, isRead, `order`, date, time FROM funside.notification WHERE user = ? ORDER BY date DESC, time DESC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
@@ -218,7 +238,8 @@ class DatabaseHelper {
         return $data;
     }
 
-    public function getAllNotificationOfUserNotRead($username) {
+    public function getAllNotificationOfUserNotRead($username)
+    {
         $query = "SELECT idnotification, text, isRead, `order`, date, time FROM funside.notification WHERE user = ? AND isRead = FALSE ORDER BY date DESC, time DESC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
@@ -230,7 +251,8 @@ class DatabaseHelper {
         return $data;
     }
 
-    public function getAllNotificationOfUserRead($username) {
+    public function getAllNotificationOfUserRead($username)
+    {
         $query = "SELECT idnotification, text, isRead, `order`, date, time FROM funside.notification WHERE user = ? AND isRead = TRUE ORDER BY date DESC, time DESC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
@@ -242,7 +264,8 @@ class DatabaseHelper {
         return $data;
     }
 
-    public function getUnreadNotificationsCount($username) {
+    public function getUnreadNotificationsCount($username)
+    {
         $query = "SELECT count(idnotification) FROM funside.notification WHERE user = ? AND isRead = FALSE";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
@@ -253,7 +276,8 @@ class DatabaseHelper {
         return $data;
     }
 
-    public function deleteNotification($idnotification) {
+    public function deleteNotification($idnotification)
+    {
         $query = "DELETE FROM funside.notification WHERE idnotification = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $idnotification);
@@ -263,5 +287,19 @@ class DatabaseHelper {
     }
 
     //REVIEW
+
+    //ORDERS
+    public function getOrdersByUser($username)
+    {
+        $query = "SELECT idorder, dateorder, datedelivery, status, totalprice, `user` FROM `funside`.`order` WHERE `user` = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $username);
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
+    }
+
 }
 ?>
