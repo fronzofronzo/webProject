@@ -301,5 +301,17 @@ class DatabaseHelper
         return $data;
     }
 
+    public function getOrdersDetailsByOrderId($orderid)
+    {
+        $query = "SELECT p.name AS name, od.quantity AS quantity, p.price AS price, p.image AS image FROM `funside`.`orderdetail` od JOIN `funside`.`product` p ON od.product = p.idproduct WHERE od.order = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $username);
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
+    }
+
 }
 ?>
