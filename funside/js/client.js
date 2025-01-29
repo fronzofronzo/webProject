@@ -19,20 +19,6 @@ async function logout() {
     }
 }
 
-const logoutButton = document.querySelector("main > section:first-child div button");
-logoutButton.addEventListener("click", function (e) {
-    console.log("Logout press")
-    e.preventDefault();
-    logout();
-});
-
-const modifyPasswordButton = document.querySelector("main > section:nth-child(2) div button");
-modifyPasswordButton.addEventListener("click", function (e) {
-    console.log("Logout press")
-    e.preventDefault();
-    viewFormModifyPassword();
-});
-
 function viewFormModifyPassword() {
     document.querySelector("main section:nth-child(2)").innerHTML = generateFormModifyPassword();
     document.getElementById("oldpasswordshow").addEventListener("click", function (e) {
@@ -40,7 +26,7 @@ function viewFormModifyPassword() {
         const password = document.querySelector("#oldpassword");
         const type = password.getAttribute("type") === "password" ? "text" : "password";
         password.setAttribute("type", type);
-        const text = this.getHTML() === "Show" ? "Hide" : "Show";
+        const text = this.innerHTML() === "Show" ? "Hide" : "Show";
         this.innerHTML = text;
     });
     document.getElementById("newpasswordshow").addEventListener("click", function (e) {
@@ -48,17 +34,44 @@ function viewFormModifyPassword() {
         const password = document.querySelector("#newpassword");
         const type = password.getAttribute("type") === "password" ? "text" : "password";
         password.setAttribute("type", type);
-        const text = this.getHTML() === "Show" ? "Hide" : "Show";
+        const text = this.innerHTML() === "Show" ? "Hide" : "Show";
         this.innerHTML = text;
     });
     document.getElementById("confirmButton").addEventListener("click", function (e) {
         e.preventDefault();
-        const password = document.querySelector("#newpassword");
-        const type = password.getAttribute("type") === "password" ? "text" : "password";
-        password.setAttribute("type", type);
-        const text = this.getHTML() === "Show" ? "Hide" : "Show";
-        this.innerHTML = text;
+        const oldpassword = document.querySelector("#oldpassword").value;
+        const newpassword = document.querySelector("#newpassword").value;
+        tryModifyPassword(oldpassword, newpassword);
     });
+    document.getElementById("goBack").addEventListener("click", function (e) {
+        e.preventDefault();
+        window.location.reload();
+    });
+}
+
+async function tryModifyPassword(oldpassword, newpassword) {
+    const url = 'api/api-client.php';
+    const formData = new FormData();
+    formData.append('oldpassword', oldpassword);
+    formData.append('newpassword', newpassword);
+    formData.append('action', 'modifypassword');
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            body: formData
+        });
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        if (json["isPasswordModified"]) {
+            window.location.reload();
+        } else {
+            document.querySelector("main section:nth-child(2) p").innerHTML = json["message"];
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
 }
 
 function generateFormModifyPassword() {
@@ -80,7 +93,7 @@ function generateFormModifyPassword() {
                 </div>
             </div>
             <button type="submit" class="btn btn-primary" id="confirmButton">Conferma</button>
-            <button type="submit" class="btn btn-primary">Indietro</button>
+            <button type="submit" class="btn btn-primary" id="goBack">Indietro</button>
             <p></p>
         </form>
         </div>
@@ -102,14 +115,15 @@ async function getClientAddress() {
         }
         const json = await response.json();
         console.log(json);
-        viewAddress(json["address"]);
+        return json["address"];
     } catch (error) {
         console.log(error.message);
     }
 }
 
-function viewAddress(address) {
-    if (address.length  == 0) {
+async function viewAddress() {
+    const address = await getClientAddress();
+    if (!address || address.length  == 0) {
         document.getElementById("ul_address").innerHTML = `<li>Nessun indirizzo salvato per questo utente</li>`;
     } else {
         address_list = ``
@@ -120,4 +134,34 @@ function viewAddress(address) {
     }
 }
 
-getClientAddress()
+async function viewFormModifyAddress() {   
+    const address = await getClientAddress();
+    document.querySelector("main section:nth-child(2)").innerHTML = generateFormModifyAddress(address, 0);
+}
+
+function generateFormModifyAddress(address, n) {
+    form = ``;
+    return form;
+}
+
+const logoutButton = document.querySelector("main > section:first-child div button");
+logoutButton.addEventListener("click", function (e) {
+    console.log("Logout press")
+    e.preventDefault();
+    logout();
+});
+
+const modifyPasswordButton = document.querySelector("main > section:nth-child(2) div button:nth-of-type(1)");
+modifyPasswordButton.addEventListener("click", function (e) {
+    e.preventDefault();
+    viewFormModifyPassword();
+});
+
+const modifyAddressButton = document.querySelector("main > section:nth-child(2) div button:nth-of-type(2)");
+modifyAddressButton.addEventListener("click", function (e) {
+    console.log("Logout press")
+    e.preventDefault();
+    viewFormModifyAddress();
+});
+
+viewAddress()

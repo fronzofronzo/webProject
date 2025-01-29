@@ -43,8 +43,17 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->get_result();
         $data = $result->fetch_all(MYSQLI_ASSOC);
-        $result->free(); // Libera la memoria
-        $stmt->close();  // Chiudi lo statement
+        $result->free(); 
+        $stmt->close(); 
+        return $data;
+    }
+
+    public function updatePasswordByUser($username, $newpassword) {
+        $query = "UPDATE funside.user SET `password` = ? WHERE username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss', $newpassword, $username);
+        $data = $stmt->execute();
+        $stmt->close();
         return $data;
     }
 
