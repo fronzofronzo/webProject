@@ -64,8 +64,8 @@ document.querySelector("#loginshow").addEventListener("click", function (e) {
     const password = document.querySelector("#loginpassword");
     const type = password.getAttribute("type") === "password" ? "text" : "password";
     password.setAttribute("type", type);
-    const text = toggleButton.getHTML() === "Show" ? "Hide" : "Show";
-    toggleButton.innerHTML = text;
+    const text = this.getHTML() === "Show" ? "Hide" : "Show";
+    this.innerHTML = text;
 });
 
 document.getElementById("formregister").addEventListener("submit", function (event) {
@@ -82,6 +82,6 @@ document.querySelector("#registershow").addEventListener("click", function (e) {
     const password = document.querySelector("#registerpassword");
     const type = password.getAttribute("type") === "password" ? "text" : "password";
     password.setAttribute("type", type);
-    const text = toggleButton.getHTML() === "Show" ? "Hide" : "Show";
-    toggleButton.innerHTML = text;
+    const text = this.getHTML() === "Show" ? "Hide" : "Show";
+    this.innerHTML = text;
 });

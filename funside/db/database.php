@@ -59,7 +59,7 @@ class DatabaseHelper {
     }
 
     public function getAddressesFromUser($username) {
-        $query = "SELECT add FROM funside.address WHERE user = ?";
+        $query = "SELECT `add` FROM funside.address WHERE user = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
         $stmt->execute();

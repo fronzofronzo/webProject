@@ -1,4 +1,4 @@
-body, header, h1, h2, h5, ul, div, section, p{
+body, header, h1, h2, h5, div, section, p{
     margin: 0;
     padding: 0;
 }
@@ -72,6 +72,13 @@ main > section > div {
 
 main > section > div > h2 {
 	color: white;
+}
+
+main > section > div > p {
+	margin-bottom: 5px;
+}
+main > section > div > ul > li {
+	list-style-type: circle;
 }
 
 main > section > div > div > div > div:first-child {
