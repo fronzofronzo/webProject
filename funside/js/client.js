@@ -185,5 +185,15 @@ async function getOrdersData(){
     }
 }
 
+function viewOrders(orders) {
+    output = ``;
+    if (orders["orders"].length > 0) {
+        output = " da implementare viewOrders in client.js"
+    } else {
+        output = "Nessun ordine";
+    }
+    document.querySelector("main section:nth-child(3) div").innerHTML = output;;
+}
+
 viewAddress();
 getOrdersData();
