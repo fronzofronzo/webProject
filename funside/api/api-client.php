@@ -38,7 +38,13 @@ if (isset($_POST['action'])) {
                 $result["newaddress"] = false;
             }
             break;
-
+        case 'deleteaddress':
+                if (isset($_POST["idaddress"]) && !empty($_POST["idaddress"])) {
+                    $result["deletedaddress"] = $dbh->deleteAddressByIdAddress($_POST["idaddress"]);
+                } else {
+                    $result["deletedaddress"] = false;
+                }
+                break;
         default:
             $result["error"];
     }
