@@ -186,14 +186,59 @@ async function getOrdersData(){
 }
 
 function viewOrders(orders) {
-    output = ``;
+    let output = ``;  // Manca let
     if (orders["orders"].length > 0) {
-        output = " da implementare viewOrders in client.js"
+        output = generateOrders(orders);
     } else {
-        output = "Nessun ordine";
+        output = "<p>Nessun ordine disponibile</p>";
     }
-    document.querySelector("main section:nth-child(3) div").innerHTML = output;;
+    document.querySelector("main section:nth-child(3) div").innerHTML = output;
 }
+
+function generateOrders(orders) {
+    let output = ``;
+    orders.orders.forEach(o => {
+        output += `
+        <div class="border border-dark p-3 mb-3">
+            <div class="d-flex align-items-center justify-content-between">
+                <h3 class="mb-0">Ordine #${o.idorder}</h3>
+                <button class="btn btn-outline-secondary" data-bs-toggle="collapse" 
+                        data-bs-target="#details_${o.idorder}" id="${o.idorder}" 
+                        type="button" aria-expanded="false" aria-controls="details_${o.idorder}">
+                    ▼
+                </button>
+            </div>
+            <p>Ordine del: ${o.dateorder}</p>
+            <p>Status: ${o.status}</p>
+            <p>Totale: ${o.totalprice}€</p>
+            <div class="collapse mt-2" id="details_${o.idorder}">`;
+        if (orders.order_details && orders.order_details[o.idorder]) {
+            orders.order_details[o.idorder].forEach(d => {
+                output += `
+                <section class="d-flex flex-row align-items-center gap-3 border rounded p-2 mb-2">
+                    <div class="d-flex justify-content-center">
+                        <img src="${d.image}" class="img-thumbnail img-fluid" 
+                             style="width: 80px; height: 80px; object-fit: cover;" 
+                             alt="${d.name}"/>
+                    </div>
+                    <div>
+                        <p class="fw-bold">${d.name}</p>
+                        <p>Quantità: ${d.quantity}</p>
+                        <p>Prezzo unitario: ${d.price}€</p>
+                        <p><strong>Prezzo totale:</strong> ${d.total}€</p>
+                    </div>
+                </section>`;
+            });
+        } else {
+            output += `<p class="text-muted">Nessun dettaglio disponibile</p>`;
+        }
+
+        output += `</div></div>`;
+    });
+
+    return output;
+}
+
 
 viewAddress();
 getOrdersData();
