@@ -6,9 +6,9 @@ function generateProducts(products) {
 	}
 	for(let i=0; i<limit; i++) {
 		let product = `
-		<div class="p-2">
-			<p>Nome: ${products[i]["name"]}</p>
-			<p>Prezzo: ${products[i]["price"]} €</p>
+		<div class="p-2 d-flex flex-column mb-3">
+			<p>${products[i]["name"]}</p>
+			<p>${products[i]["price"]} €</p>
 			<button type="button" class="btn btn-secondary btn-sm">see more</button>
 		</div>`;
 		result += product;

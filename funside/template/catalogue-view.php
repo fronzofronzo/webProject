@@ -1,6 +1,6 @@
 <section class="container-fluid">
 	<h2>Prodotti</h2>
-	<div class = "d-flex flex-row-reverse">
+	<div class = "d-flex flex-row-reverse ">
 		<div class="dropdown p-2">
 			<a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 				Categorie

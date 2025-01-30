@@ -47,7 +47,26 @@ INSERT INTO `funside`.`product` (`name`, `price`, `description`, `brand`, `type`
 ('LEGO City', 49.99, 'LEGO city building set', 'LEGO', 'toy', 'lego.jpg'),
 ('Catan', 39.99, 'Strategy board game', 'Catan Studios', 'strategy', 'catan.jpg'),
 ('Mario Kart', 54.99, 'Racing video game', 'Nintendo', 'videogame', 'mario.jpg'),
-('Jenga', 14.99, 'Tower building game', 'Hasbro', 'party', 'jenga.jpg');
+('Jenga', 14.99, 'Tower building game', 'Hasbro', 'party', 'jenga.jpg'),
+('Scrabble', 24.99, 'Classic word game', 'Hasbro', 'boardgame', 'scrabble.jpg'),
+('Exploding Kittens', 19.99, 'A strategic card game', 'Exploding Kittens LLC', 'cardgame', 'exploding_kittens.jpg'),
+('Sudoku Puzzle Book', 10.99, 'Collection of Sudoku puzzles', 'PuzzleMasters', 'puzzle', 'sudoku.jpg'),
+('Badminton Set', 29.99, 'Outdoor badminton set', 'Yonex', 'outdoor', 'badminton.jpg'),
+('Call of Duty', 69.99, 'First-person shooter video game', 'Activision', 'videogame', 'cod.jpg'),
+('Teddy Bear', 19.99, 'Soft and cuddly teddy bear', 'PlushWorld', 'toy', 'teddy.jpg'),
+('Risk', 44.99, 'Strategy board game of world domination', 'Hasbro', 'strategy', 'risk.jpg'),
+('Zelda: Breath of the Wild', 59.99, 'Open-world adventure video game', 'Nintendo', 'videogame', 'zelda.jpg'),
+('Trivial Pursuit', 29.99, 'Classic quiz game', 'Hasbro', 'educational', 'trivial.jpg'),
+('Twister', 22.99, 'Party game with physical challenges', 'Hasbro', 'party', 'twister.jpg'),
+('Magic: The Gathering Starter Kit', 24.99, 'Collectible card game starter kit', 'Wizards of the Coast', 'cardgame', 'mtg.jpg'),
+('Escape Room in a Box', 34.99, 'An at-home escape room experience', 'Mattel', 'puzzle', 'escape_room.jpg'),
+('Kite', 15.99, 'Colorful outdoor kite', 'WindRider', 'outdoor', 'kite.jpg'),
+('Fortnite', 49.99, 'Battle royale action game', 'Epic Games', 'action', 'fortnite.jpg'),
+('Play-Doh Set', 14.99, 'Creative modeling clay for kids', 'Hasbro', 'toy', 'playdoh.jpg'),
+('Carcassonne', 32.99, 'Tile-placement strategy board game', 'Z-Man Games', 'strategy', 'carcassonne.jpg'),
+('Guitar Hero', 59.99, 'Music rhythm video game', 'Activision', 'videogame', 'guitar_hero.jpg'),
+('Brain Quest', 18.99, 'Educational quiz game for kids', 'Workman Publishing', 'educational', 'brain_quest.jpg'),
+('Cards Against Humanity', 29.99, 'Party card game for adults', 'Cards Against Humanity LLC', 'party', 'cards_against_humanity.jpg');
 
 INSERT INTO `funside`.`address` (`user`, `add`) VALUES
 ('jdoe', '123 Main St, Anytown, CA 12345'),
