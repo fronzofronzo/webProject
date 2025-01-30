@@ -1,164 +1,167 @@
+// Funzione di supporto per gestire gli errori
+function handleError(error) {
+    console.log(error.message);
+}
+
+// Funzione di supporto per inviare richieste POST
+async function fetchData(url, formData) {
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+
+        return await response.json();
+    } catch (error) {
+        handleError(error);
+    }
+}
+
+// Funzione per ottenere i dati delle notifiche
 async function getNotificationData() {
     const url = 'api/api-notification.php';
     const formData = new FormData();
     formData.append('action', 'getall');
-    try {
-        const response = await fetch(url, {
-            method: "POST",
-            body: formData
-        });
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-        }
-        const json = await response.json();
+
+    const json = await fetchData(url, formData);
+
+    if (json) {
         console.log(json);
         viewNotificationCentre(json["username"], json["notifications"]);
-    } catch (error) {
-        console.log(error.message);
     }
+
     updateNotificationsCount();
 }
 
+// Funzione per visualizzare il centro notifiche
 function viewNotificationCentre(username, notifications) {
-    let loginform = generateNotificationCentre(username, notifications);
+    let notificationHTML = generateNotificationCentre(username, notifications);
     const div = document.querySelector("main section div");
-    div.innerHTML = loginform;
+    div.innerHTML = notificationHTML;
+
+    // Aggiungere gli eventi per "Mostra di più" e "Elimina"
+    setupEventListeners();
+}
+
+// Funzione per impostare gli event listeners per i bottoni "Mostra di più" e "Elimina"
+function setupEventListeners() {
     const buttonsShowMore = document.querySelectorAll('main section div > button:nth-child(2)');
     buttonsShowMore.forEach(button => {
         button.addEventListener('click', function () {
-            readNotification(button.getAttribute('id'));
+            const id = button.getAttribute('id');
+            toggleNotificationReadStatus(id);
             updateNotificationsCount();
-            const currentText = button.textContent.trim();
-            button.textContent = currentText === 'Mostra di più' ? 'Mostra di meno' : 'Mostra di più';
-
+            toggleShowMoreText(button);
         });
     });
+
     const buttonsDelete = document.querySelectorAll('main section div > button:first-child');
     buttonsDelete.forEach(button => {
         button.addEventListener('click', function () {
-            deleteNotification(button.getAttribute('id'));
+            const id = button.getAttribute('id');
+            deleteNotification(id);
             updateNotificationsCount();
         });
     });
 }
 
-async function deleteNotification(idnotification) {
-    const url = 'api/api-notification.php';
-    const formData = new FormData();
-    formData.append('action', 'delete');
-    formData.append('id', idnotification);
-    try {
-        const response = await fetch(url, {
-            method: "POST",
-            body: formData
-        });
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-        }
-        const json = await response.json();
-        console.log(json);
-        document.getElementById("div_" + idnotification).remove();
-    } catch (error) {
-        console.log(error.message);
-    }
-}
-
+// Funzione per aggiornare il conteggio delle notifiche non lette
 async function updateNotificationsCount() {
     const url = 'api/api-notification.php';
     const formData = new FormData();
     formData.append('action', 'unreadNotificationsCount');
-    try {
-        const response = await fetch(url, {
-            method: "POST",
-            body: formData
-        });
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-        }
-        const json = await response.json();
-        console.log(json);
+
+    const json = await fetchData(url, formData);
+
+    if (json) {
         const badge = document.querySelector("section > h2 > span");
+        const div = document.querySelector("main section div");
+
         if (json["count"] == 0) {
-            const div = document.querySelector("main section div");
-            div.innerHTML = `
-            <div>
-                Nessuna notifica
-            </div>
-            `;
+            div.innerHTML = '<div>Nessuna notifica</div>';
         }
+
         if (json["countUnread"] == 0) {
             badge.remove();
         } else {
             badge.innerHTML = json["countUnread"];
         }
-    } catch (error) {
-        console.log(error.message);
     }
 }
 
+// Funzione per marcare una notifica come letta
 async function readNotification(idnotification) {
     const url = 'api/api-notification.php';
     const formData = new FormData();
     formData.append('action', 'read');
     formData.append('id', idnotification);
-    try {
-        const response = await fetch(url, {
-            method: "POST",
-            body: formData
-        });
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
+
+    const json = await fetchData(url, formData);
+
+    if (json) {
+        const notificationElement = document.getElementById('div_' + idnotification);
+        if (notificationElement && notificationElement.classList.contains("border-danger")) {
+            notificationElement.classList.replace("border-danger", "border-success-subtle");
         }
-        const json = await response.json();
-        console.log(json);
-        if (document.getElementById('div_' + idnotification).classList.contains("border-danger")) {
-            document.getElementById('div_' + idnotification).classList.replace("border-danger", "border-success-subtle");
-        }
-        
-    } catch (error) {
-        console.log(error.message);
     }
 }
 
+// Funzione per eliminare una notifica
+async function deleteNotification(idnotification) {
+    const url = 'api/api-notification.php';
+    const formData = new FormData();
+    formData.append('action', 'delete');
+    formData.append('id', idnotification);
 
+    const json = await fetchData(url, formData);
+
+    if (json) {
+        document.getElementById("div_" + idnotification).remove();
+    }
+}
+
+// Funzione per generare il centro notifiche
 function generateNotificationCentre(username, notifications) {
     let notificationCentre = "";
-    if (notifications.length == 0) {
-        notificationCentre += `
-            <div>
-                Nessuna notifica
-            </div>
-        `
-    } else {
-        for (let i = 0; i < notifications.length; i++) {
-            notificationCentre += `
-                <div class="d-flex flex-column border `;
-            if (notifications[i]["isRead"]) {
-                notificationCentre += `
-                    border-success-subtle
-                `
-            } else {
-                notificationCentre += `
-                    border-danger
-                `
-            }
-            notificationCentre += `
-                    rounded-4 p-3 mb-3" id="div_${notifications[i]["idnotification"]}">
-                    <h3>${notifications[i]["title"]}</h3>
-                    <div class="collapse" id="text_${notifications[i]["idnotification"]}">
-                        <p class="mb-2">${notifications[i]["text"]}</p>
-                        <p class="text-muted fs-8">${notifications[i]["date"]}: ${notifications[i]["time"]}</p>
 
+    if (notifications.length === 0) {
+        notificationCentre += '<div>Nessuna notifica</div>';
+    } else {
+        notifications.forEach(notification => {
+            notificationCentre += `
+                <div class="d-flex flex-column border ${notification["isRead"] ? 'border-success-subtle' : 'border-danger'} rounded-4 p-3 mb-3" id="div_${notification["idnotification"]}">
+                    <h3>${notification["title"]}</h3>
+                    <div class="collapse" id="text_${notification["idnotification"]}">
+                        <p class="mb-2">${notification["text"]}</p>
+                        <p class="text-muted fs-8">${notification["date"]}: ${notification["time"]}</p>
                     </div>
                     <div class="d-flex flex-row justify-content-start">
-                        <button class="btn material-icons " id="${notifications[i]["idnotification"]}">delete</button>
-                        <button class=" btn" data-bs-toggle="collapse" data-bs-target="#text_${notifications[i]["idnotification"]}" id="${notifications[i]["idnotification"]}" type="button" aria-expanded="false" aria-controls="text_${notifications[i]["idnotification"]}">Mostra di più</button>
+                        <button class="btn material-icons" id="${notification["idnotification"]}">delete</button>
+                        <button class="btn" data-bs-toggle="collapse" data-bs-target="#text_${notification["idnotification"]}" id="${notification["idnotification"]}" type="button" aria-expanded="false" aria-controls="text_${notification["idnotification"]}">Mostra di più</button>
                     </div>
                 </div>
             `;
-        }
+        });
     }
+
     return notificationCentre;
 }
 
+// Funzione per alternare la visualizzazione delle notifiche
+function toggleShowMoreText(button) {
+    const currentText = button.textContent.trim();
+    button.textContent = currentText === 'Mostra di più' ? 'Mostra di meno' : 'Mostra di più';
+}
+
+// Funzione per cambiare lo stato di lettura di una notifica
+async function toggleNotificationReadStatus(idnotification) {
+    await readNotification(idnotification);
+    updateNotificationsCount();
+}
+
+// Chiamata iniziale per ottenere le notifiche
 getNotificationData();
