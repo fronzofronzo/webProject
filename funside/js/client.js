@@ -139,7 +139,7 @@ async function viewAddress() {
 async function viewFormModifyAddress() {   
     const address = await getClientAddress();
     document.querySelector("main section:nth-child(2)").innerHTML = generateFormModifyAddress(address);
-    document.querySelector("main section:nth-of-type(2) > button:nth-of-type(2)").addEventListener("click", function (e) {
+    document.querySelector("#gobackaddress").addEventListener("click", function (e) {
         e.preventDefault();
         console.log("EEEEEEEE")
         window.location.reload();
@@ -166,7 +166,7 @@ function generateFormModifyAddress(addresses) {
     // Aggiunge i pulsanti finali
     form += `
         <button class="btn btn-primary">Aggiungi Indirizzo</button>
-        <button class="btn btn-secondary">Indietro</button>
+        <button class="btn btn-secondary" id="gobackaddress">Indietro</button>
         <p id="message" class="mt-2"></p>
     `;
     return form;
