@@ -124,7 +124,7 @@ function viewAddress() {
         if (!address.length) {
             document.getElementById("ul_address").innerHTML = `<li>Nessun indirizzo salvato per questo utente</li>`;
         } else {
-            let address_list = address.map(a => `<li>${a}</li>`).join('');
+            let address_list = address.map(a => `<li>${a.add}</li>`).join('');
             document.getElementById("ul_address").innerHTML = address_list;
         }
     });
@@ -159,17 +159,31 @@ async function addNewAddress(newaddress) {
     }
 }
 
+async function deleteAddress(id) {
+    const url = "api/api-client.php";
+    const formData = new FormData();
+    formData.append('action', 'deleteaddress');
+    formData.append('idaddress', id);
+    const json = await fetchData(url, formData);
+    if (json["deletedaddress"]) {  
+        viewFormModifyAddress();
+        document.querySelector("main section:nth-child(2) > p").innerHTML = "Indirizzo eliminato";
+    } else {
+        document.querySelector("main section:nth-child(2) > p").innerHTML = "Indirizzo non eliminato";
+    }
+}
+
 
 function generateFormModifyAddress(addresses) {
     let form = ``;
     if (addresses.length) {
         addresses.forEach((a) => {
             form += `
-            <section class="d-flex align-items-center justify-content-start p-2 mb-2 border">
-                <button class="btn"><strong class="material-icons">edit</strong></button>
-                <button class="btn"><strong class="material-icons">delete</strong></button>
-                <span>${a}</span>
+            <section class="d-flex align-items-center justify-content-start p-2 mb-2 border" id="sec_${a.id}">
+                <button class="btn" onclick="deleteAddress(${a.id})"><strong class="material-icons">delete</strong></button>
+                <span>${a.add}</span>
             </section>
+
             `;
         });
     } else {

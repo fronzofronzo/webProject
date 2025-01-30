@@ -75,26 +75,32 @@ class DatabaseHelper
 
     public function getAddressesFromUser($username)
     {
-        $query = "SELECT `add` FROM funside.address WHERE user = ?";
+        $query = "SELECT `id`, `add` FROM funside.address WHERE `user` = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
+        
         $data = [];
         while ($row = $result->fetch_assoc()) {
-            $data[] = $row["add"]; // Ora restituisce solo l'array di indirizzi
+            $data[] = [
+                "id" => $row["id"],
+                "add" => $row["add"]
+            ];
         }
+    
         $result->free();
         $stmt->close();
-
+    
         return $data;
     }
+    
 
-    public function deleteAddressToUser($username, $address)
+    public function deleteAddressByIdAddress($idaddress)
     {
-        $query = "DELETE FROM funside.address WHERE user = ? AND address = ?";
+        $query = "DELETE FROM funside.address WHERE id = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss', $username, $address);
+        $stmt->bind_param('i', $idaddress);
         $data = $stmt->execute();
         $stmt->close();  // Chiudi lo statement
         return $data;
