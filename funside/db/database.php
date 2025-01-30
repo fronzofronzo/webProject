@@ -179,12 +179,12 @@ class DatabaseHelper
     }
 
     public function getProductByID($id){
-        $query = "SELECT name, price, description, brand,avgrating, minnumplayer, maxnumplayers, numpages, type, image FROM funside.product WHERE idproduct = ?";
+        $query = "SELECT `name`, price, description, brand,avgrating, minnumplayers, maxnumplayers, numpages, type, image FROM funside.product WHERE idproduct = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
         $result = $stmt->get_result();
-        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $data = $result->fetch_assoc();
         $result->free(); // Libera la memoria
         $stmt->close();  // Chiudi lo statement
         return $data;

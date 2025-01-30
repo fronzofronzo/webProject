@@ -1,12 +1,13 @@
 <?php
 require_once 'bootstrap.php';
 
-if(isset(($_GET["id"]))) {
-	$prodID = $_GET["id"];
+//$templateParams["title"] = "Funside - Prodotti";
+$templateParams["name"] = "template/product-view.php";
+$templateParams["js"] = array("js/product.js");
+
+if(isset($_GET["id"])) {
+	$product = $dbh->getProductByID($_GET["id"]);
 }
+
 require 'template/base.php';
 ?>
-
-<main>
-	<h2><?php echo $prodID?></h2>
-</main>
