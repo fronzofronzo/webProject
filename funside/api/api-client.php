@@ -31,6 +31,14 @@ if (isset($_POST['action'])) {
                 $result["message"] = "Campi mancanti";
             }
             break;
+        case 'addnewaddress':
+            if (isset($_POST["address"]) && !empty($_POST["address"])) {
+                $result["newaddress"] = $dbh->addAddressToUser($_SESSION["username"], $_POST["address"]);
+            } else {
+                $result["newaddress"] = false;
+            }
+            break;
+
         default:
             $result["error"];
     }

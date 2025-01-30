@@ -65,7 +65,7 @@ class DatabaseHelper
     //ADDRESS
     public function addAddressToUser($username, $address)
     {
-        $query = "INSERT INTO funside.address (user, add) VALUES (?, ?)";
+        $query = "INSERT INTO funside.address (user, `add`) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $username, $address);
         $data = $stmt->execute();
