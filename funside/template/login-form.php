@@ -13,9 +13,7 @@
                     <div class="flex-grow-1 me-2">
                         <input type="password" class="form-control" id="loginpassword" placeholder="Password" required>
                     </div>
-                    <button type="button" class="btn btn-secondary" id="loginshow">
-                        Mostra
-                    </button>
+                    <button type="button" class="btn btn-secondary" id="loginshow">Mostra</button>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
@@ -23,7 +21,6 @@
         </form>
     </div>
 </section>
-
 <section class="container-fluid">
     <h2 class=" mb-2">Registrati</h2>
     <div>
@@ -50,9 +47,7 @@
                     <div class="flex-grow-1 me-2">
                         <input type="password" class="form-control" id="registerpassword" placeholder="Password" required>
                     </div>
-                    <button type="button" class="btn btn-secondary" id="registershow">
-                        Mostra
-                    </button>
+                    <button type="button" class="btn btn-secondary" id="registershow">Mostra</button>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Registrati</button>

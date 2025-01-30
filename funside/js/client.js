@@ -91,25 +91,30 @@ function setUpPasswordToggle(passwordId) {
 function generateFormModifyPassword() {
     return `
         <h2>Modifica password</h2>
-        <div><form action="#" method="POST" id="modifypassword" name="modificapassword">
-            <div class="form-group mb-2">
-                <label for="oldpassword">Vecchia password</label>
-                <div class="row">
-                    <div class="col-9"><input type="password" class="form-control" id="oldpassword" placeholder="Vecchia password"></div>
-                    <div class="col-3"><button type="button" class="btn btn-secondary" id="oldpasswordshow">Mostra</button></div>
+        <div>
+            <form action="#" method="POST" id="modifypassword" name="modificapassword">
+                <div class="form-group mb-2">
+                    <label for="oldpassword">Vecchia password</label>
+                    <div class="d-flex">
+                        <div class="flex-grow-1 me-2">
+                            <input type="password" class="form-control" id="oldpassword" placeholder="Vecchia password">
+                        </div>
+                        <button type="button" class="btn btn-secondary" id="oldpasswordshow">Mostra</button>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group mb-2">
-                <label for="newpassword">Nuova password</label>
-                <div class="row">
-                    <div class="col-9"><input type="password" class="form-control" id="newpassword" placeholder="Nuova password"></div>
-                    <div class="col-3"><button type="button" class="btn btn-secondary" id="newpasswordshow">Mostra</button></div>
+                <div class="form-group mb-2">
+                    <label for="newpassword">Nuova password</label>
+                    <div class="d-flex">
+                        <div class="flex-grow-1 me-2">
+                            <input type="password" class="form-control" id="newpassword" placeholder="Nuova password">
+                        </div>
+                        <button type="button" class="btn btn-secondary" id="newpasswordshow">Mostra</button>
+                    </div>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-primary" id="confirmButton">Conferma</button>
-            <button type="submit" class="btn btn-primary" id="goBack">Indietro</button>
-            <p></p>
-        </form>
+                <button type="submit" class="btn btn-primary" id="confirmButton">Conferma</button>
+                <button type="submit" class="btn btn-primary" id="goBack">Indietro</button>
+                <p></p>
+            </form>
         </div>
     `;
 }
@@ -132,7 +137,28 @@ async function viewFormModifyAddress() {
         e.preventDefault();
         window.location.reload();
     });
+    document.querySelector("#confirmnewaddress").addEventListener("click", function (e) {
+        e.preventDefault();
+        const newaddress = document.getElementById("newaddress").value;
+        addNewAddress(newaddress);
+    });
 }
+
+async function addNewAddress(newaddress) {
+    const url = "api/api-client.php";
+    const formData = new FormData();
+    formData.append('action', 'addnewaddress');
+    formData.append('address', newaddress);
+    const json = await fetchData(url, formData);
+    
+    if (json["newaddress"]) {  // Controllo su 'newaddress' e non 'address'
+        viewFormModifyAddress();
+        document.querySelector("main section:nth-child(2) > p").innerHTML = "Indirizzo aggiunto";
+    } else {
+        document.querySelector("main section:nth-child(2) > p").innerHTML = "Indirizzo non aggiunto";
+    }
+}
+
 
 function generateFormModifyAddress(addresses) {
     let form = ``;
@@ -151,9 +177,18 @@ function generateFormModifyAddress(addresses) {
     }
 
     form += `
-        <button class="btn btn-primary">Aggiungi Indirizzo</button>
+        <button id="buttonnewaddress" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseform" type="button" aria-expanded="false" aria-controls="collapseform">Aggiungi Indirizzo</button>
         <button class="btn btn-secondary" id="gobackaddress">Indietro</button>
-        <p id="message" class="mt-2"></p>
+        <div class="collapse" id="collapseform">
+            <form action="#" method="POST" id="formnewaddress" name="nuovoindirizzo">
+                <div class="form-group mb-2">
+                    <label for="newaddress">Nuovo indirizzo</label>
+                    <input type="text" class="form-control" id="newaddress" aria-describedby="emailHelp" placeholder="Inserisci nuovo indirizzo">
+                </div>
+                <button type="submit" id="confirmnewaddress" class="btn btn-primary">Conferma</button>
+            </form>
+        </div>
+        <p class="mt-2"></p>
     `;
     return form;
 }
