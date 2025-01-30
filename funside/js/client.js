@@ -115,11 +115,13 @@ async function getClientAddress() {
         }
         const json = await response.json();
         console.log(json);
-        return json["address"];
+        return json.address || []; // Ora restituisce un array di indirizzi
     } catch (error) {
-        console.log(error.message);
+        console.error("Errore nel recupero degli indirizzi:", error.message);
+        return [];
     }
 }
+
 
 async function viewAddress() {
     const address = await getClientAddress();
@@ -128,7 +130,7 @@ async function viewAddress() {
     } else {
         address_list = ``
         for (let i = 0; i < address.length; i++) {
-            address_list += `<li>${address[i]["add"]}</li>`;
+            address_list += `<li>${address[i]}</li>`;
         }
         document.getElementById("ul_address").innerHTML = address_list;
     }
@@ -136,14 +138,41 @@ async function viewAddress() {
 
 async function viewFormModifyAddress() {   
     const address = await getClientAddress();
-    document.querySelector("main section:nth-child(2)").innerHTML = generateFormModifyAddress(address, 0);
+    document.querySelector("main section:nth-child(2)").innerHTML = generateFormModifyAddress(address);
+    document.querySelector("main section:nth-of-type(2) > button:nth-of-type(2)").addEventListener("click", function (e) {
+        e.preventDefault();
+        console.log("EEEEEEEE")
+        window.location.reload();
+    });
 }
 
-function generateFormModifyAddress(address, n) {
-    form = `
-    <p>da implementare generateFormModifyAddress</p>`;
+function generateFormModifyAddress(addresses) {
+    let form = ``;
+    if (addresses.length > 0) {
+        
+    addresses.forEach((a) => {
+        form += `
+        <section class="d-flex align-items-center justify-content-start p-2 mb-2 border">
+            <button class="btn"><strong class="material-icons">edit</strong></button>
+            <button class="btn"><strong class="material-icons">delete</strong></button>
+            <span>${a}</span>
+        </section>
+        `;
+    });
+    } else {
+        form += `<p class="mb-2">Nessun indirizzo aggiunto</p>`
+    }
+
+    // Aggiunge i pulsanti finali
+    form += `
+        <button class="btn btn-primary">Aggiungi Indirizzo</button>
+        <button class="btn btn-secondary">Indietro</button>
+        <p id="message" class="mt-2"></p>
+    `;
     return form;
 }
+
+
 
 const logoutButton = document.querySelector("main > section:first-child div button");
 logoutButton.addEventListener("click", function (e) {
@@ -160,7 +189,6 @@ modifyPasswordButton.addEventListener("click", function (e) {
 
 const modifyAddressButton = document.querySelector("main > section:nth-child(2) div button:nth-of-type(2)");
 modifyAddressButton.addEventListener("click", function (e) {
-    console.log("Logout press")
     e.preventDefault();
     viewFormModifyAddress();
 });

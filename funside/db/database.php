@@ -80,9 +80,13 @@ class DatabaseHelper
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
-        $data = $result->fetch_all(MYSQLI_ASSOC);
-        $result->free(); // Libera la memoria
-        $stmt->close();  // Chiudi lo statement
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row["add"]; // Ora restituisce solo l'array di indirizzi
+        }
+        $result->free();
+        $stmt->close();
+
         return $data;
     }
 
@@ -301,7 +305,7 @@ class DatabaseHelper
         $stmt->close();  // Chiudi lo statement
         return $data;
     }
-    
+
     public function getOrdersDetailsByOrderId($orderid)
     {
         $query = "SELECT p.name AS name, od.quantity AS quantity, p.price AS price, p.image As image, (p.price * od.quantity) as total FROM `funside`.`orderdetail` od JOIN `funside`.`product` p ON od.product = p.idproduct WHERE od.order = ?";
@@ -314,7 +318,7 @@ class DatabaseHelper
         $stmt->close();  // Chiudi lo statement
         return $data;
     }
-    
+
 
 }
 ?>
