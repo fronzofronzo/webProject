@@ -29,9 +29,11 @@ ENGINE = InnoDB;
 -- Table `funside`.`address`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `funside`.`address` (
+  `id` INT  NOT NULL AUTO_INCREMENT,
   `user` VARCHAR(50) NOT NULL,
   `add` VARCHAR(512) NOT NULL,
-  PRIMARY KEY (`user`, `add`),
+  PRIMARY KEY (`id`),
+  UNIQUE (`user`, `add`),
   FOREIGN KEY (`user`)
     REFERENCES `funside`.`user` (`username`)
     ON DELETE CASCADE
