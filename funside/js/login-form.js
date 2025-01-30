@@ -1,9 +1,5 @@
-async function tryLogin(username, password) {
-    const url = 'api/api-login.php';
-    const formData = new FormData();
-    formData.append('username', username);
-    formData.append('password', password);
-    formData.append('action', 'login');
+// Helper function to make fetch requests
+async function fetchData(url, formData) {
     try {
         const response = await fetch(url, {
             method: "POST",
@@ -12,17 +8,38 @@ async function tryLogin(username, password) {
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
-        const json = await response.json();
-        if (!json["loginresult"]) {
-            document.querySelector("main > section:first-child form p").innerText = json["errorlogin"];
-        } else {
-            window.location.reload();
-        }
+        return await response.json();
     } catch (error) {
         console.log(error.message);
     }
 }
 
+// Helper function to toggle password visibility
+function togglePasswordVisibility(button, passwordField) {
+    const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+    passwordField.setAttribute("type", type);
+    const text = button.innerHTML === "Mostra" ? "Nascondi" : "Mostra";
+    button.innerHTML = text;
+}
+
+// Function to handle login
+async function tryLogin(username, password) {
+    const url = 'api/api-login.php';
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+    formData.append('action', 'login');
+
+    const json = await fetchData(url, formData);
+
+    if (json && !json["loginresult"]) {
+        document.querySelector("main > section:first-child form p").innerText = json["errorlogin"];
+    } else {
+        window.location.reload();
+    }
+}
+
+// Function to handle registration
 async function tryRegistration(name, surname, username, password) {
     const url = 'api/api-login.php';
     const formData = new FormData();
@@ -31,15 +48,10 @@ async function tryRegistration(name, surname, username, password) {
     formData.append('username', username);
     formData.append('password', password);
     formData.append('action', 'register');
-    try {
-        const response = await fetch(url, {
-            method: "POST",
-            body: formData
-        });
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-        }
-        const json = await response.json();
+
+    const json = await fetchData(url, formData);
+
+    if (json) {
         document.querySelector("main > section:nth-child(2) p").innerText = json["registermsg"];
         if (json["registerresult"]) {
             document.querySelector("#registername").value = "";
@@ -47,11 +59,10 @@ async function tryRegistration(name, surname, username, password) {
             document.querySelector("#registerusername").value = "";
             document.querySelector("#registerpassword").value = "";
         }
-    } catch (error) {
-        console.log(error.message);
     }
 }
 
+// Event listener for login form submission
 document.getElementById("formlogin").addEventListener("submit", function (event) {
     event.preventDefault();
     const username = document.querySelector("#loginusername").value;
@@ -59,15 +70,14 @@ document.getElementById("formlogin").addEventListener("submit", function (event)
     tryLogin(username, password);
 });
 
+// Event listener for toggling password visibility in login
 document.querySelector("#loginshow").addEventListener("click", function (e) {
     e.preventDefault();
     const password = document.querySelector("#loginpassword");
-    const type = password.getAttribute("type") === "password" ? "text" : "password";
-    password.setAttribute("type", type);
-    const text = this.getHTML() === "Show" ? "Hide" : "Show";
-    this.innerHTML = text;
+    togglePasswordVisibility(this, password);
 });
 
+// Event listener for registration form submission
 document.getElementById("formregister").addEventListener("submit", function (event) {
     event.preventDefault();
     const name = document.querySelector("#registername").value;
@@ -77,11 +87,9 @@ document.getElementById("formregister").addEventListener("submit", function (eve
     tryRegistration(name, surname, username, password);
 });
 
+// Event listener for toggling password visibility in registration
 document.querySelector("#registershow").addEventListener("click", function (e) {
     e.preventDefault();
     const password = document.querySelector("#registerpassword");
-    const type = password.getAttribute("type") === "password" ? "text" : "password";
-    password.setAttribute("type", type);
-    const text = this.getHTML() === "Show" ? "Hide" : "Show";
-    this.innerHTML = text;
+    togglePasswordVisibility(this, password);
 });
