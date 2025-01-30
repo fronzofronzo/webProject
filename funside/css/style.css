@@ -60,6 +60,7 @@ main > section {
 	margin-top: 30px;
 	width: 96% !important;
 	padding: 2% !important;
+	border-radius: 10px !important;
 }
 
 main > section:last-child {
