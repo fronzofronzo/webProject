@@ -162,8 +162,20 @@ class DatabaseHelper
     //PRODUCT
     public function getRandomProducts()
     {
-        $query = "SELECT name, price, description, brand, type FROM funside.product ORDER BY RAND()";
+        $query = "SELECT  idproduct, name, price, description, brand, type FROM funside.product ORDER BY RAND()";
         $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
+    }
+
+    public function getProductByID($id){
+        $query = "SELECT name, price, description, brand,avgrating, minnumplayer, maxnumplayers, numpages, type, image FROM funside.product WHERE idproduct = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
         $stmt->execute();
         $result = $stmt->get_result();
         $data = $result->fetch_all(MYSQLI_ASSOC);
