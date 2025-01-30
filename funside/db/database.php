@@ -172,6 +172,18 @@ class DatabaseHelper
         return $data;
     }
 
+    public function getProductByID($id){
+        $query = "SELECT name, price, description, brand,avgrating, minnumplayer, maxnumplayers, numpages, type, image FROM funside.product WHERE idproduct = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
+    }
+
     public function getBestSellers($n)
     {
         $query = "SELECT name, price, image, avgrating, sum(d.quantity) as tot FROM funside.product p, funside.orderdetail d WHERE p.idproduct = d.product GROUP BY p.idproduct LIMIT ?";
