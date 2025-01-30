@@ -82,10 +82,20 @@ main > section > div > ul > li {
 	list-style-type: circle;
 }
 
+/* Assicurati che le immagini siano tutte delle stesse dimensioni */
 main > section > div > div > div > div:first-child {
-	height: 150px; 
-	width: 150px;
+    height: 150px; 
+    width: 100%; /* Cambiato per rendere la larghezza responsiva */
+    max-width: 150px; /* Imposta una larghezza massima per evitare che diventino troppo grandi */
+    overflow: hidden; /* Nasconde le immagini che escono dal contenitore */
 }
+
+main > section img {
+    width: 100%; /* Rende l'immagine sempre al 100% della larghezza del suo contenitore */
+    height: 100%; /* Assicura che l'immagine copra tutta l'area */
+    object-fit: cover; /* Adatta l'immagine mantenendo il suo rapporto di aspetto */
+}
+
 
 button:hover {
 	background-color: #0056b3;
