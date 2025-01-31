@@ -216,6 +216,18 @@ class DatabaseHelper
         return $data;
     }
 
+    public function getReviewsByID($id) { 
+        $query = "SELECT user, rating, text FROM `review` WHERE product=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
+    }
+
     //NOTIFICATION
     public function addNotification($text, $user)
     {

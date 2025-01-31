@@ -7,6 +7,8 @@ if($_POST["action"] == 1) {
     $result = $dbh->getBestSellers($_POST["n"]);
 } else if($_POST["action"] == 3) {
     $result = $dbh->getBestRatings($_POST["n"]);
+} else if($_POST["action"] == "reviews") {
+    $result = $dbh->getReviewsByID($_POST["id"]);
 }
 
 header('Content-Type: application/json');
