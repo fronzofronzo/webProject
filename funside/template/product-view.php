@@ -16,7 +16,7 @@ function generateStars($rating) {
 ?>
 
 <main>
-	<section>
+	<section class="container-fluid">
 		<h2 class="mb-3"><?php echo $product["name"]?></h2>
 		<div class="row">
 			<div class="col-6 text-center">
