@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `funside`.`product` (
   `price` DECIMAL(9,2) NOT NULL,
   `description` VARCHAR(512) NOT NULL,
   `brand` VARCHAR(50) NOT NULL,
-  `avgrating` DECIMAL(1,1) DEFAULT NULL,
+  `avgrating` DECIMAL(5,2) DEFAULT NULL,
   `minnumplayers` SMALLINT,
   `maxnumplayers` SMALLINT,
   `numpages` INT,

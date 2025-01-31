@@ -153,3 +153,41 @@ INSERT INTO `funside`.`review` (`product`, `user`, `rating`, `text`) VALUES
 (4, 'mjohnson', 3, 'Not as durable as I expected.'),
 (5, 'rthompson', 4, 'Classic game, always a good time.'),
 (6, 'emiller', 5, 'Great graphics and gameplay.');
+
+INSERT INTO funside.review (product, user, rating, text) VALUES
+(1, 'jdoe', 5, 'Un classico intramontabile! Perfetto per allenare la mente.'),
+(2, 'mjohnson', 4, 'Divertente da giocare con amici, anche se a volte le regole sono un po caotiche.'),
+(3, 'bwhite', 5, 'Sempre una sfida stimolante! Non mi stanco mai di risolverlo.'),
+(4, 'klee', 3, 'Buono per il parco, ma la qualità della plastica potrebbe essere migliore.'),
+(5, 'lgarcia', 5, 'Un must-have per le serate in famiglia! Adoriamo le sfide.'),
+(6, 'nmartin', 4, 'Grafica migliorata, ma il gameplay sembra sempre lo stesso.'),
+(7, 'asmith', 5, 'Perfetto per i bambini, ma anche per gli adulti appassionati di costruzioni.'),
+(8, 'dwilliams', 4, 'Molto strategico, ma le prime partite possono essere difficili da capire.'),
+(9, 'rthompson', 5, 'Uno dei migliori giochi di corse, super divertente con gli amici!'),
+(10, 'nicho', 3, 'Divertente, ma la qualità del legno potrebbe essere migliore.'),
+(11, 'emiller', 5, 'Perfetto per gli amanti delle parole! Stimola la creatività.'),
+(12, 'jdoe', 4, 'Un gioco originale e imprevedibile, ma può essere un po frustrante.'),
+(13, 'mjohnson', 5, 'Perfetto per chi ama la logica! Ottimo libro di puzzle.'),
+(14, 'bwhite', 4, 'Il set è buono, ma le racchette potrebbero essere più resistenti.'),
+(15, 'lgarcia', 5, 'Adrenalina pura! Uno dei migliori giochi di guerra.'),
+(16, 'nmartin', 5, 'Regalo perfetto per i bambini, molto morbido e di alta qualità.'),
+(17, 'asmith', 4, 'Grande classico della strategia, anche se le partite possono essere lunghe.'),
+(18, 'dwilliams', 5, 'Gioco incredibile! Il mondo aperto è spettacolare.'),
+(19, 'rthompson', 4, 'Ottimo gioco per sfidare amici e famiglia, molto coinvolgente.'),
+(20, 'nichoA', 5, 'Divertentissimo, perfetto per le feste!'),
+(21, 'klee', 4, 'Buon kit per principianti, ma le carte avanzate sono difficili da trovare.'),
+(22, 'emiller', 5, 'Esperienza fantastica! Sembra davvero di essere in un escape room.'),
+(23, 'jdoe', 3, 'Molto colorato e divertente, ma il vento deve essere perfetto.'),
+(24, 'mjohnson', 5, 'Fantastico battle royale, grafica e gameplay spettacolari!'),
+(25, 'bwhite', 4, 'I bambini lo adorano! Stimola la creatività in modo divertente.');
+
+
+UPDATE funside.product 
+SET avgrating = (
+    SELECT AVG(rating) 
+    FROM funside.review 
+    WHERE funside.review.product = funside.product.idproduct
+) 
+WHERE idproduct IN (
+    SELECT DISTINCT product FROM funside.review
+);

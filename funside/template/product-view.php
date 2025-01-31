@@ -23,7 +23,7 @@ function generateStars($rating) {
 		</h2>
 		<div class="row">
 			<div class="col-12 col-md-6 text-center mb-3">
-				<img src="./upload/<?php echo $product["image"]?>" class="object-fit-cover border rounded" alt="<?php echo $product["name"]?>"> 
+				<img src="./upload/<?php echo $product["image"]?>" class=" border rounded" alt="<?php echo $product["name"]?>"> 
 			</div>
 			<div class="col-12 col-md-6 text-center">
 				<div class="row mb-3">
@@ -50,23 +50,21 @@ function generateStars($rating) {
 				</div>
 			</div>
 		</div>
-		</section>
-		<section class="container-fluid">
+	</section>
+	<section class="container-fluid">
 		<div class="tabs">
-				<div class="tab-buttons">
-					<button class="tab-button active" data-tab="description">Descrizione</button>
-					<button class="tab-button" data-tab="reviews">Recensioni</button>
-				</div>
+			<div class="tab-buttons">
+				<button class="tab-button active" data-tab="description">Descrizione</button>
+				<button class="tab-button" data-tab="reviews">Recensioni</button>
+			</div>
 			<div class="tab-content">
 				<div class="tab-pane active" id="description">
 					<!-- Contenuto della descrizione -->
 					<p><?php echo $product["description"]?></p>
 				</div>
-				<div class="tab-pane" id="reviews">
-					<!-- Contenuto delle recensioni -->
-					<p>Queste sono le recensioni degli utenti.</p>
+				<div class="tab-pane " id="reviews">
 				</div>
 			</div>
 		</div>
-		</section>
+	</section>
 </main>
