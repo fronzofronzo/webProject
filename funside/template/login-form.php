@@ -13,7 +13,7 @@
                     <div class="flex-grow-1 me-2">
                         <input type="password" class="form-control" id="loginpassword" placeholder="Password" required>
                     </div>
-                    <button type="button" class="btn btn-secondary" id="loginshow">Mostra</button>
+                    <button type="button" class="btn btn-secondary fa-solid fa-eye" id="loginshow"></button>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
@@ -47,7 +47,7 @@
                     <div class="flex-grow-1 me-2">
                         <input type="password" class="form-control" id="registerpassword" placeholder="Password" required>
                     </div>
-                    <button type="button" class="btn btn-secondary" id="registershow">Mostra</button>
+                    <button type="button" class="btn btn-secondary fa-solid fa-eye" id="registershow"></button>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Registrati</button>

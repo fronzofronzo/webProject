@@ -18,7 +18,8 @@ async function fetchData(url, formData) {
 function togglePasswordVisibility(button, passwordField) {
     const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
     passwordField.setAttribute("type", type);
-    const text = button.innerHTML === "Mostra" ? "Nascondi" : "Mostra";
+    button.classList.toggle("fa-eye");
+    button.classList.toggle("fa-eye-slash");
     button.innerHTML = text;
 }
 
