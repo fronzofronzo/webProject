@@ -25,7 +25,7 @@ function generateStars($rating) {
 			<div class="col-6 text-center">
 				<img src="<?php echo $product["image"]?>" alt="<?php echo $product["name"]?>"> 
 			</div>
-			<div class="col-6 text-center">
+			<div class="col-6 col-md-3 text-center">
 				<h3><?php echo $product["type"]?></h3>
 			</div>
 		</div>
@@ -55,5 +55,23 @@ function generateStars($rating) {
 				</button> 
 			</div>
 		</div>
+	</section>
+	<section class="container-fluid">
+	<div class="tabs">
+			<div class="tab-buttons">
+				<button class="tab-button active" data-tab="description">Descrizione</button>
+				<button class="tab-button" data-tab="reviews">Recensioni</button>
+			</div>
+		<div class="tab-content">
+			<div class="tab-pane active" id="description">
+				<!-- Contenuto della descrizione -->
+				<p><?php echo $product["description"]?></p>
+			</div>
+			<div class="tab-pane" id="reviews">
+				<!-- Contenuto delle recensioni -->
+				<p>Queste sono le recensioni degli utenti.</p>
+			</div>
+		</div>
+    </div>
 	</section>
 </main>
