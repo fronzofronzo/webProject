@@ -17,18 +17,43 @@ function generateStars($rating) {
 
 <main>
 	<section class="container-fluid">
-		<h2 class="mb-3"><?php echo $product["name"]?></h2>
+		<h2 class="mb-3">
+			<?php echo $product["name"]?>
+			<small class="text-body-secondary"><?php echo $product["brand"]?></small>
+		</h2>
 		<div class="row">
 			<div class="col-6 text-center">
 				<img src="<?php echo $product["image"]?>" alt="<?php echo $product["name"]?>"> 
 			</div>
-			<div class="col-3 text-center">
+			<div class="col-6 text-center">
 				<h3><?php echo $product["type"]?></h3>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-6"></div>
-			<div class="col-3 text-center"><p><?php echo generateStars($product["avgrating"]); ?></p></div>
+			<div class="col-6 col-md-3 text-center"><p><?php echo generateStars($product["avgrating"]); ?></p></div>
+		</div>
+		<div class="row">
+			<div class="col-6"></div>
+			<div class="col-6 col-md-3 text-center"><h4>€ <?php echo $product["price"]?></h4></div>
+		</div>
+		<div class="row">
+			<div class="col-2 col-md-6"></div>
+			<div class="d-inline-block col-3">
+				<label for="quantity" class="form-label fw-bold">Quantità:</label>
+				<select class="form-select border-primary rounded-3" id="quantity">
+					<option value="1" selected>1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+			</div>
+			<div class="col-3 d-grid" >
+				<button class="fa-solid fa-cart-plus border-primary rounded-3 btn btn-primary d-flex mt-auto ms-auto">
+					<div>Aggiungi al carrello</div>
+				</button> 
+			</div>
 		</div>
 	</section>
 </main>
