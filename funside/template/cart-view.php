@@ -1,8 +1,7 @@
-<main>
-    <section class="container-fluid">
-        <h2>Carrello</h2>
-        <div>
-            
-        </div>
-    </section>
-</main>
+
+<section class="container-fluid">
+    <h2>Carrello</h2>
+    <div>
+
+    </div>
+</section>

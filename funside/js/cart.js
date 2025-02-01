@@ -41,7 +41,10 @@ async function getProductsInCart() {
             console.log(result);
             result += html;
         }
-        div.innerHTML = result;
+        result += `<div class="d-grid gap-2 mx-2 p-3 d-md-flex justify-content-md-end">
+        <button class='submit btn btn-large btn-dark'>Vai al Checkout</button>
+        </div>`
+        div.innerHTML = result ;
     }
 }
 
