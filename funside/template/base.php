@@ -30,7 +30,7 @@
         <div class="container-fluid row">
             <button class="btn btn-light col-1"><a href="notification.php" class="fa-solid fa-bell" title='Notifications'></a></button>
             <button class="btn btn-light col-1"><a href="login.php" class="fa-solid fa-user" title="Account"></a></button>
-            <button class="btn btn-light col-1"><strong class="fa-solid fa-cart-shopping"></strong></button>
+            <button class="btn btn-light col-1"><a href="cart.php" class="fa-solid fa-cart-shopping" title="Cart"></a></button>
             <div class="col-8"></div>
             <button class="navbar-toggler col-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
