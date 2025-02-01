@@ -349,6 +349,16 @@ class DatabaseHelper
         return $data;
     }
 
-
+    public function getStatsOrders($anno) {
+        $query = "SELECT MONTH(o.dateorder) AS mese, SUM(od.quantity) AS quantita_totale FROM `funside`.`order` o JOIN `funside`.`orderdetail` od ON o.idorder = od.order WHERE YEAR(o.dateorder) = ? GROUP BY MONTH(o.dateorder) ORDER BY mese;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $anno);  
+        $stmt->execute(); 
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free();  // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
+    }
 }
 ?>
