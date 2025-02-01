@@ -8,6 +8,7 @@ if (isUserLoggedIn()) {
     } else {
         
         $templateParams["name"] = "template/admin.php";
+        $templateParams["js"] = array("js/admin.js");
     }
     $templateParams["title"] = "FunSide - " . $_SESSION["username"];
 } else {
