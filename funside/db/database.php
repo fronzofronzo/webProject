@@ -360,5 +360,21 @@ class DatabaseHelper
         $stmt->close();  // Chiudi lo statement
         return $data;
     }
+
+    //CART
+    public function getProductsInCart($user) {
+        $query = "SELECT product.name, cartdetail.quantity, product.image, product.price
+        FROM funside.cartdetail
+        JOIN funside.product ON cartdetail.product = product.idproduct
+        WHERE cartdetail.user = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $user);  
+        $stmt->execute(); 
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free();  // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
+    }
 }
 ?>
