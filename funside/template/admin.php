@@ -1,3 +1,9 @@
-<section>
+<section class="container-fluid">
     <h2>Admin</h2>
+</section>
+<section class="container-fluid">
+    <h2>grafico vendite</h2>
+    <div class="d-flex justify-content-center align-items-center w-100 vh-80">
+        <canvas id="grafico" class="w-100 h-100"></canvas>
+    </div>
 </section>
