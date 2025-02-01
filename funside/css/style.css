@@ -159,7 +159,7 @@ main section div div:nth-child(2) div:nth-child(4) select {
 }
 
 
-main section div div:nth-child(2) div:nth-child(5), .cartElement{ 
+main section div div:nth-child(2) div:nth-child(5){ 
 	display: flex;
 	align-items: baseline;
 	justify-content: center;
@@ -167,4 +167,13 @@ main section div div:nth-child(2) div:nth-child(5), .cartElement{
 
 main section div div:nth-child(2) div:nth-child(5) button { 
 	width: 50%;
+}
+
+.cartElement {
+	border-color: black;
+	border: 2px solid;
+	border-radius: 8px;
+	display: flex;
+	justify-content: center;
+  	align-items: center;
 }
