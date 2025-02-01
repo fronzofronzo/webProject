@@ -1,3 +1,13 @@
+function setProductCallback(buttons) {
+	buttons.forEach(button => {
+		button.addEventListener("click", function(event) {
+			let productID = event.target.getAttribute("data-id");
+			console.log(productID);
+			window.location.href = `./product.php?id=${productID}`;
+		});
+	});
+}
+
 function generateProducts(products) {
 	let result = "";
 	let limit = numProducts;
@@ -9,7 +19,7 @@ function generateProducts(products) {
 		<div class="p-2 col-4 col-md-2 mb-3">
 			<p>${products[i]["name"]}</p>
 			<p>${products[i]["price"]} €</p>
-			<button type="button" class="btn btn-secondary btn-sm" data-id="${products[i]["idproduct"]}" ">see more</button>
+			<button type="button" class="btn btn-secondary btn-sm" data-id="${products[i]["idproduct"]}" ">mostra piu' </button>
 		</div>`;
 		result += product;
 	}
@@ -20,6 +30,8 @@ function showProducts(products) {
 	console.log(products);
 	const main = document.querySelector("main > section > div:nth-child(3) > div ");
 	main.innerHTML = generateProducts(products);
+	let buttons = document.querySelectorAll("main > section > div:nth-child(3) > div > div > button");
+	setProductCallback(buttons);
 }
 
 async function getRandomProducts() {
@@ -113,13 +125,7 @@ async function init() {
 		showProducts(filteredProducts);
 	});
 	let buttons = document.querySelectorAll("main > section > div:nth-child(3) > div > div > button");
-	buttons.forEach(button => {
-		button.addEventListener("click", function(event) {
-			let productID = event.target.getAttribute("data-id");
-			console.log(productID);
-			window.location.href = `./product.php?id=${productID}`;
-		});
-	});
+	setProductCallback(buttons);
 }
 
 init();
