@@ -41,7 +41,11 @@ async function getProductsInCart() {
             console.log(result);
             result += html;
         }
-        result += `<div class="d-grid gap-2 mx-2 p-3 d-md-flex justify-content-md-end">
+        result += `<div class="d-grid gap-2 mx-2 p-3 d-flex justify-content-end">
+        <span class="icons"><strong class="fa-brands fa-apple-pay fa-lg fa-fw"></strong></span>
+        <span class="icons"><strong class="fa-brands fa-cc-paypal fa-lg fa-fw"></strong></span>
+        <span class="icons"><strong class="fa-brands fa-cc-visa fa-lg fa-fw"></strong></span>
+        <span class="icons"><strong class="fa-brands fa-google-pay fa-lg fa-fw"></strong></span>
         <button class='submit btn btn-large btn-dark'>Vai al Checkout</button>
         </div>`
         div.innerHTML = result ;
