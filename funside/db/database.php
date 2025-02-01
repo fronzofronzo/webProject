@@ -168,7 +168,7 @@ class DatabaseHelper
     //PRODUCT
     public function getRandomProducts()
     {
-        $query = "SELECT  idproduct, name, price, description, brand, type FROM funside.product ORDER BY RAND()";
+        $query = "SELECT  idproduct, name, price, description, brand, image, type FROM funside.product ORDER BY RAND()";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();

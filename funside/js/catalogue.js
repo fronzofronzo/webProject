@@ -16,10 +16,11 @@ function generateProducts(products) {
 	}
 	for(let i=0; i<limit; i++) {
 		let product = `
-		<div class="p-2 col-4 col-md-2 mb-3">
-			<p>${products[i]["name"]}</p>
+		<div class="p-2 col-4 col-md-2 mb-3 text-center">
+			<img src="./upload/${products[i]["image"]}" class="border border-black rounded homeImage" alt="${products[i]["name"]}">
+			<p class="fw-bold" >${products[i]["name"]}</p>
 			<p>${products[i]["price"]} €</p>
-			<button type="button" class="btn btn-secondary btn-sm" data-id="${products[i]["idproduct"]}" ">mostra piu' </button>
+			<button type="button" class="btn btn-secondary btn-sm" data-id="${products[i]["idproduct"]}" ">vedi</button>
 		</div>`;
 		result += product;
 	}
