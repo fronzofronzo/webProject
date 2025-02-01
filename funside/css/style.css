@@ -83,7 +83,7 @@ main > section > div > ul > li {
 }
 
 /* Assicurati che le immagini siano tutte delle stesse dimensioni */
-main > section > div > div > div > div:first-child {
+.homeImage {
     height: 150px; 
     width: 100%; /* Cambiato per rendere la larghezza responsiva */
     max-width: 150px; /* Imposta una larghezza massima per evitare che diventino troppo grandi */

@@ -63,6 +63,7 @@ function generateStars($rating) {
 					<p><?php echo $product["description"]?></p>
 				</div>
 				<div class="tab-pane " id="reviews">
+					
 				</div>
 			</div>
 		</div>
