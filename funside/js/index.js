@@ -76,7 +76,7 @@ function generateCategories(categories) {
     `;
     for (let i = 0; i < categories.length; i++) {
         let category = `
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2 d-flex flex-column justify-content-center">
+            <div class="homeImage col-6 col-sm-4 col-md-3 col-lg-2 d-flex flex-column justify-content-center">
                 <div class="h-150 w-150 d-flex justify-content-center">
                     <img src="${categories[i]["image"]}" class="img-thumbnail img-fluid object-fit-cover" alt="${categories[i]["type"]}" />
                 </div>
@@ -97,7 +97,7 @@ function generateProducts(products) {
     `;
     for (let i = 0; i < products.length; i++) {
         let bestseller = `
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2 d-flex flex-column justify-content-center">
+            <div class="homeImage col-6 col-sm-4 col-md-3 col-lg-2 d-flex flex-column justify-content-center">
                 <div class="d-flex justify-content-center">
                     <img src="${products[i]["image"]}" class="img-thumbnail img-fluid object-fit-cover" alt="${products[i]["name"]}" />
                 </div>

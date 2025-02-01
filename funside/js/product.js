@@ -13,6 +13,20 @@ async function fetchData(url, formData) {
     }
 }
 
+/*utility function to create stars valuation*/
+function generateStars(rating){
+    let fullStars = Math.floor(rating);  // Numero di stelle piene
+    let halfStar = (rating - fullStars) >= 0.5 ? 1 : 0; // Mezza stella se necessario
+    let emptyStars = 5 - (fullStars + halfStar); // Stelle vuote rimanenti
+
+    let starsHtml = '<i class="fa fa-star text-warning"></i>'.repeat(fullStars);  // Stelle piene
+    starsHtml += halfStar ? '<i class="fa fa-star-half-alt text-warning"></i>' : ''; // Mezza stella se serve
+    starsHtml += '<i class="fa fa-star text-secondary"></i>'.repeat(emptyStars); // Stelle vuote
+
+    return starsHtml;
+}
+
+
 function init() {
     document.querySelectorAll('.tab-button').forEach(button => {
         button.addEventListener('click', () => {
@@ -50,14 +64,18 @@ async function getDataReviews() {
     formData.append('action', 'reviews');
     formData.append('id', id);
 
-    const json = await fetchData(url, formData);
+    const reviews = await fetchData(url, formData);
     
-    if(json) {
-        let reviews = ""
-        for(let i=0; i<json.length; i++) {
-            reviews += `<p>${json[i]["user"]}<p>`
+    if(reviews) {
+        let rev = ""
+        for(let i=0; i<reviews.length; i++) {
+            rev += `<div class='border mx-2 my-2 p-3 rounded'>
+                <p class="fw-bold ">Username: ${reviews[i]["user"]}</p>
+                <p> ${reviews[i]["text"]}</p>
+                ${generateStars(reviews[i]["rating"])}
+            </div>`;
         }
-        div.innerHTML = reviews;
+        div.innerHTML = rev;
     }
 }
 
