@@ -27,7 +27,7 @@ async function getProductsInCart() {
         console.log(div);
         let result = "";
         for(let i=0; i<products.length; i++) {
-            let html = `<div class="row text-center">
+            let html = `<div class="row text-center border mx-2 my-2 p-3 rounded cartElement">
                 <div class='col-12 col-md-6'>
                     <h3>${products[i]["name"]}</h3>
                     <img src="./upload/${products[i]["image"]}" class="border rounded homeImage" alt="${products[i]["name"]}">

@@ -159,7 +159,7 @@ main section div div:nth-child(2) div:nth-child(4) select {
 }
 
 
-main section div div:nth-child(2) div:nth-child(5) { 
+main section div div:nth-child(2) div:nth-child(5), .cartElement{ 
 	display: flex;
 	align-items: baseline;
 	justify-content: center;
