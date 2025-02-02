@@ -18,6 +18,8 @@
 			}
 			
 		}
+	} else if($_POST["action"] == "removeProd") {
+		$dbh->removeProductFromCart($_POST["id"], $_SESSION["username"]);
 	}
 	header("Content-type: application/json");
 	echo json_encode($result);

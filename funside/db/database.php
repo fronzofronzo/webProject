@@ -392,5 +392,13 @@ class DatabaseHelper
             return ["success" => false, "error" => $e->getMessage()];
         }
     }
+
+    public function removeProductFromCart($product, $user) {
+        $query = "DELETE FROM funside.cartdetail WHERE product=? AND user = ? ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('is', $product, $user);
+        $stmt->execute(); 
+        $stmt->close();
+    }
 }
 ?>

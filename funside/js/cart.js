@@ -56,7 +56,13 @@ async function init() {
     await getProductsInCart();
     document.querySelectorAll('.btn-danger').forEach(btn => {
         btn.addEventListener('click', () => {
-            console.log(btn.getAttribute("data-id"));
+            const url = 'api/api-cart.php';
+            const formData = new FormData();
+            formData.append('action', 'removeProd');
+            formData.append('id', btn.getAttribute("data-id"));
+
+            fetchData(url, formData);
+            init();
         });
     });
 }
