@@ -47,7 +47,10 @@ function init() {
         });
     });
 
-    
+    let cartButton = document.querySelector("main section div div:nth-child(2) div button");
+    cartButton.addEventListener("click", function(e) {
+        console.log("Add to cart button pressed");
+    });
 }
 
 async function getDataReviews() {
