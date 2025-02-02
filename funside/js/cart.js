@@ -26,7 +26,10 @@ async function getProductsInCart() {
         let div = document.querySelector("main section div");
         console.log(div);
         let result = "";
+        let cartTotal=0;
         for(let i=0; i<products.length; i++) {
+            let totalProduct = products[i]["quantity"]*products[i]["price"];
+            cartTotal += totalProduct;
             let html = `<div class="row text-center mx-2 my-2 p-3 cartElement">
                 <div class='col-12 col-md-6'>
                     <h3>${products[i]["name"]}</h3>
@@ -34,7 +37,7 @@ async function getProductsInCart() {
                 </div>
                 <div class = "col-12 col-md-6 align-items-center">
                     <p class='mb-1'>Pezzi: ${products[i]["quantity"]}</p>
-                    <p class="fw-bold mb-1">${products[i]["quantity"]*products[i]["price"]}</p>
+                    <p class="fw-bold mb-1">${totalProduct}</p>
                     <button class="btn btn-danger" data-id="${products[i]["idproduct"]}">Rimuovi</button>
                 </div>
             </div>`;
@@ -42,6 +45,9 @@ async function getProductsInCart() {
             result += html;
         }
         result += `<div class="d-grid gap-2 mx-2 p-3 d-flex justify-content-end">
+            <h3>Prezzo totale: ${cartTotal}</h3>
+        </div>
+        <div class="d-grid gap-2 mx-2 p-3 d-flex justify-content-end">
         <span class="icons"><strong class="fa-brands fa-apple-pay fa-lg fa-fw"></strong></span>
         <span class="icons"><strong class="fa-brands fa-cc-paypal fa-lg fa-fw"></strong></span>
         <span class="icons"><strong class="fa-brands fa-cc-visa fa-lg fa-fw"></strong></span>
