@@ -26,7 +26,7 @@ async function getProductsInCart() {
         let div = document.querySelector("main section div");
         console.log(div);
         let result = "";
-        let cartTotal=0;
+        let cartTotal=0.0;
         for(let i=0; i<products.length; i++) {
             let totalProduct = products[i]["quantity"]*products[i]["price"];
             cartTotal += totalProduct;
