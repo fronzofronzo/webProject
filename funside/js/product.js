@@ -32,12 +32,27 @@ function getProductID() {
 }
 
 /* Function to add product to cart of the actual user */
-function addToCart() {
+async function addToCart(cartButton) {
+    const url = "api/api-cart.php";
+    const formData = new FormData();
+    formData.append("action", "addProducts");
+    formData.append("id", "getProductID"); 
 
+    const result = await fetchData(url, formData);
+
+    if(result) {
+        console.log(cartButton);
+        cartButton.setAttribute("data-bs-title", result["title"]);
+        cartButton.setAttribute("data-bs-content", result["message"]);
+
+        const popover = new bootstrap.Popover(cartButton);
+        popover.show();
+        setTimeout(() => popover.hide(), 2000);
+    }
 }
 
 
-function init() {
+async function init() {
     document.querySelectorAll('.tab-button').forEach(button => {
         button.addEventListener('click', () => {
             const tabName = button.getAttribute('data-tab');
@@ -57,13 +72,9 @@ function init() {
         });
     });
 
-    /* Initialized popovers */ 
-    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
-
     let cartButton = document.querySelector("main section div div:nth-child(2) div button");
     cartButton.addEventListener("click", function(e) {
-        console.log("Add to cart button pressed");
+        addToCart(cartButton);
     });
 }
 
