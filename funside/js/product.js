@@ -26,6 +26,16 @@ function generateStars(rating){
     return starsHtml;
 }
 
+/* Utility function to get the id of product showed in page*/
+function getProductID() {
+
+}
+
+/* Function to add product to cart of the actual user */
+function addToCart() {
+
+}
+
 
 function init() {
     document.querySelectorAll('.tab-button').forEach(button => {
