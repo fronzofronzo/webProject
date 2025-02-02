@@ -46,6 +46,8 @@ function init() {
             }
         });
     });
+
+    
 }
 
 async function getDataReviews() {
