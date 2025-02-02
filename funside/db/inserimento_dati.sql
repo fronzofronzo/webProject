@@ -191,3 +191,6 @@ SET avgrating = (
 WHERE idproduct IN (
     SELECT DISTINCT product FROM funside.review
 );
+
+INSERT INTO `funside`.`cartdetail` (product, user, quantity) VALUES
+(1, 'bwhite', 1)
