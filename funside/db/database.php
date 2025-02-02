@@ -376,5 +376,21 @@ class DatabaseHelper
         $stmt->close();  // Chiudi lo statement
         return $data;
     }
+
+    public function addProductToCart($product, $user, $quantity) { 
+        try {
+            $query = "INSERT INTO `funside`.`cartdetail` (product, user, quantity) VALUES
+            (?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt-> bind_param('isi', $product, $user, $quantity);
+            $stmt->execute(); 
+            $insertedId = $stmt->insert_id;
+            $stmt->close(); // Chiudi lo statement
+            return ["success" => true, "inserted_id" => $insertedId];
+            return $data;
+        } catch (Exception $e ) {
+            return ["success" => false, "error" => $e->getMessage()];
+        }
+    }
 }
 ?>

@@ -28,7 +28,16 @@ function generateStars(rating){
 
 /* Utility function to get the id of product showed in page*/
 function getProductID() {
+    // Ottieni la query string (tutto ciò che c'è dopo il ? nell'URL)
+    const queryString = window.location.search;
 
+    // Crea un oggetto URLSearchParams per analizzare i parametri della query
+    const urlParams = new URLSearchParams(queryString);
+
+    // Recupera il parametro 'id'
+    const id = urlParams.get('id');
+
+    return id
 }
 
 /* Function to add product to cart of the actual user */
@@ -36,7 +45,8 @@ async function addToCart(cartButton) {
     const url = "api/api-cart.php";
     const formData = new FormData();
     formData.append("action", "addProducts");
-    formData.append("id", "getProductID"); 
+    formData.append("id", getProductID()); 
+    formData.append("quantity", document.getElementById("quantity").value)
 
     const result = await fetchData(url, formData);
 
