@@ -35,7 +35,7 @@ async function getProductsInCart() {
                 <div class = "col-12 col-md-6 align-items-center">
                     <p class='mb-1'>Pezzi: ${products[i]["quantity"]}</p>
                     <p class="fw-bold mb-1">${products[i]["quantity"]*products[i]["price"]}</p>
-                    <button class="btn btn-danger">Rimuovi</button>
+                    <button class="btn btn-danger" data-id="${products[i]["idproduct"]}">Rimuovi</button>
                 </div>
             </div>`;
             console.log(result);
@@ -52,4 +52,13 @@ async function getProductsInCart() {
     }
 }
 
-getProductsInCart();
+async function init() {
+    await getProductsInCart();
+    document.querySelectorAll('.btn-danger').forEach(btn => {
+        btn.addEventListener('click', () => {
+            console.log(btn.getAttribute("data-id"));
+        });
+    });
+}
+
+init();

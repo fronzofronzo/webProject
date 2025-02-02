@@ -363,7 +363,7 @@ class DatabaseHelper
 
     //CART
     public function getProductsInCart($user) {
-        $query = "SELECT product.name, cartdetail.quantity, product.image, product.price
+        $query = "SELECT product.name, cartdetail.quantity, product.image, product.price, product.idproduct
         FROM funside.cartdetail
         JOIN funside.product ON cartdetail.product = product.idproduct
         WHERE cartdetail.user = ?";
