@@ -42,7 +42,7 @@ function generateStars($rating) {
 				</select>
 			</div>
 			<div class="row" >
-				<button class=" border-primary rounded-3 btn btn-primary " >
+				<button class=" border-primary rounded-3 btn btn-primary" data-bs-toggle="popover" data-bs-title="Informazione" data-bs-content="Prodotto aggiunto al carrello" >
 					<i class="fa-solid fa-cart-plus me-3"></i>
 					<div >Aggiungi al carrello</div>
 				</button> 

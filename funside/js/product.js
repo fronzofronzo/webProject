@@ -57,6 +57,10 @@ function init() {
         });
     });
 
+    /* Initialized popovers */ 
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+
     let cartButton = document.querySelector("main section div div:nth-child(2) div button");
     cartButton.addEventListener("click", function(e) {
         console.log("Add to cart button pressed");
