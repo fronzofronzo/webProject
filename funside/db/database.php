@@ -360,16 +360,37 @@ class DatabaseHelper
 
     public function getOrdersDetailsByOrderId($orderid)
     {
-        $query = "SELECT p.name AS name, od.quantity AS quantity, p.price AS price, p.image As image, (p.price * od.quantity) as total FROM `funside`.`orderdetail` od JOIN `funside`.`product` p ON od.product = p.idproduct WHERE od.order = ?";
+        // Correzione della sintassi della query SQL: aggiunta la virgola tra le colonne selezionate
+        $query = "SELECT p.idproduct AS id, p.name AS name, od.quantity AS quantity, p.price AS price, p.image AS image, (p.price * od.quantity) AS total
+                  FROM `funside`.`orderdetail` od
+                  JOIN `funside`.`product` p ON od.product = p.idproduct
+                  WHERE od.order = ?";
+        
+        // Prepara la query
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $orderid);  // Usa $orderid qui, non $username
-        $stmt->execute();  // Esegui la query
+        
+        // Associa il parametro $orderid al segnaposto (?)
+        $stmt->bind_param('i', $orderid);
+        
+        // Esegui la query
+        $stmt->execute();
+        
+        // Ottieni il risultato
         $result = $stmt->get_result();
+        
+        // Estrai tutti i risultati come array associativo
         $data = $result->fetch_all(MYSQLI_ASSOC);
-        $result->free();  // Libera la memoria
-        $stmt->close();  // Chiudi lo statement
+        
+        // Libera la memoria
+        $result->free();
+        
+        // Chiudi lo statement
+        $stmt->close();
+        
+        // Ritorna i dati
         return $data;
     }
+    
 
     public function getStatsOrders($anno) {
         $query = "SELECT MONTH(o.dateorder) AS mese, SUM(od.quantity) AS quantita_totale FROM `funside`.`order` o JOIN `funside`.`orderdetail` od ON o.idorder = od.order WHERE YEAR(o.dateorder) = ? GROUP BY MONTH(o.dateorder) ORDER BY mese;";

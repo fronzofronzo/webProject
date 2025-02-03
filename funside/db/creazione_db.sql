@@ -80,7 +80,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `funside`.`order` (
   `idorder` INT NOT NULL AUTO_INCREMENT,
-  `dateorder` DATE NOT NULL,
+  `dateorder` DATE NOT NULL DEFAULT CURRENT_DATE,
   `datedelivery` DATE DEFAULT NULL,
   `status` VARCHAR(50) NOT NULL DEFAULT 'ordinato'
   CHECK (`status` IN ('ordinato', 'spedito', 'in consegna', 'consegnato', 'sospeso', 'cancellato')),
@@ -101,6 +101,7 @@ CREATE TABLE IF NOT EXISTS `funside`.`orderdetail` (
   `product` INT NOT NULL,
   `order` INT NOT NULL,
   `quantity` INT NOT NULL,
+  `total` DECIMAL(9,2) NOT NULL,
   PRIMARY KEY (`product`, `order`),
   FOREIGN KEY (`product`)
   REFERENCES `funside`.`product` (`idproduct`)
@@ -120,6 +121,7 @@ CREATE TABLE IF NOT EXISTS `funside`.`cartdetail` (
   `product` INT NOT NULL,
   `user` VARCHAR(50) NOT NULL,
   `quantity` INT NOT NULL,
+  `total` DECIMAL(9,2) NOT NULL,
   PRIMARY KEY (`product`, `user`),
   FOREIGN KEY (`product`)
     REFERENCES `funside`.`product` (`idproduct`)
