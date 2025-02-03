@@ -71,6 +71,10 @@ async function init() {
             init();
         });
     });
+    const checkoutButton = document.querySelector("main section div div:nth-child(2) button");
+    checkoutButton.addEventListener("click", function() {
+        window.location.href = "./checkout.php";
+    });
 }
 
 init();
