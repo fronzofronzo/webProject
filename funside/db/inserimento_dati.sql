@@ -27,46 +27,41 @@ INSERT INTO `funside`.`address` (`user`, `add`) VALUES
 INSERT INTO `funside`.`producttype` (`type`, `description`, `image`) VALUES
 ('Boardgame', 'A family-friendly board game', 'boardgame.jpg'),
 ('Cardgame', 'A challenging card game', 'cardgame.jpeg'),
-('Puzzle', 'A complex jigsaw puzzle', 'puzzle.jpg'),
+('Puzzle', 'A complex jigsaw puzzle', 'puzzle.jpeg'),
 ('Outdoor', 'Outdoor sports equipment', 'outdoor.jpeg'),
 ('Videogame', 'An exciting video game', 'videogame.jpeg'),
 ('Toy', 'Fun and educational toys', 'toy.jpeg'),
 ('Strategy', 'Strategy-based board games', 'strategy.jpeg'),
-('Action', 'Action-packed video games', 'action.jpg'),
+('Action', 'Action-packed video games', 'action.png'),
 ('Educational', 'Educational games and puzzles', 'educational.jpeg'),
 ('Party', 'Games designed for parties', 'party.jpg');
 
 
 INSERT INTO `funside`.`product` (`name`, `price`, `description`, `brand`, `type`, `image`) VALUES
 ('Chess', 29.99, 'Classic chess set', 'GameMaster', 'Boardgame', 'chess.jpg'),
-('Uno', 9.99, 'Fun card game', 'Mattel', 'Cardgame', 'uno.jpg'),
-('Rubik Cube', 15.49, '3x3 Rubik cube', 'Rubik', 'Puzzle', 'rubik.jpg'),
-('Frisbee', 12.00, 'Outdoor frisbee', 'Wham-O', 'Outdoor', 'frisbee.jpg'),
-('Monopoly', 34.99, 'Board game of property trading', 'Hasbro', 'Boardgame', 'monopoly.jpg'),
-('FIFA 25', 59.99, 'Soccer video game', 'EA Sports', 'Videogame', 'fifa.jpg'),
-('LEGO City', 49.99, 'LEGO city building set', 'LEGO', 'Toy', 'lego.jpg'),
-('Catan', 39.99, 'Strategy board game', 'Catan Studios', 'Strategy', 'catan.jpg'),
-('Mario Kart', 54.99, 'Racing video game', 'Nintendo', 'Videogame', 'mario.jpg'),
-('Jenga', 14.99, 'Tower building game', 'Hasbro', 'Party', 'jenga.jpg'),
-('Scrabble', 24.99, 'Classic word game', 'Hasbro', 'Boardgame', 'scrabble.jpg'),
-('Exploding Kittens', 19.99, 'A strategic card game', 'Exploding Kittens LLC', 'Cardgame', 'exploding_kittens.jpg'),
-('Sudoku Puzzle Book', 10.99, 'Collection of Sudoku puzzles', 'PuzzleMasters', 'Puzzle', 'sudoku.jpg'),
-('Badminton Set', 29.99, 'Outdoor badminton set', 'Yonex', 'Outdoor', 'badminton.jpg'),
-('Call of Duty', 69.99, 'First-person shooter video game', 'Activision', 'Videogame', 'cod.jpg'),
-('Teddy Bear', 19.99, 'Soft and cuddly teddy bear', 'PlushWorld', 'Toy', 'teddy.jpg'),
-('Risk', 44.99, 'Strategy board game of world domination', 'Hasbro', 'Strategy', 'risk.jpg'),
-('Zelda: Breath of the Wild', 59.99, 'Open-world adventure video game', 'Nintendo', 'Videogame', 'zelda.jpg'),
-('Trivial Pursuit', 29.99, 'Classic quiz game', 'Hasbro', 'Educational', 'trivial.jpg'),
-('Twister', 22.99, 'Party game with physical challenges', 'Hasbro', 'Party', 'twister.jpg'),
-('Magic: The Gathering Starter Kit', 24.99, 'Collectible card game starter kit', 'Wizards of the Coast', 'Cardgame', 'mtg.jpg'),
-('Escape Room in a Box', 34.99, 'An at-home escape room experience', 'Mattel', 'Puzzle', 'escape_room.jpg'),
-('Kite', 15.99, 'Colorful outdoor kite', 'WindRider', 'Outdoor', 'kite.jpg'),
-('Fortnite', 49.99, 'Battle royale action game', 'Epic Games', 'Action', 'fortnite.jpg'),
-('Play-Doh Set', 14.99, 'Creative modeling clay for kids', 'Hasbro', 'Toy', 'playdoh.jpg'),
-('Carcassonne', 32.99, 'Tile-placement strategy board game', 'Z-Man Games', 'Strategy', 'carcassonne.jpg'),
-('Guitar Hero', 59.99, 'Music rhythm video game', 'Activision', 'Videogame', 'guitar_hero.jpg'),
-('Brain Quest', 18.99, 'Educational quiz game for kids', 'Workman Publishing', 'Educational', 'brain_quest.jpg'),
-('Cards Against Humanity', 29.99, 'Party card game for adults', 'Cards Against Humanity LLC', 'Party', 'cards_against_humanity.jpg');
+('Uno', 9.99, 'Fun card game', 'Mattel', 'Cardgame', 'uno.png'),
+('Rubik Cube', 15.49, '3x3 Rubik cube', 'Rubik', 'Puzzle', 'rubik.png'),
+('Frisbee', 12.00, 'Outdoor frisbee', 'Wham-O', 'Outdoor', 'frisbee.jpeg'),
+('Monopoly', 34.99, 'Board game of property trading', 'Hasbro', 'Boardgame', 'monopoly.jpeg'),
+('EA Sports FC25', 59.99, 'Soccer video game', 'EA Sports', 'Videogame', 'easportsfc25.jpeg'),
+('Catan', 39.99, 'Strategy board game', 'Catan Studios', 'Strategy', 'catan.jpeg'),
+('Mario Kart', 54.99, 'Racing video game', 'Nintendo', 'Videogame', 'mariokart.jpeg'),
+('Jenga', 14.99, 'Tower building game', 'Hasbro', 'Party', 'jenga.jpeg'),
+('Scrabble', 24.99, 'Classic word game', 'Hasbro', 'Boardgame', 'scrabble.jpeg'),
+('Exploding Kittens', 19.99, 'A strategic card game', 'Exploding Kittens LLC', 'Cardgame', 'explodingkittens.jpeg'),
+('Call of Duty BO3', 69.99, 'First-person shooter video game', 'Activision', 'Videogame', 'codbo3.jpeg'),
+('Risiko', 44.99, 'Strategy board game of world domination', 'Hasbro', 'Strategy', 'risiko.jpeg'),
+('Zelda: Breath of the Wild', 59.99, 'Open-world adventure video game', 'Nintendo', 'Videogame', 'zelda.jpeg'),
+('Trivial Pursuit', 29.99, 'Classic quiz game', 'Hasbro', 'Educational', 'trivial.jpeg'),
+('Twister', 22.99, 'Party game with physical challenges', 'Hasbro', 'Party', 'twister.jpeg'),
+('Escape Room in a Box', 34.99, 'An at-home escape room experience', 'Mattel', 'Puzzle', 'escaperoom.jpeg'),
+('Acquilone', 15.99, 'Colorful outdoor kite', 'WindRider', 'Outdoor', 'acquilone.jpeg'),
+('Fortnite', 49.99, 'Battle royale action game', 'Epic Games', 'Action', 'fortnite.jpeg'),
+('Play-Doh Set', 14.99, 'Creative modeling clay for kids', 'Hasbro', 'Toy', 'playdoh.jpeg'),
+('Carcassonne', 32.99, 'Tile-placement strategy board game', 'Z-Man Games', 'Strategy', 'carcassonne.jpeg'),
+('Guitar Hero', 59.99, 'Music rhythm video game', 'Activision', 'Videogame', 'guitarhero.jpeg'),
+('Brain Quest', 18.99, 'Educational quiz game for kids', 'Workman Publishing', 'Educational', 'brainquest.png'),
+('Cards Against Humanity', 29.99, 'Party card game for adults', 'Cards Against Humanity LLC', 'Party', 'cardsagainsthumanity.png');
 
 INSERT INTO `funside`.`address` (`user`, `add`) VALUES
 ('jdoe', '123 Main St, Anytown, CA 12345'),
@@ -146,6 +141,7 @@ INSERT INTO `funside`.`notification` (`title`, `text`, `isRead`, `order`, `user`
 
 
 
+-- Inserimenti delle review in inglese
 INSERT INTO `funside`.`review` (`product`, `user`, `rating`, `text`) VALUES
 (1, 'jdoe', 5, 'Excellent quality chess set!'),
 (2, 'asmith', 4, 'Fun card game, but could use more cards.'),
@@ -154,7 +150,8 @@ INSERT INTO `funside`.`review` (`product`, `user`, `rating`, `text`) VALUES
 (5, 'rthompson', 4, 'Classic game, always a good time.'),
 (6, 'emiller', 5, 'Great graphics and gameplay.');
 
-INSERT INTO funside.review (product, user, rating, text) VALUES
+-- Inserimenti delle review in italiano
+INSERT INTO `funside`.`review` (`product`, `user`, `rating`, `text`) VALUES
 (1, 'jdoe', 5, 'Un classico intramontabile! Perfetto per allenare la mente.'),
 (2, 'mjohnson', 4, 'Divertente da giocare con amici, anche se a volte le regole sono un po caotiche.'),
 (3, 'bwhite', 5, 'Sempre una sfida stimolante! Non mi stanco mai di risolverlo.'),
@@ -179,7 +176,8 @@ INSERT INTO funside.review (product, user, rating, text) VALUES
 (22, 'emiller', 5, 'Esperienza fantastica! Sembra davvero di essere in un escape room.'),
 (23, 'jdoe', 3, 'Molto colorato e divertente, ma il vento deve essere perfetto.'),
 (24, 'mjohnson', 5, 'Fantastico battle royale, grafica e gameplay spettacolari!'),
-(25, 'bwhite', 4, 'I bambini lo adorano! Stimola la creatività in modo divertente.');
+(24, 'bwhite', 4, 'I bambini lo adorano! Stimola la creatività in modo divertente.');
+
 
 
 UPDATE funside.product 
