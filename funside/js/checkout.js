@@ -14,7 +14,7 @@ async function fetchData(url, formData) {
     }
 }
 
-async function init() {
+async function getCartDetails() {
 	const url ="./api/api-cart.php";
 	const formData = new FormData();
 	formData.append("action", "getProducts");
@@ -38,6 +38,10 @@ async function init() {
 		console.log(result)
 		div.innerHTML += result;
 	}
+}
+
+async function init() {
+	await getCartDetails();
 }
 
 //Startup operations.
