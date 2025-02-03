@@ -244,7 +244,7 @@ function generateOrderDetails(order, orderDetails) {
                     <img src="${d.image}" class="img-thumbnail img-fluid" style="width: 80px; height: 80px; object-fit: cover;" alt="${d.name}"/>
                 </div>
                 <div>
-                    <p class="fw-bold">${d.name}</p>
+                    <a href="product.php?id=${d.id}" class="fw-bold">${d.name}</a>
                     <p>Quantità: ${d.quantity}</p>
                     <p>Prezzo unitario: ${d.price}€</p>
                     <p><strong>Prezzo totale:</strong> ${d.total}€</p>

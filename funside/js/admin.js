@@ -105,16 +105,27 @@ document.querySelector("main button").addEventListener("click", function (e) {
     logout();
 });
 
-async function getStatsOrders() {
+async function getStatsOrders($anno = 2025) {
     const url = "api/api-order.php";
     const formData = new FormData();
     formData.append('action', 'stats');
-    formData.append('anno', '2025');
+    formData.append('anno', $anno);
     const json = await fetchData(url, formData);
+    for (let i = 0; i < dati.length; i++) {
+        dati[i] = 0;
+    }
     for (let i = 0; i < json["stats"].length; i++) {
         dati[json["stats"][i]["mese"] - 1] = json["stats"][i]["quantita_totale"];
     }
     ridimensionaCanvas();
 }
 
-getStatsOrders()
+document.querySelectorAll("main > section:nth-child(2) input").forEach(input => {
+    input.addEventListener("click", function (e) {
+        const annoSelezionato = document.querySelector('input[name="anno"]:checked').value;
+        getStatsOrders(annoSelezionato);
+        document.querySelector("main > section:nth-child(2) > h2").innerHTML = "Grafico vendite " + annoSelezionato;
+    });
+});
+
+getStatsOrders();
