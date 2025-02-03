@@ -166,6 +166,27 @@ class DatabaseHelper
     }
 
     //PRODUCT
+
+    public function insertProduct($name, $price, $description, $category, $brand, $image) {
+        $query = "INSERT INTO product (name, price, description, brand, type, image) 
+                  VALUES (?, ?, ?, ?, ?, ?)";
+        
+        $stmt = $this->db->prepare($query);
+        
+        if (!$stmt) {
+            return [false, null]; // Fallimento nella preparazione della query
+        }
+    
+        // Associa i parametri ai segnaposto (s = stringa, d = decimale)
+        $stmt->bind_param("sdssss", $name, $price, $description, $brand, $category, $image);
+        
+        $success = $stmt->execute();
+        $productId = $stmt->insert_id; // Ottieni l'ID del prodotto appena inserito
+        $stmt->close(); // Chiudi lo statement
+        
+        return [$success, $success ? $productId : null];
+    }
+    
     public function getRandomProducts()
     {
         $query = "SELECT  idproduct, name, price, description, brand, image, type FROM funside.product ORDER BY RAND()";

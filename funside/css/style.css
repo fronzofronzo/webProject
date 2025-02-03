@@ -13,10 +13,6 @@ header  a, nav a, main > section a{
 	color:black;
 }
 
-main > section a:hover {
-	text-decoration: underline;
-}
-
 nav a {	
     width:100%;
     height: 100%;
