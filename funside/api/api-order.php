@@ -26,7 +26,10 @@ if (isset($_POST['action'])) {
             $totalPrice = 0.0;
             for($i=0; $i<count($products); $i++) {
                 $totalPrice += $products[$i]["price"]*$products[$i]["quantity"];
-                $dbh->registerOrder($totalPrice, $_SESSION["username"]);
+            }
+            $orderId = $dbh->registerOrder($totalPrice, $_SESSION["username"]);
+            for($i=0; $i<count($products); $i++) {
+                $dbh->registerOrderDetail($products[$i]["idproduct"], $orderId, $products[$i]["quantity"]);
             }
             break;
         default:

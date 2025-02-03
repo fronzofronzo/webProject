@@ -341,21 +341,19 @@ class DatabaseHelper
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ds', $totalPrice, $user);
         $stmt->execute();  // Esegui la query
-        $result = $stmt->get_result();
+        $result = $this->db->insert_id;
         $stmt->close();  // Chiudi lo statement
         return $result;
     }
 
     public function registerOrderDetail($product, $orderID, $quantity) {
-        $query = "INSERT INTO funside.orderdetail (product, order, quantity) VALUES (?,?,?)";
+        $query = "INSERT INTO `funside`.`orderdetail` (`product`, `order`, `quantity`) VALUES (?,?,?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('fs', $totalPrice, $user);
+        $stmt->bind_param('iii', $product,$orderID,$quantity);
         $stmt->execute();  // Esegui la query
-        $result = $stmt->get_result();
-        $data = $result->fetch_all(MYSQLI_ASSOC);
-        $result->free();  // Libera la memoria
+        
         $stmt->close();  // Chiudi lo statement
-        return $data;
+        return ;
     }
 
     public function getOrdersDetailsByOrderId($orderid)
