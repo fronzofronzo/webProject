@@ -58,9 +58,22 @@ async function getAdresses() {
 	}
 }
 
+async function addNewAddress(address) {
+	const url = "./api/api-client.php";
+	const formData = new FormData();
+	formData.append("action", "addnewaddress");
+	formData.append("address", address);
+
+	const result = await fetchData(url, formData);
+	if(result) {
+		await getAdresses();
+	}
+}
+
 async function init() {
 	await getCartDetails();
 	await getAdresses();
+	
 }
 
 //Startup operations.
