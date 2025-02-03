@@ -55,9 +55,15 @@ async function getProductsInCart() {
             <span class="icons"><strong class="fa-brands fa-cc-paypal fa-lg fa-fw"></strong></span>
             <span class="icons"><strong class="fa-brands fa-cc-visa fa-lg fa-fw"></strong></span>
             <span class="icons"><strong class="fa-brands fa-google-pay fa-lg fa-fw"></strong></span>
-            <button class='submit btn btn-large btn-dark'>Vai al Checkout</button>
+            <button class='submit btn btn-large btn-dark' >Vai al Checkout</button>
             </div>`
             div.innerHTML = result ;
+            const checkoutButton = document.querySelector("main section div div:nth-child(3) button");
+            console.log(checkoutButton);
+            checkoutButton.addEventListener("click", function() {
+                console.log("click");
+                window.location.href = "./checkout.php";
+            });
         }
     }
 }
@@ -75,10 +81,7 @@ async function init() {
             init();
         });
     });
-    const checkoutButton = document.querySelector("main section div div:nth-child(2) button");
-    checkoutButton.addEventListener("click", function() {
-        window.location.href = "./checkout.php";
-    });
+    
 }
 
 init();
