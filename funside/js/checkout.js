@@ -34,7 +34,7 @@ async function init() {
 				<p>Totale: ${subtotal}</p>
 			</div>`;
 		}
-		result += `<h3>Totale carrello: ${totalPrice}</h3>`;
+		result += `<h3 class="mt-4">Totale carrello: ${totalPrice}</h3>`;
 		console.log(result)
 		div.innerHTML += result;
 	}

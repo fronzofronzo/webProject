@@ -187,3 +187,7 @@ main section div div:nth-child(2) div:nth-child(5) button {
 	vertical-align: bottom;
 	margin-right: 5px;
 }
+
+.row {
+    max-width: 100%;
+}
