@@ -211,22 +211,30 @@ class DatabaseHelper
         return $data;
     }
 
-    public function getBestSellers($n)
+    public function getBestSellers($n = 3)
     {
-        $query = "SELECT name, price, image, avgrating, sum(d.quantity) as tot FROM funside.product p, funside.orderdetail d WHERE p.idproduct = d.product GROUP BY p.idproduct LIMIT ?";
+        $query = "
+            SELECT p.name, p.price, p.image, p.avgrating, SUM(d.quantity) as tot 
+            FROM funside.product p
+            INNER JOIN funside.orderdetail d ON p.idproduct = d.product
+            GROUP BY p.idproduct
+            ORDER BY tot DESC
+            LIMIT ?
+        ";    
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $n);
         $stmt->execute();
         $result = $stmt->get_result();
         $data = $result->fetch_all(MYSQLI_ASSOC);
-        $result->free(); // Libera la memoria
-        $stmt->close();  // Chiudi lo statement
+        $result->free();
+        $stmt->close();
         return $data;
     }
+    
 
     public function getBestRatings($n)
     {
-        $query = "SELECT name, price, image, avgrating FROM funside.product ORDER BY avgrating LIMIT ?";
+        $query = "SELECT name, price, image, avgrating FROM funside.product WHERE avgrating is not NULL ORDER BY avgrating DESC LIMIT ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $n);
         $stmt->execute();
