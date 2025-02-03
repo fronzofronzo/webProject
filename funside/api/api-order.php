@@ -34,6 +34,7 @@ if (isset($_POST['action'])) {
             for($i=0; $i<count($products); $i++) {
                 $dbh->registerOrderDetail($products[$i]["idproduct"], $orderId, $products[$i]["quantity"]);
             }
+            $dbh->emptyCart($_SESSION["username"]);
             break;
         default:
             $result["error"] = "Azione non valida";

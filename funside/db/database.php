@@ -440,5 +440,13 @@ class DatabaseHelper
         $stmt->execute(); 
         $stmt->close();
     }
+
+    public function emptyCart($user) {
+        $query = "DELETE FROM `funside`.`cartdetail` WHERE `user` = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $user);
+        $stmt->execute(); 
+        $stmt->close();
+    }
 }
 ?>
