@@ -17,7 +17,7 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
-            <p id="login-error"><?php if (isset($templateParams["message"])) { echo $templateParams["message"]; } ?></p>
+            <p id="login-error" class="mt-2"><?php if (isset($templateParams["message"])) { echo $templateParams["message"]; } ?></p>
         </form>
     </div>
 </section>

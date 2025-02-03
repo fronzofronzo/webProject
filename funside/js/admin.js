@@ -3,12 +3,12 @@ var canvas = document.getElementById("grafico");
 var ctx = canvas.getContext("2d");
 
 // Dati del grafico (12 mesi)
-var dati = [10, 25, 15, 40, 30, 20, 50, 45, 35, 60, 55, 70];
+var dati = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 // Funzione per ridimensionare il canvas
 function ridimensionaCanvas() {
     canvas.width = canvas.parentElement.clientWidth;
-    canvas.height = canvas.parentElement.clientHeight;
+    canvas.height = 300;
     disegnaGrafico();
 }
 
@@ -74,9 +74,6 @@ function disegnaPunti() {
 // Ridimensiona il canvas e disegna il grafico
 window.addEventListener("resize", ridimensionaCanvas);
 
-// Chiamata iniziale per adattare il canvas alle dimensioni
-ridimensionaCanvas();
-
 async function fetchData(url, formData) {
     try {
         const response = await fetch(url, {
@@ -107,3 +104,17 @@ document.querySelector("main button").addEventListener("click", function (e) {
     e.preventDefault();
     logout();
 });
+
+async function getStatsOrders() {
+    const url = "api/api-order.php";
+    const formData = new FormData();
+    formData.append('action', 'stats');
+    formData.append('anno', '2024');
+    const json = await fetchData(url, formData);
+    for (let i = 0; i < json["stats"].length; i++) {
+        dati[json["stats"][i]["mese"] - 1] = json["stats"][i]["quantita_totale"];
+    }
+    ridimensionaCanvas();
+}
+
+getStatsOrders()

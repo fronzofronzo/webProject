@@ -14,6 +14,9 @@ if (isset($_POST['action'])) {
                 }
             }
             break;
+        case 'stats':
+            $result['stats'] = $dbh->getStatsOrders($_POST["anno"]);
+            break;
         default:
             $result["error"] = "Azione non valida";
     }
