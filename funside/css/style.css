@@ -149,11 +149,6 @@ main > section img {
 	height: 150px;
 }
 
-main > section div div:nth-child(2) div:nth-child(4) { 
-	display: flex;
-	align-items: baseline;
-	justify-content: center;
-}
 
 main > section div div:nth-child(2) div:nth-child(4) select { 
 	width: 50%;
@@ -161,6 +156,12 @@ main > section div div:nth-child(2) div:nth-child(4) select {
 
 main > section div div:nth-child(2) div:nth-child(5) button { 
 	width: 50%;
+}
+
+.productSubmitCommand {
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
 }
 
 .cartElement {

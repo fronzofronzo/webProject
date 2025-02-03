@@ -31,7 +31,7 @@ function generateStars($rating) {
 			<div class="row mb-3 text-center"><p><?php echo generateStars($product	["avgrating"]); ?></p>
 			</div>
 			<div class="row mb-3 text-center"><h4>€ <?php echo $product["price"]?></h4></div>
-			<div class="row mb-3 ">
+			<div class="row mb-3 productSubmitCommand">
 				<label for="quantity" class="form-label fw-bold">Quantità:</label>
 				<select class="form-select border-primary rounded-3" id="quantity">
 					<option value="1" selected>1</option>
@@ -41,7 +41,7 @@ function generateStars($rating) {
 					<option value="5">5</option>
 				</select>
 			</div>
-			<div class="row" >
+			<div class="row productSubmitCommand" >
 				<button class=" border-primary rounded-3 btn btn-primary" data-bs-toggle="popover" data-bs-title="Informazione" data-bs-content="Prodotto aggiunto al carrello" data-bs-placement="bottom" >
 					<i class="fa-solid fa-cart-plus me-3"></i>
 					<div >Aggiungi al carrello</div>
