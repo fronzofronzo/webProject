@@ -1,5 +1,5 @@
 <section class="container-fluid">
-    <h2>Admin</h2>
+    <h2>Admin: <?php echo $_SESSION["username"]?></h2>
     <div><button type="submit" class="btn btn-primary">Logout</button></div>
 </section>
 <section class="container-fluid">
@@ -23,6 +23,11 @@
 </section>
 <section class="container-fluid">
     <h2>Gestisci prodotti</h2>
+    <div class="d-flex flex-row">
+    <button class="btn btn-primary">Inserisci un nuovo prodotto</button>
+    <button class="btn">Modifica un prodotto</button>
+    <button class="btn">Elimina un prodotto</button>
+    </div>
 </section>
 <section class="container-fluid">
     <h2>Gestisci ordini</h2>
