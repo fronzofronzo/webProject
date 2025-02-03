@@ -11,6 +11,10 @@ if($_POST["action"] == 1) {
     $result = $dbh->getReviewsByID($_POST["id"]);
 }
 
+for ($i = 0; $i < count($result); $i++) {
+    $result[$i]["image"] = UPLOAD_DIR.$result[$i]["image"];
+}
+
 header('Content-Type: application/json');
 echo json_encode($result);
 ?>
