@@ -20,7 +20,7 @@
 		</form>
 	</div>
 	<div class="row mx-2 border rounded border-black mt-4 checkoutContainer p-2" >
-	<div class="d-flex align-items-center justify-content-center " >
+		div class="d-flex align-items-center justify-content-center " >
 			<i class="fa-solid fa-down-long"></i><strong class="mx-2">Seleziona il metodo di pagamento</strong><i class="fa-solid fa-down-long"></i>
 		</div>
 		<div class="form-check">

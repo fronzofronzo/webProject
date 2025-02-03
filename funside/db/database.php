@@ -239,11 +239,11 @@ class DatabaseHelper
         return $data;
     }
 
-    public function addNotificationAboutAnOrder($text, $user, $order)
+    public function addNotificationAboutAnOrder($text, $user, $order, $title)
     {
-        $query = "INSERT INTO funside.notification (text, user, order) VALUES (?, ?, ?)";
+        $query = "INSERT INTO funside.notification (title, text, user, order) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ssi', $text, $user, $order);
+        $stmt->bind_param('sssi',$title, $text, $user, $order);
         $data = $stmt->execute();
         $stmt->close();  // Chiudi lo statement
         return $data;
@@ -328,6 +328,28 @@ class DatabaseHelper
         $query = "SELECT idorder, dateorder, datedelivery, status, totalprice, `user` FROM `funside`.`order` WHERE `user` = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
+        $stmt->execute();  // Esegui la query
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free();  // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
+    }
+
+    public function registerOrder($totalPrice, $user) {
+        $query = "INSERT INTO funside.order (totalPrice, user) VALUES (?,?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ds', $totalPrice, $user);
+        $stmt->execute();  // Esegui la query
+        $result = $stmt->get_result();
+        $stmt->close();  // Chiudi lo statement
+        return $result;
+    }
+
+    public function registerOrderDetail($product, $orderID, $quantity) {
+        $query = "INSERT INTO funside.orderdetail (product, order, quantity) VALUES (?,?,?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('fs', $totalPrice, $user);
         $stmt->execute();  // Esegui la query
         $result = $stmt->get_result();
         $data = $result->fetch_all(MYSQLI_ASSOC);

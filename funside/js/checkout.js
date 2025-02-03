@@ -19,7 +19,8 @@ async function getCartDetails() {
 	const formData = new FormData();
 	formData.append("action", "getProducts");
 
-	const products = await fetchData(url, formData);
+	products = await fetchData(url, formData);
+	console.log(products);
 	if(products) {
 		let div = document.querySelector("main section div div");
 		let result = "";
@@ -70,16 +71,30 @@ async function addNewAddress(address) {
 	}
 }
 
+async function registerOrder() {
+	const url = "./api/api-order.php";
+	const formData = new FormData();
+	formData.append("action", "registerOrder");
+	formData.append("products", JSON.stringify(products));
+
+	await fetchData(url, formData);
+}
+
 async function init() {
 	await getCartDetails();
 	await getAdresses();
-	const submitButton = document.querySelector("main section div form div button");
-	submitButton.addEventListener("click", function() {
+	const addressSubmitButton = document.querySelector("main section div form div button");
+	addressSubmitButton.addEventListener("click", function() {
 		const addressLabel = document.getElementById("address");
 		console.log(addressLabel.value);
 		addNewAddress(addressLabel.value);
 	});
+	const registerOrderButton = document.querySelector("main section div:nth-child(4) button");
+	registerOrderButton.addEventListener("click", function(e) {
+		registerOrder();
+	});
 }
 
 //Startup operations.
+let products = [];
 init();

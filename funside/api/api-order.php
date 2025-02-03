@@ -21,6 +21,14 @@ if (isset($_POST['action'])) {
         case 'stats':
             $result['stats'] = $dbh->getStatsOrders($_POST["anno"]);
             break;
+        case 'registerOrder':
+            $products = json_decode($_POST["products"], true);
+            $totalPrice = 0.0;
+            for($i=0; $i<count($products); $i++) {
+                $totalPrice += $products[$i]["price"]*$products[$i]["quantity"];
+                $dbh->registerOrder($totalPrice, $_SESSION["username"]);
+            }
+            break;
         default:
             $result["error"] = "Azione non valida";
     }
