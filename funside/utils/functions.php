@@ -75,4 +75,16 @@ function uploadImage($path, $image){
     return array($result, $msg);
 }
 
+function generateNotificationTitle($status, $order) {
+    return "Order #".$order." ".$status;
+}
+
+function generateNotificationText($status, $order) {
+    switch($status) {
+        case "ordinato":
+            return "Confermiamo il tuo ordine #".$order.".";
+        default:
+            return "null";
+    }
+}
 ?>

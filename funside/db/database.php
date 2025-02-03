@@ -241,7 +241,7 @@ class DatabaseHelper
 
     public function addNotificationAboutAnOrder($text, $user, $order, $title)
     {
-        $query = "INSERT INTO funside.notification (title, text, user, order) VALUES (?, ?, ?)";
+        $query = "INSERT INTO `funside`.`notification` (`title`, `text`, `user`, `order`) VALUES (?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sssi',$title, $text, $user, $order);
         $data = $stmt->execute();

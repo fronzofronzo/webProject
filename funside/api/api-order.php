@@ -28,6 +28,9 @@ if (isset($_POST['action'])) {
                 $totalPrice += $products[$i]["price"]*$products[$i]["quantity"];
             }
             $orderId = $dbh->registerOrder($totalPrice, $_SESSION["username"]);
+            $notificationTitle = generateNotificationTitle("ordinato", $orderId);
+            $notificationText = generateNotificationText("ordinato", $orderId);
+            $dbh->addNotificationAboutAnOrder($notificationText,$_SESSION["username"], $orderId, $notificationTitle);
             for($i=0; $i<count($products); $i++) {
                 $dbh->registerOrderDetail($products[$i]["idproduct"], $orderId, $products[$i]["quantity"]);
             }
