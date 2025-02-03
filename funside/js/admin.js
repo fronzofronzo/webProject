@@ -109,7 +109,7 @@ async function getStatsOrders() {
     const url = "api/api-order.php";
     const formData = new FormData();
     formData.append('action', 'stats');
-    formData.append('anno', '2024');
+    formData.append('anno', '2025');
     const json = await fetchData(url, formData);
     for (let i = 0; i < json["stats"].length; i++) {
         dati[json["stats"][i]["mese"] - 1] = json["stats"][i]["quantita_totale"];

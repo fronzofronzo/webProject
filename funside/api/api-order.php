@@ -11,8 +11,12 @@ if (isset($_POST['action'])) {
                 for ($i = 0; $i < count($result['orders']); $i++) {
                     $orderId = $result['orders'][$i]["idorder"];
                     $result['order_details'][$orderId] = $dbh->getOrdersDetailsByOrderId($orderId);
+                    for ($j = 0; $j < count($result['order_details'][$orderId]); $j++) {
+                        $result['order_details'][$orderId][$j]["image"] = UPLOAD_DIR . $result['order_details'][$orderId][$j]["image"];
+                    }
                 }
             }
+            
             break;
         case 'stats':
             $result['stats'] = $dbh->getStatsOrders($_POST["anno"]);

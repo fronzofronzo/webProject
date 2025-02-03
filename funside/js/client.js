@@ -9,9 +9,11 @@ async function fetchData(url, formData) {
         }
         return await response.json();
     } catch (error) {
-        console.log(error.message);
+        console.error("Errore durante la richiesta:", error.message);
+        return null;
     }
 }
+
 
 async function logout() {
     const url = "api/api-login.php";
@@ -250,10 +252,11 @@ function generateOrderDetails(order, orderDetails) {
             </section>`;
         });
     } else {
-        detailsOutput += `<p class="text-muted">Nessun dettaglio disponibile</p>`;
+        detailsOutput += `<p class="text-muted">Non ci sono prodotti in questo ordine.</p>`;
     }
     return detailsOutput;
 }
+
 
 document.querySelector("main > section:first-child div button").addEventListener("click", function (e) {
     e.preventDefault();

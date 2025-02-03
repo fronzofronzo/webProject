@@ -77,6 +77,7 @@ INSERT INTO `funside`.`address` (`user`, `add`) VALUES
 
 INSERT INTO `funside`.`order` (`dateorder`, `datedelivery`, `status`, `totalprice`, `user`) VALUES
 ('2024-01-15', '2024-01-18', 'consegnato', 59.99, 'jdoe'),
+('2024-01-15', '2024-01-18', 'consegnato', 59.99, 'jdoe'),
 ('2024-01-10', '2024-01-12', 'consegnato', 19.98, 'asmith'),
 ('2024-01-20', '2024-01-23', 'spedito', 34.99, 'bwhite'),
 ('2024-01-17', '2024-01-20', 'consegnato', 9.99, 'mjohnson'),

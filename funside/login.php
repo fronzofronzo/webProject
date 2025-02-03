@@ -9,6 +9,7 @@ if (isUserLoggedIn()) {
         
         $templateParams["name"] = "template/admin.php";
         $templateParams["js"] = array("js/admin.js");
+        $templateParams["annocorrente"] = date("Y");
     }
     $templateParams["title"] = "FunSide - " . $_SESSION["username"];
 } else {
