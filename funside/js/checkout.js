@@ -51,7 +51,7 @@ async function getAdresses() {
 		let result = "";
 		for(let i=0; i<adresses["address"].length; i++) {
 			result += `
-				<input type="radio" class="btn-check" name="options" id="option${i+1}" autocomplete="off">
+				<input type="radio" class="btn-check" name="adresses" id="option${i+1}" autocomplete="off">
 				<label class="btn btn-secondary" for="option${i+1}">${adresses["address"][i]["add"]}</label>
 			`;
 		}
@@ -80,6 +80,16 @@ async function registerOrder() {
 	await fetchData(url, formData);
 }
 
+function checkForms() {
+	let adresses = document.querySelectorAll("input[name='adresses']");
+	let isAdressChecked = Array.from(adresses).some(radio => radio.checked);
+
+	let payment = document.querySelectorAll("input[name='payment']");
+	let isPaymentChecked = Array.from(payment).some(radio => radio.checked);
+
+	return isAdressChecked && isPaymentChecked;
+}
+
 async function init() {
 	await getCartDetails();
 	await getAdresses();
@@ -91,7 +101,12 @@ async function init() {
 	});
 	const registerOrderButton = document.querySelector("main section div:nth-child(4) button");
 	registerOrderButton.addEventListener("click", function(e) {
-		registerOrder();
+		if(checkForms()){
+			let myModal = new bootstrap.Modal(document.getElementById("orderRegistred"));
+       		myModal.show();
+			registerOrder();
+		}
+
 	});
 }
 
