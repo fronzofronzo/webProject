@@ -387,7 +387,6 @@ class DatabaseHelper
             $insertedId = $stmt->insert_id;
             $stmt->close(); // Chiudi lo statement
             return ["success" => true, "inserted_id" => $insertedId];
-            return $data;
         } catch (Exception $e ) {
             return ["success" => false, "error" => $e->getMessage()];
         }
