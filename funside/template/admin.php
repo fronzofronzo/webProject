@@ -23,12 +23,13 @@
 </section>
 <section class="container-fluid">
     <h2>Gestisci prodotti</h2>
-    <div class="d-flex flex-row justify-content-between">
-        <a href="admin-product.php?mod=1" class="btn btn-primary me-2">Inserisci un nuovo prodotto</a>
-        <a href="admin-product.php?mod=2" class="btn btn-primary me-2">Modifica un prodotto</a>
-        <a href="admin-product.php?mod=3" class="btn btn-primary me-2">Elimina un prodotto</a>
-        <a href="admin-product.php?mod=4" class="btn btn-primary me-2">Visualizza prodotti</a>
+    <div class="d-flex flex-wrap justify-content-between">
+        <a href="admin-product.php?mod=1" class="btn btn-primary me-2 mb-2">Inserisci</a>
+        <a href="admin-product.php?mod=2" class="btn btn-primary me-2 mb-2">Modifica</a>
+        <a href="admin-product.php?mod=3" class="btn btn-primary me-2 mb-2">Elimina</a>
+        <a href="admin-product.php?mod=4" class="btn btn-primary me-2 mb-2">Visualizza</a>
     </div>
+
 </section>
 <section class="container-fluid">
     <h2>Gestisci ordini</h2>
