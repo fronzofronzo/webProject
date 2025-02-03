@@ -29,9 +29,9 @@
     </div>
     <nav class="navbar bg-body-tertiary ">
         <div class="container-fluid row">
-            <button class="btn btn-light col-1"><a href="notification.php" class="fa-solid fa-bell" title='Notifications'></a></button>
-            <button class="btn btn-light col-1"><a href="login.php" class="fa-solid fa-user" title="Account"></a></button>
-            <button class="btn btn-light col-1"><a href="cart.php" class="fa-solid fa-cart-shopping" title="Cart"></a></button>
+            <a href="notification.php" class="fa-solid fa-bell btn btn-light col-1" title='Notifications'></a>
+            <a href="login.php" class="fa-solid fa-user btn btn-light col-1" title="Account"></a>
+            <a href="cart.php" class="fa-solid fa-cart-shopping btn btn-light col-1" title="Cart"></a>
             <div class="col-8"></div>
             <button class="navbar-toggler col-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar" aria-label="Toggle navigation">

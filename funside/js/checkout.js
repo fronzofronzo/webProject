@@ -22,7 +22,6 @@ async function getCartDetails() {
 	const products = await fetchData(url, formData);
 	if(products) {
 		let div = document.querySelector("main section div div");
-		console.log(div);
 		let result = "";
 		let totalPrice = 0;
 		for(let i=0; i<products.length; i++) {
@@ -40,8 +39,28 @@ async function getCartDetails() {
 	}
 }
 
+async function getAdresses() {
+	const url = "./api/api-client.php";
+	const formData = new FormData();
+	formData.append("action", "getaddress");
+
+	const adresses = await fetchData(url, formData);
+	if(adresses) {
+		let div = document.querySelector("main section div form div:nth-child(2)");
+		let result = "";
+		for(let i=0; i<adresses["address"].length; i++) {
+			result += `
+				<input type="radio" class="btn-check" name="options" id="option${i+1}" autocomplete="off">
+				<label class="btn btn-secondary" for="option${i+1}">${adresses["address"][i]["add"]}</label>
+			`;
+		}
+		div.innerHTML += result;
+	}
+}
+
 async function init() {
 	await getCartDetails();
+	await getAdresses();
 }
 
 //Startup operations.
