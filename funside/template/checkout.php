@@ -10,10 +10,10 @@
 		</div>
 		<form class="row">
 			<div class="my-3 col-12 col-md-6">
-				<label for="adress" class="form-label">Indirizzo</label>
-				<input type="text" class="form-control" id="adress" aria-describedby="adressHelp">
-				<div id="emailHelp" class="form-text">Inserisci un nuovo indirizzo</div>
-				<button type="submit" class="btn btn-primary">Inserisci</button>
+				<label for="address" class="form-label">Indirizzo</label>
+				<input type="text" class="form-control" id="address" aria-describedby="adressHelp">
+				<div id="addressHelp" class="form-text">Inserisci un nuovo indirizzo</div>
+				<button type="button" class="btn btn-primary">Inserisci</button>
 			</div>
 			<div class="my-3 col-12 col-md-6">
 			</div>

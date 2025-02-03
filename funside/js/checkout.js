@@ -54,7 +54,7 @@ async function getAdresses() {
 				<label class="btn btn-secondary" for="option${i+1}">${adresses["address"][i]["add"]}</label>
 			`;
 		}
-		div.innerHTML += result;
+		div.innerHTML = result;
 	}
 }
 
@@ -73,7 +73,12 @@ async function addNewAddress(address) {
 async function init() {
 	await getCartDetails();
 	await getAdresses();
-	
+	const submitButton = document.querySelector("main section div form div button");
+	submitButton.addEventListener("click", function() {
+		const addressLabel = document.getElementById("address");
+		console.log(addressLabel.value);
+		addNewAddress(addressLabel.value);
+	});
 }
 
 //Startup operations.
