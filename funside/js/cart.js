@@ -58,10 +58,9 @@ async function getProductsInCart() {
             <button class='submit btn btn-large btn-dark' >Vai al Checkout</button>
             </div>`
             div.innerHTML = result ;
-            const checkoutButton = document.querySelector("main section div div:nth-child(3) button");
+            const checkoutButton = document.querySelector("main > section > div > div:last-child button")
             console.log(checkoutButton);
             checkoutButton.addEventListener("click", function() {
-                console.log("click");
                 window.location.href = "./checkout.php";
             });
         }
