@@ -24,7 +24,9 @@ if($_POST["action"] == 1) {
     } else {
         $result = $dbh->addReview($_SESSION["username"], $_POST["id"], $_POST["text"],$_POST["value"]);
     }
-}
+} else if ($_POST["action"] == "getall"){
+    $result = $dbh->getAllProducts();
+}   
 
 
 header('Content-Type: application/json');

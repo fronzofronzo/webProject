@@ -35,6 +35,7 @@
             <label class="form-check-label" for="flexRadioDefault2">
                 Default checked radio
             </label>
-        </div>
+        </div>        
+        <button class="btn btn-primary mt-2" id="buttonselectproduct">Modifica prodotto selezionato</button>
     </div>
 </section>
