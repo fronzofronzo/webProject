@@ -51,6 +51,7 @@ function generateStars($rating) {
 	</div>
 </section>
 <section class="container-fluid">
+	<h2 class="mb-3 border-bottom border-black border-4">Informazioni</h2>
 	<div class="tabs">
 		<div class="tab-buttons">
 			<button class="tab-button active" data-tab="description">Descrizione</button>
@@ -65,5 +66,37 @@ function generateStars($rating) {
 				
 			</div>
 		</div>
+	</div>
+</section>
+<section class="container-fluid">
+	<h2 class="mb-3 border-bottom border-black border-4">
+		Recensisci prodotto
+	</h2>
+	<div>
+		<form action="#">
+			<div class="form-group">
+				<label for="review-text">Inserisci testo della recensione</label>
+				<textarea class="form-control" name="review-text" id="review-text" placeholder="Inserisci la tua recensione"></textarea>
+			</div>
+			<div class="form-group my-2">
+				<p>
+				<input type="radio" id="star5" name="rating" value="5">
+				<label for="star5"><?php echo generateStars(5)?></label>
+				</p>
+				<p>
+				<input type="radio" id="star4" name="rating" value="4">
+				<label for="star4"><?php echo generateStars(4)?></label>
+				</p><p>
+				<input type="radio" id="star3" name="rating" value="3">
+				<label for="star3"><?php echo generateStars(3)?></label>
+				</p><p>
+				<input type="radio" id="star2" name="rating" value="2">
+				<label for="star2"><?php echo generateStars(2)?></label>
+				</p><p>
+				<input type="radio" id="star1" name="rating" value="1">
+				<label for="star1"><?php echo generateStars(1)?></label>
+				</p>
+			</div>
+		</form>
 	</div>
 </section>
