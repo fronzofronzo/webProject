@@ -43,13 +43,6 @@ if (!is_numeric($price) || $price <= 0) {
     exit;
 }
 
-// Check if the image was uploaded correctly
-if ($image["error"] !== UPLOAD_ERR_OK) {
-    $result["message"] = "Errore nell'upload dell'immagine.";
-    echo json_encode($result);
-    exit;
-}
-
 // Handle the image upload
 list($uploadSuccess, $uploadMessage) = uploadImage("." . UPLOAD_DIR, $image);
 

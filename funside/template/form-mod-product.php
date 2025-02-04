@@ -1,7 +1,7 @@
 <section class="container-fluid">
     <h2>Modifica prodotto: <?php echo $_GET["idproduct"]?> - <?php echo $_GET["nameproduct"]?></h2>
     <div>
-        <form id="formnuovoprodotto" name="nuovoprodotto" enctype="multipart/form-data">
+        <form id="formmodificaprodotto" name="modificaprodotto" enctype="multipart/form-data">
             <div class="form-group mb-2 d-flex">
                 <div class="d-flex-column flex-grow-1 me-2">
                     <label for="nameproduct">Nome prodotto</label>
@@ -34,7 +34,7 @@
                 <label for="imageproduct">Immagine</label>
                 <input type="file" class="form-control" id="imageproduct" name="imageproduct">
             </div>
-            <button type="submit" class="btn btn-primary display-inline-block">Inserisci</button>
+            <button type="submit" class="btn btn-primary display-inline-block">Modifica</button>
             <a href="admin-product.php?mod=2" class="btn btn-primary">Indietro</a>
             <p class="mt-2"></p>
         </form>

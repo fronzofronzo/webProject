@@ -80,7 +80,7 @@ class DatabaseHelper
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
-        
+
         $data = [];
         while ($row = $result->fetch_assoc()) {
             $data[] = [
@@ -88,13 +88,13 @@ class DatabaseHelper
                 "add" => $row["add"]
             ];
         }
-    
+
         $result->free();
         $stmt->close();
-    
+
         return $data;
     }
-    
+
 
     public function deleteAddressByIdAddress($idaddress)
     {
@@ -167,26 +167,27 @@ class DatabaseHelper
 
     //PRODUCT
 
-    public function insertProduct($name, $price, $description, $category, $brand, $image) {
+    public function insertProduct($name, $price, $description, $category, $brand, $image)
+    {
         $query = "INSERT INTO product (name, price, description, brand, type, image) 
                   VALUES (?, ?, ?, ?, ?, ?)";
-        
+
         $stmt = $this->db->prepare($query);
-        
+
         if (!$stmt) {
             return [false, null]; // Fallimento nella preparazione della query
         }
-    
+
         // Associa i parametri ai segnaposto (s = stringa, d = decimale)
         $stmt->bind_param("sdssss", $name, $price, $description, $brand, $category, $image);
-        
+
         $success = $stmt->execute();
         $productId = $stmt->insert_id; // Ottieni l'ID del prodotto appena inserito
         $stmt->close(); // Chiudi lo statement
-        
+
         return [$success, $success ? $productId : null];
     }
-    
+
     public function getRandomProducts()
     {
         $query = "SELECT  idproduct, name, price, description, brand, image, type FROM funside.product ORDER BY RAND()";
@@ -199,7 +200,8 @@ class DatabaseHelper
         return $data;
     }
 
-    public function getProductByID($id){
+    public function getProductByID($id)
+    {
         $query = "SELECT `name`, price, description, brand,avgrating, minnumplayers, maxnumplayers, numpages, `type`, image FROM funside.product WHERE idproduct = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
@@ -220,7 +222,7 @@ class DatabaseHelper
             GROUP BY p.idproduct
             ORDER BY tot DESC
             LIMIT ?
-        ";    
+        ";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $n);
         $stmt->execute();
@@ -230,7 +232,7 @@ class DatabaseHelper
         $stmt->close();
         return $data;
     }
-    
+
 
     public function getBestRatings($n)
     {
@@ -245,7 +247,8 @@ class DatabaseHelper
         return $data;
     }
 
-    public function getAllProducts() {
+    public function getAllProducts()
+    {
         $query = "SELECT idproduct, name, price, image, avgrating FROM funside.product";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
@@ -256,7 +259,25 @@ class DatabaseHelper
         return $data;
     }
 
-    public function getReviewsByID($id) { 
+    public function updateProductById($id, $field, $value)
+    {
+        switch ($field) {
+            case "nameproduct":
+                $query = "UPDATE funside.product SET name = ? WHERE idproduct = ?";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param('si', $value,$id);
+                $data = $stmt->execute();
+                break;
+                ;
+            default:
+                return false;
+        }        
+        $stmt->close();  // Chiudi lo statement
+        return $data;
+    }
+
+    public function getReviewsByID($id)
+    {
         $query = "SELECT user, rating, text FROM `review` WHERE product=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
@@ -268,16 +289,18 @@ class DatabaseHelper
         return $data;
     }
 
-    public function addReview($user, $product, $text, $value) {
-        try{$query = "INSERT INTO `funside`.`review` (`product`, `user`, `rating`, `text`)
+    public function addReview($user, $product, $text, $value)
+    {
+        try {
+            $query = "INSERT INTO `funside`.`review` (`product`, `user`, `rating`, `text`)
         VALUES (?, ?, ?, ?)";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('isis', $product, $user, $value, $text);
-        $stmt->execute();
-        $result = $stmt->get_result(); 
-        $stmt->close();
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('isis', $product, $user, $value, $text);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $stmt->close();
 
-        $query = "
+            $query = "
         UPDATE funside.product 
         SET avgrating = (
             SELECT AVG(rating) 
@@ -285,11 +308,11 @@ class DatabaseHelper
             WHERE funside.review.product = funside.product.idproduct
         ) 
         WHERE funside.product.idproduct = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $product);
-        $stmt->execute();
-        $stmt->close();
-        } catch (Exception $e ) {
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('i', $product);
+            $stmt->execute();
+            $stmt->close();
+        } catch (Exception $e) {
             return ["result" => false, "error" => $e->getMessage()];
         }
         return ["result" => true];
@@ -310,7 +333,7 @@ class DatabaseHelper
     {
         $query = "INSERT INTO `funside`.`notification` (`title`, `text`, `user`, `order`) VALUES (?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssi',$title, $text, $user, $order);
+        $stmt->bind_param('sssi', $title, $text, $user, $order);
         $data = $stmt->execute();
         $stmt->close();  // Chiudi lo statement
         return $data;
@@ -403,7 +426,8 @@ class DatabaseHelper
         return $data;
     }
 
-    public function registerOrder($totalPrice, $user) {
+    public function registerOrder($totalPrice, $user)
+    {
         $query = "INSERT INTO funside.order (totalPrice, user) VALUES (?,?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ds', $totalPrice, $user);
@@ -413,14 +437,15 @@ class DatabaseHelper
         return $result;
     }
 
-    public function registerOrderDetail($product, $orderID, $quantity) {
+    public function registerOrderDetail($product, $orderID, $quantity)
+    {
         $query = "INSERT INTO `funside`.`orderdetail` (`product`, `order`, `quantity`) VALUES (?,?,?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('iii', $product,$orderID,$quantity);
+        $stmt->bind_param('iii', $product, $orderID, $quantity);
         $stmt->execute();  // Esegui la query
-        
+
         $stmt->close();  // Chiudi lo statement
-        return ;
+        return;
     }
 
     public function getOrdersDetailsByOrderId($orderid)
@@ -430,38 +455,39 @@ class DatabaseHelper
                   FROM `funside`.`orderdetail` od
                   JOIN `funside`.`product` p ON od.product = p.idproduct
                   WHERE od.order = ?";
-        
+
         // Prepara la query
         $stmt = $this->db->prepare($query);
-        
+
         // Associa il parametro $orderid al segnaposto (?)
         $stmt->bind_param('i', $orderid);
-        
+
         // Esegui la query
         $stmt->execute();
-        
+
         // Ottieni il risultato
         $result = $stmt->get_result();
-        
+
         // Estrai tutti i risultati come array associativo
         $data = $result->fetch_all(MYSQLI_ASSOC);
-        
+
         // Libera la memoria
         $result->free();
-        
+
         // Chiudi lo statement
         $stmt->close();
-        
+
         // Ritorna i dati
         return $data;
     }
-    
 
-    public function getStatsOrders($anno) {
+
+    public function getStatsOrders($anno)
+    {
         $query = "SELECT MONTH(o.dateorder) AS mese, SUM(od.quantity) AS quantita_totale FROM `funside`.`order` o JOIN `funside`.`orderdetail` od ON o.idorder = od.order WHERE YEAR(o.dateorder) = ? GROUP BY MONTH(o.dateorder) ORDER BY mese;";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $anno);  
-        $stmt->execute(); 
+        $stmt->bind_param('i', $anno);
+        $stmt->execute();
         $result = $stmt->get_result();
         $data = $result->fetch_all(MYSQLI_ASSOC);
         $result->free();  // Libera la memoria
@@ -469,10 +495,11 @@ class DatabaseHelper
         return $data;
     }
 
-    public function getPendingOrders() {
+    public function getPendingOrders()
+    {
         $query = "SELECT idorder, dateorder, status, totalprice, user, suspended FROM `funside`.`order` WHERE status != 'consegnato' ";
         $stmt = $this->db->prepare($query);
-        $stmt->execute(); 
+        $stmt->execute();
         $result = $stmt->get_result();
         $data = $result->fetch_all(MYSQLI_ASSOC);
         $result->free();  // Libera la memoria
@@ -480,10 +507,11 @@ class DatabaseHelper
         return $data;
     }
 
-    public function getDeliveredOrders() {
+    public function getDeliveredOrders()
+    {
         $query = "SELECT idorder, dateorder, status, totalprice, user FROM `funside`.`order` WHERE status = 'consegnato' ";
         $stmt = $this->db->prepare($query);
-        $stmt->execute(); 
+        $stmt->execute();
         $result = $stmt->get_result();
         $data = $result->fetch_all(MYSQLI_ASSOC);
         $result->free();  // Libera la memoria
@@ -491,24 +519,26 @@ class DatabaseHelper
         return $data;
     }
 
-    public function modifyStatus($id, $status) {
-        try{
+    public function modifyStatus($id, $status)
+    {
+        try {
             $query = "UPDATE funside.order SET `status`= ? WHERE `idorder` = ? ";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('si', $status, $id);
-            $stmt->execute(); 
+            $stmt->execute();
         } catch (Exception $e) {
             return ["result" => false, "error" => $e->getMessage()];
         }
         return ["result" => true];
     }
 
-    public function toggleSuspension($id){ 
-        try{
+    public function toggleSuspension($id)
+    {
+        try {
             $query = "UPDATE funside.order SET `suspended`= NOT `suspended` WHERE `idorder` = ? ";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('i', $id);
-            $stmt->execute(); 
+            $stmt->execute();
         } catch (Exception $e) {
             return ["result" => false, "error" => $e->getMessage()];
         }
@@ -517,14 +547,15 @@ class DatabaseHelper
 
 
     //CART
-    public function getProductsInCart($user) {
+    public function getProductsInCart($user)
+    {
         $query = "SELECT product.name, cartdetail.quantity, product.image, product.price, product.idproduct
         FROM funside.cartdetail
         JOIN funside.product ON cartdetail.product = product.idproduct
         WHERE cartdetail.user = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $user);  
-        $stmt->execute(); 
+        $stmt->bind_param('s', $user);
+        $stmt->execute();
         $result = $stmt->get_result();
         $data = $result->fetch_all(MYSQLI_ASSOC);
         $result->free();  // Libera la memoria
@@ -532,34 +563,37 @@ class DatabaseHelper
         return $data;
     }
 
-    public function addProductToCart($product, $user, $quantity) { 
+    public function addProductToCart($product, $user, $quantity)
+    {
         try {
             $query = "INSERT INTO `funside`.`cartdetail` (product, user, quantity) VALUES
             (?, ?, ?)";
             $stmt = $this->db->prepare($query);
-            $stmt-> bind_param('isi', $product, $user, $quantity);
-            $stmt->execute(); 
+            $stmt->bind_param('isi', $product, $user, $quantity);
+            $stmt->execute();
             $insertedId = $stmt->insert_id;
             $stmt->close(); // Chiudi lo statement
             return ["success" => true, "inserted_id" => $insertedId];
-        } catch (Exception $e ) {
+        } catch (Exception $e) {
             return ["success" => false, "error" => $e->getMessage()];
         }
     }
 
-    public function removeProductFromCart($product, $user) {
+    public function removeProductFromCart($product, $user)
+    {
         $query = "DELETE FROM funside.cartdetail WHERE product=? AND user = ? ";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('is', $product, $user);
-        $stmt->execute(); 
+        $stmt->execute();
         $stmt->close();
     }
 
-    public function emptyCart($user) {
+    public function emptyCart($user)
+    {
         $query = "DELETE FROM `funside`.`cartdetail` WHERE `user` = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $user);
-        $stmt->execute(); 
+        $stmt->execute();
         $stmt->close();
     }
 }
