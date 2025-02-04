@@ -16,7 +16,7 @@ async function fetchData(url, formData) {
 }
 
 async function getProductsData() {
-    const url="api/api-products.php";
+    const url = "api/api-products.php";
     const formData = new FormData();
     formData.append('action', 'getall')
     const json = await fetchData(url, formData);
@@ -27,7 +27,25 @@ async function getProductsData() {
 }
 
 function viewProducts(products) {
-    
+    document.querySelector("section div:nth-child(4) div:nth-child(2)").innerHTML = generateProducts(products);
 }
 
-getProductsData();
+function generateProducts(products) {
+    let output = ``;
+    products.forEach(p => {
+        output += `
+        <div class="mb-1">
+         <input class="form-check-input" type="radio" name="productlist" id="${p.idproduct}">
+        <label class="form-check-label" for="${p.idproduct}">
+            ${p.idproduct} - ${p.name}
+        </label>
+        </div>
+        `;
+    });
+    return output;
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    getProductsData();
+});
