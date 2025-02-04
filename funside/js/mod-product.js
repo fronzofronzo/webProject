@@ -46,7 +46,7 @@ function generateProducts(products) {
 }
 
 function generateForm(id) {
-    console.log("form");
+    window.location.href = "../form-mod-product.php?id=" + id;
 }
 
 async function isValidId(idproduct) {
