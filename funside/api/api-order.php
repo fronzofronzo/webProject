@@ -39,6 +39,12 @@ if (isset($_POST['action'])) {
         case 'getPendingOrders':
             $result = $dbh->getPendingOrders();
             break; 
+        case 'change-status':
+            $result = $dbh->modifyStatus($_POST["order"], $_POST["status"]);
+            break;
+        case 'toggle-suspension':
+            $result = $dbh->toggleSuspension($_POST["order"]);
+            break;
         default:
             $result["error"] = "Azione non valida";
     }

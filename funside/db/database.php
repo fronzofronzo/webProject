@@ -469,6 +469,30 @@ class DatabaseHelper
         return $data;
     }
 
+    public function modifyStatus($id, $status) {
+        try{
+            $query = "UPDATE funside.order SET `status`= ? WHERE `idorder` = ? ";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('si', $status, $id);
+            $stmt->execute(); 
+        } catch (Exception $e) {
+            return ["result" => false, "error" => $e->getMessage()];
+        }
+        return ["result" => true];
+    }
+
+    public function toggleSuspension($id){ 
+        try{
+            $query = "UPDATE funside.order SET `suspended`= NOT `suspended` WHERE `idorder` = ? ";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('i', $id);
+            $stmt->execute(); 
+        } catch (Exception $e) {
+            return ["result" => false, "error" => $e->getMessage()];
+        }
+        return ["result" => true];
+    }
+
 
     //CART
     public function getProductsInCart($user) {
