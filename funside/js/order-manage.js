@@ -27,6 +27,19 @@ async function changeOrderStatus(id, status) {
     }
 }
 
+async function toggleSuspension(id) {
+    const url="./api/api-order.php";
+    const formData = new FormData();
+    formData.append("action", "toggle-suspension")
+    formData.append("order", id);
+
+    const result = await fetchData(url,formData);
+
+    if(result) {
+        init();
+    }
+}
+
 function nextStatus(status) {
     switch(status) {
         case 'ordinato':
@@ -69,6 +82,12 @@ async function init() {
         btn.addEventListener("click", async function(e) {
             changeOrderStatus(btn.getAttribute("id"), btn.getAttribute("value"));
     }));
+    let suspensionButtons = document.querySelectorAll(".suspendButton");
+    suspensionButtons.forEach(btn=> {
+        btn.addEventListener("click", async function(e) {
+            toggleSuspension(btn.getAttribute("id"));
+        })
+    });
 }
 
 init();
