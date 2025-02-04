@@ -23,19 +23,10 @@
         </form>
     </div>
     <div>
-        <p>Seleziona prodotto</p>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">
-                Default radio
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-            <label class="form-check-label" for="flexRadioDefault2">
-                Default checked radio
-            </label>
+        <div><p>Seleziona prodotto:</p></div>
+        <div class="ms-2 mb-2">
         </div>        
         <button class="btn btn-primary mt-2" id="buttonselectproduct">Modifica prodotto selezionato</button>
     </div>
 </section>
+
