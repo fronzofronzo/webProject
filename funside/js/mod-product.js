@@ -45,9 +45,16 @@ function generateProducts(products) {
     return output;
 }
 
-function generateForm(id) {
-    window.location.href = "../form-mod-product.php?id=" + id;
+function generateForm(idproduct, product) {
+    const url = `form-mod-product.php?idproduct=${encodeURIComponent(idproduct)}`
+              + `&nameproduct=${encodeURIComponent(product.name)}`
+              + `&price=${encodeURIComponent(product.price)}`
+              + `&description=${encodeURIComponent(product.description)}`
+              + `&type=${encodeURIComponent(product.type)}`
+              + `&brand=${encodeURIComponent(product.brand)}`;
+    window.location.href = url;
 }
+
 
 async function isValidId(idproduct) {
     const url = "api/api-products.php";
@@ -58,18 +65,19 @@ async function isValidId(idproduct) {
     if (json) {
         console.log(json);
         return json;
-    } else {
-        const id = document.querySelector("section p:first-of-type").innerHTML = "Id non valido";
     }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
     getProductsData();
-    document.querySelector("section button:first-of-type").addEventListener("click", function(e) {
+    document.querySelector("section button:first-of-type").addEventListener("click", async function(e) {
         e.preventDefault();
         const id = document.querySelector("section input:first-of-type").value;
-        if (isValidId(id)) {
-            generateForm(id);
+        const p = await isValidId(id);
+        if (p != null) {
+            generateForm(id, p);
+        } else {
+            document.querySelector("section p:first-of-type").innerHTML = "Id non valido";
         }
     });
 });

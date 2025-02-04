@@ -200,7 +200,7 @@ class DatabaseHelper
     }
 
     public function getProductByID($id){
-        $query = "SELECT `name`, price, description, brand,avgrating, minnumplayers, maxnumplayers, numpages, type, image FROM funside.product WHERE idproduct = ?";
+        $query = "SELECT `name`, price, description, brand,avgrating, minnumplayers, maxnumplayers, numpages, `type`, image FROM funside.product WHERE idproduct = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
