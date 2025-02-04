@@ -92,16 +92,18 @@ function generateCategories(categories) {
 }
 
 function generateProducts(products) {
+	
     let result = `
         <div class="row m-0">
     `;
     for (let i = 0; i < products.length; i++) {
+		console.log(products[i]['idproduct']);
         let bestseller = `
             <div class="col-6 col-sm-4 col-md-3 col-lg-2 d-flex flex-column justify-content-center">
                 <div class="homeImage d-flex justify-content-center">
                     <img src="${products[i]["image"]}" class="img-thumbnail img-fluid object-fit-cover" alt="${products[i]["name"]}" />
                 </div>
-                <div class="text-center">${products[i]["name"]}</div>
+                <div class="text-center"><a href="product.php?id=${products[i]["idproduct"]}">${products[i]["name"]}</a></div>
                 <div class="text-center">€ ${products[i]["price"]}</div>
                 <div class="text-center">Rating: ${products[i]["avgrating"]}</div>
             </div>
