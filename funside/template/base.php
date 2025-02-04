@@ -47,7 +47,7 @@
     </main>
     <footer class="text-center text-black py-3">
         <a class="me-3" href="">Contatti</a>
-        <a class="me-3" href="">Servizi</a>
+        <a class="me-3" href="services.php">Servizi</a>
         <a class="me-3" href="about-us.php">About us</a>
     </footer>
     <?php
