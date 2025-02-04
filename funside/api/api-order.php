@@ -41,6 +41,11 @@ if (isset($_POST['action'])) {
             break; 
         case 'change-status':
             $result = $dbh->modifyStatus($_POST["order"], $_POST["status"]);
+            if($result["result"]) {
+                $title = generateNotificationTitle($_POST["status"], $_POST["order"]);
+                $text = generateNotificationText($_POST["status"], $_POST["order"]);
+                $dbh->addNotificationAboutAnOrder($text, $_POST["user"], $_POST["order"], $title);
+            }
             break;
         case 'toggle-suspension':
             $result = $dbh->toggleSuspension($_POST["order"]);

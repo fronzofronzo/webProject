@@ -13,12 +13,13 @@ async function fetchData(url, formData) {
     }
 }
 
-async function changeOrderStatus(id, status) {
+async function changeOrderStatus(id, status, user) {
     const url="./api/api-order.php";
     const formData = new FormData();
     formData.append("action", "change-status")
     formData.append("order", id);
     formData.append("status", status);
+    formData.append("user", user);
 
     const result = await fetchData(url,formData);
 
@@ -68,7 +69,7 @@ async function init() {
                     <p> L'ordine si trova nello stato : ${orders[i]["status"]} ${orders[i]["suspended"] ? "(SOSPESO)" : ""}<p>
                 </div>
                 <div class="d-flex justify-content-end flex-grow-1" >
-                    <button class="btn btn-primary me-2 statusButton" id="${orders[i]["idorder"]}"  value ="${nextStatus(orders[i]["status"])}" ${orders[i]["suspended"] ? "disabled" : "" }>Passa a stato successivo</button>
+                    <button class="btn btn-primary me-2 statusButton" id="${orders[i]["idorder"]}"  value ="${nextStatus(orders[i]["status"])}" user="${orders[i]["user"]}" ${orders[i]["suspended"] ? "disabled" : "" }>Passa a stato successivo</button>
                     <button class="btn btn-danger suspendButton" id=${orders[i]["idorder"]}">${orders[i]["suspended"] ? "Riprendi" : "Sospendi"}</button>
                 </div>
              </div>
@@ -80,7 +81,7 @@ async function init() {
     let statusButtons = document.querySelectorAll(".statusButton");
     statusButtons.forEach(btn => 
         btn.addEventListener("click", async function(e) {
-            changeOrderStatus(btn.getAttribute("id"), btn.getAttribute("value"));
+            changeOrderStatus(btn.getAttribute("id"), btn.getAttribute("value"), btn.getAttribute("user"));
     }));
     let suspensionButtons = document.querySelectorAll(".suspendButton");
     suspensionButtons.forEach(btn=> {
