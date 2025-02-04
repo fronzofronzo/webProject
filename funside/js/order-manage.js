@@ -54,6 +54,30 @@ function nextStatus(status) {
     }
 }
 
+async function setDeliveredOrders() {
+    const url = "./api/api-order.php";
+    const formData = new FormData();
+    formData.append("action", "get-delivered-orders");
+
+    const delivered = await fetchData(url, formData);
+
+    if(delivered) {
+        let code = "";
+        for(let i=0; i<delivered.length; i++) {
+            code += `
+            <div class="d-flex p-3 align-items-center order-manage mt-4">  
+                <div> 
+                    <strong>Order #${delivered[i]["idorder"]}</strong>
+                    <p>Data ordine: ${delivered[i]["dateorder"]}</p>
+                    <p>Utente: ${delivered[i]["user"]}</p>
+                </div>
+             </div>
+            `;
+        }
+        document.querySelector("main section:nth-child(2) div").innerHTML = code;
+    }
+}
+
 async function init() {
     const url = "./api/api-order.php";
     const formData = new FormData();
@@ -92,6 +116,8 @@ async function init() {
             toggleSuspension(btn.getAttribute("id"), btn.getAttribute("user"), btn.getAttribute("value"));
         })
     });
+
+    await setDeliveredOrders();
 }
 
 init();
