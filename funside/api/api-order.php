@@ -61,6 +61,9 @@ if (isset($_POST['action'])) {
                 }
             }
             break;
+        case 'get-delivered-orders':
+            $result = $dbh->getDeliveredOrders();
+            break;
         default:
             $result["error"] = "Azione non valida";
     }
