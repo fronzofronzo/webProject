@@ -258,14 +258,30 @@ class DatabaseHelper
     }
 
     public function addReview($user, $product, $text, $value) {
-        $query = "INSERT INTO `funside`.`review` (`product`, `user`, `rating`, `text`)
+        try{$query = "INSERT INTO `funside`.`review` (`product`, `user`, `rating`, `text`)
         VALUES (?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('isis', $product, $user, $value, $text);
         $stmt->execute();
         $result = $stmt->get_result(); 
         $stmt->close();
-        return $result;
+
+        $query = "
+        UPDATE funside.product 
+        SET avgrating = (
+            SELECT AVG(rating) 
+            FROM funside.review 
+            WHERE funside.review.product = funside.product.idproduct
+            AND funside.review.product = ?
+        ) ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $product);
+        $stmt->execute();
+        $stmt->close();
+        } catch (Exception $e ) {
+            return ["success" => false, "error" => $e->getMessage()];
+        }
+        return ["success" => true];
     }
 
     //NOTIFICATION

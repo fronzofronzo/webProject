@@ -100,12 +100,14 @@ async function init() {
 
     let reviewButton = document.querySelector("main section:last-child div form button");
     reviewButton.addEventListener("click", function() {
-        console.log("Review recorded");
         let value = document.querySelector('input[name="rating"]:checked');
         let text = document.getElementById("review-text").value;
         if(value) {
             value = value.value;
-            saveReview(text, value);
+            if(saveReview(text, value)) {
+                let form = document.querySelector("main section form");
+                form.reset();
+            }
         }
     }); 
 }
