@@ -27,11 +27,14 @@
             <span class="text-body-secondary">Toggleable via the navbar brand.</span>
         </div>
     </div>
-    <nav class="navbar bg-body-tertiary ">
+    <nav class="navbar bg-body-tertiary border border-black">
         <div class="container-fluid row">
-            <a href="notification.php" class="fa-solid fa-bell btn btn-light col-1" title='Notifiche'></a>
+            <?php if(isUserLoggedIn() && isUserClient()) :?>
+                <a href="notification.php" class="fa-solid fa-bell btn btn-light col-1" title='Notifiche'></a>
+                <a href="cart.php" class="fa-solid fa-cart-shopping btn btn-light col-1" title="Carrello"></a>
+            <?php endif; ?>
             <a href="login.php" class="fa-solid fa-user btn btn-light col-1" title="Account"></a>
-            <a href="cart.php" class="fa-solid fa-cart-shopping btn btn-light col-1" title="Carrello"></a>
+            
             <a href="catalogue.php" class="fa-solid fa-bars btn btn-light col-1" title="Catalogo"></a>
         </div>
     </nav>
@@ -43,8 +46,9 @@
     ?>
     </main>
     <footer class="text-center text-black py-3">
-        <a href="">Contatti</a>
-        <a href="">Servizi</a>
+        <a class="me-3" href="">Contatti</a>
+        <a class="me-3" href="">Servizi</a>
+        <a class="me-3" href="about-us.php">About us</a>
     </footer>
     <?php
     if(isset($templateParams["js"])):
