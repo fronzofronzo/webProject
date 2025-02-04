@@ -45,13 +45,8 @@ function generateProducts(products) {
     return output;
 }
 
-function generateForm(idproduct, product) {
-    const url = `form-mod-product.php?idproduct=${encodeURIComponent(idproduct)}`
-              + `&nameproduct=${encodeURIComponent(product.name)}`
-              + `&price=${encodeURIComponent(product.price)}`
-              + `&description=${encodeURIComponent(product.description)}`
-              + `&type=${encodeURIComponent(product.type)}`
-              + `&brand=${encodeURIComponent(product.brand)}`;
+function generateForm(idproduct) {
+    const url = `form-mod-product.php?idproduct=${encodeURIComponent(idproduct)}`;
     window.location.href = url;
 }
 
@@ -73,9 +68,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("section button:first-of-type").addEventListener("click", async function(e) {
         e.preventDefault();
         const id = document.querySelector("section input:first-of-type").value;
-        const p = await isValidId(id);
-        if (p != null) {
-            generateForm(id, p);
+        const res = await isValidId(id);
+        if (res != null) {
+            generateForm(id);
         } else {
             document.querySelector("section p:first-of-type").innerHTML = "Id non valido";
         }
