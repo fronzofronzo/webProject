@@ -245,6 +245,17 @@ class DatabaseHelper
         return $data;
     }
 
+    public function getAllProducts() {
+        $query = "SELECT idproduct, name, price, image, avgrating FROM funside.product";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
+    }
+
     public function getReviewsByID($id) { 
         $query = "SELECT user, rating, text FROM `review` WHERE product=?";
         $stmt = $this->db->prepare($query);
