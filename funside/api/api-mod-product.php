@@ -1,55 +1,26 @@
 <?php
 require_once('../bootstrap.php');
 
-$result["modified"] = true;
+header('Content-Type: application/json');
 
-$required_fields = ["nameproduct", "priceproduct", "descriptionproduct", "brandproduct", "typeproduct"];
-
-foreach ($required_fields as $field) {
-    if (isset($_POST[$field]) && !empty(($_POST[$field]))) {
-        $result["modified"] = $dbh->updateProductById($_SESSION["idproduct"], $field, $_POST[$field]);
-    }
-}
-
-echo json_encode($result);
-exit;
-
-
-
-
-/*
-
-
-$name = trim($_POST["nameproduct"]);
-$price = filter_var($_POST["priceproduct"], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-$description = trim($_POST["descriptionproduct"]);
-$brand = trim($_POST["brandproduct"]);
-$type = trim($_POST["typeproduct"]);
-
-if (!is_numeric($price) || $price <= 0) {
-    $result["message"] = "Prezzo non valido";
-    echo json_encode($result);
+// Controllo se i parametri sono settati
+if (!isset($_SESSION["idproduct"], $_POST["field"], $_POST["val"])) {
+    echo json_encode(["error" => "Dati mancanti"]);
     exit;
 }
 
-// Handle the image upload
-
-
-// The name of the uploaded file
-
-// Insert the product into the database
-$modificationSuccess = $dbh->updateProductById($_GET["idproduct"], $name, $price, $description, $type, $brand);
-
-if ($modificationSuccess) {
-    $result["modified"] = true;
-    $result["message"] = "Prodotto inserito con successo";
-} else {
-    $result["message"] = "Errore durante l'inserimento del prodotto";
+// Controllo se i parametri sono vuoti
+if (empty($_SESSION["idproduct"]) || empty($_POST["field"]) || empty($_POST["val"])) {
+    echo json_encode(["error" => "Dati vuoti non ammessi"]);
+    exit;
 }
 
-// Return the response in JSON format
-header('Content-Type: application/json');
+$idproduct = trim($_SESSION["idproduct"]);
+$field = trim($_POST["field"]);
+$val = trim($_POST["val"]);
+
+// Eseguo l'aggiornamento
+$result["modified"] = $dbh->updateProductById($idproduct, $field, $val);
+
 echo json_encode($result);
 ?>
-
-*/

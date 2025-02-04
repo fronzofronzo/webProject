@@ -105,11 +105,11 @@ document.querySelector("main button").addEventListener("click", function (e) {
     logout();
 });
 
-async function getStatsOrders($anno = 2025) {
+async function getStatsOrders(anno = 2025) {
     const url = "api/api-order.php";
     const formData = new FormData();
     formData.append('action', 'stats');
-    formData.append('anno', $anno);
+    formData.append('anno', anno);
     const json = await fetchData(url, formData);
     for (let i = 0; i < dati.length; i++) {
         dati[i] = 0;

@@ -54,13 +54,23 @@ function showInputBox(field, text) {
             document.querySelector("main section button:first-of-type").addEventListener("click", function (e) {
                 e.preventDefault();
                 const val = document.querySelector("main section input").value;
-                //updateProduct(field, val);
-                console.log(field);
-                console.log(val);
-                console.log("premuto");
+                updateProduct(field, val);
             });
             break;
     }
+}
+
+async function updateProduct(field, val) {
+    const url = "api/api-mod-product.php";
+    const formData = new FormData();
+    formData.append('field', field);
+    formData.append('val', val);
+    const json = await fetchData(url, formData);
+    if (json["modified"]) {
+        document.querySelector("main p").innerHTML = "Campo modificato correttamente";
+    } else {
+        document.querySelector("main p").innerHTML = "Modifica fallita";}
+
 }
 
 document.querySelector("main section button").addEventListener("click", function (e) {
