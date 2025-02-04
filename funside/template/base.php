@@ -45,7 +45,7 @@
         }
     ?>
     </main>
-    <footer class="text-center text-black py-3">
+    <footer class="text-center text-black py-3 border border-black ">
     <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-3">
