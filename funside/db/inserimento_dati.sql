@@ -75,23 +75,23 @@ INSERT INTO `funside`.`address` (`user`, `add`) VALUES
 ('klee', '606 Elm St, Anytown, CA 12345'),
 ('nmartin', '707 Oak Ave, Someville, TX 78901');
 
-INSERT INTO `funside`.`order` (`dateorder`, `datedelivery`, `status`, `totalprice`, `user`) VALUES
-('2024-01-15', '2024-01-18', 'consegnato', 59.99, 'jdoe'),
-('2024-01-15', '2024-01-18', 'consegnato', 59.99, 'jdoe'),
-('2024-01-10', '2024-01-12', 'consegnato', 19.98, 'asmith'),
-('2024-01-20', '2024-01-23', 'spedito', 34.99, 'bwhite'),
-('2024-01-17', '2024-01-20', 'consegnato', 9.99, 'mjohnson'),
-('2024-01-12', '2024-01-15', 'consegnato', 12.00, 'rthompson'),
-('2024-01-19', '2024-01-22', 'ordinato', 54.99, 'emiller'),
-('2024-01-08', '2024-01-11', 'consegnato', 29.99, 'dwilliams'),
-('2024-01-21', '2024-01-24', 'spedito', 15.49, 'lgarcia'),
-('2024-01-14', '2024-01-17', 'consegnato', 39.99, 'klee'),
-('2024-01-09', '2024-01-12', 'consegnato', 49.99, 'nmartin'),
-('2024-01-16', '2024-01-19', 'in consegna', 14.99, 'jdoe'),
-('2024-01-11', '2024-01-14', 'consegnato', 59.99, 'asmith'),
-('2024-01-22', '2024-01-25', 'ordinato', 34.99, 'bwhite'),
-('2024-01-18', '2024-01-21', 'spedito', 9.99, 'mjohnson'),
-('2024-01-13', '2024-01-16', 'consegnato', 12.00, 'rthompson');
+INSERT INTO `funside`.`order` (`dateorder`, `datedelivery`, `suspended`, `status`, `totalprice`, `user`) VALUES
+('2024-01-15', '2024-01-18', 0, 'consegnato', 59.99, 'jdoe'),
+('2024-01-15', '2024-01-18', 0, 'consegnato', 59.99, 'jdoe'),
+('2024-01-10', '2024-01-12', 0, 'consegnato', 19.98, 'asmith'),
+('2024-01-20', '2024-01-23', 1, 'spedito', 34.99, 'bwhite'),
+('2024-01-17', '2024-01-20', 0,'consegnato', 9.99, 'mjohnson'),
+('2024-01-12', '2024-01-15', 0,'consegnato', 12.00, 'rthompson'),
+('2024-01-19', '2024-01-22', 0,'ordinato', 54.99, 'emiller'),
+('2024-01-08', '2024-01-11', 0,'consegnato', 29.99, 'dwilliams'),
+('2024-01-21', '2024-01-24', 0,'spedito', 15.49, 'lgarcia'),
+('2024-01-14', '2024-01-17', 0,'consegnato', 39.99, 'klee'),
+('2024-01-09', '2024-01-12', 0,'consegnato', 49.99, 'nmartin'),
+('2024-01-16', '2024-01-19', 0,'in consegna', 14.99, 'jdoe'),
+('2024-01-11', '2024-01-14', 0,'consegnato', 59.99, 'asmith'),
+('2024-01-22', '2024-01-25', 0,'ordinato', 34.99, 'bwhite'),
+('2024-01-18', '2024-01-21', 0,'spedito', 9.99, 'mjohnson'),
+('2024-01-13', '2024-01-16', 0,'consegnato', 12.00, 'rthompson');
 
 INSERT INTO `funside`.`orderdetail` (`product`, `order`, `quantity`) VALUES
 (1, 1, 1),

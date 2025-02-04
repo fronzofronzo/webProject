@@ -459,7 +459,7 @@ class DatabaseHelper
     }
 
     public function getPendingOrders() {
-        $query = "SELECT idorder, dateorder, status, totalprice, user FROM `funside`.`order` WHERE status != 'consegnato' ";
+        $query = "SELECT idorder, dateorder, status, totalprice, user, suspended FROM `funside`.`order` WHERE status != 'consegnato' ";
         $stmt = $this->db->prepare($query);
         $stmt->execute(); 
         $result = $stmt->get_result();

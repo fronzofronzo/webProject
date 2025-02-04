@@ -82,6 +82,7 @@ CREATE TABLE IF NOT EXISTS `funside`.`order` (
   `idorder` INT NOT NULL AUTO_INCREMENT,
   `dateorder` DATE NOT NULL DEFAULT CURRENT_DATE,
   `datedelivery` DATE DEFAULT NULL,
+  `suspended` BOOLEAN DEFAULT FALSE,
   `status` VARCHAR(50) NOT NULL DEFAULT 'ordinato'
   CHECK (`status` IN ('ordinato', 'spedito', 'in consegna', 'consegnato', 'sospeso', 'cancellato')),
   `totalprice` DECIMAL(9,2) NOT NULL,
