@@ -21,8 +21,8 @@ function generateStars($rating) {
 		<small class="text-body-secondary"><?php echo $product["brand"]?></small>
 	</h2>
 	<div class="row">
-		<div class="col-12 col-md-6 text-center mb-3">
-			<img src="./upload/<?php echo $product["image"]?>" class=" border rounded" alt="<?php echo $product["name"]?>"> 
+		<div class="col-12 col-md-6 text-center mb-3 ">
+			<img src="./upload/<?php echo $product["image"]?>" class="product-image" alt="<?php echo $product["name"]?>"> 
 		</div>
 		<div class="col-12 col-md-6 text-center">
 			<div class="row mb-3">
