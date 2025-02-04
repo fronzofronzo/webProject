@@ -16,7 +16,7 @@ function generateStars($rating) {
 ?>
 
 <section class="container-fluid">
-	<h2 class="mb-3">
+	<h2 class="mb-3 border-bottom border-black border-4">
 		<?php echo $product["name"]?>
 		<small class="text-body-secondary"><?php echo $product["brand"]?></small>
 	</h2>
