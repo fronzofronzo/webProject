@@ -69,7 +69,9 @@ async function saveReview(text, value) {
     formData.append("text", text);
     formData.append("value", value);
 
-    return await fetchData(url, formData);
+    const result = await fetchData(url, formData);
+
+    return result;
 }
 
 
@@ -99,14 +101,18 @@ async function init() {
     });
 
     let reviewButton = document.querySelector("main section:last-child div form button");
-    reviewButton.addEventListener("click", function() {
+    reviewButton.addEventListener("click", async function() {
         let value = document.querySelector('input[name="rating"]:checked');
         let text = document.getElementById("review-text").value;
         if(value) {
             value = value.value;
-            if(saveReview(text, value)) {
-                let form = document.querySelector("main section form");
+            let res = await saveReview(text, value);
+            let form = document.querySelector("main section form");
+            if(res["result"]) {
                 form.reset();
+            } else {
+                form.innerHTML += `<div class="alert alert-danger mt-4" role="alert">
+                 Devi essere loggato per registrare una recensione del prodotto!</div>`
             }
         }
     }); 

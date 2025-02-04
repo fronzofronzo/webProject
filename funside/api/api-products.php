@@ -20,7 +20,7 @@ if($_POST["action"] == 1) {
     $result = $dbh->getReviewsByID($_POST["id"]);
 } else if($_POST["action"] == "add-review") {
     if(!isUserLoggedIn()) {
-        $result = false;
+        $result = ["result" => false];
     } else {
         $result = $dbh->addReview($_SESSION["username"], $_POST["id"], $_POST["text"],$_POST["value"]);
     }
