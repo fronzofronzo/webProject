@@ -83,6 +83,12 @@ function generateNotificationText($status, $order) {
     switch($status) {
         case "ordinato":
             return "Confermiamo il tuo ordine #".$order.".";
+        case "spedito":
+            return "Il tuo ordine #".$order." è stato spedito.";
+        case "in consegna":
+                return "Il tuo ordine #".$order." è in consegna.";
+        case "consegnato":
+            return "Il tuo ordine #".$order." è stato consegnato.";
         default:
             return "null";
     }
