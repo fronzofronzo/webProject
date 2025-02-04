@@ -29,7 +29,6 @@
         <a href="admin-product.php?mod=3" class="btn btn-primary me-2 mb-2">Elimina</a>
         <a href="admin-product.php?mod=4" class="btn btn-primary me-2 mb-2">Visualizza</a>
     </div>
-
 </section>
 <section class="container-fluid">
     <h2>Gestisci ordini</h2>
