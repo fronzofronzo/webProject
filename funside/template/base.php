@@ -46,9 +46,34 @@
     ?>
     </main>
     <footer class="text-center text-black py-3">
-        <a class="me-3" href="">Contatti</a>
-        <a class="me-3" href="services.php">Servizi</a>
-        <a class="me-3" href="about-us.php">About us</a>
+    <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5 class="mb-4">Link Utili</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="">Contatti</a></li>
+                        <li><a href="services.php">Servizi</a></li>
+                        <li><a href="about-us.php">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5 class="mb-4">Seguici</h5>
+                    <a href="#" class=" me-3"><i class="fab fa-facebook fa-2x"></i></a>
+                    <a href="#" class=" me-3"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="#" class=""><i class="fab fa-twitter fa-2x"></i></a>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="mb-2">Newsletter</h5>
+                    <form>
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Inserisci la tua email">
+                            <button class="btn btn-primary" type="submit">Iscriviti</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <p class="mt-4">&copy; 2024 Fun Side - Tutti i diritti riservati</p>
+        </div>
     </footer>
     <?php
     if(isset($templateParams["js"])):

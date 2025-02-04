@@ -198,3 +198,7 @@ main > section div div:nth-child(2) div:nth-child(5) button {
 	max-height: 500px !important;
 	object-fit: contain;
 }
+
+footer a {
+	color: black;
+}
