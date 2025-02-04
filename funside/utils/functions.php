@@ -89,6 +89,10 @@ function generateNotificationText($status, $order) {
                 return "Il tuo ordine #".$order." è in consegna.";
         case "consegnato":
             return "Il tuo ordine #".$order." è stato consegnato.";
+        case "sospeso":
+            return "Il tuo ordine #".$order." è stato sospeso.";
+        case "attivato":
+            return "Il tuo ordine #".$order." è nuovamente in viaggio verso di te.";
         default:
             return "null";
     }

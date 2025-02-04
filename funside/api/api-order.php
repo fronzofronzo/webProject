@@ -49,6 +49,17 @@ if (isset($_POST['action'])) {
             break;
         case 'toggle-suspension':
             $result = $dbh->toggleSuspension($_POST["order"]);
+            if($result["result"]) {
+                if($_POST["suspended"] == 'false') {
+                    $title = generateNotificationTitle('sospeso', $_POST["order"]);
+                    $text = generateNotificationText('sospeso', $_POST["order"]);
+                    $dbh->addNotificationAboutAnOrder($text, $_POST["user"], $_POST["order"], $title);
+                } else {
+                    $title = generateNotificationTitle('attivato', $_POST["order"]);
+                    $text = generateNotificationText('attivato', $_POST["order"]);
+                    $dbh->addNotificationAboutAnOrder($text, $_POST["user"], $_POST["order"], $title);
+                }
+            }
             break;
         default:
             $result["error"] = "Azione non valida";
