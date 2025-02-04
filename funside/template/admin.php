@@ -33,4 +33,7 @@
 </section>
 <section class="container-fluid">
     <h2>Gestisci ordini</h2>
+    <div class="d-flex flex-wrap justify-content-between">
+        <a href="order-manage.php" class="btn btn-primary me-2 mb-2">Gestisci ordini</a>
+    </div>
 </section>

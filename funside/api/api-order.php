@@ -36,6 +36,9 @@ if (isset($_POST['action'])) {
             }
             $dbh->emptyCart($_SESSION["username"]);
             break;
+        case 'getPendingOrders':
+            $result = $dbh->getPendingOrders();
+            break; 
         default:
             $result["error"] = "Azione non valida";
     }

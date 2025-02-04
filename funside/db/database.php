@@ -458,6 +458,18 @@ class DatabaseHelper
         return $data;
     }
 
+    public function getPendingOrders() {
+        $query = "SELECT idorder, dateorder, status, totalprice, user FROM `funside`.`order` WHERE status != 'consegnato' ";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute(); 
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free();  // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
+    }
+
+
     //CART
     public function getProductsInCart($user) {
         $query = "SELECT product.name, cartdetail.quantity, product.image, product.price, product.idproduct
