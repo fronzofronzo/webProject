@@ -61,6 +61,17 @@ async function addToCart(cartButton) {
     }
 }
 
+async function saveReview(text, value) {
+    const url = "api/api-products.php";
+    const formData = new FormData();
+    formData.append("action", "add-review");
+    formData.append("id", getProductID());
+    formData.append("text", text);
+    formData.append("value", value);
+
+    return await fetchData(url, formData);
+}
+
 
 async function init() {
     document.querySelectorAll('.tab-button').forEach(button => {
@@ -86,6 +97,17 @@ async function init() {
     cartButton.addEventListener("click", function(e) {
         addToCart(cartButton);
     });
+
+    let reviewButton = document.querySelector("main section:last-child div form button");
+    reviewButton.addEventListener("click", function() {
+        console.log("Review recorded");
+        let value = document.querySelector('input[name="rating"]:checked');
+        let text = document.getElementById("review-text").value;
+        if(value) {
+            value = value.value;
+            saveReview(text, value);
+        }
+    }); 
 }
 
 async function getDataReviews() {

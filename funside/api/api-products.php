@@ -3,17 +3,29 @@ require_once('../bootstrap.php');
 $result = "";
 if($_POST["action"] == 1) {
     $result = $dbh->getRandomProducts();
+    for ($i = 0; $i < count($result); $i++) {
+        $result[$i]["image"] = UPLOAD_DIR.$result[$i]["image"];
+    }
 } else if($_POST["action"] == 2) {
     $result = $dbh->getBestSellers($_POST["n"]);
+    for ($i = 0; $i < count($result); $i++) {
+        $result[$i]["image"] = UPLOAD_DIR.$result[$i]["image"];
+    }
 } else if($_POST["action"] == 3) {
     $result = $dbh->getBestRatings($_POST["n"]);
+    for ($i = 0; $i < count($result); $i++) {
+        $result[$i]["image"] = UPLOAD_DIR.$result[$i]["image"];
+    }
 } else if($_POST["action"] == "reviews") {
     $result = $dbh->getReviewsByID($_POST["id"]);
+} else if($_POST["action"] == "add-review") {
+    if(!isUserLoggedIn()) {
+        $result = false;
+    } else {
+        $result = $dbh->addReview($_SESSION["username"], $_POST["id"], $_POST["text"],$_POST["value"]);
+    }
 }
 
-for ($i = 0; $i < count($result); $i++) {
-    $result[$i]["image"] = UPLOAD_DIR.$result[$i]["image"];
-}
 
 header('Content-Type: application/json');
 echo json_encode($result);

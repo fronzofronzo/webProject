@@ -73,12 +73,12 @@ function generateStars($rating) {
 		Recensisci prodotto
 	</h2>
 	<div>
-		<form action="#">
+		<form>
 			<div class="form-group">
 				<label for="review-text">Inserisci testo della recensione</label>
 				<textarea class="form-control" name="review-text" id="review-text" placeholder="Inserisci la tua recensione"></textarea>
 			</div>
-			<div class="form-group my-2">
+			<div class="form-group my-3">
 				<p>
 				<input type="radio" id="star5" name="rating" value="5">
 				<label for="star5"><?php echo generateStars(5)?></label>
@@ -96,6 +96,9 @@ function generateStars($rating) {
 				<input type="radio" id="star1" name="rating" value="1">
 				<label for="star1"><?php echo generateStars(1)?></label>
 				</p>
+			</div>
+			<div class="form-group">
+				<button type="button" class="btn btn-primary ">Invia</button>
 			</div>
 		</form>
 	</div>

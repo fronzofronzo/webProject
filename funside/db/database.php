@@ -257,6 +257,17 @@ class DatabaseHelper
         return $data;
     }
 
+    public function addReview($user, $product, $text, $value) {
+        $query = "INSERT INTO `funside`.`review` (`product`, `user`, `rating`, `text`)
+        VALUES (?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('isis', $product, $user, $value, $text);
+        $stmt->execute();
+        $result = $stmt->get_result(); 
+        $stmt->close();
+        return $result;
+    }
+
     //NOTIFICATION
     public function addNotification($text, $user)
     {
