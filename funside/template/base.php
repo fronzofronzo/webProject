@@ -51,7 +51,7 @@
                 <div class="col-md-4 mb-3">
                     <h5 class="mb-4">Link Utili</h5>
                     <ul class="list-unstyled">
-                        <li><a href="">Contatti</a></li>
+                        <li><a href="contacts.php">Contatti</a></li>
                         <li><a href="services.php">Servizi</a></li>
                         <li><a href="about-us.php">About Us</a></li>
                     </ul>
