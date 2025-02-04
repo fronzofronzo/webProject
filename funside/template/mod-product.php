@@ -8,18 +8,7 @@
                     placeholder="id prodotto">
                 <button type="button" class="btn btn-primary mt-2" id="buttonsearchbarid">Cerca con ID</button>
             </div>
-            <p></p>
-        </form>
-    </div>
-    <div>
-        <form>
-            <div>
-                <label for="searchbarname">Cerca prodotto dal nome</label>
-                <input type="text" class="form-control" id="searchbarname" aria-describedby="emailHelp"
-                    placeholder="nome prodotto">
-                <button type="button" class="btn btn-primary mt-2" id="buttonsearchbarname">Cerca con nome</button>
-            </div>
-            <p></p>
+            <p class="mt-2"></p>
         </form>
     </div>
     <div>

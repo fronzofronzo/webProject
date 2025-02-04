@@ -27,7 +27,7 @@ async function getProductsData() {
 }
 
 function viewProducts(products) {
-    document.querySelector("section div:nth-child(4) div:nth-child(2)").innerHTML = generateProducts(products);
+    document.querySelector("section div:nth-child(3) div:nth-child(2)").innerHTML = generateProducts(products);
 }
 
 function generateProducts(products) {
@@ -45,7 +45,31 @@ function generateProducts(products) {
     return output;
 }
 
+function generateForm(id) {
+    console.log("form");
+}
+
+async function isValidId(idproduct) {
+    const url = "api/api-products.php";
+    const formData = new FormData();
+    formData.append('action', 'isValidId')
+    formData.append('idproduct', idproduct)
+    const json = await fetchData(url, formData);
+    if (json) {
+        console.log(json);
+        return json;
+    } else {
+        const id = document.querySelector("section p:first-of-type").innerHTML = "Id non valido";
+    }
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     getProductsData();
+    document.querySelector("section button:first-of-type").addEventListener("click", function(e) {
+        e.preventDefault();
+        const id = document.querySelector("section input:first-of-type").value;
+        if (isValidId(id)) {
+            generateForm(id);
+        }
+    });
 });
