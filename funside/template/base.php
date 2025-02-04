@@ -29,10 +29,10 @@
     </div>
     <nav class="navbar bg-body-tertiary ">
         <div class="container-fluid row">
-            <a href="notification.php" class="fa-solid fa-bell btn btn-light col-1" title='Notifications'></a>
+            <a href="notification.php" class="fa-solid fa-bell btn btn-light col-1" title='Notifiche'></a>
             <a href="login.php" class="fa-solid fa-user btn btn-light col-1" title="Account"></a>
-            <a href="cart.php" class="fa-solid fa-cart-shopping btn btn-light col-1" title="Cart"></a>
-            <a href="catalogue.php" class="fa-solid fa-bars btn btn-light col-1" title="Catalogue"></a>
+            <a href="cart.php" class="fa-solid fa-cart-shopping btn btn-light col-1" title="Carrello"></a>
+            <a href="catalogue.php" class="fa-solid fa-bars btn btn-light col-1" title="Catalogo"></a>
         </div>
     </nav>
     <main>
