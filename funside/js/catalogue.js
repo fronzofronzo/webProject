@@ -58,7 +58,7 @@ function generateCategoriesChoice(categories) {
 	let result = "";
 	for(let i=0; i<categories.length; i++) {
 		let category = `
-		<li class="form-check">
+		<li class="form-check mx-2">
 			<input class="form-check-input" type="checkbox" value="" id="${categories[i]["type"]}">
 			<label class="form-check-label" for="${categories[i]["type"]}">
 				${categories[i]["type"]}
@@ -101,8 +101,8 @@ async function getAllCategories() {
 					}
 				}
 			}
+			numProducts = 3;
 			filteredProducts = selectedProducts;
-			console.log(filteredProducts);
 			showProducts(filteredProducts);
 		});
 	} catch (error) {
