@@ -108,11 +108,12 @@ async function init() {
             value = value.value;
             let res = await saveReview(text, value);
             let form = document.querySelector("main section form");
-            if(res["result"]) {
+            console.log(res["result"]);
+            if(res["result"] == true) {
                 form.reset();
-            } else {
+            } else if (res["result"] ==false) {
                 form.innerHTML += `<div class="alert alert-danger mt-4" role="alert">
-                 Devi essere loggato per registrare una recensione del prodotto!</div>`
+                Devi essere loggato per registrare una recensione del prodotto!</div>`
             }
         }
     }); 

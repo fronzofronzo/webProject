@@ -272,16 +272,16 @@ class DatabaseHelper
             SELECT AVG(rating) 
             FROM funside.review 
             WHERE funside.review.product = funside.product.idproduct
-            AND funside.review.product = ?
-        ) ";
+        ) 
+        WHERE funside.product.idproduct = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $product);
         $stmt->execute();
         $stmt->close();
         } catch (Exception $e ) {
-            return ["success" => false, "error" => $e->getMessage()];
+            return ["result" => false, "error" => $e->getMessage()];
         }
-        return ["success" => true];
+        return ["result" => true];
     }
 
     //NOTIFICATION
