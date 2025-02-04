@@ -26,7 +26,9 @@ if($_POST["action"] == 1) {
     }
 } else if ($_POST["action"] == "getall"){
     $result = $dbh->getAllProducts();
-}   
+} else if ($_POST["action"] == "isValidId"){
+    $result = $dbh->getProductByID($_POST["idproduct"]) != null;
+}    
 
 
 header('Content-Type: application/json');
