@@ -265,13 +265,20 @@ class DatabaseHelper
             case "nameproduct":
                 $query = "UPDATE funside.product SET name = ? WHERE idproduct = ?";
                 $stmt = $this->db->prepare($query);
-                $stmt->bind_param('si', $value,$id);
+                $stmt->bind_param('si', $value, $id);
+                $data = $stmt->execute();
+                break;
+                ;
+            case "priceproduct":
+                $query = "UPDATE funside.product SET price = ? WHERE idproduct = ?";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param('si', $value, $id);
                 $data = $stmt->execute();
                 break;
                 ;
             default:
                 return false;
-        }        
+        }
         $stmt->close();  // Chiudi lo statement
         return $data;
     }

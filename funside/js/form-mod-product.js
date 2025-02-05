@@ -16,10 +16,7 @@ async function fetchData(url, formData) {
 
 function showInputBox(field, text) {
     let output = ``;
-    switch (field) {            
-        case "priceproduct":
-
-            break;
+    switch (field) {
         case "typeproduct":
 
             break;
@@ -43,10 +40,7 @@ function showInputBox(field, text) {
         e.preventDefault();
         window.location.reload();
     })
-    switch (field) {            
-        case "priceproduct":
-
-            break;
+    switch (field) {
         case "typeproduct":
 
             break;
