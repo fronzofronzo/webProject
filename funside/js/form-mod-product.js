@@ -51,7 +51,7 @@ async function showInputBox(field, text) {
             <form action="#" method="POST" id="form_${field}" name="form_${field}">
                 <div class="form-group mb-2">
                     <label for="${field}">${text}</label>
-                    <select class="form-select" id="${field}" name="${field}" aria-label="Default select example">`
+                    <select class="form-select" id="${field}" name="${field}">`
             output += await generateCategoriesOptions();
             output += `</select>
                 </div>
@@ -76,7 +76,7 @@ async function showInputBox(field, text) {
                     <form action="#" method="POST" id="form_${field}" name="form_${field}">
                         <div class="form-group mb-2">
                             <label for="${field}">${text}</label>
-                            <input type="text" class="form-control" id="${field}" aria-describedby="emailHelp" required>
+                            <input type="text" class="form-control" id="${field}" required>
                         </div>
                     </form>
                     <button type="submit" class="btn btn-primary display-inline-block">Modifica</button>

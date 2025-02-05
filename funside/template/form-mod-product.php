@@ -3,7 +3,7 @@
     <div>
         <div class="col-sm-9 col-md-7 col-lg-5 mb-2">
             <label for="field">Campo da modificare</label>
-            <select class="form-select" id="field" name="field" aria-label="Default select example">
+            <select class="form-select" id="field" name="field">
                 <option value="nameproduct" selected>Nome</option>
                 <option value="priceproduct">Prezzo</option>
                 <option value="availabilityproduct">Disponibilità</option>

@@ -3,8 +3,8 @@
     <div>
         <form>
             <div>
-                <label for="searchbarid">Cerca prodotto dall'ID</label>
-                <input type="text" class="form-control" id="serchbarid" aria-describedby="emailHelp"
+                <label for="searchbarid" id="labelsearchbarid">Cerca prodotto dall'ID</label>
+                <input type="text" class="form-control" id="searchbarid" aria-describedby="labelsearchbarid"
                     placeholder="id prodotto" />
                 <button type="button" class="btn btn-primary mt-2" id="buttonsearchbarid">Cerca con ID</button>
             </div>
