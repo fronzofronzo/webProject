@@ -69,6 +69,10 @@ main > section {
 	border-radius: 10px !important;
 }
 
+main section div {
+	color: black;
+}
+
 main > section:last-child {
 	margin-bottom: 30px;
 }
