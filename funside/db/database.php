@@ -263,6 +263,13 @@ class DatabaseHelper
     public function updateProductById($id, $field, $value)
     {
         switch ($field) {
+            case "typeproduct":
+                $query = "UPDATE funside.product SET type = ? WHERE idproduct = ?";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param('si', $value, $id);
+                $data = $stmt->execute();
+                break;
+                ;
             case "brandproduct":
                 $query = "UPDATE funside.product SET brand = ? WHERE idproduct = ?";
                 $stmt = $this->db->prepare($query);

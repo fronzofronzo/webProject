@@ -14,9 +14,41 @@ async function fetchData(url, formData) {
     }
 }
 
-function showInputBox(field, text) {
+async function getAllCategories() {
+    const url = "api/api-category.php";
+    const formData = new FormData();
+    formData.append('action', 2);  // For all categories
+    const json = await fetchData(url, formData);
+    return json;
+}
+
+async function generateCategoriesOptions() {
+    const categories = await getAllCategories();
+    let output = "";
+
+    categories.forEach(c => {
+        output += `<option value="${c.type}">${c.type}</option>`;
+    });
+    return output;
+}
+
+async function showInputBox(field, text) {
     let output = ``;
     switch (field) {
+        case "typeproduct":
+            output += `
+            <form action="#" method="POST" id="form_${field}" name="form_${field}">
+                <div class="form-group mb-2">
+                    <label for="${field}">${text}</label>
+                    <select class="form-select" id="${field}" name="${field}" aria-label="Default select example">`
+            output += await generateCategoriesOptions();
+            output += `</select>
+                </div>
+            </form>
+            <button type="submit" class="btn btn-primary display-inline-block">Modifica</button>
+            `;
+            console.log(output);
+            break;
         case "descriptionproduct":
             output += `
             <form action="#" method="POST" id="form_${field}" name="form_${field}">
@@ -27,7 +59,6 @@ function showInputBox(field, text) {
             </form>
             <button type="submit" class="btn btn-primary display-inline-block">Modifica</button>
             `;
-            break;
             break;
         default:
             output += `
@@ -50,13 +81,19 @@ function showInputBox(field, text) {
         window.location.reload();
     })
     switch (field) {
+        case "typeproduct":
+            document.querySelector("main section button:first-of-type").addEventListener("click", function (e) {
+                e.preventDefault();
+                const val = document.querySelector("main section select").value;
+                updateProduct(field, val);
+            });
+            break;
         case "descriptionproduct":
             document.querySelector("main section button:first-of-type").addEventListener("click", function (e) {
                 e.preventDefault();
                 const val = document.querySelector("main section textarea").value;
                 updateProduct(field, val);
             });
-            break;
             break;
         default:
             document.querySelector("main section button:first-of-type").addEventListener("click", function (e) {
