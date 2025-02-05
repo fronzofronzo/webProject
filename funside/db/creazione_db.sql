@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `funside`.`product` (
   `idproduct` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(50) NOT NULL,
   `price` DECIMAL(9,2) NOT NULL
-  CHECK (`price` >= 0),
+  CHECK (`price` > 0),
   `description` VARCHAR(512) NOT NULL,
   `brand` VARCHAR(50) NOT NULL,
   `avgrating` DECIMAL(5,2) DEFAULT NULL,
@@ -84,7 +84,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `funside`.`order` (
   `idorder` INT NOT NULL AUTO_INCREMENT,
   `dateorder` DATE NOT NULL DEFAULT CURRENT_DATE,
-  `datedelivery` DATE DEFAULT NULL,
+  `datedelivery` DATE DEFAULT NULL
+  CHECK (`datedelivery` IS NULL OR `datedelivery` >= `dateorder`),
   `suspended` BOOLEAN DEFAULT FALSE,
   `status` VARCHAR(50) NOT NULL DEFAULT 'ordinato'
   CHECK (`status` IN ('ordinato', 'spedito', 'in consegna', 'consegnato', 'sospeso', 'cancellato')),
