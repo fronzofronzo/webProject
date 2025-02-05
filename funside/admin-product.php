@@ -15,9 +15,9 @@ switch ($mod) {
         $templateParams["js"] = array("js/mod-product.js");
         break;
     case 3:
-        $templateParams["title"] = "FunSide - Elimina prodotto";
-        $templateParams["name"] = "template/del-product.php";
-        $templateParams["js"] = array("js/del-product.js");
+        $templateParams["title"] = "FunSide - Cancella prodotto";
+    $templateParams["name"] = "template/delete-product.php";
+    $templateParams["js"] = array("js/delete-product.js");
         break;
     case 4:
         $templateParams["title"] = "FunSide - Visualizza prodotti";

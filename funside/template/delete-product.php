@@ -9,5 +9,8 @@
         <span class="">
             L'elemento selezionato è : <strong></strong>
         </span>
+        <div>
+            <button type="button" class="btn btn-danger" disabled>Elimina</button>
+        </div>
     </div>
 </section>
