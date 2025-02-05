@@ -52,7 +52,7 @@ if (!$uploadSuccess) {
 $imageName = $uploadMessage; // The name of the uploaded file
 
 // Insert the product into the database
-$insertSuccess = $dbh->insertProduct($name, $price, $description, $type, $brand, $imageName);
+list($insertSuccess, $id) = $dbh->insertProduct($name, $price, $description, $type, $brand, $imageName);
 
 if ($insertSuccess) {
     $result["insert"] = true;
