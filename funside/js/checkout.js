@@ -51,7 +51,7 @@ async function getAdresses() {
 		let result = "";
 		for(let i=0; i<adresses["address"].length; i++) {
 			result += `
-				<input type="radio" class="btn-check" name="adresses" id="option${i+1}" autocomplete="off">
+				<input type="radio" class="btn-check" name="adresses" id="option${i+1}">
 				<label class="btn btn-secondary" for="option${i+1}">${adresses["address"][i]["add"]}</label>
 			`;
 		}
