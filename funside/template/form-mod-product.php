@@ -6,6 +6,7 @@
             <select class="form-select" id="field" name="field" aria-label="Default select example">
                 <option value="nameproduct" selected>Nome</option>
                 <option value="priceproduct">Prezzo</option>
+                <option value="availabilityproduct">Disponibilità</option>
                 <option value="descriptionproduct">Descrizione</option>
                 <option value="brandproduct">Brand</option>
                 <option value="typeproduct">Categoria</option>
