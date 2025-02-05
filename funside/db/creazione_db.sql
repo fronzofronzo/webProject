@@ -169,8 +169,10 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `funside`.`review` (
   `product` INT NOT NULL,
   `user` VARCHAR(50) NOT NULL,
-  `rating` INT NOT NULL,
+  `rating` INT NOT NULL
+  CHECK (`rating` BETWEEN 1 AND 5),
   `text` VARCHAR(512) NOT NULL,
+  PRIMARY KEY (`product`, `user`),
   FOREIGN KEY (`product`)
     REFERENCES `funside`.`product` (`idproduct`)
     ON DELETE NO ACTION
