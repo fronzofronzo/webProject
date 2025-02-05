@@ -6,12 +6,12 @@
 	</div>
 	<div class="row mx-2 border rounded border-black checkoutContainer">
 		<div class="d-flex align-items-center justify-content-center" >
-			<i class="fa-solid fa-down-long"></i><strong class="mx-2">Scegli l'indirizzo di consegna dell'ordine</strong><i class="fa-solid fa-down-long"></i>
+			<strong class="fa-solid fa-down-long"></strong><strong class="mx-2">Scegli l'indirizzo di consegna dell'ordine</strong><strong class="fa-solid fa-down-long"></strong>
 		</div>
 		<form class="row">
 			<div class="my-3 col-12 col-md-6">
 				<label for="address" class="form-label">Indirizzo</label>
-				<input type="text" class="form-control" id="address" aria-describedby="adressHelp">
+				<input type="text" class="form-control" id="address" aria-describedby="adressHelp"/>
 				<div id="addressHelp" class="form-text">Inserisci un nuovo indirizzo</div>
 				<button type="button" class="btn btn-primary">Inserisci</button>
 			</div>
@@ -21,24 +21,24 @@
 	</div>
 	<div class="row mx-2 border rounded border-black mt-4 checkoutContainer p-2" >
 		<div class="d-flex align-items-center justify-content-center " >
-			<i class="fa-solid fa-down-long"></i><strong class="mx-2">Seleziona il metodo di pagamento</strong><i class="fa-solid fa-down-long"></i>
+			<strong class="fa-solid fa-down-long"></strong><strong class="mx-2">Seleziona il metodo di pagamento</strong><strong class="fa-solid fa-down-long"></strong>
 		</div>
 		<div class="form-check">
-			<input class="form-check-input" type="radio" name="payment" id="payment1">
+			<input class="form-check-input" type="radio" name="payment" id="payment1"/>
 			<label class="form-check-label" for="payment1">
-			<i class="fa-regular fa-credit-card mx-2"></i>Carta di credito
+			<strong class="fa-regular fa-credit-card mx-2"></strong>Carta di credito
 			</label>
 		</div>
 		<div class="form-check">
-			<input class="form-check-input" type="radio" name="payment2" id="payment">
+			<input class="form-check-input" type="radio" name="payment2" id="payment"/>
 			<label class="form-check-label" for="payment2">
-			<i class="fa-brands fa-cc-visa mx-2"></i>Visa card
+			<strong class="fa-brands fa-cc-visa mx-2"></strong>Visa card
 			</label>
 		</div>
 		<div class="form-check">
-			<input class="form-check-input" type="radio" name="payment3" id="payment">
+			<input class="form-check-input" type="radio" name="payment3" id="payment"/>
 			<label class="form-check-label" for="payment3">
-			<i class="fa-brands fa-paypal mx-2"></i>PayPal
+			<strong class="fa-brands fa-paypal mx-2"></strong>PayPal
 			</label>
 		</div>
 	</div>

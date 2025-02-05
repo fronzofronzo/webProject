@@ -12,11 +12,11 @@
     </div>
     <div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="anno" id="button_anno_2024" value="2024">
+            <input class="form-check-input" type="radio" name="anno" id="button_anno_2024" value="2024"/>
             <label class="form-check-label" for="button_anno_2024">2024</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="anno" id="button_anno_2025" value="2025" checked>
+            <input class="form-check-input" type="radio" name="anno" id="button_anno_2025" value="2025" checked/>
             <label class="form-check-label" for="button_anno_2025">2025</label>
         </div>
     </div>
