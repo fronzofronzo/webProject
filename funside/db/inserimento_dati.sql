@@ -80,51 +80,53 @@ INSERT INTO `funside`.`order` (`dateorder`, `datedelivery`, `suspended`, `status
 ('2024-01-15', '2024-01-18', 0, 'consegnato', 59.99, 'jdoe'),
 ('2024-01-10', '2024-01-12', 0, 'consegnato', 19.98, 'asmith'),
 ('2024-01-20', '2024-01-23', 1, 'spedito', 34.99, 'bwhite'),
-('2024-01-17', '2024-01-20', 0,'consegnato', 9.99, 'mjohnson'),
-('2024-01-12', '2024-01-15', 0,'consegnato', 12.00, 'rthompson'),
-('2024-01-19', '2024-01-22', 0,'ordinato', 54.99, 'emiller'),
-('2024-01-08', '2024-01-11', 0,'consegnato', 29.99, 'dwilliams'),
-('2024-01-21', '2024-01-24', 0,'spedito', 15.49, 'lgarcia'),
-('2024-01-14', '2024-01-17', 0,'consegnato', 39.99, 'klee'),
-('2024-01-09', '2024-01-12', 0,'consegnato', 49.99, 'nmartin'),
-('2024-01-16', '2024-01-19', 0,'in consegna', 14.99, 'jdoe'),
-('2024-01-11', '2024-01-14', 0,'consegnato', 59.99, 'asmith'),
-('2024-01-22', '2024-01-25', 0,'ordinato', 34.99, 'bwhite'),
-('2024-01-18', '2024-01-21', 0,'spedito', 9.99, 'mjohnson'),
-('2024-01-13', '2024-01-16', 0,'consegnato', 12.00, 'rthompson');
+('2024-01-17', '2024-01-20', 0, 'consegnato', 9.99, 'mjohnson'),
+('2024-01-12', '2024-01-15', 0, 'consegnato', 12.00, 'rthompson'),
+('2024-01-19', '2024-01-22', 0, 'ordinato', 54.99, 'emiller'),
+('2024-01-08', '2024-01-11', 0, 'consegnato', 29.99, 'dwilliams'),
+('2024-01-21', '2024-01-24', 0, 'spedito', 15.49, 'lgarcia'),
+('2024-01-14', '2024-01-17', 0, 'consegnato', 39.99, 'klee'),
+('2024-01-09', '2024-01-12', 0, 'consegnato', 49.99, 'nmartin'),
+('2024-01-16', '2024-01-19', 0, 'in consegna', 14.99, 'jdoe'),
+('2024-01-11', '2024-01-14', 0, 'consegnato', 59.99, 'asmith'),
+('2024-01-22', '2024-01-25', 0, 'ordinato', 34.99, 'bwhite'),
+('2024-01-18', '2024-01-21', 0, 'spedito', 9.99, 'mjohnson'),
+('2024-01-13', '2024-01-16', 0, 'consegnato', 12.00, 'rthompson');
 
-INSERT INTO `funside`.`orderdetail` (`product`, `order`, `quantity`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 2, 1),
-(4, 3, 1),
-(5, 4, 1),
-(6, 5, 1),
-(7, 6, 1),
-(8, 7, 1),
-(9, 8, 1),
-(10, 9, 1),
-(1, 10, 1),
-(2, 11, 1),
-(3, 12, 1),
-(4, 13, 1),
-(5, 14, 1),
-(6, 15, 1),
-(7, 1, 1),
-(8, 2, 1),
-(9, 3, 1),
-(10, 4, 1),
-(1, 5, 1),
-(2, 6, 1),
-(3, 7, 1),
-(4, 8, 1),
-(5, 9, 1),
-(6, 10, 1),
-(7, 11, 1),
-(8, 12, 1),
-(9, 13, 1),
-(10, 14, 1),
-(1, 15, 1);
+INSERT INTO `funside`.`orderdetail` (`product`, `order`, `quantity`, `total`) VALUES
+(1, 1, 1, 29.99),
+(2, 1, 2, 19.98),
+(3, 2, 1, 15.49),
+(4, 3, 1, 12.00),
+(5, 4, 1, 34.99),
+(6, 5, 1, 59.99),
+(7, 6, 1, 39.99),
+(8, 7, 1, 29.99),
+(9, 8, 1, 39.99),
+(10, 9, 1, 49.99),
+(1, 10, 1, 29.99),
+(2, 11, 1, 19.99),
+(3, 12, 1, 15.49),
+(4, 13, 1, 12.00),
+(5, 14, 1, 34.99),
+(6, 15, 1, 59.99),
+(7, 1, 1, 39.99),
+(8, 2, 1, 29.99),
+(9, 3, 1, 39.99),
+(10, 4, 1, 49.99),
+(1, 5, 1, 29.99),
+(2, 6, 1, 19.99),
+(3, 7, 1, 15.49),
+(4, 8, 1, 12.00),
+(5, 9, 1, 34.99),
+(6, 10, 1, 59.99),
+(7, 11, 1, 39.99),
+(8, 12, 1, 29.99),
+(9, 13, 1, 39.99),
+(10, 14, 1, 49.99),
+(1, 15, 1, 29.99);
+
+
 
 INSERT INTO `funside`.`notification` (`title`, `text`, `isRead`, `order`, `user`, `date`, `time`) VALUES
 ('Order #3 Shipped', 'Your order #3 has been shipped and is on its way to the delivery address you provided.', 0, 3, 'bwhite', '2024-01-21', '10:30:00'),
@@ -139,17 +141,6 @@ INSERT INTO `funside`.`notification` (`title`, `text`, `isRead`, `order`, `user`
 ('Order #7 Delivered', 'Your order #7 has been successfully delivered to your address. Thank you for choosing our service!', 1, 7, 'dwilliams', '2024-01-11', '17:00:00'),
 ('Order #10 Shipped', 'Your order #10 has been shipped and is on its way to the delivery address you provided.', 0, 10, 'nmartin', '2024-01-10', '10:00:00'),
 ('Order #9 Delivered', 'Your order #9 has been successfully delivered to your address. Thank you for choosing our service!', 1, 9, 'klee', '2024-01-17', '14:30:00');
-
-
-
--- Inserimenti delle review in inglese
-INSERT INTO `funside`.`review` (`product`, `user`, `rating`, `text`) VALUES
-(1, 'jdoe', 5, 'Excellent quality chess set!'),
-(2, 'asmith', 4, 'Fun card game, but could use more cards.'),
-(3, 'bwhite', 5, 'Challenging and addictive puzzle.'),
-(4, 'mjohnson', 3, 'Not as durable as I expected.'),
-(5, 'rthompson', 4, 'Classic game, always a good time.'),
-(6, 'emiller', 5, 'Great graphics and gameplay.');
 
 -- Inserimenti delle review in italiano
 INSERT INTO `funside`.`review` (`product`, `user`, `rating`, `text`) VALUES
