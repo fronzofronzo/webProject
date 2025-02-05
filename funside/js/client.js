@@ -93,11 +93,11 @@ function setUpPasswordToggle(passwordId) {
 function generateFormModifyPassword() {
     return `
         <h2>Modifica password</h2>
-        <div>
+        <div >
             <form action="#" method="POST" id="modifypassword" name="modificapassword">
                 <div class="form-group mb-2">
-                    <label for="oldpassword">Vecchia password</label>
-                    <div class="d-flex">
+                    <label class="text-light" for="oldpassword">Vecchia password</label>
+                    <div class="d-flex ">
                         <div class="flex-grow-1 me-2">
                             <input type="password" class="form-control" id="oldpassword" placeholder="Vecchia password">
                         </div>
@@ -105,7 +105,7 @@ function generateFormModifyPassword() {
                     </div>
                 </div>
                 <div class="form-group mb-2">
-                    <label for="newpassword">Nuova password</label>
+                    <label class="text-light" for="newpassword">Nuova password</label>
                     <div class="d-flex">
                         <div class="flex-grow-1 me-2">
                             <input type="password" class="form-control" id="newpassword" placeholder="Nuova password">
@@ -113,8 +113,8 @@ function generateFormModifyPassword() {
                         <button type="button" class="btn btn-secondary" id="newpasswordshow">Mostra</button>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary" id="confirmButton">Conferma</button>
-                <button type="submit" class="btn btn-primary" id="goBack">Indietro</button>
+                <button type="submit" class="btn btn-secondary" id="confirmButton">Conferma</button>
+                <button type="submit" class="btn btn-secondary" id="goBack">Indietro</button>
                 <p></p>
             </form>
         </div>
@@ -182,7 +182,7 @@ function generateFormModifyAddress(addresses) {
         addresses.forEach((a) => {
             form += `
             <section class="d-flex align-items-center justify-content-start p-2 mb-2 border" id="sec_${a.id}">
-                <button class="btn" onclick="deleteAddress(${a.id})"><strong class="material-icons">delete</strong></button>
+                <button class="btn text-light" onclick="deleteAddress(${a.id})"><strong class="material-icons">delete</strong></button>
                 <span>${a.add}</span>
             </section>
 
@@ -198,7 +198,7 @@ function generateFormModifyAddress(addresses) {
         <div class="collapse" id="collapseform">
             <form action="#" method="POST" id="formnewaddress" name="nuovoindirizzo">
                 <div class="form-group mb-2">
-                    <label for="newaddress">Nuovo indirizzo</label>
+                    <label class="text-light " for="newaddress">Nuovo indirizzo</label>
                     <input type="text" class="form-control" id="newaddress" aria-describedby="emailHelp" placeholder="Inserisci nuovo indirizzo">
                 </div>
                 <button type="submit" id="confirmnewaddress" class="btn btn-primary">Conferma</button>
@@ -218,15 +218,15 @@ function generateOrders(orders) {
     let output = '';
     orders.orders.forEach(o => {
         output += `
-        <div class="border border-dark p-3 mb-3">
-            <div class="d-flex align-items-center justify-content-between">
+        <div class="border border-dark p-3 mb-3 order-view">
+            <div class="d-flex align-items-center justify-content-between ">
                 <h3 class="mb-0">Ordine #${o.idorder}</h3>
                 <button class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#details_${o.idorder}" id="${o.idorder}" type="button" aria-expanded="false" aria-controls="details_${o.idorder}">▼</button>
             </div>
             <p>Ordine del: ${o.dateorder}</p>
             <p>Status: ${o.status}</p>
             <p>Totale: ${o.totalprice}€</p>
-            <div class="collapse mt-2" id="details_${o.idorder}">
+            <div class="collapse mt-2 " id="details_${o.idorder}">
                 ${generateOrderDetails(o, orders.order_details)}
             </div>
         </div>`;
@@ -239,7 +239,7 @@ function generateOrderDetails(order, orderDetails) {
     if (orderDetails && orderDetails[order.idorder]) {
         orderDetails[order.idorder].forEach(d => {
             detailsOutput += `
-            <section class="d-flex flex-row align-items-center gap-3 border rounded p-2 mb-2">
+            <section class="d-flex flex-row align-items-center gap-3 p-2 mb-2 border rounded border-2 border-black">
                 <div class="d-flex justify-content-center">
                     <img src="${d.image}" class="img-thumbnail img-fluid" style="width: 80px; height: 80px; object-fit: cover;" alt="${d.name}"/>
                 </div>
