@@ -93,11 +93,11 @@ function setUpPasswordToggle(passwordId) {
 function generateFormModifyPassword() {
     return `
         <h2>Modifica password</h2>
-        <div>
+        <div >
             <form action="#" method="POST" id="modifypassword" name="modificapassword">
                 <div class="form-group mb-2">
-                    <label for="oldpassword">Vecchia password</label>
-                    <div class="d-flex">
+                    <label class="text-light" for="oldpassword">Vecchia password</label>
+                    <div class="d-flex ">
                         <div class="flex-grow-1 me-2">
                             <input type="password" class="form-control" id="oldpassword" placeholder="Vecchia password">
                         </div>
@@ -105,7 +105,7 @@ function generateFormModifyPassword() {
                     </div>
                 </div>
                 <div class="form-group mb-2">
-                    <label for="newpassword">Nuova password</label>
+                    <label class="text-light" for="newpassword">Nuova password</label>
                     <div class="d-flex">
                         <div class="flex-grow-1 me-2">
                             <input type="password" class="form-control" id="newpassword" placeholder="Nuova password">
@@ -113,8 +113,8 @@ function generateFormModifyPassword() {
                         <button type="button" class="btn btn-secondary" id="newpasswordshow">Mostra</button>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary" id="confirmButton">Conferma</button>
-                <button type="submit" class="btn btn-primary" id="goBack">Indietro</button>
+                <button type="submit" class="btn btn-secondary" id="confirmButton">Conferma</button>
+                <button type="submit" class="btn btn-secondary" id="goBack">Indietro</button>
                 <p></p>
             </form>
         </div>
@@ -182,7 +182,7 @@ function generateFormModifyAddress(addresses) {
         addresses.forEach((a) => {
             form += `
             <section class="d-flex align-items-center justify-content-start p-2 mb-2 border" id="sec_${a.id}">
-                <button class="btn" onclick="deleteAddress(${a.id})"><strong class="material-icons">delete</strong></button>
+                <button class="btn text-light" onclick="deleteAddress(${a.id})"><strong class="material-icons">delete</strong></button>
                 <span>${a.add}</span>
             </section>
 
@@ -198,7 +198,7 @@ function generateFormModifyAddress(addresses) {
         <div class="collapse" id="collapseform">
             <form action="#" method="POST" id="formnewaddress" name="nuovoindirizzo">
                 <div class="form-group mb-2">
-                    <label for="newaddress">Nuovo indirizzo</label>
+                    <label class="text-light " for="newaddress">Nuovo indirizzo</label>
                     <input type="text" class="form-control" id="newaddress" aria-describedby="emailHelp" placeholder="Inserisci nuovo indirizzo">
                 </div>
                 <button type="submit" id="confirmnewaddress" class="btn btn-primary">Conferma</button>
