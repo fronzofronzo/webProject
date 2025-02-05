@@ -8,10 +8,14 @@
                     <input type="text" class="form-control" id="nameproduct" name="nameproduct"
                         placeholder="Nome prodotto" required />
                 </div>
-                <div class="d-flex-column">
+                <div class="d-flex-column me-2">
                     <label for="priceproduct">Prezzo</label>
                     <input type="text" class="form-control" id="priceproduct" name="priceproduct" placeholder="€ XX.XX"
                         required />
+                </div>
+                <div class="d-flex-column">
+                    <label for="qproduct">Disponibilità</label>
+                    <input type="text" class="form-control" id="qproduct" name="qproduct" placeholder="X"/>
                 </div>
             </div>
             <div class="form-group mb-2">
