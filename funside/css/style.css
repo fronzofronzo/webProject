@@ -62,6 +62,7 @@ small {
 
 main > section {
 	background-color: #242F40;
+	color: white;
 	margin-top: 30px;
 	width: 96% !important;
 	padding: 2% !important;
@@ -93,7 +94,7 @@ main > section > div > ul > li {
 
 /* Assicurati che le immagini siano tutte delle stesse dimensioni */
 .homeImage {
-	border-color: black;
+	border-color: black !important;
 	border: 2px solid;
 	border-radius: 8px;
     height: 150px; 
