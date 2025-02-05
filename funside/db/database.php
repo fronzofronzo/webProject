@@ -674,6 +674,21 @@ class DatabaseHelper
 
     public function removeProductFromCart($product, $user)
     {
+        $query = "SELECT quantity FROM funside.cartdetail WHERE product=? AND user = ? ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('is', $product, $user);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $quantity = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free();  // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        
+        $query = "UPDATE `funside`.`product` SET `availability` = `availability` + ? WHERE idproduct = ? ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$quantity[0]["quantity"], $product);
+        $stmt->execute();
+        $stmt->close();
+
         $query = "DELETE FROM funside.cartdetail WHERE product=? AND user = ? ";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('is', $product, $user);
