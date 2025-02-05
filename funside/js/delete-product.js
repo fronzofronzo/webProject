@@ -32,6 +32,7 @@ async function init(){
 	}
 	select.innerHTML = code;
 
+	//add event listener to search bar.
 	document.getElementById('searchProduct').addEventListener('keyup', function() {
 		let filter = this.value.toLowerCase();
 		console.log(this.value.toLowerCase());
@@ -47,6 +48,13 @@ async function init(){
 			}
 		}
 	});
+
+	document.getElementById('productSelect').addEventListener("change", function() {
+		value = this.value;
+		let productSelected = this.options[this.selectedIndex].text;
+		document.querySelector("main section div span strong").innerHTML = `${productSelected}`;
+	});
 }
 
+let value = -1;
 init();
