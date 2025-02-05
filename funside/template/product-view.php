@@ -14,7 +14,7 @@ function generateStars($rating) {
 }
 
 ?>
-
+<?php if($product["active"]):?>
 <section class="container-fluid">
 	<h2 class="mb-3 border-bottom border-black border-4">
 		<?php echo $product["name"]?>
@@ -103,3 +103,9 @@ function generateStars($rating) {
 		</form>
 	</div>
 </section>
+<?php else: ?>
+	<section class="container-fluid">
+		<h2>Prodotto non più disponibile</h2>
+		<p>Il prodotto che stai cercando non è più disponibile</p>
+	</section>
+<?php endif; ?>
