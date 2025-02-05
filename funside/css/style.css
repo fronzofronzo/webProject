@@ -210,6 +210,10 @@ main > section div div:nth-child(2) div:nth-child(5) button {
 	border-radius: 4px;
 }
 
+.notification {
+	background: #E5E5E5;
+}
+
 .product-image {
 	max-width: 500px !important ;
 	max-height: 500px !important;
