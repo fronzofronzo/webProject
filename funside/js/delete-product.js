@@ -22,6 +22,10 @@ async function getProducts() {
 	return await fetchData(url,formData);
 }
 
+async function deleteProduct(id) {
+	const url = "./api/"
+}
+
 async function init(){
 	const products = await getProducts();
 	const select = document.querySelector("section div select");
@@ -50,9 +54,14 @@ async function init(){
 	});
 
 	document.getElementById('productSelect').addEventListener("change", function() {
+		document.querySelector("section div div button").removeAttribute("disabled")
 		value = this.value;
 		let productSelected = this.options[this.selectedIndex].text;
 		document.querySelector("main section div span strong").innerHTML = `${productSelected}`;
+	});
+
+	document.querySelector("main section div div button").addEventListener("click", function () {
+
 	});
 }
 
