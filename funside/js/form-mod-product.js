@@ -127,7 +127,7 @@ async function updateProduct(field, val) {
     const formData = new FormData();
     formData.append('field', field);
     formData.append('val', val);
-    if (field = "imageproduct") {
+    if (field == "imageproduct") {
         const image = document.querySelector("#imageproduct").files[0];
         formData.append('image', image);
     }
