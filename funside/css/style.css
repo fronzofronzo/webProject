@@ -94,6 +94,9 @@ main > section > div > ul > li {
 
 /* Assicurati che le immagini siano tutte delle stesse dimensioni */
 .homeImage {
+	border-color: black !important;
+	border: 2px solid;
+	border-radius: 8px;
     height: 150px; 
     width: 100%; /* Cambiato per rendere la larghezza responsiva */
     max-width: 150px; /* Imposta una larghezza massima per evitare che diventino troppo grandi */
@@ -175,13 +178,14 @@ main > section div div:nth-child(2) div:nth-child(5) button {
 
 .cartElement {
 	border-color: black;
+	color: black;
 	border: 2px solid;
 	border-radius: 8px;
 	display: flex;
 	justify-content: center;
   	align-items: center;
-	  background: #6e999c;
-	  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+	  background: #E5E5E5;
+	  box-shadow: 0px 4px 10px rgb(255, 255, 255, 0.2);
 }
 
 .icons {
