@@ -66,6 +66,7 @@ async function init(){
 	});
 
 	document.querySelector(".modal-footer button").addEventListener("click", function() {
+		document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
 		init();
 	});
 
