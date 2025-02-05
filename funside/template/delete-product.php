@@ -1,12 +1,12 @@
-<section class="container-fluid" >
-    <h2 class=" text-center" >Elimina prodotto</h2>
+<section class="container-fluid">
+    <h2 class=" text-center">Elimina prodotto</h2>
     <div>
-        <input class="form-control mb-4" type="text" id="searchProduct" placeholder="Cerca un prodotto" />
+        <input class="form-control mb-4" type="text" id="searchProduct" placeholder="Cerca un prodotto"/>
 
         <select class="form-select mb-4" size="6" id="productSelect">
 
         </select>
-        <span class="">
+        <span>
             L'elemento selezionato è : <strong></strong>
         </span>
         <div>
@@ -19,7 +19,6 @@
                         <h1 class="modal-title fs-5" id="labelModal">Eliminazione avvenuta con successo</h1>
                     </div>
                     <div class="modal-body">
-                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
