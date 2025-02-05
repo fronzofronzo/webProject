@@ -25,10 +25,7 @@ switch ($mod) {
         $templateParams["js"] = array("js/view-product.js");
         break;
     default:
-        $templateParams["title"] = "FunSide - Gestione Prodotti";
-        $templateParams["name"] = "template/default.php";
         break;
 }
-
 require 'template/base.php';
 ?>
