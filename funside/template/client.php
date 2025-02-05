@@ -1,5 +1,5 @@
 <section class="container-fluid">
-    <h2>Ciao <?php echo $_SESSION["username"] ?></h2>
+    <h2>Benvenuto <?php echo $_SESSION["username"] ?></h2>
     <div><button type="submit" class="btn btn-secondary">Logout</button></div>
 </section>
 <section class="container-fluid">
@@ -21,6 +21,5 @@
 <section class="container-fluid">
     <h2>Ordini</h2>
     <div>
-
     </div>
 </section>
