@@ -140,9 +140,9 @@ async function getDataReviews() {
     if(reviews) {
         let rev = ""
         for(let i=0; i<reviews.length; i++) {
-            rev += `<div class='border mx-2 my-2 p-3 rounded'>
-                <p class="fw-bold ">Username: ${reviews[i]["user"]}</p>
-                <p> ${reviews[i]["text"]}</p>
+            rev += `<div class='border border-black mx-2 my-2 p-3 rounded'>
+                <p class="fw-bold text-black">Username: ${reviews[i]["user"]}</p>
+                <p class="text-black"> ${reviews[i]["text"]}</p>
                 ${generateStars(reviews[i]["rating"])}
             </div>`;
         }

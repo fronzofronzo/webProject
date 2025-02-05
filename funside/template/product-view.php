@@ -59,8 +59,7 @@ function generateStars($rating) {
 		</div>
 		<div class="tab-content">
 			<div class="tab-pane active" id="description">
-				<!-- Contenuto della descrizione -->
-				<p><?php echo $product["description"]?></p>
+				<p class="text-black"><?php echo $product["description"]?></p>
 			</div>
 			<div class="tab-pane " id="reviews">
 				
