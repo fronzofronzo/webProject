@@ -190,7 +190,7 @@ class DatabaseHelper
 
     public function getRandomProducts()
     {
-        $query = "SELECT  idproduct, name, price, description, brand, image, type FROM funside.product ORDER BY RAND()";
+        $query = "SELECT  idproduct, name, price, description, brand, image, type FROM funside.product WHERE active=1 ORDER BY RAND() ";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -219,6 +219,7 @@ class DatabaseHelper
             SELECT p.name, p.price, p.image, p.avgrating, p.idproduct, SUM(d.quantity) as tot 
             FROM funside.product p
             INNER JOIN funside.orderdetail d ON p.idproduct = d.product
+            WHERE p.active=1
             GROUP BY p.idproduct
             ORDER BY tot DESC
             LIMIT ?
@@ -236,7 +237,7 @@ class DatabaseHelper
 
     public function getBestRatings($n)
     {
-        $query = "SELECT name, price, image, avgrating, idproduct FROM funside.product WHERE avgrating is not NULL ORDER BY avgrating DESC LIMIT ?";
+        $query = "SELECT name, price, image, avgrating, idproduct FROM funside.product WHERE avgrating is not NULL AND active=1 ORDER BY avgrating DESC LIMIT ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $n);
         $stmt->execute();
