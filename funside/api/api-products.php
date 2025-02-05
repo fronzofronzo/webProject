@@ -26,6 +26,11 @@ if($_POST["action"] == 1) {
     }
 } else if ($_POST["action"] == "getall"){
     $result = $dbh->getAllProducts();
+} else if ($_POST["action"] == "getallwithstats"){
+    $result = $dbh->getAllProductsWithStats();
+    for ($i = 0; $i < count($result); $i++) {
+        $result[$i]["image"] = UPLOAD_DIR.$result[$i]["image"];
+    }
 } else if ($_POST["action"] == "isValidId"){
     $result = $dbh->getProductByID($_POST["idproduct"]);
 } else if ($_POST["action"] == "deleteProduct") {
