@@ -13,7 +13,8 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
     <title><?php echo $templateParams["title"]; ?></title>
 </head>
 
@@ -29,24 +30,24 @@
     </div>
     <nav class="navbar bg-body-tertiary border border-black">
         <div class="container-fluid row">
-            <?php if(isUserLoggedIn() && isUserClient()) :?>
+            <?php if (isUserLoggedIn() && isUserClient()): ?>
                 <a href="notification.php" class="fa-solid fa-bell btn btn-light col-1" title='Notifiche'></a>
                 <a href="cart.php" class="fa-solid fa-cart-shopping btn btn-light col-1" title="Carrello"></a>
             <?php endif; ?>
             <a href="login.php" class="fa-solid fa-user btn btn-light col-1" title="Account"></a>
-            
+
             <a href="catalogue.php" class="fa-solid fa-bars btn btn-light col-1" title="Catalogo"></a>
         </div>
     </nav>
     <main>
         <?php
-        if(isset($templateParams["name"])){
-          require($templateParams["name"]);
+        if (isset($templateParams["name"])) {
+            require($templateParams["name"]);
         }
-    ?>
+        ?>
     </main>
     <footer class="text-center text-black py-3 border border-black ">
-    <div class="container">
+        <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <h5 class="mb-4">Link Utili</h5>
@@ -58,15 +59,24 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <h5 class="mb-4">Seguici</h5>
-                    <a href="#" class=" me-3" alt="facebook" title="visualizza la nostra pagina facebook per restare aggioranato"><strong class="fab fa-facebook fa-2x"></strong></a>
-                    <a href="#" class=" me-3" alt="instagram" title="visualizza la nostra pagina instagram per restare aggioranato"><strong class="fab fa-instagram fa-2x"></strong></a>
-                    <a href="#" class="" alt="twitter" title="visualizza la nostra pagina twitter per restare aggioranato"><strong class="fab fa-twitter fa-2x"></strong></a>
+                    <a href="#" class=" me-3" alt="facebook"
+                        title="visualizza la nostra pagina facebook per restare aggioranato"><strong
+                            class="fab fa-facebook fa-2x"></strong></a>
+                    <a href="#" class=" me-3" alt="instagram"
+                        title="visualizza la nostra pagina instagram per restare aggioranato"><strong
+                            class="fab fa-instagram fa-2x"></strong></a>
+                    <a href="#" class="" alt="twitter"
+                        title="visualizza la nostra pagina twitter per restare aggioranato"><strong
+                            class="fab fa-twitter fa-2x"></strong></a>
                 </div>
                 <div class="col-md-4">
-                    <h5 class="mb-2">Newsletter</h5>
+                    <label for="newsletter" class="form-label">
+                        <h5 class="mb-2">Newsletter</h5>
+                    </label>
                     <form>
                         <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Inserisci la tua email">
+                            <input type="email" class="form-control" placeholder="Inserisci la tua email"
+                                id="newsletter">
                             <button class="btn btn-primary" type="submit">Iscriviti</button>
                         </div>
                     </form>
@@ -76,11 +86,11 @@
         </div>
     </footer>
     <?php
-    if(isset($templateParams["js"])):
-        foreach($templateParams["js"] as $script):
-    ?>
-        <script src="<?php echo $script; ?>"></script>
-    <?php
+    if (isset($templateParams["js"])):
+        foreach ($templateParams["js"] as $script):
+            ?>
+            <script src="<?php echo $script; ?>"></script>
+            <?php
         endforeach;
     endif;
     ?>
