@@ -96,8 +96,23 @@ async function init() {
                     <p class="text-black"> L'ordine si trova nello stato : ${orders[i]["status"]} ${orders[i]["suspended"] ? "(SOSPESO)" : ""}<p>
                 </div>
                 <div class="d-flex justify-content-end flex-grow-1" >
-                    <button class="btn btn-secondary me-2 statusButton" id="${orders[i]["idorder"]}"  value ="${nextStatus(orders[i]["status"])}" user="${orders[i]["user"]}" ${orders[i]["suspended"] ? "disabled" : "" }>Passa a stato successivo</button>
-                    <button class="btn btn-danger suspendButton" id="${orders[i]["idorder"]}" user="${orders[i]["user"]}" value="${!orders[i]["suspended"]}">${orders[i]["suspended"] ? "Riprendi" : "Sospendi"}</button>
+                    <button
+                        class="btn btn-secondary me-2 statusButton" 
+                        id="status-${orders[i]["idorder"]}"  
+                        data-status="${nextStatus(orders[i]["status"])}" 
+                        data-user="${orders[i]["user"]}" 
+                        ${orders[i]["suspended"] ? "disabled" : "" }
+                        aria-label="Passa a stato successivo per l'ordine ${orders[i]['idorder']}">
+                        Passa a stato successivo
+                        </button>
+                    <button 
+                    class="btn btn-danger suspendButton" 
+                    id="suspend-${orders[i]["idorder"]}" 
+                    data-user="${orders[i]["user"]}" 
+                    data-suspended ="${!orders[i]["suspended"]}"
+                    aria-label="${orders[i]['suspended'] ? 'Riprendi' : 'Sospendi'} l'ordine ${orders[i]['idorder']} ">
+                    ${orders[i]["suspended"] ? "Riprendi" : "Sospendi"}
+                    </button>
                 </div>
              </div>
             `;
@@ -108,13 +123,19 @@ async function init() {
     let statusButtons = document.querySelectorAll(".statusButton");
     statusButtons.forEach(btn => 
         btn.addEventListener("click", async function(e) {
-            changeOrderStatus(btn.getAttribute("id"), btn.getAttribute("value"), btn.getAttribute("user"));
+            const orderId = this.id.replace("status-", "");
+            const nextStatus = this.getAttribute("data-status");
+            const user = this.getAttribute("data-user");
+            changeOrderStatus(orderId, nextStatus, user);
     }));
     let suspensionButtons = document.querySelectorAll(".suspendButton");
     suspensionButtons.forEach(btn=> {
         btn.addEventListener("click", async function(e) {
+            const orderId = this.id.replace("suspend-", "");
+            const user = this.getAttribute("data-user");
+            const suspendend = this.getAttribute("data-suspended") === "true";
             console.log(btn.getAttribute("value"));
-            toggleSuspension(btn.getAttribute("id"), btn.getAttribute("user"), btn.getAttribute("value"));
+            toggleSuspension(orderId,user,suspendend);
         })
     });
 
