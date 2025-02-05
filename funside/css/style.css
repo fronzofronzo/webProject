@@ -24,7 +24,7 @@ nav button {
 }
 
 header h1 a {
-	font-family: "Comic Sans MS", "Comic Sans", cursive;
+	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 	line-height: 1.2;
 	font-weight: 500;
 	font-size: 64px;
