@@ -30,8 +30,8 @@ async function getCartDetails() {
 			totalPrice += subtotal;
 			result += `<div>
 				<strong>${products[i]["name"]}</strong>
-				<p>Pezzi: ${products[i]["quantity"]}</p>
-				<p>Totale: ${subtotal}</p>
+				<p class="text-black">Pezzi: ${products[i]["quantity"]}</p>
+				<p class="text-black">Totale: ${subtotal}</p>
 			</div>`;
 		}
 		result += `<h3 class="mt-4">Totale carrello: ${totalPrice}</h3>`;

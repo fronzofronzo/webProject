@@ -11,7 +11,7 @@
 		</div>
 		<form class="row">
 			<div class="my-3 col-12 col-md-6">
-				<label for="address" class="form-label" id="label_address">Indirizzo</label>
+				<label for="address" class="form-label text-black" id="label_address">Indirizzo</label>
 				<input type="text" class="form-control" id="address" aria-describedby="label_address"/>
 				<div id="addressHelp" class="form-text">Inserisci un nuovo indirizzo</div>
 				<button type="button" class="btn btn-primary">Inserisci</button>
