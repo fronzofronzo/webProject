@@ -59,22 +59,20 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <h5 class="mb-4">Seguici</h5>
-                    <a href="#" class=" me-3" alt="facebook"
+                    <a href="#" class=" me-3"
                         title="visualizza la nostra pagina facebook per restare aggioranato"><strong
                             class="fab fa-facebook fa-2x"></strong></a>
-                    <a href="#" class=" me-3" alt="instagram"
+                    <a href="#" class=" me-3"
                         title="visualizza la nostra pagina instagram per restare aggioranato"><strong
                             class="fab fa-instagram fa-2x"></strong></a>
-                    <a href="#" class="" alt="twitter"
-                        title="visualizza la nostra pagina twitter per restare aggioranato"><strong
+                    <a href="#" class="" title="visualizza la nostra pagina twitter per restare aggioranato"><strong
                             class="fab fa-twitter fa-2x"></strong></a>
                 </div>
                 <div class="col-md-4">
-                    <label for="newsletter" class="form-label">
-                        <h5 class="mb-2">Newsletter</h5>
-                    </label>
+                    <h5 class="mb-2">Newsletter</h5>
                     <form>
                         <div class="input-group">
+                            <label for="newsletter" class="d-none">Newsletter</label>
                             <input type="email" class="form-control" placeholder="Inserisci la tua email"
                                 id="newsletter">
                             <button class="btn btn-primary" type="submit">Iscriviti</button>

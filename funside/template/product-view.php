@@ -6,9 +6,9 @@ function generateStars($rating) {
     $halfStar = ($rating - $fullStars) >= 0.5 ? 1 : 0; // Mezza stella se necessario
     $emptyStars = 5 - ($fullStars + $halfStar); // Stelle vuote rimanenti
 
-    $starsHtml = str_repeat('<i class="fa fa-star text-warning"></i>', $fullStars);  // Stelle piene
-    $starsHtml .= $halfStar ? '<i class="fa fa-star-half-alt text-warning"></i>' : ''; // Mezza stella se serve
-    $starsHtml .= str_repeat('<i class="fa fa-star text-secondary"></i>', $emptyStars); // Stelle vuote
+    $starsHtml = str_repeat('<strong class="fa fa-star text-warning"></strong>', $fullStars);  // Stelle piene
+    $starsHtml .= $halfStar ? '<strong class="fa fa-star-half-alt text-warning"></strong>' : ''; // Mezza stella se serve
+    $starsHtml .= str_repeat('<strong class="fa fa-star text-secondary"></strong>', $emptyStars); // Stelle vuote
 
     return $starsHtml;
 }
@@ -42,7 +42,7 @@ function generateStars($rating) {
 				</select>
 			</div>
 			<div class="row productSubmitCommand" >
-				<button class=" border-secondary rounded-3 btn btn-secondary text-light" data-bs-toggle="popover" data-bs-title="Informazione" data-bs-content="Prodotto aggiunto al carrello" data-bs-placement="bottom" >
+				<button class=" border-secondary rounded-3 btn btn-secondary" data-bs-toggle="popover" data-bs-title="Informazione" data-bs-content="Prodotto aggiunto al carrello" data-bs-placement="bottom" >
 					<i class="fa-solid fa-cart-plus me-3"></i>
 					<div >Aggiungi al carrello</div>
 				</button> 
