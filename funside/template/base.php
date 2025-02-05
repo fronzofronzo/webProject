@@ -58,9 +58,9 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <h5 class="mb-4">Seguici</h5>
-                    <a href="#" class=" me-3"><i class="fab fa-facebook fa-2x"></i></a>
-                    <a href="#" class=" me-3"><i class="fab fa-instagram fa-2x"></i></a>
-                    <a href="#" class=""><i class="fab fa-twitter fa-2x"></i></a>
+                    <a href="#" class=" me-3" alt="facebook" title="visualizza la nostra pagina facebook per restare aggioranato"><strong class="fab fa-facebook fa-2x"></strong></a>
+                    <a href="#" class=" me-3" alt="instagram" title="visualizza la nostra pagina instagram per restare aggioranato"><strong class="fab fa-instagram fa-2x"></strong></a>
+                    <a href="#" class="" alt="twitter" title="visualizza la nostra pagina twitter per restare aggioranato"><strong class="fab fa-twitter fa-2x"></strong></a>
                 </div>
                 <div class="col-md-4">
                     <h5 class="mb-2">Newsletter</h5>
