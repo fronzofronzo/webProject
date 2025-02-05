@@ -218,15 +218,15 @@ function generateOrders(orders) {
     let output = '';
     orders.orders.forEach(o => {
         output += `
-        <div class="border border-dark p-3 mb-3">
-            <div class="d-flex align-items-center justify-content-between">
+        <div class="border border-dark p-3 mb-3 order-view">
+            <div class="d-flex align-items-center justify-content-between ">
                 <h3 class="mb-0">Ordine #${o.idorder}</h3>
                 <button class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#details_${o.idorder}" id="${o.idorder}" type="button" aria-expanded="false" aria-controls="details_${o.idorder}">▼</button>
             </div>
             <p>Ordine del: ${o.dateorder}</p>
             <p>Status: ${o.status}</p>
             <p>Totale: ${o.totalprice}€</p>
-            <div class="collapse mt-2" id="details_${o.idorder}">
+            <div class="collapse mt-2 " id="details_${o.idorder}">
                 ${generateOrderDetails(o, orders.order_details)}
             </div>
         </div>`;
@@ -239,7 +239,7 @@ function generateOrderDetails(order, orderDetails) {
     if (orderDetails && orderDetails[order.idorder]) {
         orderDetails[order.idorder].forEach(d => {
             detailsOutput += `
-            <section class="d-flex flex-row align-items-center gap-3 border rounded p-2 mb-2">
+            <section class="d-flex flex-row align-items-center gap-3 p-2 mb-2 border rounded border-2 border-black">
                 <div class="d-flex justify-content-center">
                     <img src="${d.image}" class="img-thumbnail img-fluid" style="width: 80px; height: 80px; object-fit: cover;" alt="${d.name}"/>
                 </div>
