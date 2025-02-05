@@ -17,8 +17,17 @@ async function fetchData(url, formData) {
 function showInputBox(field, text) {
     let output = ``;
     switch (field) {
-        case "typeproduct":
-
+        case "descriptionproduct":
+            output += `
+            <form action="#" method="POST" id="form_${field}" name="form_${field}">
+                <div class="form-group mb-2">
+                    <label for="${field}">${text}</label>
+                    <textarea class="form-control" id="${field}" name="${field}" required></textarea>
+                </div>
+            </form>
+            <button type="submit" class="btn btn-primary display-inline-block">Modifica</button>
+            `;
+            break;
             break;
         default:
             output += `
@@ -41,8 +50,13 @@ function showInputBox(field, text) {
         window.location.reload();
     })
     switch (field) {
-        case "typeproduct":
-
+        case "descriptionproduct":
+            document.querySelector("main section button:first-of-type").addEventListener("click", function (e) {
+                e.preventDefault();
+                const val = document.querySelector("main section textarea").value;
+                updateProduct(field, val);
+            });
+            break;
             break;
         default:
             document.querySelector("main section button:first-of-type").addEventListener("click", function (e) {
@@ -63,7 +77,8 @@ async function updateProduct(field, val) {
     if (json["modified"]) {
         document.querySelector("main p").innerHTML = "Campo modificato correttamente";
     } else {
-        document.querySelector("main p").innerHTML = "Modifica fallita";}
+        document.querySelector("main p").innerHTML = "Modifica fallita";
+    }
 
 }
 
