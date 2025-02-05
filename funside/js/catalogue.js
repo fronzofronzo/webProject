@@ -60,7 +60,7 @@ function generateCategoriesChoice(categories) {
 		let category = `
 		<li class="form-check mx-2">
 			<input class="form-check-input" type="checkbox" value="" id="${categories[i]["type"]}">
-			<label class="form-check-label" for="${categories[i]["type"]}">
+			<label class="form-check-label text-black" for="${categories[i]["type"]}">
 				${categories[i]["type"]}
 			</label>
 		</li>`;

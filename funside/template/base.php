@@ -30,9 +30,11 @@
     </div>
     <nav class="navbar bg-body-tertiary border border-black">
         <div class="container-fluid row">
-            <?php if (isUserLoggedIn() && isUserClient()): ?>
+            <?php if (isUserLoggedIn()) :?>
                 <a href="notification.php" class="fa-solid fa-bell btn btn-light col-1" title='Notifiche'></a>
+                <?php if (isUserClient()) :?>
                 <a href="cart.php" class="fa-solid fa-cart-shopping btn btn-light col-1" title="Carrello"></a>
+                <?php endif; ?>
             <?php endif; ?>
             <a href="login.php" class="fa-solid fa-user btn btn-light col-1" title="Account"></a>
 
