@@ -33,6 +33,10 @@ if (isset($_POST['action'])) {
             $dbh->addNotificationAboutAnOrder($notificationText,$_SESSION["username"], $orderId, $notificationTitle);
             for($i=0; $i<count($products); $i++) {
                 $dbh->registerOrderDetail($products[$i]["idproduct"], $orderId, $products[$i]["quantity"]);
+                $quantity = $dbh->getProductAvailability($products[$i]["idproduct"]);
+                if($quantity["availability"] == 0) {
+                    
+                }
             }
             $dbh->emptyCart($_SESSION["username"]);
             break;

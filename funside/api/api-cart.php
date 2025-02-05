@@ -4,9 +4,12 @@
 	if($_POST["action"]=="getProducts") {
 		$result = $dbh->getProductsInCart($_SESSION["username"]);
 	} else if ($_POST["action"] == "addProducts") {
-		if(!isUserLoggedIn() || !isUserClient()) {
+		if(!isUserLoggedIn()) {
 			$result["title"] = "ERRORE: utente non loggato";
 			$result["message"] = "Occorre eseguire il login per aggiungere prodotti al carrello";
+		} else if (!isUserClient()) {
+			$result["title"] = "ERRORE: utente loggato come admin";
+			$result["message"] = "Occorre eseguire il login come cliente per aggiungere prodotti al carrello";
 		} else {
 			$result = $dbh->addProductToCart($_POST["id"], $_SESSION["username"], $_POST["quantity"] );
 			if($result["success"] == true) {

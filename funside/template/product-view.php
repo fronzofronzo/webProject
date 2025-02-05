@@ -24,13 +24,13 @@ function generateStars($rating) {
 		<div class="col-12 col-md-6 text-center mb-3 ">
 			<img src="./upload/<?php echo $product["image"]?>" class="product-image" alt="<?php echo $product["name"]?>"> 
 		</div>
-		<div class="col-12 col-md-6 text-center">
-			<div class="row mb-3">
+		<div class="col-12 col-md-6 text-center ">
+			<div class="row mb-3 text-light">
 				<h3><?php echo $product["type"]?></h3>
 			</div>
-			<div class="row mb-3 text-center"><p><?php echo generateStars($product	["avgrating"]); ?></p>
+			<div class="row mb-3 text-center text-light"><p><?php echo generateStars($product	["avgrating"]); ?></p>
 			</div>
-			<div class="row mb-3 text-center"><h4>€ <?php echo $product["price"]?></h4></div>
+			<div class="row mb-3 text-center text-light"><h4>€ <?php echo $product["price"]?></h4></div>
 			<div class="row mb-3 productSubmitCommand">
 				<label for="quantity" class="form-label fw-bold">Quantità:</label>
 				<select class="form-select border-primary rounded-3" id="quantity">
@@ -42,7 +42,7 @@ function generateStars($rating) {
 				</select>
 			</div>
 			<div class="row productSubmitCommand" >
-				<button class=" border-secondary rounded-3 btn btn-secondary" data-bs-toggle="popover" data-bs-title="Informazione" data-bs-content="Prodotto aggiunto al carrello" data-bs-placement="bottom" >
+				<button class=" border-secondary rounded-3 btn btn-secondary text-light" data-bs-toggle="popover" data-bs-title="Informazione" data-bs-content="Prodotto aggiunto al carrello" data-bs-placement="bottom" >
 					<i class="fa-solid fa-cart-plus me-3"></i>
 					<div >Aggiungi al carrello</div>
 				</button> 

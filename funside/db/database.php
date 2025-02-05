@@ -167,6 +167,18 @@ class DatabaseHelper
 
     //PRODUCT
 
+    public function getProductAvailability($id) {
+        $query = "SELECT `availability` FROM `funside`.`product` WHERE `idproduct` = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
+    } 
+
     public function insertProduct($name, $price, $description, $category, $brand, $image)
     {
         $query = "INSERT INTO product (name, price, description, brand, type, image) 
