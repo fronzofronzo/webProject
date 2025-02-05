@@ -68,9 +68,9 @@ async function setDeliveredOrders() {
             <div class="d-flex p-3 align-items-center order-manage mt-4">  
                 <div> 
                     <strong>Order #${delivered[i]["idorder"]}</strong>
-                    <p>Data ordine: ${delivered[i]["dateorder"]}</p>
-                    <p>Data consegna: ${delivered[i]["datedelivery"]}</p>
-                    <p>Utente: ${delivered[i]["user"]}</p>
+                    <p class="text-black">Data ordine: ${delivered[i]["dateorder"]}</p>
+                    <p class="text-black">Data consegna: ${delivered[i]["datedelivery"]}</p>
+                    <p class="text-black">Utente: ${delivered[i]["user"]}</p>
                 </div>
              </div>
             `;
@@ -93,10 +93,10 @@ async function init() {
             <div class="d-flex p-3 align-items-center order-manage mt-4">  
                 <div> 
                     <strong>Order #${orders[i]["idorder"]}</strong>
-                    <p> L'ordine si trova nello stato : ${orders[i]["status"]} ${orders[i]["suspended"] ? "(SOSPESO)" : ""}<p>
+                    <p class="text-black"> L'ordine si trova nello stato : ${orders[i]["status"]} ${orders[i]["suspended"] ? "(SOSPESO)" : ""}<p>
                 </div>
                 <div class="d-flex justify-content-end flex-grow-1" >
-                    <button class="btn btn-primary me-2 statusButton" id="${orders[i]["idorder"]}"  value ="${nextStatus(orders[i]["status"])}" user="${orders[i]["user"]}" ${orders[i]["suspended"] ? "disabled" : "" }>Passa a stato successivo</button>
+                    <button class="btn btn-secondary me-2 statusButton" id="${orders[i]["idorder"]}"  value ="${nextStatus(orders[i]["status"])}" user="${orders[i]["user"]}" ${orders[i]["suspended"] ? "disabled" : "" }>Passa a stato successivo</button>
                     <button class="btn btn-danger suspendButton" id="${orders[i]["idorder"]}" user="${orders[i]["user"]}" value="${!orders[i]["suspended"]}">${orders[i]["suspended"] ? "Riprendi" : "Sospendi"}</button>
                 </div>
              </div>
