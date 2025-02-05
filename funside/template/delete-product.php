@@ -12,5 +12,20 @@
         <div>
             <button type="button" class="btn btn-danger" disabled>Elimina</button>
         </div>
+        <div class="modal fade" id="eliminationModal" tabindex="-1" aria-labelledby="labelModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="labelModal">Eliminazione avvenuta con successo</h1>
+                    </div>
+                    <div class="modal-body">
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
