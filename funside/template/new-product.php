@@ -6,12 +6,12 @@
                 <div class="d-flex-column flex-grow-1 me-2">
                     <label for="nameproduct">Nome prodotto</label>
                     <input type="text" class="form-control" id="nameproduct" name="nameproduct"
-                        placeholder="Nome prodotto" required>
+                        placeholder="Nome prodotto" required />
                 </div>
                 <div class="d-flex-column">
                     <label for="priceproduct">Prezzo</label>
                     <input type="text" class="form-control" id="priceproduct" name="priceproduct" placeholder="€ XX.XX"
-                        required>
+                        required />
                 </div>
             </div>
             <div class="form-group mb-2">
@@ -29,12 +29,12 @@
                 <div class="d-flex-column flex-grow-1">
                     <label for="brandproduct">Brand</label>
                     <input type="text" class="form-control" id="brandproduct" name="brandproduct" placeholder="Brand"
-                        required>
+                        required />
                 </div>
             </div>
             <div class="d-flex-column mb-2">
                 <label for="imageproduct">Immagine</label>
-                <input type="file" class="form-control" id="imageproduct" name="imageproduct" required>
+                <input type="file" class="form-control" id="imageproduct" name="imageproduct" required />
             </div>
             <button type="submit" class="btn btn-primary display-inline-block">Inserisci</button>
             <a href="login.php" class="btn btn-primary">Indietro</a>
