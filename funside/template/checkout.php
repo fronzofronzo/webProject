@@ -17,6 +17,9 @@
 				<button type="button" class="btn btn-primary">Inserisci</button>
 			</div>
 			<div class="my-3 col-12 col-md-6">
+				<fieldset>
+					<legend class ="d-none">Indirizzi</legend>
+				</fieldset>
 			</div>
 		</form>
 	</div>
@@ -57,7 +60,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h3 class="modal-title fs-5" id="modalLabel">Ordine effetuato!</h3>
+					<strong class="modal-title fs-5" id="modalLabel">Ordine effetuato!</strong>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">

@@ -52,7 +52,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-3">
-                    <h5 class="mb-4">Link Utili</h5>
+                    <strong class="mb-4">Link Utili</strong>
                     <ul class="list-unstyled">
                         <li><a href="contacts.php">Contatti</a></li>
                         <li><a href="services.php">Servizi</a></li>
@@ -60,7 +60,7 @@
                     </ul>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <h5 class="mb-4">Seguici</h5>
+                    <strong class="mb-4">Seguici</strong>
                     <a href="#" class=" me-3"
                         title="visualizza la nostra pagina facebook per restare aggioranato"><strong
                             class="fab fa-facebook fa-2x"></strong></a>
@@ -71,7 +71,7 @@
                             class="fab fa-twitter fa-2x"></strong></a>
                 </div>
                 <div class="col-md-4">
-                    <h5 class="mb-2">Newsletter</h5>
+                    <strong class="mb-2">Newsletter</strong>
                     <form>
                         <div class="input-group">
                             <label for="newsletter" class="d-none">Newsletter</label>

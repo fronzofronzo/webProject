@@ -47,7 +47,7 @@ async function getAdresses() {
 
 	const adresses = await fetchData(url, formData);
 	if(adresses) {
-		let div = document.querySelector("main section div form div:nth-child(2)");
+		let div = document.querySelector("main section div form div:nth-child(2) fieldset");
 		let result = "";
 		for(let i=0; i<adresses["address"].length; i++) {
 			result += `
@@ -55,7 +55,7 @@ async function getAdresses() {
 				<label class="btn btn-secondary" for="option${i+1}">${adresses["address"][i]["add"]}</label>
 			`;
 		}
-		div.innerHTML = result;
+		div.innerHTML += result;
 	}
 }
 
