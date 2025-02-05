@@ -1,3 +1,16 @@
+/*utility function to create stars valuation*/
+function generateStars(rating){
+    let fullStars = Math.floor(rating);  // Numero di stelle piene
+    let halfStar = (rating - fullStars) >= 0.5 ? 1 : 0; // Mezza stella se necessario
+    let emptyStars = 5 - (fullStars + halfStar); // Stelle vuote rimanenti
+
+    let starsHtml = '<i class="fa fa-star text-warning"></i>'.repeat(fullStars);  // Stelle piene
+    starsHtml += halfStar ? '<i class="fa fa-star-half-alt text-warning"></i>' : ''; // Mezza stella se serve
+    starsHtml += '<i class="fa fa-star text-secondary"></i>'.repeat(emptyStars); // Stelle vuote
+
+    return starsHtml;
+}
+
 //Categories
 async function getCategoriesData() {
 	const url = "api/api-category.php";
@@ -105,7 +118,7 @@ function generateProducts(products) {
                 </div>
                 <div class="text-center"><a href="product.php?id=${products[i]["idproduct"]}">${products[i]["name"]}</a></div>
                 <div class="text-center">€ ${products[i]["price"]}</div>
-                <div class="text-center">Rating: ${products[i]["avgrating"]}</div>
+                <div class="text-center">Rating: ${generateStars(products[i]["avgrating"])}</div>
             </div>
         `;
         result += bestseller;
