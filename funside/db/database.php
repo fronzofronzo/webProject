@@ -633,6 +633,10 @@ class DatabaseHelper
     public function addProductToCart($product, $user, $quantity)
     {
         try {
+            $query = "UPDATE `funside`.`product` SET `availability` = `availability` - ? WHERE `idproduct` = ?"; 
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('ii', $quantity, $product);
+            $stmt->execute();
             $query = "INSERT INTO `funside`.`cartdetail` (product, user, quantity) VALUES
             (?, ?, ?)";
             $stmt = $this->db->prepare($query);
