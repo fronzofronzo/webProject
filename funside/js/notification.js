@@ -49,20 +49,20 @@ function viewNotificationCentre(username, notifications) {
 
 // Funzione per impostare gli event listeners per i bottoni "Mostra di più" e "Elimina"
 function setupEventListeners() {
-    const buttonsShowMore = document.querySelectorAll('main section div > button:nth-child(2)');
+    const buttonsShowMore = document.querySelectorAll('button[data-action="show-more"]');
     buttonsShowMore.forEach(button => {
         button.addEventListener('click', function () {
-            const id = button.getAttribute('id');
+            const id = button.getAttribute('data-id');
             toggleNotificationReadStatus(id);
             updateNotificationsCount();
             toggleShowMoreText(button);
         });
     });
 
-    const buttonsDelete = document.querySelectorAll('main section div > button:first-child');
+    const buttonsDelete = document.querySelectorAll('button[data-action="delete"]');
     buttonsDelete.forEach(button => {
         button.addEventListener('click', function () {
-            const id = button.getAttribute('id');
+            const id = button.getAttribute('data-id');
             deleteNotification(id);
             updateNotificationsCount();
         });
@@ -85,13 +85,16 @@ async function updateNotificationsCount() {
             div.innerHTML = '<div>Nessuna notifica</div>';
         }
 
-        if (json["countUnread"] == 0) {
-            badge.remove();
-        } else {
-            badge.innerHTML = json["countUnread"];
+        if (badge) {
+            if (json["countUnread"] == 0) {
+                badge.remove();
+            } else {
+                badge.innerHTML = json["countUnread"];
+            }
         }
     }
 }
+
 
 // Funzione per marcare una notifica come letta
 async function readNotification(idnotification) {
@@ -140,8 +143,8 @@ function generateNotificationCentre(username, notifications) {
                         <p class="text-muted fs-8">${notification["date"]}: ${notification["time"]}</p>
                     </div>
                     <div class="d-flex flex-row justify-content-start">
-                        <button class="btn material-icons" id="${notification["idnotification"]}">delete</button>
-                        <button class="btn" data-bs-toggle="collapse" data-bs-target="#text_${notification["idnotification"]}" id="${notification["idnotification"]}" type="button" aria-expanded="false" aria-controls="text_${notification["idnotification"]}">Mostra di più</button>
+                        <button class="btn material-icons" data-action="delete" data-id="${notification["idnotification"]}">delete</button>
+                        <button class="btn" data-bs-toggle="collapse" data-bs-target="#text_${notification["idnotification"]}" data-action="show-more" data-id="${notification["idnotification"]}" type="button" aria-expanded="false" aria-controls="text_${notification["idnotification"]}">Mostra di più</button>
                     </div>
                 </div>
             `;
