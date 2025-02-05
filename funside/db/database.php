@@ -13,6 +13,17 @@ class DatabaseHelper
     }
 
     //USER
+
+    public function getAllAdmins() {
+        $query = "SELECT `username` FROM `funside`.`user` WHERE `type` = 'admin' ";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
+    }
     public function checkLogin($username, $password)
     {
         $query = "SELECT username, name, surname, type FROM funside.user WHERE username = ? AND password = ?";
@@ -166,7 +177,6 @@ class DatabaseHelper
     }
 
     //PRODUCT
-
     public function getProductAvailability($id) {
         $query = "SELECT `availability` FROM `funside`.`product` WHERE `idproduct` = ?";
         $stmt = $this->db->prepare($query);
@@ -392,11 +402,11 @@ class DatabaseHelper
     }
 
     //NOTIFICATION
-    public function addNotification($text, $user)
+    public function addNotification($text, $user, $title)
     {
-        $query = "INSERT INTO funside.notification (text, user) VALUES (?, ?)";
+        $query = "INSERT INTO `funside`.`notification` (`title`, `text`, `user`) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss', $text, $user);
+        $stmt->bind_param('sss',$title, $text, $user);
         $data = $stmt->execute();
         $stmt->close();  // Chiudi lo statement
         return $data;

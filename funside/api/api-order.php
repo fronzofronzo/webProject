@@ -34,8 +34,14 @@ if (isset($_POST['action'])) {
             for($i=0; $i<count($products); $i++) {
                 $dbh->registerOrderDetail($products[$i]["idproduct"], $orderId, $products[$i]["quantity"]);
                 $quantity = $dbh->getProductAvailability($products[$i]["idproduct"]);
-                if($quantity["availability"] == 0) {
-                    
+                var_dump($quantity);
+                if($quantity[0]["availability"] == 0) {
+                    $admins = $dbh->getAllAdmins();
+                    $text = "Il prodotto ".$products[$i]["idproduct"]." è esaurito";
+                    $title = "Prodotto esaurito!!";
+                    for($i=0; $i<count($admins); $i++) {
+                        $dbh->addNotification($text, $admins[$i]["username"], $title);
+                    }
                 }
             }
             $dbh->emptyCart($_SESSION["username"]);
