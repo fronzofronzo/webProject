@@ -15,7 +15,7 @@
                 </div>
                 <div class="d-flex-column">
                     <label for="availabilityproduct">Disponibilità</label>
-                    <input type="text" class="form-control" id="qproduct" name="availabilityproduct" placeholder="X"/>
+                    <input type="text" class="form-control" id="availabilityproduct" name="availabilityproduct" placeholder="X"/>
                 </div>
             </div>
             <div class="form-group mb-2">

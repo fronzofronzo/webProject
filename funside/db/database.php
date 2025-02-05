@@ -189,10 +189,10 @@ class DatabaseHelper
         return $data;
     } 
 
-    public function insertProduct($name, $price, $description, $category, $brand, $image)
+    public function insertProduct($name, $price, $availability, $description, $category, $brand, $image)
     {
-        $query = "INSERT INTO product (name, price, description, brand, type, image) 
-                  VALUES (?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO product (name, price, availability, description, brand, type, image) 
+                  VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $this->db->prepare($query);
 
@@ -201,7 +201,7 @@ class DatabaseHelper
         }
 
         // Associa i parametri ai segnaposto (s = stringa, d = decimale)
-        $stmt->bind_param("sdssss", $name, $price, $description, $brand, $category, $image);
+        $stmt->bind_param("sdissss", $name, $price, $availability, $description, $brand, $category, $image);
 
         $success = $stmt->execute();
         $productId = $stmt->insert_id; // Ottieni l'ID del prodotto appena inserito

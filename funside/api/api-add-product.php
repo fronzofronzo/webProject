@@ -3,7 +3,7 @@ require_once('../bootstrap.php');
 
 $result["insert"] = false;
 
-$required_fields = ["name", "price", "desc", "brand", "type"];
+$required_fields = ["name", "price", "desc", "brand", "type", "availability"];
 
 foreach ($required_fields as $field) {
     if (!isset($_POST[$field]) || empty(($_POST[$field]))) {
@@ -18,7 +18,7 @@ $price = filter_var($_POST["price"], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_A
 $description = trim($_POST["desc"]);
 $brand = trim($_POST["brand"]);
 $type = trim($_POST["type"]);
-
+$availability = filter_var($_POST["availability"], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 if (!isset($_FILES["image"])) {
     $result["message"] = "Nessun file immagine caricato.";
     echo json_encode($result);
@@ -52,7 +52,7 @@ if (!$uploadSuccess) {
 $imageName = $uploadMessage; // The name of the uploaded file
 
 // Insert the product into the database
-list($insertSuccess, $id) = $dbh->insertProduct($name, $price, $description, $type, $brand, $imageName);
+list($insertSuccess, $id) = $dbh->insertProduct($name, $price, $availability, $description, $type, $brand, $imageName);
 
 if ($insertSuccess) {
     $result["insert"] = true;

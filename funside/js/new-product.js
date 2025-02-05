@@ -58,7 +58,7 @@ document.querySelector("#formnuovoprodotto").addEventListener("submit", async fu
     const image = document.querySelector("#imageproduct").files[0];
     console.log(name + price + desc + brand + type + image);
 
-    const result = await addProduct(name, price, desc, brand, type, image, availability);
+    const result = await addProduct(name, price, desc, brand, type, image, availability == null ? 0 : availability);
 
     document.querySelector("main p").innerHTML = result["message"];  // Show message in the page
 });
