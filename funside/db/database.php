@@ -260,6 +260,18 @@ class DatabaseHelper
         return $data;
     }
 
+    public function getAllProductsWithStats()
+    {
+        $query = "SELECT p.idproduct, p.type, p.name, p.description, p.price, p.image, p.avgrating, COALESCE(SUM(od.quantity), 0) AS num_pieces_sold FROM funside.product p LEFT JOIN funside.orderdetail od ON p.idproduct = od.product GROUP BY p.idproduct, p.type, p.name, p.description, p.price, p.image, p.avgrating ORDER BY num_pieces_sold DESC;";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free(); // Libera la memoria
+        $stmt->close();  // Chiudi lo statement
+        return $data;
+    }
+
     public function updateProductById($id, $field, $value)
     {
         switch ($field) {
