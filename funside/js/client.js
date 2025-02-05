@@ -223,9 +223,9 @@ function generateOrders(orders) {
                 <h3 class="mb-0">Ordine #${o.idorder}</h3>
                 <button class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#details_${o.idorder}" id="${o.idorder}" type="button" aria-expanded="false" aria-controls="details_${o.idorder}">▼</button>
             </div>
-            <p>Ordine del: ${o.dateorder}</p>
-            <p>Status: ${o.status}</p>
-            <p>Totale: ${o.totalprice}€</p>
+            <p class="text-black">Ordine del: ${o.dateorder}</p>
+            <p class="text-black">Status: ${o.status}</p>
+            <p class="text-black">Totale: ${o.totalprice}€</p>
             <div class="collapse mt-2 " id="details_${o.idorder}">
                 ${generateOrderDetails(o, orders.order_details)}
             </div>
@@ -245,9 +245,9 @@ function generateOrderDetails(order, orderDetails) {
                 </div>
                 <div>
                     <a href="product.php?id=${d.id}" class="fw-bold">${d.name}</a>
-                    <p>Quantità: ${d.quantity}</p>
-                    <p>Prezzo unitario: ${d.price}€</p>
-                    <p><strong>Prezzo totale:</strong> ${d.total}€</p>
+                    <p class="text-black">Quantità: ${d.quantity}</p>
+                    <p class="text-black">Prezzo unitario: ${d.price}€</p>
+                    <p class="text-black"><strong>Prezzo totale:</strong> ${d.total}€</p>
                 </div>
             </section>`;
         });
