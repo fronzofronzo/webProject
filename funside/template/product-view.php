@@ -22,7 +22,7 @@ function generateStars($rating) {
 	</h2>
 	<div class="row">
 		<div class="col-12 col-md-6 text-center mb-3 ">
-			<img src="./upload/<?php echo $product["image"]?>" class="product-image" alt="<?php echo $product["name"]?>"> 
+			<img src="./upload/<?php echo $product["image"]?>" class="product-image" alt="<?php echo $product["name"]?>"/> 
 		</div>
 		<div class="col-12 col-md-6 text-center ">
 			<div class="row mb-3 text-light">
@@ -43,8 +43,8 @@ function generateStars($rating) {
 			</div>
 			<div class="row productSubmitCommand" >
 				<button class=" border-secondary rounded-3 btn btn-secondary" data-bs-toggle="popover" data-bs-title="Informazione" data-bs-content="Prodotto aggiunto al carrello" data-bs-placement="bottom" >
-					<i class="fa-solid fa-cart-plus me-3"></i>
-					<div >Aggiungi al carrello</div>
+					<strong class="fa-solid fa-cart-plus me-3 d-block"></strong>
+					Aggiungi al carrello
 				</button> 
 			</div>
 		</div>
@@ -79,20 +79,20 @@ function generateStars($rating) {
 			</div>
 			<div class="form-group my-3">
 				<p>
-				<input type="radio" id="star5" name="rating" value="5">
+				<input type="radio" id="star5" name="rating" value="5"/>
 				<label for="star5"><?php echo generateStars(5)?></label>
 				</p>
 				<p>
-				<input type="radio" id="star4" name="rating" value="4">
+				<input type="radio" id="star4" name="rating" value="4"/>
 				<label for="star4"><?php echo generateStars(4)?></label>
 				</p><p>
-				<input type="radio" id="star3" name="rating" value="3">
+				<input type="radio" id="star3" name="rating" value="3"/>
 				<label for="star3"><?php echo generateStars(3)?></label>
 				</p><p>
-				<input type="radio" id="star2" name="rating" value="2">
+				<input type="radio" id="star2" name="rating" value="2"/>
 				<label for="star2"><?php echo generateStars(2)?></label>
 				</p><p>
-				<input type="radio" id="star1" name="rating" value="1">
+				<input type="radio" id="star1" name="rating" value="1"/>
 				<label for="star1"><?php echo generateStars(1)?></label>
 				</p>
 			</div>
