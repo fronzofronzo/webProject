@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS `funside`.`product` (
   `numpages` INT,
   `type` VARCHAR(50) NOT NULL,
   `image` VARCHAR(50) NOT NULL,
+  `active` BOOLEAN NOT NULL DEFAULT TRUE,
   PRIMARY KEY (`idproduct`),
   FOREIGN KEY (`type`)
     REFERENCES `funside`.`producttype` (`type`)
