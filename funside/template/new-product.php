@@ -14,8 +14,8 @@
                         required />
                 </div>
                 <div class="d-flex-column">
-                    <label for="qproduct">Disponibilità</label>
-                    <input type="text" class="form-control" id="qproduct" name="qproduct" placeholder="X"/>
+                    <label for="availabilityproduct">Disponibilità</label>
+                    <input type="text" class="form-control" id="qproduct" name="availabilityproduct" placeholder="X"/>
                 </div>
             </div>
             <div class="form-group mb-2">

@@ -32,7 +32,7 @@ async function generateCategoriesOptions() {
     document.querySelector("#typeproduct").innerHTML += output;  // Append options to the select
 }
 
-async function addProduct(name, price, desc, brand, type, image) {
+async function addProduct(name, price, desc, brand, type, image, availability) {
     const url = "api/api-add-product.php";
     const formData = new FormData();
     formData.append('name', name);
@@ -40,6 +40,7 @@ async function addProduct(name, price, desc, brand, type, image) {
     formData.append('desc', desc);
     formData.append('brand', brand);
     formData.append('type', type);
+    formData.append('availability', availability);
     formData.append('image', image);
 
     const json = await fetchData(url, formData);
@@ -53,10 +54,11 @@ document.querySelector("#formnuovoprodotto").addEventListener("submit", async fu
     const desc = document.querySelector("#descriptionproduct").value;
     const brand = document.querySelector("#brandproduct").value;
     const type = document.querySelector("#typeproduct").value;
+    const availability = document.querySelector("#availabilityproduct").value;
     const image = document.querySelector("#imageproduct").files[0];
     console.log(name + price + desc + brand + type + image);
 
-    const result = await addProduct(name, price, desc, brand, type, image);
+    const result = await addProduct(name, price, desc, brand, type, image, availability);
 
     document.querySelector("main p").innerHTML = result["message"];  // Show message in the page
 });
