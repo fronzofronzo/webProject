@@ -58,7 +58,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `funside`.`product` (
   `idproduct` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(50) NOT NULL,
-  `price` DECIMAL(9,2) NOT NULL,
+  `price` DECIMAL(9,2) NOT NULL
+  CHECK (`price` >= 0),
   `description` VARCHAR(512) NOT NULL,
   `brand` VARCHAR(50) NOT NULL,
   `avgrating` DECIMAL(5,2) DEFAULT NULL,
