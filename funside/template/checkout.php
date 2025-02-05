@@ -5,13 +5,14 @@
 		</div>
 	</div>
 	<div class="row mx-2 border rounded border-black checkoutContainer">
-		<div class="d-flex align-items-center justify-content-center" >
-			<strong class="fa-solid fa-down-long"></strong><strong class="mx-2">Scegli l'indirizzo di consegna dell'ordine</strong><strong class="fa-solid fa-down-long"></strong>
+		<div class="d-flex align-items-center justify-content-center">
+			<strong class="fa-solid fa-down-long"></strong><strong class="mx-2">Scegli l'indirizzo di consegna
+				dell'ordine</strong><strong class="fa-solid fa-down-long"></strong>
 		</div>
 		<form class="row">
 			<div class="my-3 col-12 col-md-6">
-				<label for="address" class="form-label">Indirizzo</label>
-				<input type="text" class="form-control" id="address" aria-describedby="adressHelp"/>
+				<label for="address" class="form-label" id="label_address">Indirizzo</label>
+				<input type="text" class="form-control" id="address" aria-describedby="label_address"/>
 				<div id="addressHelp" class="form-text">Inserisci un nuovo indirizzo</div>
 				<button type="button" class="btn btn-primary">Inserisci</button>
 			</div>
@@ -19,29 +20,36 @@
 			</div>
 		</form>
 	</div>
-	<div class="row mx-2 border rounded border-black mt-4 checkoutContainer p-2" >
-		<div class="d-flex align-items-center justify-content-center " >
-			<strong class="fa-solid fa-down-long"></strong><strong class="mx-2">Seleziona il metodo di pagamento</strong><strong class="fa-solid fa-down-long"></strong>
+	<div class="row mx-2 border rounded border-black mt-4 checkoutContainer p-2">
+		<div class="d-flex align-items-center justify-content-center">
+			<strong class="fa-solid fa-down-long"></strong>
+			<strong class="mx-2">Seleziona il metodo di pagamento</strong>
+			<strong class="fa-solid fa-down-long"></strong>
 		</div>
-		<div class="form-check">
-			<input class="form-check-input" type="radio" name="payment" id="payment1"/>
-			<label class="form-check-label" for="payment1">
-			<strong class="fa-regular fa-credit-card mx-2"></strong>Carta di credito
-			</label>
-		</div>
-		<div class="form-check">
-			<input class="form-check-input" type="radio" name="payment2" id="payment"/>
-			<label class="form-check-label" for="payment2">
-			<strong class="fa-brands fa-cc-visa mx-2"></strong>Visa card
-			</label>
-		</div>
-		<div class="form-check">
-			<input class="form-check-input" type="radio" name="payment3" id="payment"/>
-			<label class="form-check-label" for="payment3">
-			<strong class="fa-brands fa-paypal mx-2"></strong>PayPal
-			</label>
-		</div>
+
+		<fieldset class="border p-3 rounded">
+			<legend class="fw-bold d-none">Metodo di pagamento</legend>
+
+			<div class="form-check">
+				<input class="form-check-input" type="radio" name="payment" id="payment1">
+				<label class="form-check-label d-none" for="payment1">Carta di credito</label>
+				<strong class="fa-regular fa-credit-card mx-2"></strong> Carta di credito
+			</div>
+
+			<div class="form-check">
+				<input class="form-check-input" type="radio" name="payment" id="payment2">
+				<label class="form-check-label d-none" for="payment2">Visa card</label>
+				<strong class="fa-brands fa-cc-visa mx-2"></strong> Visa card
+			</div>
+
+			<div class="form-check">
+				<input class="form-check-input" type="radio" name="payment" id="payment3">
+				<label class="form-check-label d-none" for="payment3">PayPal</label>
+				<strong class="fa-brands fa-paypal mx-2"></strong> PayPal
+			</div>
+		</fieldset>
 	</div>
+
 	<div class="d-flex align-items-center justify-content-center mt-3">
 		<button class='button btn btn-large btn-dark' data-bs-target="#orderRegistred">Ordina e paga</button>
 	</div>
