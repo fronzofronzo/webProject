@@ -23,7 +23,12 @@ async function getProducts() {
 }
 
 async function deleteProduct(id) {
-	const url = "./api/"
+	const url = "./api/api-products.php";
+	const formData = new FormData();
+	formData.append("action", "deleteProduct");
+	formData.append("id", id);
+
+	return await fetchData(url,formData);
 }
 
 async function init(){
@@ -60,8 +65,21 @@ async function init(){
 		document.querySelector("main section div span strong").innerHTML = `${productSelected}`;
 	});
 
-	document.querySelector("main section div div button").addEventListener("click", function () {
+	document.querySelector(".modal-footer button").addEventListener("click", function() {
+		document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+		init();
+	});
 
+	document.querySelector("main section div div button").addEventListener("click", async function () {
+		console.log(value);
+		let result = await deleteProduct(value);
+		console.log(result);
+		if(result["result"] == true) {
+			let myModal = new bootstrap.Modal(document.getElementById("eliminationModal"));
+			document.querySelector(".modal-body").innerHTML = `
+			Il prodotto con id ${value} è stato eliminato`;
+			myModal.show();
+		}
 	});
 }
 

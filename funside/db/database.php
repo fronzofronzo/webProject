@@ -202,7 +202,7 @@ class DatabaseHelper
 
     public function getProductByID($id)
     {
-        $query = "SELECT `name`, price, description, brand,avgrating, minnumplayers, maxnumplayers, numpages, `type`, image FROM funside.product WHERE idproduct = ?";
+        $query = "SELECT `name`, price, description, brand,avgrating, minnumplayers, maxnumplayers, numpages, `type`, `active`, image FROM funside.product WHERE idproduct = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
@@ -250,7 +250,7 @@ class DatabaseHelper
 
     public function getAllProducts()
     {
-        $query = "SELECT idproduct, name, price, image, avgrating FROM funside.product";
+        $query = "SELECT idproduct, name, price, image, avgrating FROM funside.product WHERE active=1";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -351,6 +351,19 @@ class DatabaseHelper
         } catch (Exception $e) {
             return ["result" => false, "error" => $e->getMessage()];
         }
+        return ["result" => true];
+    }
+
+    public function removeProduct($id) {
+        try {
+            $query = "UPDATE `funside`.`product` SET `active` = 0 WHERE `idproduct` = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $stmt->close();
+        } catch (Exception $e) {
+            return ["result" => false, "error" => $e->getMessage()];
+        } 
         return ["result" => true];
     }
 

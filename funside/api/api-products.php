@@ -28,7 +28,9 @@ if($_POST["action"] == 1) {
     $result = $dbh->getAllProducts();
 } else if ($_POST["action"] == "isValidId"){
     $result = $dbh->getProductByID($_POST["idproduct"]);
-} 
+} else if ($_POST["action"] == "deleteProduct") {
+    $result = $dbh->removeProduct($_POST["id"]);
+}
 
 
 header('Content-Type: application/json');
