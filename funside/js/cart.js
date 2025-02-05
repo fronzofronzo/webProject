@@ -47,10 +47,10 @@ async function getProductsInCart() {
                 console.log(result);
                 result += html;
             }
-            result += `<div class="d-grid gap-2 mx-2 p-3 d-flex justify-content-end">
+            result += `<div class="d-grid gap-2 mx-2 p-3 d-flex justify-content-end text-light">
                 <h3>Prezzo totale: ${cartTotal}</h3>
             </div>
-            <div class="d-grid gap-2 mx-2 p-3 d-flex justify-content-end">
+            <div class="d-grid gap-2 mx-2 p-3 d-flex justify-content-end text-light">
             <span class="icons"><strong class="fa-brands fa-apple-pay fa-lg fa-fw"></strong></span>
             <span class="icons"><strong class="fa-brands fa-cc-paypal fa-lg fa-fw"></strong></span>
             <span class="icons"><strong class="fa-brands fa-cc-visa fa-lg fa-fw"></strong></span>

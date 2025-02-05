@@ -133,7 +133,7 @@ function generateNotificationCentre(username, notifications) {
     } else {
         notifications.forEach(notification => {
             notificationCentre += `
-                <div class="d-flex flex-column border ${notification["isRead"] ? 'border-success-subtle' : 'border-danger'} rounded-4 p-3 mb-3" id="div_${notification["idnotification"]}">
+                <div class="notification d-flex flex-column border ${notification["isRead"] ? 'border-success-subtle' : 'border-danger'} rounded-4 p-3 mb-3" id="div_${notification["idnotification"]}">
                     <h3>${notification["title"]}</h3>
                     <div class="collapse" id="text_${notification["idnotification"]}">
                         <p class="mb-2">${notification["text"]}</p>
