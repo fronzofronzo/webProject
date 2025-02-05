@@ -35,6 +35,17 @@ async function generateCategoriesOptions() {
 async function showInputBox(field, text) {
     let output = ``;
     switch (field) {
+        case "imageproduct":
+            output += `
+            <form action="#" method="POST" id="form_${field}" name="form_${field}">
+                <div class="form-group mb-2">
+                    <label for="${field}">${text}</label>
+                <input type="file" class="form-control" id="${field}" name="image" required>
+                </div>
+            </form>
+            <button type="submit" class="btn btn-primary display-inline-block">Modifica</button>
+            `;
+            break;
         case "typeproduct":
             output += `
             <form action="#" method="POST" id="form_${field}" name="form_${field}">
@@ -81,6 +92,12 @@ async function showInputBox(field, text) {
         window.location.reload();
     })
     switch (field) {
+        case "imageproduct":
+            document.querySelector("main section button:first-of-type").addEventListener("click", async function (e) {
+                e.preventDefault();
+                await updateProduct(field, null);
+            });
+            break;
         case "typeproduct":
             document.querySelector("main section button:first-of-type").addEventListener("click", function (e) {
                 e.preventDefault();
@@ -110,6 +127,10 @@ async function updateProduct(field, val) {
     const formData = new FormData();
     formData.append('field', field);
     formData.append('val', val);
+    if (field = "imageproduct") {
+        const image = document.querySelector("#imageproduct").files[0];
+        formData.append('image', image);
+    }
     const json = await fetchData(url, formData);
     if (json["modified"]) {
         document.querySelector("main p").innerHTML = "Campo modificato correttamente";

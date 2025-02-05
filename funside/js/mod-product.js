@@ -75,4 +75,15 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector("section p:first-of-type").innerHTML = "Id non valido";
         }
     });
+    document.getElementById("buttonselectproduct").addEventListener("click", async function(e) {
+        e.preventDefault();
+        const sel = document.querySelector('input[name="productlist"]:checked');
+        const id = sel != null ? sel.id : null;
+        const res = await isValidId(id);
+        if (res != null) {
+            generateForm(id);
+        } else {
+            document.querySelector("section p:last-of-type").innerHTML = "Id non valido";
+        }
+    });
 });

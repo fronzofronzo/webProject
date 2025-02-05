@@ -34,9 +34,6 @@ if ($image["error"] !== UPLOAD_ERR_OK) {
 
 // Puoi continuare a gestire l'upload dell'immagine come fai normalmente
 
-
-$image = $_FILES["image"]; // Correctly get the uploaded image file
-
 if (!is_numeric($price) || $price <= 0) {
     $result["message"] = "Prezzo non valido";
     echo json_encode($result);
@@ -55,7 +52,7 @@ if (!$uploadSuccess) {
 $imageName = $uploadMessage; // The name of the uploaded file
 
 // Insert the product into the database
-$insertSuccess = $dbh->insertProduct($name, $price, $description, $type, $brand, $imageName);
+list($insertSuccess, $id) = $dbh->insertProduct($name, $price, $description, $type, $brand, $imageName);
 
 if ($insertSuccess) {
     $result["insert"] = true;

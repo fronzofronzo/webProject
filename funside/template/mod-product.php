@@ -16,6 +16,6 @@
         <div class="ms-2 mb-2">
         </div>        
         <button class="btn btn-primary mt-2" id="buttonselectproduct">Modifica prodotto selezionato</button>
+        <p></p>
     </div>
 </section>
-
