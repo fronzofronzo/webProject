@@ -19,9 +19,9 @@ function generateStars(rating){
     let halfStar = (rating - fullStars) >= 0.5 ? 1 : 0; // Mezza stella se necessario
     let emptyStars = 5 - (fullStars + halfStar); // Stelle vuote rimanenti
 
-    let starsHtml = '<i class="fa fa-star text-warning"></i>'.repeat(fullStars);  // Stelle piene
-    starsHtml += halfStar ? '<i class="fa fa-star-half-alt text-warning"></i>' : ''; // Mezza stella se serve
-    starsHtml += '<i class="fa fa-star text-secondary"></i>'.repeat(emptyStars); // Stelle vuote
+    let starsHtml = '<strong class="fa fa-star text-warning"></strong>'.repeat(fullStars);  // Stelle piene
+    starsHtml += halfStar ? '<strong class="fa fa-star-half-alt text-warning"></strong>' : ''; // Mezza stella se serve
+    starsHtml += '<strong class="fa fa-star text-secondary"></i>'.repeat(emptyStars); // Stelle vuote
 
     return starsHtml;
 }
