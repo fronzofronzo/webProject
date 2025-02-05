@@ -90,8 +90,8 @@ function generateCategories(categories) {
     for (let i = 0; i < categories.length; i++) {
         let category = `
             <div class="home-element col-6 col-sm-4 col-md-3 col-lg-2 d-flex flex-column justify-content-center p-2 align-items-center">
-                <div class="homeImage h-150 w-150 d-flex justify-content-center">
-                    <img src="${categories[i]["image"]}" class="img-thumbnail img-fluid object-fit-cover" alt="${categories[i]["type"]}" />
+                <div class="homeImage h-150 w-150 d-flex justify-content-center mb-2">
+                    <img src="${categories[i]["image"]}" class="img-thumbnail img-fluid object-fit-cover " alt="${categories[i]["type"]}" />
                 </div>
                 <div class="text-center">${categories[i]["type"]}</div>
             </div>
@@ -113,8 +113,8 @@ function generateProducts(products) {
 		console.log(products[i]['idproduct']);
         let bestseller = `
             <div class="home-element col-6 col-sm-4 col-md-3 col-lg-2 d-flex flex-column justify-content-center p-2 align-items-center">
-                <div class="homeImage d-flex justify-content-center">
-                    <img src="${products[i]["image"]}" class="img-thumbnail img-fluid object-fit-cover" alt="${products[i]["name"]}" />
+                <div class="homeImage d-flex justify-content-center mb-2">
+                    <img src="${products[i]["image"]}" class="img-thumbnail img-fluid object-fit-cover " alt="${products[i]["name"]}" />
                 </div>
                 <div class="text-center"><a href="product.php?id=${products[i]["idproduct"]}">${products[i]["name"]}</a></div>
                 <div class="text-center">€ ${products[i]["price"]}</div>
