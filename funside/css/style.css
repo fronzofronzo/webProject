@@ -43,7 +43,7 @@ body {
 	flex-direction: column;
 }
 
-main label {
+main label, main p {
 	color: white;
 }
 
