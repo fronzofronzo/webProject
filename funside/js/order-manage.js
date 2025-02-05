@@ -69,6 +69,7 @@ async function setDeliveredOrders() {
                 <div> 
                     <strong>Order #${delivered[i]["idorder"]}</strong>
                     <p>Data ordine: ${delivered[i]["dateorder"]}</p>
+                    <p>Data consegna: ${delivered[i]["datedelivery"]}</p>
                     <p>Utente: ${delivered[i]["user"]}</p>
                 </div>
              </div>

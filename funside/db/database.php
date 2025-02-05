@@ -551,7 +551,7 @@ class DatabaseHelper
 
     public function getDeliveredOrders()
     {
-        $query = "SELECT idorder, dateorder, status, totalprice, user FROM `funside`.`order` WHERE status = 'consegnato' ";
+        $query = "SELECT idorder, dateorder, status, totalprice, user, datedelivery FROM `funside`.`order` WHERE status = 'consegnato' ORDER BY datedelivery DESC";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -568,6 +568,12 @@ class DatabaseHelper
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('si', $status, $id);
             $stmt->execute();
+            if ($status == "consegnato") {
+                $query = "UPDATE `funside`.`order` SET `datedelivery` = CURRENT_DATE() WHERE `idorder` = ?";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param('i', $id);
+                $stmt->execute();
+            }
         } catch (Exception $e) {
             return ["result" => false, "error" => $e->getMessage()];
         }
