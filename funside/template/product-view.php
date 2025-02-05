@@ -16,9 +16,9 @@ function generateStars($rating) {
 ?>
 <?php if($product["active"]):?>
 <section class="container-fluid">
-	<h2 class="mb-3 border-bottom border-black border-4">
+	<h2 class="mb-3 border-bottom border-white border-4">
 		<?php echo $product["name"]?>
-		<small class="text-body-secondary"><?php echo $product["brand"]?></small>
+		<small ><?php echo $product["brand"]?></small>
 	</h2>
 	<div class="row">
 		<div class="col-12 col-md-6 text-center mb-3 ">
@@ -42,7 +42,7 @@ function generateStars($rating) {
 				</select>
 			</div>
 			<div class="row productSubmitCommand" >
-				<button class=" border-primary rounded-3 btn btn-primary" data-bs-toggle="popover" data-bs-title="Informazione" data-bs-content="Prodotto aggiunto al carrello" data-bs-placement="bottom" >
+				<button class=" border-secondary rounded-3 btn btn-secondary" data-bs-toggle="popover" data-bs-title="Informazione" data-bs-content="Prodotto aggiunto al carrello" data-bs-placement="bottom" >
 					<i class="fa-solid fa-cart-plus me-3"></i>
 					<div >Aggiungi al carrello</div>
 				</button> 
@@ -51,7 +51,7 @@ function generateStars($rating) {
 	</div>
 </section>
 <section class="container-fluid">
-	<h2 class="mb-3 border-bottom border-black border-4">Informazioni</h2>
+	<h2 class="mb-3 border-bottom border-white border-4">Informazioni</h2>
 	<div class="tabs">
 		<div class="tab-buttons">
 			<button class="tab-button active" data-tab="description">Descrizione</button>
@@ -69,7 +69,7 @@ function generateStars($rating) {
 	</div>
 </section>
 <section class="container-fluid">
-	<h2 class="mb-3 border-bottom border-black border-4">
+	<h2 class="mb-3 border-bottom border-white border-4">
 		Recensisci prodotto
 	</h2>
 	<div>

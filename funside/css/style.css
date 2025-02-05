@@ -4,7 +4,7 @@ body, header, h1, h2, h5, div, section, p{
 }
 
 header {
-	background-color: #f0e2e7;
+	background-color: #D96425;
 	align-content: center;
 }
 
@@ -38,7 +38,7 @@ nav p{
 
 body {
 	font-family: 'Roboto', sans-serif;
-	background: #4f5d75;
+	background: #F2F4F3;
 	display: flex;
 	flex-direction: column;
 }
@@ -53,11 +53,16 @@ main {
 }
 
 body footer{
-	background-color: #b0ff92;
+	background-color: #D96425;
+}
+
+small {
+	color: #D9D8D8;
 }
 
 main > section {
-	background-color: #82aeb1;
+	background-color: #242F40;
+	color: white;
 	margin-top: 30px;
 	width: 96% !important;
 	padding: 2% !important;
@@ -74,6 +79,10 @@ main > section > div {
 
 main > section > div > h2 {
 	color: white;
+}
+
+h2 {
+	color: #F2F4F3;
 }
 
 main > section > div > p {
@@ -187,7 +196,7 @@ main > section div div:nth-child(2) div:nth-child(5) button {
 }
 
 .checkoutContainer, .product-image, .order-manage, .home-element {
-	background: #6e999c;
+	background: #E5E5E5;
 	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 	border: 2px solid ;
 	border-radius: 4px;
