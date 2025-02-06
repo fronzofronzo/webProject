@@ -16,13 +16,16 @@
     <h3>Scrivici un Messaggio</h3>
     <form class="mt-4">
         <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Il tuo nome" required>
+            <label for="iltuonome" class="d-none">Il tuo nome</label>
+            <input type="text" class="form-control" id="iltuonome" placeholder="Il tuo nome" required/>
         </div>
         <div class="mb-3">
-            <input type="email" class="form-control" placeholder="La tua email" required>
+        <label for="latuaemail" class="d-none">La tuna email</label>
+            <input type="email" class="form-control" id="latuaemail" placeholder="La tua email" required/>
         </div>
         <div class="mb-3">
-            <textarea class="form-control" rows="5" placeholder="Il tuo messaggio" required></textarea>
+        <label for="iltuomessaggio" class="d-none">Il tuo messaggio</label>
+            <textarea class="form-control" rows="5" id="iltuomessaggio" placeholder="Il tuo messaggio" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Invia</button>
     </form>
