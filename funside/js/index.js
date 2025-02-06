@@ -118,7 +118,7 @@ function generateProducts(products) {
                 </div>
                 <div class="text-center"><a href="product.php?id=${products[i]["idproduct"]}">${products[i]["name"]}</a></div>
                 <div class="text-center">€ ${products[i]["price"]}</div>
-                <div class="text-center">Rating: ${generateStars(products[i]["avgrating"])}</div>
+                <div class="text-center">${generateStars(products[i]["avgrating"])}</div>
             </div>
         `;
         result += bestseller;
