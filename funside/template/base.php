@@ -62,13 +62,13 @@
                 <div class="col-md-4 mb-3">
                     <strong class="mb-4">Seguici</strong>
                     <div class="mt-2">
-                        <a href="#" class=" me-3"
+                        <a href="https://www.facebook.com/" class=" me-3"
                             title="visualizza la nostra pagina facebook per restare aggioranato"><strong
                                 class="fab fa-facebook fa-2x"></strong></a>
-                        <a href="#" class=" me-3"
+                        <a href="https://www.instagram.com/" class=" me-3"
                             title="visualizza la nostra pagina instagram per restare aggioranato"><strong
                                 class="fab fa-instagram fa-2x"></strong></a>
-                        <a href="#" class="" title="visualizza la nostra pagina twitter per restare aggioranato"><strong
+                        <a href="https://x.com/home" class="" title="visualizza la nostra pagina twitter per restare aggioranato"><strong
                                 class="fab fa-twitter fa-2x"></strong></a>
                     </div>
                 </div>
