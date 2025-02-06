@@ -21,7 +21,7 @@ function generateStars(rating){
 
     let starsHtml = '<strong class="fa fa-star text-warning"></strong>'.repeat(fullStars);  // Stelle piene
     starsHtml += halfStar ? '<strong class="fa fa-star-half-alt text-warning"></strong>' : ''; // Mezza stella se serve
-    starsHtml += '<strong class="fa fa-star text-secondary"></i>'.repeat(emptyStars); // Stelle vuote
+    starsHtml += '<strong class="fa fa-star text-secondary"></strong>'.repeat(emptyStars); // Stelle vuote
 
     return starsHtml;
 }
@@ -77,7 +77,7 @@ async function saveReview(text, value) {
 
 async function init() {
     document.querySelectorAll('.tab-button').forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', async () => {
             const tabName = button.getAttribute('data-tab');
             
             // Rimuovi la classe "active" da tutti i bottoni
@@ -90,7 +90,7 @@ async function init() {
             // Mostra la tab corrispondente
             document.getElementById(tabName).classList.add('active');
             if(tabName == "reviews") {
-                getDataReviews();
+                await getDataReviews();
             }
         });
     });
@@ -140,10 +140,11 @@ async function getDataReviews() {
     if(reviews) {
         let rev = ""
         for(let i=0; i<reviews.length; i++) {
+            console.log(reviews[i]);
             rev += `<div class='border border-black mx-2 my-2 p-3 rounded'>
                 <p class="fw-bold text-black">Username: ${reviews[i]["user"]}</p>
                 <p class="text-black"> ${reviews[i]["text"]}</p>
-                ${generateStars(reviews[i]["rating"])}
+                <div>${generateStars(reviews[i]["rating"])}</div>
             </div>`;
         }
         div.innerHTML = rev;

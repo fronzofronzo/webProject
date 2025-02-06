@@ -78,23 +78,19 @@ function generateStars($rating) {
 				<textarea class="form-control" name="review-text" id="review-text" placeholder="Inserisci la tua recensione"></textarea>
 			</div>
 			<div class="form-group my-3">
-				<p>
+				<fieldset>
+					<legend class="d-none">Valutazione in stelle</legend>				
 				<input type="radio" id="star5" name="rating" value="5"/>
-				<label for="star5"><?php echo generateStars(5)?></label>
-				</p>
-				<p>
+				<label for="star5"><span class="d-none d-inline">Valutazione 5 stelle</span><?php echo generateStars(5)?></label>
 				<input type="radio" id="star4" name="rating" value="4"/>
-				<label for="star4"><?php echo generateStars(4)?></label>
-				</p><p>
+				<label for="star4"><span class="d-none d-inline">Valutazione 4 stelle</span><?php echo generateStars(4)?></label>
 				<input type="radio" id="star3" name="rating" value="3"/>
-				<label for="star3"><?php echo generateStars(3)?></label>
-				</p><p>
+				<label for="star3"><span class="d-none d-inline">Valutazione 3 stelle</span><?php echo generateStars(3)?></label>
 				<input type="radio" id="star2" name="rating" value="2"/>
-				<label for="star2"><?php echo generateStars(2)?></label>
-				</p><p>
+				<label for="star2"><span class="d-none d-inline">Valutazione 2 stelle</span><?php echo generateStars(2)?></label>
 				<input type="radio" id="star1" name="rating" value="1"/>
-				<label for="star1"><?php echo generateStars(1)?></label>
-				</p>
+				<label for="star1"><span class="d-none d-inline">Valutazione 1 stelle</span><?php echo generateStars(1)?></label>
+				</fieldset>
 			</div>
 			<div class="form-group">
 				<button type="button" class="btn btn-primary ">Invia</button>
