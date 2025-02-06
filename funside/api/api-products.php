@@ -19,8 +19,8 @@ if($_POST["action"] == 1) {
 } else if($_POST["action"] == "reviews") {
     $result = $dbh->getReviewsByID($_POST["id"]);
 } else if($_POST["action"] == "add-review") {
-    if(!isUserLoggedIn()) {
-        $result = ["result" => false];
+    if(!isUserLoggedIn() || !isUserClient()) {
+        $result = ["result" => false, "message" => "Utente non loggato o admin"];
     } else {
         $result = $dbh->addReview($_SESSION["username"], $_POST["id"], $_POST["text"],$_POST["value"]);
     }

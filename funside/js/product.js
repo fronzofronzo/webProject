@@ -110,10 +110,12 @@ async function init() {
             let form = document.querySelector("main section form");
             console.log(res["result"]);
             if(res["result"] == true) {
-                form.reset();
-            } else if (res["result"] ==false) {
+                form.innerHTML += `<div class="alert alert-primary mt-4" role="alert">
+                ${res["message"]}!</div>`
+                //form.reset();
+            } else if (res["result"] == false) {
                 form.innerHTML += `<div class="alert alert-danger mt-4" role="alert">
-                Devi essere loggato per registrare una recensione del prodotto!</div>`
+                ${res["message"]}</div>`
             }
         }
     }); 
