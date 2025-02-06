@@ -69,7 +69,7 @@
                             title="visualizza la nostra pagina instagram per restare aggioranato"><strong
                                 class="fab fa-instagram fa-2x"></strong></a>
                         <a href="https://x.com/home" class="" title="visualizza la nostra pagina twitter per restare aggioranato"><strong
-                                class="fab fa-twitter fa-2x"></strong></a>
+                                class="fab fa-square-x-twitter fa-2x"></strong></a>
                     </div>
                 </div>
                 <div class="col-md-4">
