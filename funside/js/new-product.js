@@ -29,7 +29,7 @@ async function generateCategoriesOptions() {
         output += `<option value="${c.type}">${c.type}</option>`;
     });
 
-    document.querySelector("#typeproduct").innerHTML += output;  // Append options to the select
+    document.querySelector('main select').innerHTML += output;  // Append options to the select
 }
 
 async function addProduct(name, price, desc, brand, type, image, availability) {
@@ -47,15 +47,15 @@ async function addProduct(name, price, desc, brand, type, image, availability) {
     return json;
 }
 
-document.querySelector("#formnuovoprodotto").addEventListener("submit", async function(e) {
+document.querySelector('main form').addEventListener("submit", async function(e) {
     e.preventDefault();
-    const name = document.querySelector("#nameproduct").value;
-    const price = document.querySelector("#priceproduct").value;
-    const desc = document.querySelector("#descriptionproduct").value;
-    const brand = document.querySelector("#brandproduct").value;
-    const type = document.querySelector("#typeproduct").value;
-    const availability = document.querySelector("#availabilityproduct").value;
-    const image = document.querySelector("#imageproduct").files[0];
+    const name = document.querySelector('form > div:first-child > div:first-child input').value;
+    const price = document.querySelector('form > div:first-child > div:nth-child(2) input').value;
+    const availability = document.querySelector('form > div:first-child > div:last-child input').value;
+    const desc = document.querySelector('form textarea').value;
+    const type = document.querySelector('main select').value;
+    const brand = document.querySelector('form > div:nth-child(3) input').value;
+    const image = document.querySelector('form > div:nth-child(4) input').files[0];
     console.log(name + price + desc + brand + type + image);
 
     const result = await addProduct(name, price, desc, brand, type, image, availability == null ? 0 : availability);
