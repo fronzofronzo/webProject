@@ -1,12 +1,14 @@
 <section class="container-fluid">
     <h2 class=" text-center">Elimina prodotto</h2>
     <div>
+        <label for="searchProduct">Ricerca prodotto</label>
         <input class="form-control mb-4" type="text" id="searchProduct" placeholder="Cerca un prodotto"/>
 
+        <label for="productSelect">Selezione prodotto</label>
         <select class="form-select mb-4" size="6" id="productSelect">
 
         </select>
-        <span>
+        <span class="text-light">
             L'elemento selezionato è : <strong></strong>
         </span>
         <div>
