@@ -56,12 +56,11 @@
 	<div class="d-flex align-items-center justify-content-center mt-3">
 		<button class='button btn btn-large btn-dark' data-bs-target="#orderRegistred">Ordina e paga</button>
 	</div>
-	<div class="modal fade" id="orderRegistred" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+	<div class="modal fade" id="orderRegistred" tabindex="-1" aria-labelledby="modalLabel" inert>
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<strong class="modal-title fs-5" id="modalLabel">Ordine effetuato!</strong>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
 					Il tuo ordine è stato registrato con successo!
