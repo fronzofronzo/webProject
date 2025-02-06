@@ -61,33 +61,46 @@ async function tryModifyPassword(oldpassword, newpassword) {
     }
 }
 
-function viewFormModifyPassword() {
-    document.querySelector("main section:nth-child(2)").innerHTML = generateFormModifyPassword();
+async function viewFormModifyPassword() {
+    document.querySelector("main section:nth-child(2)").innerHTML = await generateFormModifyPassword();
     setUpPasswordToggle("oldpassword");
     setUpPasswordToggle("newpassword");
 
-    document.getElementById("confirmButton").addEventListener("click", function (e) {
+    document.querySelector('form > button:nth-of-type(1)').addEventListener("click", function (e) {
         e.preventDefault();
-        const oldpassword = document.querySelector("#oldpassword").value;
-        const newpassword = document.querySelector("#newpassword").value;
+        const oldpassword = document.querySelector('form input:nth-of-type(1)').value;
+        const newpassword = document.querySelector('form > div:nth-child(2) input').value;
         tryModifyPassword(oldpassword, newpassword);
     });
 
-    document.getElementById("goBack").addEventListener("click", function (e) {
+    document.querySelector('form > button:last-of-type').addEventListener("click", function (e) {
         e.preventDefault();
         window.location.reload();
     });
 }
 
 function setUpPasswordToggle(passwordId) {
-    document.getElementById(`${passwordId}show`).addEventListener("click", function (e) {
-        e.preventDefault();
-        const password = document.querySelector(`#${passwordId}`);
-        const type = password.getAttribute("type") === "password" ? "text" : "password";
-        password.setAttribute("type", type);
-        const text = this.innerHTML === "Mostra" ? "Nascondi" : "Mostra";
-        this.innerHTML = text;
-    });
+    if (passwordId == "oldpassword") {
+        const button = document.querySelector('form > div:first-child button');
+        button.addEventListener("click", function (e) {
+            e.preventDefault();
+            const password = document.querySelector(`form > div:first-child input`);
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            const text = this.innerHTML === "Mostra" ? "Nascondi" : "Mostra";
+            this.innerHTML = text;
+        });
+    } else {
+        const button = document.querySelector('form > div:nth-child(2) button');
+        button.addEventListener("click", function (e) {
+            e.preventDefault();
+            const password = document.querySelector(`form > div:nth-child(2) input`);
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            const text = this.innerHTML === "Mostra" ? "Nascondi" : "Mostra";
+            this.innerHTML = text;
+        });
+    }
 }
 
 function generateFormModifyPassword() {
@@ -124,10 +137,10 @@ function generateFormModifyPassword() {
 function viewAddress() {
     getClientAddress().then(address => {
         if (!address.length) {
-            document.getElementById("ul_address").innerHTML = `<li>Nessun indirizzo salvato per questo utente</li>`;
+            document.querySelector('main ul').innerHTML = `<li>Nessun indirizzo salvato per questo utente</li>`;
         } else {
             let address_list = address.map(a => `<li>${a.add}</li>`).join('');
-            document.getElementById("ul_address").innerHTML = address_list;
+            document.querySelector('main ul').innerHTML = address_list;
         }
     });
 }
@@ -135,13 +148,13 @@ function viewAddress() {
 async function viewFormModifyAddress() {
     const address = await getClientAddress();
     document.querySelector("main section:nth-child(2)").innerHTML = generateFormModifyAddress(address);
-    document.querySelector("#gobackaddress").addEventListener("click", function (e) {
+    document.querySelector('main > section:nth-child(2) > button:nth-of-type(2)').addEventListener("click", function (e) {
         e.preventDefault();
         window.location.reload();
     });
-    document.querySelector("#confirmnewaddress").addEventListener("click", function (e) {
+    document.querySelector('main form button').addEventListener("click", function (e) {
         e.preventDefault();
-        const newaddress = document.getElementById("newaddress").value;
+        const newaddress = document.querySelector('main form input').value;
         addNewAddress(newaddress);
     });
 }
