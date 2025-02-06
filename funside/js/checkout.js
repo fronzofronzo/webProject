@@ -55,7 +55,7 @@ async function getAdresses() {
 				<label class="btn btn-secondary" for="option${i+1}">${adresses["address"][i]["add"]}</label>
 			`;
 		}
-		div.innerHTML += result;
+		div.innerHTML = result;
 	}
 }
 
@@ -95,7 +95,7 @@ async function init() {
 	await getAdresses();
 	const addressSubmitButton = document.querySelector("main section div form div button");
 	addressSubmitButton.addEventListener("click", function() {
-		const addressLabel = document.getElementById("address");
+		const addressLabel = document.querySelector(".form-control");
 		console.log(addressLabel.value);
 		addNewAddress(addressLabel.value);
 	});
@@ -103,8 +103,8 @@ async function init() {
 	registerOrderButton.addEventListener("click", async function(e) {
 		if(checkForms()){
 			
-			let myModal = new bootstrap.Modal(document.getElementById("orderRegistred"));
-			document.getElementById("orderRegistred").removeAttribute("inert");
+			let myModal = new bootstrap.Modal(document.querySelector(".modal"));
+			document.querySelector(".modal").removeAttribute("inert");
        		myModal.show();
 			document.querySelector(".modal-footer button").addEventListener("click", function(e) {
 				window.location.href="./index.php"
