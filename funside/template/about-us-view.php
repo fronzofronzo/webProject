@@ -5,10 +5,7 @@
 
 <section class="container-fluid">
     <div class="row">
-        <div class="col-md-6">
-            <img src="./upload/about-us.jpg" alt="Chi siamo" class="img-fluid rounded shadow">
-        </div>
-        <div class="col-md-6">
+        <div class="col-12">
             <h3 class="text-light">La nostra storia</h3>
             <p>
                 Dal 2020, Fun Side è il punto di riferimento per gli appassionati di giochi, fumetti e cultura pop. 
