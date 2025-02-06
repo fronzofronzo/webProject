@@ -82,7 +82,7 @@ async function updateNotificationsCount() {
         const div = document.querySelector("main section div");
 
         if (json["count"] == 0) {
-            div.innerHTML = '<div>Nessuna notifica</div>';
+            div.innerHTML = '<p class="text-light">Nessuna notifica</p>';
         }
 
         if (badge) {
@@ -107,8 +107,9 @@ async function readNotification(idnotification) {
 
     if (json) {
         const notificationElement = document.getElementById('div_' + idnotification);
-        if (notificationElement && notificationElement.classList.contains("border-danger")) {
-            notificationElement.classList.replace("border-danger", "border-success-subtle");
+        if (notificationElement && notificationElement.classList.contains("border-warning")) {
+            notificationElement.classList.replace("border-warning", "border-success-subtle");
+            notificationElement.classList.replace("border-4", "border-1");
         }
     }
 }
@@ -132,11 +133,11 @@ function generateNotificationCentre(username, notifications) {
     let notificationCentre = "";
 
     if (notifications.length === 0) {
-        notificationCentre += '<div>Nessuna notifica</div>';
+        notificationCentre += '<p class="text-light">Nessuna notifica</p>';
     } else {
         notifications.forEach(notification => {
             notificationCentre += `
-                <div class="notification d-flex flex-column border ${notification["isRead"] ? 'border-success-subtle' : 'border-danger'} rounded-4 p-3 mb-3" id="div_${notification["idnotification"]}">
+                <div class="notification d-flex flex-column border ${notification["isRead"] ? 'border-success-subtle' : 'border-warning border-4'} rounded-4 p-3 mb-3" id="div_${notification["idnotification"]}">
                     <h3>${notification["title"]}</h3>
                     <div class="collapse" id="text_${notification["idnotification"]}">
                         <p class="mb-2 text-black">${notification["text"]}</p>
