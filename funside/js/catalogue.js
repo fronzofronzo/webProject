@@ -55,7 +55,7 @@ async function getRandomProducts() {
 }
 
 function generateCategoriesChoice(categories) {
-	let result = `<form id='categoryForm'>
+	let result = `<form >
 	<fieldset>
 		<label class="d-none">Scelta categorie</label> `;
 	for(let i=0; i<categories.length; i++) {
@@ -114,7 +114,7 @@ async function getAllCategories() {
 		});
 		reset.addEventListener("click", function(e) {
 			filteredProducts = products;
-			document.getElementById("categoryForm").reset();
+			document.querySelector("form").reset();
 			showProducts(filteredProducts);
 		})
 	} catch (error) {
