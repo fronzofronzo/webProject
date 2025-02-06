@@ -100,11 +100,17 @@ async function init() {
 		addNewAddress(addressLabel.value);
 	});
 	const registerOrderButton = document.querySelector("main section div:nth-child(4) button");
-	registerOrderButton.addEventListener("click", function(e) {
+	registerOrderButton.addEventListener("click", async function(e) {
 		if(checkForms()){
+			
 			let myModal = new bootstrap.Modal(document.getElementById("orderRegistred"));
+			document.getElementById("orderRegistred").removeAttribute("inert");
        		myModal.show();
-			registerOrder();
+			document.querySelector(".modal-footer button").addEventListener("click", function(e) {
+				window.location.href="./index.php"
+			});
+			await registerOrder();
+			//init();
 		}
 
 	});
