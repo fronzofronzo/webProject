@@ -50,13 +50,13 @@ async function tryRegistration(name, surname, username, password) {
     if (json) {
         document.querySelector("main > section > div > div:nth-child(2) p").innerText = json["registermsg"];
         if (json["registerresult"]) {
-            document.querySelectorAll('main form:nth-of-type(2)').forEach(i => i.value = "");
+            document.querySelector('main > section > div > div:last-child form').reset();
         }
     }
 }
 
 // Event listener for login form submission
-document.getElementById("formlogin").addEventListener("submit", function (event) {
+document.querySelector('section > div > div:first-child form').addEventListener("submit", function (event) {
     event.preventDefault();
     const username = document.querySelector('main form:first-of-type input:first-of-type').value;
     const password = document.querySelector('main > section > div > div:first-child form > div:nth-child(2) input').value;
@@ -73,16 +73,16 @@ document.querySelector('main form:first-of-type button:first-of-type').addEventL
 // Event listener for registration form submission
 document.querySelector('main > section > div > div:last-child form').addEventListener("submit", function (event) {
     event.preventDefault();
-    const name = document.querySelector("#registername").value;
-    const surname = document.querySelector("#registersurname").value;
-    const username = document.querySelector("#registerusername").value;
-    const password = document.querySelector("#registerpassword").value;
+    const name = document.querySelector('main > section > div > div:last-child form > div:nth-child(1) input:first-of-type').value;
+    const surname = document.querySelector('main > section > div > div:last-child form > div:nth-child(1) input:last-of-type').value;
+    const username = document.querySelector('main > section > div > div:last-child form > div:nth-child(2) input').value;
+    const password = document.querySelector('main > section > div > div:last-child form > div:nth-child(3) input').value;
     tryRegistration(name, surname, username, password);
 });
 
 // Event listener for toggling password visibility in registration
 document.querySelector('main > section > div > div:last-child button:first-of-type').addEventListener("click", function (e) {
     e.preventDefault();
-    const password = document.querySelector("#registerpassword");
+    const password = document.querySelector('main > section > div > div:last-child form > div:nth-child(3) input');
     togglePasswordVisibility(this, password);
 });
