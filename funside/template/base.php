@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
-        rel="stylesheet">
+        rel="stylesheet" />
     <title><?php echo $templateParams["title"]; ?></title>
 </head>
 
@@ -30,10 +30,10 @@
     </div>
     <nav class="navbar bg-body-tertiary border border-black">
         <div class="container-fluid row">
-            <?php if (isUserLoggedIn()) :?>
+            <?php if (isUserLoggedIn()): ?>
                 <a href="notification.php" class="fa-solid fa-bell btn btn-light col-1" title='Notifiche'></a>
-                <?php if (isUserClient()) :?>
-                <a href="cart.php" class="fa-solid fa-cart-shopping btn btn-light col-1" title="Carrello"></a>
+                <?php if (isUserClient()): ?>
+                    <a href="cart.php" class="fa-solid fa-cart-shopping btn btn-light col-1" title="Carrello"></a>
                 <?php endif; ?>
             <?php endif; ?>
             <a href="login.php" class="fa-solid fa-user btn btn-light col-1" title="Account"></a>
@@ -61,14 +61,16 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <strong class="mb-4">Seguici</strong>
-                    <a href="#" class=" me-3"
-                        title="visualizza la nostra pagina facebook per restare aggioranato"><strong
-                            class="fab fa-facebook fa-2x"></strong></a>
-                    <a href="#" class=" me-3"
-                        title="visualizza la nostra pagina instagram per restare aggioranato"><strong
-                            class="fab fa-instagram fa-2x"></strong></a>
-                    <a href="#" class="" title="visualizza la nostra pagina twitter per restare aggioranato"><strong
-                            class="fab fa-twitter fa-2x"></strong></a>
+                    <div class="mt-2">
+                        <a href="#" class=" me-3"
+                            title="visualizza la nostra pagina facebook per restare aggioranato"><strong
+                                class="fab fa-facebook fa-2x"></strong></a>
+                        <a href="#" class=" me-3"
+                            title="visualizza la nostra pagina instagram per restare aggioranato"><strong
+                                class="fab fa-instagram fa-2x"></strong></a>
+                        <a href="#" class="" title="visualizza la nostra pagina twitter per restare aggioranato"><strong
+                                class="fab fa-twitter fa-2x"></strong></a>
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <strong class="mb-2">Newsletter</strong>
