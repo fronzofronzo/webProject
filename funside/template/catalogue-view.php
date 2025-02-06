@@ -6,8 +6,8 @@
 				Categorie
 			</a>
 
-			<ul class="dropdown-menu mx-2">
-			</ul>
+			<div class="dropdown-menu mx-2">
+			</div>
 		</div>
 	</div>
 	<div>

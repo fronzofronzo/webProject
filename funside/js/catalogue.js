@@ -55,18 +55,23 @@ async function getRandomProducts() {
 }
 
 function generateCategoriesChoice(categories) {
-	let result = "";
+	let result = `<form id='categoryForm'>
+	<fieldset>
+		<label class="d-none">Scelta categorie</label> `;
 	for(let i=0; i<categories.length; i++) {
-		let category = `
-		<li class="form-check mx-2">
+		let category = `<div class="mx-2 mb-1">
 			<input class="form-check-input" type="checkbox" value="" id="${categories[i]["type"]}">
 			<label class="form-check-label text-black" for="${categories[i]["type"]}">
 				${categories[i]["type"]}
 			</label>
-		</li>`;
+			</div>`;
 		result += category;
 	}
-	let submitButton = `<li class="text-center "><button type="submit" class="btn btn-secondary btn-sm">Applica Filtri</button></li>`;
+	result += `
+		</fieldset>
+	</form>`;
+	let submitButton = `<div class="text-center mb-2"><button type="submit" class="btn btn-secondary btn-sm">Applica Filtri</button></div>
+	<div class="text-center"><button type="submit" class="btn btn-secondary btn-sm" disabled>Reset filtri</button></div>`;
 	result += submitButton;
 	return result;
 }
@@ -86,10 +91,12 @@ async function getAllCategories() {
 		categories = await response.json();
 		console.log(categories);
 		const cat = generateCategoriesChoice(categories);
-		const div = document.querySelector("main section div div ul");
+		const div = document.querySelector("main section div div div");
 		div.innerHTML = cat;
-		const filter = document.querySelector("main section div div ul button");
+		const filter = document.querySelector("main section div div div button:first-child");
+		const reset = document.querySelector("main section div div div div:last-child button ")
 		filter.addEventListener("click", function(e) {
+			reset.removeAttribute("disabled");
 			let selectedProducts = [];
 			for(let i=0; i<categories.length; i++) {
 				let checkBox = document.getElementById(categories[i]["type"]);
@@ -105,6 +112,11 @@ async function getAllCategories() {
 			filteredProducts = selectedProducts;
 			showProducts(filteredProducts);
 		});
+		reset.addEventListener("click", function(e) {
+			filteredProducts = products;
+			document.getElementById("categoryForm").reset();
+			showProducts(filteredProducts);
+		})
 	} catch (error) {
 		console.log(error.message);
 	}
