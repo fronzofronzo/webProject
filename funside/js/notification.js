@@ -124,7 +124,7 @@ async function deleteNotification(idnotification) {
     const json = await fetchData(url, formData);
 
     if (json) {
-        document.getElementById("div_" + idnotification).remove();
+        getNotificationData();
     }
 }
 
