@@ -28,7 +28,7 @@ async function getCategoriesData() {
 		const json = await response.json();
 		console.log(json);
 		const categories = generateCategories(json);
-		const div = document.querySelector("main > section:first-child div");
+		//const div = document.querySelector("main > section:first-child div");
 		div.innerHTML = categories;
 	} catch (error) {
 		console.log(error.message);
@@ -133,3 +133,4 @@ function generateProducts(products) {
 getCategoriesData();
 getBestSellersData();
 getBestRatingsData();
+const carousel = new bootstrap.Carousel("#categoriesCarousel");
