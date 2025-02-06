@@ -88,7 +88,6 @@ function displayError(message) {
     document.querySelector("main section:nth-child(2) p").innerHTML = message;
 }
 
-// ui.js - Modulo per la gestione dell'interfaccia utente
 function viewFormModifyPassword() {
     const formHTML = generateFormModifyPassword();
     renderForm("main section:nth-child(2)", formHTML);
