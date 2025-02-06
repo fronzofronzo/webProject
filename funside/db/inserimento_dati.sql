@@ -136,7 +136,7 @@ INSERT INTO `funside`.`notification` (`title`, `text`, `isRead`, `order`, `user`
 ('Ordine #3 ordinato', 'Confermiamo la ricezione dell ordine #3', 0, 3, 'bwhite', '2024-03-10', '16:00:00'),
 ('Ordine #3 spedito', 'Il tuo ordine #3 è stato spedito', 0, 3, 'bwhite', '2024-03-11', '16:00:00'),
 ('Ordine #3 in consegna', 'Il tuo ordine #3 è in consegna', 0, 3, 'bwhite', '2024-03-12', '16:00:00'),
-('Ordine #3 consegnato', 'Il tuo ordine #3 è stato consegnato', 0, 3, 'bwhite', '2024-03-12', '16:00:00')
+('Ordine #3 consegnato', 'Il tuo ordine #3 è stato consegnato', 0, 3, 'bwhite', '2024-03-12', '16:00:00'),
 ('Ordine #4 ordinato', 'Confermiamo la ricezione dell ordine #4', 0, 4, 'bwhite', '2024-01-20', '16:00:00'),
 ('Ordine #4 spedito', 'Il tuo ordine #4 è stato spedito', 0, 4, 'bwhite', DATE_ADD('2024-01-20', INTERVAL 1 DAY), '16:00:00'),
 ('Ordine #5 ordinato', 'Confermiamo la ricezione dell ordine #5', 0, 5, 'mjohnson', '2024-01-17', '16:00:00'),
