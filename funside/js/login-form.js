@@ -18,7 +18,6 @@ function togglePasswordVisibility(button, passwordField) {
     passwordField.setAttribute("type", type);
     button.classList.toggle("fa-eye");
     button.classList.toggle("fa-eye-slash");
-    button.innerHTML = text;
 }
 
 async function tryLogin(username, password) {
@@ -31,7 +30,7 @@ async function tryLogin(username, password) {
     const json = await fetchData(url, formData);
 
     if (json && !json["loginresult"]) {
-        document.querySelector("main > section:first-child form p").innerText = json["errorlogin"];
+        document.querySelector("main > section > div > div:first-child form p").innerText = json["errorlogin"];
     } else {
         window.location.reload();
     }
@@ -49,12 +48,9 @@ async function tryRegistration(name, surname, username, password) {
     const json = await fetchData(url, formData);
 
     if (json) {
-        document.querySelector("main > section:nth-child(2) p").innerText = json["registermsg"];
+        document.querySelector("main > section > div > div:nth-child(2) p").innerText = json["registermsg"];
         if (json["registerresult"]) {
-            document.querySelector("#registername").value = "";
-            document.querySelector("#registersurname").value = "";
-            document.querySelector("#registerusername").value = "";
-            document.querySelector("#registerpassword").value = "";
+            document.querySelectorAll('main form:nth-of-type(2)').forEach(i => i.value = "");
         }
     }
 }
@@ -62,20 +58,20 @@ async function tryRegistration(name, surname, username, password) {
 // Event listener for login form submission
 document.getElementById("formlogin").addEventListener("submit", function (event) {
     event.preventDefault();
-    const username = document.querySelector("#loginusername").value;
-    const password = document.querySelector("#loginpassword").value;
+    const username = document.querySelector('main form:first-of-type input:first-of-type').value;
+    const password = document.querySelector('main > section > div > div:first-child form > div:nth-child(2) input').value;
     tryLogin(username, password);
 });
 
 // Event listener for toggling password visibility in login
-document.querySelector("#loginshow").addEventListener("click", function (e) {
+document.querySelector('main form:first-of-type button:first-of-type').addEventListener("click", function (e) {
     e.preventDefault();
-    const password = document.querySelector("#loginpassword");
+    const password = document.querySelector('main > section > div > div:first-child form > div:nth-child(2) input');
     togglePasswordVisibility(this, password);
 });
 
 // Event listener for registration form submission
-document.getElementById("formregister").addEventListener("submit", function (event) {
+document.querySelector('main > section > div > div:last-child form').addEventListener("submit", function (event) {
     event.preventDefault();
     const name = document.querySelector("#registername").value;
     const surname = document.querySelector("#registersurname").value;
@@ -85,7 +81,7 @@ document.getElementById("formregister").addEventListener("submit", function (eve
 });
 
 // Event listener for toggling password visibility in registration
-document.querySelector("#registershow").addEventListener("click", function (e) {
+document.querySelector('main > section > div > div:last-child button:first-of-type').addEventListener("click", function (e) {
     e.preventDefault();
     const password = document.querySelector("#registerpassword");
     togglePasswordVisibility(this, password);
