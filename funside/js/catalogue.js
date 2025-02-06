@@ -118,7 +118,22 @@ let filteredProducts = [];
 async function init() {
     await getAllCategories(); // Aspetta che le categorie siano caricate
     await getRandomProducts();
-	filteredProducts = products; // Ora puoi passare le categorie non vuote
+	const param = new URLSearchParams(window.location.search);
+	const cat = param.get("cat");
+	if(cat) {
+		console.log(typeof cat);
+		let selectedProducts = [];
+		for(let j=0; j<products.length; j++) {
+			console.log(typeof products[j]["type"])
+			if(products[j]["type"] == cat){
+				
+				selectedProducts.push(products[j]);
+			}
+		}
+		filteredProducts = selectedProducts;
+	} else {
+		filteredProducts = products;
+	}
 	showProducts(filteredProducts);
 	let showButton = document.querySelector("main > section > div:nth-child(3) > div > button");
 	showButton.addEventListener("click", function (e) {

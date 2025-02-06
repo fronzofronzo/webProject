@@ -93,7 +93,7 @@ function generateCategories(categories) {
                 <div class="homeImage h-150 w-150 d-flex justify-content-center mb-2">
                     <img src="${categories[i]["image"]}" class="img-thumbnail img-fluid object-fit-cover " alt="${categories[i]["type"]}" />
                 </div>
-                <div class="text-center">${categories[i]["type"]}</div>
+                <div class="text-center"><a href="catalogue.php?cat=${categories[i]["type"]}">${categories[i]["type"]}</a></div>
             </div>
         `;
         result += category;
