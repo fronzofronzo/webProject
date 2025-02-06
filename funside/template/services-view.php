@@ -3,10 +3,7 @@
             <p class="lead">Scopri tutti i servizi che rendono Fun Side il miglior negozio per giochi da tavolo, fumetti e videogiochi!</p>
         </section>
 
-        <section class="container-fluid "row align-items-center">
-            <div class="col-md-6">
-                <img src="./images/services.jpg" alt="Servizi" class="img-fluid rounded shadow">
-            </div>
+        <section class="container-fluid  align-items-center">
             <div class="col-md-6">
                 <h3>Esperienza e qualità</h3>
                 <p>Offriamo un'ampia gamma di servizi per garantire la miglior esperienza di shopping possibile. Dalla spedizione veloce al supporto clienti, siamo sempre al tuo fianco.</p>
