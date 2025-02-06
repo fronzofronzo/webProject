@@ -8,7 +8,7 @@
     } ?>
     </h2>
     <div class="d-flex justify-content-center align-items-center w-100 vh-80">
-        <canvas id="grafico" class="w-100 h-100"></canvas>
+        <canvas class="w-100 h-100"></canvas>
     </div>
     <div>
         <div class="form-check form-check-inline">
