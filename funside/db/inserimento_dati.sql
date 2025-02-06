@@ -87,7 +87,7 @@ INSERT INTO `funside`.`order` (`dateorder`, `datedelivery`, `suspended`, `status
 ('2024-01-11', '2024-01-14', 0, 'consegnato', 59.99, 'klee'),
 ('2024-01-22', NULL, 0, 'ordinato', 34.99, 'bwhite'),
 ('2024-01-18', NULL, 0, 'spedito', 9.99, 'mjohnson'),
-('2024-01-13', '2024-01-16', 0, 'consegnato', 12.00, 'mjhonson');
+('2024-01-13', '2024-01-16', 0, 'consegnato', 12.00, 'mjohnson');
 
 INSERT INTO `funside`.`orderdetail` (`product`, `order`, `quantity`, `total`) VALUES
 (1, 1, 1, 29.99),
