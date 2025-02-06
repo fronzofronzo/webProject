@@ -46,7 +46,7 @@ async function addToCart(cartButton) {
     const formData = new FormData();
     formData.append("action", "addProducts");
     formData.append("id", getProductID()); 
-    formData.append("quantity", document.getElementById("quantity").value)
+    formData.append("quantity", document.querySelector(".form-select").value)
 
     const result = await fetchData(url, formData);
 
@@ -103,7 +103,7 @@ async function init() {
     let reviewButton = document.querySelector("main section:last-child div form button");
     reviewButton.addEventListener("click", async function() {
         let value = document.querySelector('input[name="rating"]:checked');
-        let text = document.getElementById("review-text").value;
+        let text = document.querySelector("textarea").value;
         if(value) {
             value = value.value;
             let res = await saveReview(text, value);
