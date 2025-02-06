@@ -79,17 +79,27 @@ function generateStars($rating) {
 			</div>
 			<div class="form-group my-3">
 				<fieldset>
-					<legend class="d-none">Valutazione in stelle</legend>				
+					<legend class="d-none">Valutazione in stelle</legend>	
+				<div>			
 				<input type="radio" id="star5" name="rating" value="5"/>
-				<label for="star5"><span class="d-none d-inline">Valutazione 5 stelle</span><?php echo generateStars(5)?></label>
+				<label for="star5" ><span class="d-none d-inline">Valutazione 5 stelle</span><?php echo generateStars(5)?></label>
+				</div>
+				<div>
 				<input type="radio" id="star4" name="rating" value="4"/>
 				<label for="star4"><span class="d-none d-inline">Valutazione 4 stelle</span><?php echo generateStars(4)?></label>
+				</div>
+				<div>
 				<input type="radio" id="star3" name="rating" value="3"/>
 				<label for="star3"><span class="d-none d-inline">Valutazione 3 stelle</span><?php echo generateStars(3)?></label>
+				</div>
+				<div>
 				<input type="radio" id="star2" name="rating" value="2"/>
 				<label for="star2"><span class="d-none d-inline">Valutazione 2 stelle</span><?php echo generateStars(2)?></label>
+				</div>
+				<div>
 				<input type="radio" id="star1" name="rating" value="1"/>
 				<label for="star1"><span class="d-none d-inline">Valutazione 1 stelle</span><?php echo generateStars(1)?></label>
+				</div>
 				</fieldset>
 			</div>
 			<div class="form-group">
