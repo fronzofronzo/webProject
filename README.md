@@ -1,4 +1,4 @@
-# webProject
+# Sito di e-commerce Fun-side
 Fun-side è un sito di e-commerce che si occupa della vendita di prodotti di cultura pop, quali giochi da tavolo, fumetti, videogiochi, action figures…
 
 Il processo di design è iniziato con la creazione dei modelli di MockUp. Questi sono stati realizzati prima per la versione mobile del sito e successivamente per quella desktop, seguendo un approccio mobile-first. Successivamente si è iniziato il lavoro per implementare il sito web. Si è creata una struttura di base per le diverse pagine del sito web (header, navbar e footer) e successivamente si è passati ad implementare le diverse pagine. Per l’implementazione è stata utilizzata la tecnologia Ajax che permette un aggiornamento dinamico delle pagine mediante accesso asincrono alle informazioni del server.  Durante il processo di implementazione abbiamo trovato necessario adattare i MockUp alle esigenze implementative, portando alcune modifiche alla struttura preventivata.
