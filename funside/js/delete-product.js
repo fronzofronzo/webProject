@@ -42,10 +42,11 @@ async function init(){
 	select.innerHTML = code;
 
 	//add event listener to search bar.
-	document.getElementById('searchProduct').addEventListener('keyup', function() {
+
+	document.querySelector("section div input").addEventListener('keyup', function() {
 		let filter = this.value.toLowerCase();
 		console.log(this.value.toLowerCase());
-		let select = document.getElementById('productSelect');
+		let select = document.querySelector("section div select");
 		let options = select.getElementsByTagName('option');
 
 		for (let i = 0; i < options.length; i++) {
@@ -58,7 +59,7 @@ async function init(){
 		}
 	});
 
-	document.getElementById('productSelect').addEventListener("change", function() {
+	document.querySelector("main section div select").addEventListener("change", function() {
 		document.querySelector("section div div button").removeAttribute("disabled")
 		value = this.value;
 		let productSelected = this.options[this.selectedIndex].text;
@@ -75,7 +76,7 @@ async function init(){
 		let result = await deleteProduct(value);
 		console.log(result);
 		if(result["result"] == true) {
-			let myModal = new bootstrap.Modal(document.getElementById("eliminationModal"));
+			let myModal = new bootstrap.Modal(document.querySelector(".modal"));
 			document.querySelector(".modal-body").innerHTML = `
 			Il prodotto con id ${value} è stato eliminato`;
 			myModal.show();
