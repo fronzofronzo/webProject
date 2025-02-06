@@ -39,7 +39,7 @@ async function getOrdersData() {
     const formData = new FormData();
     formData.append('action', 'getorderbyuser');
     const json = await fetchData(url, formData);
-    
+
     if (json) {
         viewOrders(json);
     }
@@ -51,7 +51,7 @@ async function tryModifyPassword(oldpassword, newpassword) {
     formData.append('oldpassword', oldpassword);
     formData.append('newpassword', newpassword);
     formData.append('action', 'modifypassword');
-    
+
     const json = await fetchData(url, formData);
 
     if (json && json["isPasswordModified"]) {
@@ -152,7 +152,7 @@ async function addNewAddress(newaddress) {
     formData.append('action', 'addnewaddress');
     formData.append('address', newaddress);
     const json = await fetchData(url, formData);
-    
+
     if (json["newaddress"]) {  // Controllo su 'newaddress' e non 'address'
         viewFormModifyAddress();
         document.querySelector("main section:nth-child(2) > p").innerHTML = "Indirizzo aggiunto";
@@ -167,7 +167,7 @@ async function deleteAddress(id) {
     formData.append('action', 'deleteaddress');
     formData.append('idaddress', id);
     const json = await fetchData(url, formData);
-    if (json["deletedaddress"]) {  
+    if (json["deletedaddress"]) {
         viewFormModifyAddress();
         document.querySelector("main section:nth-child(2) > p").innerHTML = "Indirizzo eliminato";
     } else {

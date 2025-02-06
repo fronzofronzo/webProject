@@ -1,4 +1,3 @@
-// Helper function to make fetch requests
 async function fetchData(url, formData) {
     try {
         const response = await fetch(url, {
@@ -14,7 +13,6 @@ async function fetchData(url, formData) {
     }
 }
 
-// Helper function to toggle password visibility
 function togglePasswordVisibility(button, passwordField) {
     const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
     passwordField.setAttribute("type", type);
@@ -23,7 +21,6 @@ function togglePasswordVisibility(button, passwordField) {
     button.innerHTML = text;
 }
 
-// Function to handle login
 async function tryLogin(username, password) {
     const url = 'api/api-login.php';
     const formData = new FormData();
@@ -40,7 +37,6 @@ async function tryLogin(username, password) {
     }
 }
 
-// Function to handle registration
 async function tryRegistration(name, surname, username, password) {
     const url = 'api/api-login.php';
     const formData = new FormData();
