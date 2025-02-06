@@ -5,7 +5,7 @@
 
 <section class="container-fluid align-items-center">
     <div class="col-md-6">
-        <h3>I Nostri Recapiti</h3>
+        <h3 class="text-light">I Nostri Recapiti</h3>
         <p><strong>Email:</strong> support@funside.com</p>
         <p><strong>Telefono:</strong> +39 123 456 7890</p>
         <p><strong>Indirizzo:</strong> Via Esempio 123, Roma, Italia</p>
@@ -13,7 +13,7 @@
 </section>
 
 <section class="container-fluid text-center my-5">
-    <h3>Scrivici un Messaggio</h3>
+    <h3 class="text-light">Scrivici un Messaggio</h3>
     <form class="mt-4">
         <div class="mb-3">
             <label for="iltuonome" class="d-none">Il tuo nome</label>

@@ -9,14 +9,14 @@
             <img src="./upload/about-us.jpg" alt="Chi siamo" class="img-fluid rounded shadow">
         </div>
         <div class="col-md-6">
-            <h3>La nostra storia</h3>
+            <h3 class="text-light">La nostra storia</h3>
             <p>
                 Dal 2020, Fun Side è il punto di riferimento per gli appassionati di giochi, fumetti e cultura pop. 
                 Fondata nel 2020, Fun Side nasce dalla passione per il mondo geek e pop. Sin dal principio, ci siamo posti l’obiettivo 
                 di creare uno spazio dedicato a chi, come noi, ama immergersi in universi fantastici, scoprire novità e condividere emozioni 
                 legate a giochi, fumetti, action figure, gadget e tanto altro.
             </p>
-            <h3>Cosa ci rende speciali?</h3>
+            <h3 class="text-light">Cosa ci rende speciali?</h3>
             <ul class="text-light">
                 <li>
                     <strong>Selezione Curata:</strong> Ogni prodotto che offriamo è scelto con attenzione. Collaboriamo con i marchi più affidabili 
@@ -46,18 +46,18 @@
 </section>
 
 <section class="container-fluid text-center my-5">
-    <h3>Perché scegliere noi?</h3>
+    <h3 class="text-light">Perché scegliere noi?</h3>
     <div class="row mt-4">
         <div class="col-md-4">
-            <h4>📦 Ampia selezione</h4>
+            <h4 class="text-light">📦 Ampia selezione</h4>
             <p>Troverai giochi da tavolo, fumetti e videogiochi per ogni gusto.</p>
         </div>
         <div class="col-md-4">
-            <h4>🚀 Spedizioni rapide</h4>
+            <h4 class="text-light">🚀 Spedizioni rapide</h4>
             <p>Consegna veloce e sicura per ricevere i tuoi prodotti in pochi giorni.</p>
         </div>
         <div class="col-md-4">
-            <h4>💙 Community</h4>
+            <h4 class="text-light">💙 Community</h4>
             <p>Eventi, tornei e una community di appassionati come te!</p>
         </div>
     </div>

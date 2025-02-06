@@ -39,8 +39,8 @@ async function getProductsInCart() {
                         <img src="./upload/${products[i]["image"]}" class="border rounded homeImage" alt="${products[i]["name"]}">
                     </div>
                     <div class = "col-12 col-md-6 align-items-center">
-                        <p class='mb-1'>Pezzi: ${products[i]["quantity"]}</p>
-                        <p class="fw-bold mb-1">${totalProduct}</p>
+                        <p class='mb-1 text-black'>Pezzi: ${products[i]["quantity"]}</p>
+                        <p class="fw-bold mb-1 text-black">${totalProduct}</p>
                         <button class="btn btn-danger" data-id="${products[i]["idproduct"]}">Rimuovi</button>
                     </div>
                 </div>`;
