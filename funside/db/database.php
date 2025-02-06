@@ -390,9 +390,9 @@ class DatabaseHelper
             $stmt->execute();
             $stmt->close();
         } catch (Exception $e) {
-            return ["result" => false, "error" => $e->getMessage()];
+            return ["result" => false, "message" => "Hai già recensito questo prodotto"];
         }
-        return ["result" => true];
+        return ["result" => true, "message" => "Recensione registrata correttamente"];
     }
 
     public function removeProduct($id) {
